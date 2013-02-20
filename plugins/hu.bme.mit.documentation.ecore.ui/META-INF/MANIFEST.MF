@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ecore Documentation Generator UI
+Bundle-SymbolicName: hu.bme.mit.documentation.ecore.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: hu.bme.mit.documentation.ecore.ui.internal.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ hu.bme.mit.documentation.ecore;bundle-version="0.0.1",
+ org.eclipse.core.resources;bundle-version="3.8.1",
+ org.eclipse.emf.ecore;bundle-version="2.8.1",
+ org.apache.log4j;bundle-version="1.2.15"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Budapest University of Technology and Economics, Fault Tolerant Systems Research Group
+Export-Package: hu.bme.mit.documentation.ecore.ui.handlers

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="hu.bme.mit.documentation.ecore.ui.handlers.GenerateEcoreDoc"
+            id="hu.bme.mit.documentation.ecore.ui.generatedoc"
+            name="Generate Documentation">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any">
+         <command
+               commandId="hu.bme.mit.documentation.ecore.ui.generatedoc"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="hu.bme.mit.documentation.ecore.ui.ecoredef">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="hu.bme.mit.documentation.ecore.ui.ecoredef">
+         <with
+               variable="selection">
+            <iterate
+                  ifEmpty="false">
+                  <adapt
+                     type="org.eclipse.core.resources.IFile">
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="*.ecore">
+                  </test>
+               </adapt>
+            </iterate>
+         </with>
+      </definition>
+   </extension>
+</plugin>
