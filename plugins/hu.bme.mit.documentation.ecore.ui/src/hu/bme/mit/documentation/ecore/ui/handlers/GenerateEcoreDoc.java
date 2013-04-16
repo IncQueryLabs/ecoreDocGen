@@ -94,7 +94,6 @@ public class GenerateEcoreDoc extends AbstractHandler {
 
         if (resource.getContents() != null) {
             if (resource.getContents().size() > 0) {
-                EPackage pckg = (EPackage) resource.getContents().get(0);
                 StringBuilder sb = new StringBuilder();
 
                 try {
@@ -115,7 +114,10 @@ public class GenerateEcoreDoc extends AbstractHandler {
                             }
                         }
                     }
-                    docGen.documentEPackageToLatex(sb, pckg, filter);
+                    EPackage pckg = (EPackage) resource.getContents().get(0);
+                    docGen.documentEPackageToLatex(sb, pckg, filter,true);
+                    doGenerateAllSubpackages(docGen,sb,pckg,filter);
+                    
                     
                     InputStream source = new ByteArrayInputStream(sb.toString().getBytes());
                     if (outputFile.exists()) {
@@ -132,4 +134,17 @@ public class GenerateEcoreDoc extends AbstractHandler {
             }
         }
     }
+
+	private void doGenerateAllSubpackages(EPackageDocGen docGen, StringBuilder sb, EPackage pckg,
+			ArrayList<String> filter) {
+		for (EPackage subpck : pckg.getESubpackages()) {
+			if(!subpck.getEClassifiers().isEmpty()){
+				docGen.documentEPackageToLatex(sb, subpck, filter,false);
+			}
+		}
+		for (EPackage subpck : pckg.getESubpackages()) {
+			doGenerateAllSubpackages(docGen, sb, subpck, filter);
+		}
+		
+	}
 }
