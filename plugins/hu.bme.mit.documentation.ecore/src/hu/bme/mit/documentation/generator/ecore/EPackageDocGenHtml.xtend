@@ -5,8 +5,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Abel Hegedus - initial API and implementation
- * 	 Adam Horvath - Markdown support, escaping fixes
+ *   Abel Hegedus - initial structure
+ *   Adam Horvath - HTML specifics
  *
  *******************************************************************************/
  package hu.bme.mit.documentation.generator.ecore
@@ -31,19 +31,19 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.tautua.markdownpapers.ast.Document
 import org.tautua.markdownpapers.parser.Parser
+import org.tautua.markdownpapers.HtmlEmitter
 
 /**
  * @author Abel Hegedus
  * @author Adam Horvath
+ * 
  */
-class EPackageDocGen implements IDocGenerator{
+class EPackageDocGenHtml implements IDocGenerator{
 	private EPackage pckg
     private StringBuilder builder
     private List<String> filter
-    private boolean floatTables
     
     override documentEPackage(StringBuilder sb, EPackage pckg, List<String> nameRefFilter, boolean genHeader){
-    	this.floatTables = false;
         this.builder = sb
         this.pckg = pckg
         this.filter = Lists::newArrayList(nameRefFilter)
@@ -51,12 +51,20 @@ class EPackageDocGen implements IDocGenerator{
         val gc = new GregorianCalendar()
         val now = gc.getTime().toString()
         if(genHeader){
-	        "% This file was created using the TeX documentation generator.\n".appendToBuilder
+	        "<!-- This file was created using the HTML documentation generator. -->\n".appendToBuilder
 	        
-	        val create = "% Creation date: " + now + "\n"
+	        val create = "<!-- Creation date: " + now + "-->\n"
 	        create.appendToBuilder
+	        '''
+				<html>
+					<head>
+				      	<title>Metamodel Documentation</title>
+				    	<link rel="stylesheet" type="text/css" href="style.css" />
+				    	<script type="text/javascript" src="tocgen.js"></script>
+					</head>
+				<body onload="makeTOC();">
+	        '''.appendToBuilder
         }
-        
         pckg.documentEPackageHeader.appendToBuilder
         
         //pckg.EClassifiers.sortBy[if(it instanceof EClass){(it as EClass).ESuperTypes.size} else {0}].forEach[
@@ -67,30 +75,31 @@ class EPackageDocGen implements IDocGenerator{
 	        		
         		val cls = it as EClass
 
-        		cls.documentEClassHeader.appendToBuilder
+        		cls.documentEClassHeader
         		if(!cls.EAttributes.empty){
-	        		//"textbf".documentHeader("Attributes", cls.EPackage.nsPrefix+"."+cls.name+".attr", null).appendToBuilder
 	        		'''
-					\begin{table}[«getTableFloat»]
-					\footnotesize
-					\begin{tabularx}{\textwidth}{|c| p{4 cm} | X |}
-					\hline
-					\multicolumn{3}{|c|}{\textbf{Attributes}} \\
-					\hline
-					Name & Properties & Documentation \\ \hline \hline
+					<table>
+					<tr>
+						<th colspan="3"><div class="tableHeader">Attributes</div></th>
+					</tr>
+					<tr>
+						<th><div class="columnHeader">Name</div></th>
+						<th><div class="columnHeader">Properties</div></th>
+						<th><div clas="columnHeader">Documentation</div></th>
+					</tr>
 	        		'''.appendToBuilder
 	        		cls.EAttributes.sortBy[name].forEach[
+	        			'''<tr>'''.appendToBuilder
 	        			documentEAttributeHeader.appendToBuilder
-	        			''' & '''.appendToBuilder
+	        			''' </td> '''.appendToBuilder
+	        			'''<td>'''.appendToBuilder
 	        			findGenModelDocumentation(derived).appendToBuilder
-	        			'''\\ \hline
-	        			'''.appendToBuilder
+	        			'''</td>
+	        			</tr>'''.appendToBuilder
 	        		]
 	        		'''
-					\end{tabularx}
-					\caption{Attributes of the «escapeText(cls.name)» EClass}
-					\label{«escapeLabel(cls.EPackage.nsPrefix+"."+cls.name+".attr")»}
-					\end{table}
+					</table>
+					«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".attr","")»
 	        		'''.appendToBuilder
 	        		
         		}
@@ -99,53 +108,57 @@ class EPackageDocGen implements IDocGenerator{
         		if(!cls.EReferences.empty){
 	        		//"paragraph".documentHeader("References", cls.EPackage.nsPrefix+"."+cls.name+".ref", null).appendToBuilder
 	        		'''
-					\begin{table}[«getTableFloat»]
-					\footnotesize
-					\begin{tabularx}{\textwidth}{|c| p{4 cm} | X |}
-					\hline
-					\multicolumn{3}{|c|}{\textbf{References}} \\
-					\hline
-					Name & Properties & Documentation \\ \hline \hline
+					<table>
+					<tr>
+						<th colspan="3"><div class="tableHeader">References</div></th>
+					</tr>
+					<tr>
+						<th><div class="columnHeader">Name</div></th>
+						<th><div class="columnHeader">Properties</div></th>
+						<th><div clas="columnHeader">Documentation</div></th>
+					</tr>
 	        		'''.appendToBuilder
 	        		cls.EReferences.sortBy[name].forEach[
+	        			'''<tr>'''.appendToBuilder
 	        			documentEReferenceHeader.appendToBuilder
-	        			''' & '''.appendToBuilder
+	        			'''
+	        			</td> 
+	        			<td> '''.appendToBuilder
 	        			findGenModelDocumentation(derived).appendToBuilder
-	        			'''\\ \hline
-	        			'''.appendToBuilder
+	        			'''</td>
+	        			</tr>'''.appendToBuilder
 	        		]
 	        		'''
-					\end{tabularx}
-					\caption{References of the «escapeText(cls.name)» EClass}
-					\label{«escapeLabel(cls.EPackage.nsPrefix+"."+cls.name+".ref")»}
-					\end{table}
-	        		'''.appendToBuilder
+					</table>
+					«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".ref","")»
+	        		'''
+	        		.appendToBuilder
 	        		
         		}
         		
         		if(!cls.EOperations.empty){
-		        	//"paragraph".documentHeader("Operations", cls.EPackage.nsPrefix+"."+cls.name+".op", null).appendToBuilder
-	        		'''
-					\begin{table}[«getTableFloat»]
-					\small
-					\begin{tabularx}{\textwidth}{|c| p{4 cm} | X |}
-					\hline
-					\multicolumn{3}{|c|}{\textbf{Operations}} \\
-					\hline
-					Name & Properties & Documentation \\ \hline \hline
+		        	'''
+					<table>
+					<tr>
+						<th colspan="3"><div class="tableHeader">Operations</div></th>
+					</tr>
+					<tr>
+						<th><div class="columnHeader">Name</div></th>
+						<th><div class="columnHeader">Properties</div></th>
+						<th><div clas="columnHeader">Documentation</div></th>
+					</tr>
 	        		'''.appendToBuilder
 	        		cls.EOperations.sortBy[name].forEach[
+	        			'''<tr>'''.appendToBuilder
 	        			documentEOperationHeader.appendToBuilder
-	        			''' & '''.appendToBuilder
+	        			''' </td><td> '''.appendToBuilder
 	        			findGenModelDocumentation(false).appendToBuilder
-	        			'''\\ \hline
-	        			'''.appendToBuilder
+	        			'''</td>
+	        			</tr>'''.appendToBuilder
 	        		]
 	        		'''
-	        		\end{tabularx}
-	        		\caption{Operations of the «escapeText(cls.name)» EClass}
-	        		\label{«escapeLabel(cls.EPackage.nsPrefix+"."+cls.name+".op")»}
-	        		\end{table}
+					</table>
+					«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".op","")»
 	        		'''.appendToBuilder
 	        		
         		}
@@ -162,15 +175,13 @@ class EPackageDocGen implements IDocGenerator{
         	}
         	
         ]
-        
+        if(genHeader){
+	        '''
+	        </body>
+	        </html>
+	        '''.appendToBuilder
+        }
     }
-	def getTableFloat() { 
-		if(floatTables){
-			'''!ht'''
-		}else{
-			'''H'''
-		}
-	}
 
     
     def private appendToBuilder(CharSequence s){
@@ -180,9 +191,9 @@ class EPackageDocGen implements IDocGenerator{
     def private documentEPackageHeader(EPackage pckg)
     	'''
     	«val packageName = ePackageFqName(pckg)»
-		«val title = "The \\textsc{" + pckg.name + "} metamodel"»
-		«documentHeader("section", title, packageName, pckg.nsPrefix, pckg)»
-		\paragraph{EPackage properties:} \hspace{0pt} \\ \indent
+		«val title = "The <span class=\"packageName\">" + packageName + "</span> package"»
+		«documentHeader("h1", title, packageName, pckg.nsPrefix, pckg)»
+		<div class="">EPackage properties:</div>
 		«documentProperty("Namespace Prefix", '''«escapeText(pckg.nsPrefix)»''')»
 		
 		«documentProperty("Namespace URI", '''«pckg.nsURI»''')»
@@ -211,7 +222,7 @@ class EPackageDocGen implements IDocGenerator{
 	}    
     def private documentEClassifierHeader(EClassifier cls)
     '''
-    «documentHeader("subsection", cls.name, cls.name, cls.EPackage.nsPrefix+"."+cls.name, cls)»
+    «documentHeader("h2", cls.name, cls.name, cls.EPackage.nsPrefix+"."+cls.name, cls)»
     '''
     
     def private documentEDataTypeHeader(EDataType dt)
@@ -222,88 +233,102 @@ class EPackageDocGen implements IDocGenerator{
     def private documentEEnumHeader(EEnum enum)
     '''
 	«enum.documentEDataTypeHeader»
-	\begin{table}[«getTableFloat»]
-	\footnotesize
-	\begin{tabularx}{\textwidth}{| c | c | X |}
-	\hline
-	\multicolumn{3}{|c|}{\textbf{Literals}} \\
-	\hline
-	Name & Value & Documentation \\ \hline \hline
+	<table>
+	<tr>
+		<th colspan="3"><div class="tableHeader">Literals</div></th>
+	</tr>
+	<tr>
+		<th><div class="columnHeader">Name</div></th>
+		<th><div class="columnHeader">Value</div></th>
+		<th><div clas="columnHeader">Documentation</div></th>
+	</tr>
 	«FOR literal : enum.ELiterals»
-	\texttt{«escapeText(literal.literal)»} & «literal.value» &
-	«literal.findGenModelDocumentation(false)» \\ \hline
+	<tr>
+		<td>
+			<span class="teletype">«escapeText(literal.literal)»</span>
+		</td>
+		<td>
+			«literal.value»
+		</td>
+		<td>
+			«literal.findGenModelDocumentation(false)»
+		</td>	
+	</tr>
     «ENDFOR»
-	\end{tabularx}
-	\caption{Literals of the «escapeText(enum.name)» EEnum}
-	\label{«escapeLabel(enum.EPackage.nsPrefix+"."+enum.name+".lit")»}
-	\end{table}
+	</table>
+	«anchorDef(enum.EPackage.nsPrefix+"."+enum.name+".lit","")»
     '''
     
-    def private documentEClassHeader(EClass cls)
-    '''
-    «cls.documentEClassifierHeader»
-     
-    «IF cls.interface»
-      \paragraph{EClass properties:} \hspace{0pt} \\ \indent
-      \textbf{Interface}
-    «ENDIF»
-    «IF cls.^abstract»
-      «IF cls.interface»
-      , 
-      «ELSE»
-      \paragraph{EClass properties:} \hspace{0pt} \\ \indent
-      «ENDIF»
-      \textbf{Abstract}
-    «ENDIF»
-    «IF !cls.ESuperTypes.empty»
-      «IF cls.interface || cls.^abstract»
-      \\ \indent
-      «ELSE»
-      \paragraph{EClass properties:} \hspace{0pt} \\ \indent
-      «ENDIF»
-      \textbf{Supertypes: }
-      «FOR st : cls.ESuperTypes SEPARATOR ", "»
-        \texttt{«st.preparePossibleReference»}
-      «ENDFOR»
-    «ENDIF»
-    '''
+    def private documentEClassHeader(EClass cls){
+	    '''«cls.documentEClassifierHeader»'''.appendToBuilder
+	    var boolean hasPropList = false;
+	    if(cls.isInterface()){
+	      '''<div class="eclassProps">EClass properties:<div class="eclassPropList">
+	      	<span class="label">Interface</span>'''.appendToBuilder
+	      	hasPropList=true;
+	    }
+		if(cls.isAbstract()){
+			if(cls.isInterface()){
+		      ''', '''.appendToBuilder 
+			}else{
+				'''<div class="eclassProps">EClass properties:<div class="eclassPropList">'''.appendToBuilder
+				hasPropList=true;
+			}
+			'''<span class="label">Abstract</span>'''.appendToBuilder			
+		}
+		if(!cls.ESuperTypes.isEmpty()){
+			var boolean genProps = false;
+			if(!cls.isInterface() && !cls.isAbstract()){
+				'''<div class="eclassProps">EClass properties:'''.appendToBuilder
+				genProps=true;
+			}
+			'''
+			<div class="eclassSupertypes">Supertypes:
+			«FOR st : cls.ESuperTypes SEPARATOR ", "»
+			<span class="teletype">«st.preparePossibleReference»</span>
+	      	«ENDFOR»
+			</div>'''.appendToBuilder
+			if(genProps){
+				'''</div>'''.appendToBuilder
+			}
+		}
+		if(hasPropList){
+			'''</div></div>'''.appendToBuilder
+		}
+    }
     
     def private documentENamedElement(ENamedElement elem, String color)
     '''
-    \texttt{«IF color != null»\color{«color»}{«ENDIF»«escapeText(elem.name)»«IF color != null»}«ENDIF»}
+    <div class="teletype">«IF color != null»<div style="color:«color»">«ENDIF»«escapeText(elem.name)»«IF color != null»</div>«ENDIF»</div>
     '''
     
     //(«typePckg.nsURI»)
     // <«typePckg.name»>
     def private documentETypedElement(ETypedElement elem, String color)
     '''
-    «elem.documentENamedElement(color)» & 
-    «documentProperty("T", elem.preparePossibleReference)»
-    \newline
-    \textbf{Cardinality:} [«elem.lowerBound»..«IF elem.upperBound == -1»*«ELSE»«elem.upperBound»«ENDIF»]
+    	<td>«elem.documentENamedElement(color)»</td>
+    	<td>«documentProperty("T", elem.preparePossibleReference)»
+    <div class="label">Cardinality: [«elem.lowerBound»..«IF elem.upperBound == -1»*«ELSE»«elem.upperBound»«ENDIF»]</div>
     «IF !elem.ordered»
-    \newline
-    \textbf{Unordered}
+    <div class="label">Unordered</div>
     «ENDIF»
     «IF !elem.unique»
-    \newline
-    \textbf{Not unique}
+    <div class="label">Not unique</div>
     «ENDIF»'''
     
     def private preparePossibleReference(ETypedElement elem){
     	if(elem.EGenericType != null){
 	    	elem.EGenericType.EClassifier.preparePossibleReference
     	} else {
-    		'''\textsc{\color{red}{MISSING TYPE!}}'''
+    		'''<div class="alert">MISSING TYPE!</div>'''
     	}
     }
     
     def private preparePossibleReference(EClassifier cls){
     	val typePckg = cls.EPackage
     	val typeName = cls.name
-    	
-    	if(filter.findFirst[typePckg.nsURI.contains(it)] != null){
-    		'''\nameref{«escapeLabel(typePckg.nsPrefix+ "." + typeName)»}'''
+    	if(filter.findFirst[typePckg.nsURI.contains(it)] == null){
+    		'''<a href="#«escapeLabel(typePckg.nsPrefix+ "." + typeName)»">«typeName»</a>'''
     	} else {
     		'''«typeName»'''
     	}
@@ -317,45 +342,31 @@ class EPackageDocGen implements IDocGenerator{
     	«feat.documentETypedElement(null)»
     «ENDIF»
     «IF !feat.changeable»
-    \newline
-    \textbf{Non-changeable}
+    <div class="label">Non-changeable</div>
     «ENDIF»
     «IF feat.volatile»
-    \newline
-    \textbf{Volatile}
+    <div class="label">Volatile</div>
     «ENDIF»
     «IF feat.transient»
-    \newline
-    \textbf{Transient}
+    <div class="label">Transient</div>
     «ENDIF»
     «IF feat.unsettable»
-    \newline
-    \textbf{Unsettable}
+    <div class="label">Unsettable</div>
     «ENDIF»
     «IF feat.defaultValueLiteral != null»
-    \newline
     «documentProperty("Default", escapeText(feat.defaultValueLiteral))»
     «ENDIF»
     «IF feat.derived»
-    «val fqn = findAnnotation(feat, "org.eclipse.viatra2.emf.incquery.derived.feature", "patternFQN")»
-    \newline
-    \textbf{Derived}
-    «IF fqn != null»
-    %\newline
-    %(Query: «fqn.replace("hu.bme.mit.transima.models.","").replace(".",".\\allowbreak ")»)
-    «ELSE»
-    \newline
-    \textsc{\color{red}{MISSING DEFINITION!}}
-    «ENDIF»
+    <div class="label">Derived</div>
     «ENDIF»
     '''
     
     def private documentEAttributeHeader(EAttribute attr)
     '''
+    <tr>
     «attr.documentEStructuralFeatureHeader»
     «IF attr.ID»
-    \newline
-    \textbf{Identifier}
+    <div class="label">Identifier</div>
     «ENDIF»
     '''
     
@@ -363,15 +374,12 @@ class EPackageDocGen implements IDocGenerator{
     '''
     «ref.documentEStructuralFeatureHeader»
     «IF ref.containment»
-    \newline
-    \textbf{Containment}
+    <div class="label">Containment</label>
     «ENDIF»
     «IF ref.container»
-    \newline
-    \textbf{Container}
+    <div class="label">Container</label>
     «ENDIF»
     «IF ref.EOpposite != null»
-    \newline
     «documentProperty("Op", ref.EOpposite.name)»
     «ENDIF»
     '''
@@ -381,30 +389,27 @@ class EPackageDocGen implements IDocGenerator{
     '''
     «op.documentETypedElement(null)»
     «IF op.EType != null»
-    %\newline
-    %\textbf{Returns:}
-    %«op.preparePossibleReference»[«op.lowerBound»..«IF op.upperBound == ETypedElement::UNBOUNDED_MULTIPLICITY»*«ELSE»«op.upperBound»«ENDIF»]
+    <div class="label">Returns:</div>
+    «op.preparePossibleReference»[«op.lowerBound»..«IF op.upperBound == ETypedElement::UNBOUNDED_MULTIPLICITY»*«ELSE»«op.upperBound»«ENDIF»]
     «ENDIF»
     «IF !op.EParameters.empty»
-    \newline
-    \textbf{Parameters:}
-    \begin{itemize}
+    <div class="label">Parameters:
+    <ul>
     «FOR param : op.EParameters»
-    	\item «param.preparePossibleReference»[«param.lowerBound»..«IF param.upperBound == ETypedElement::UNBOUNDED_MULTIPLICITY»*«ELSE»«param.upperBound»«ENDIF»] \texttt{«escapeText(param.name)»}
+    	<li>«param.preparePossibleReference»[«param.lowerBound»..«IF param.upperBound == ETypedElement::UNBOUNDED_MULTIPLICITY»*«ELSE»«param.upperBound»«ENDIF»] <span class="teletype>"«escapeText(param.name)»</span></li>
     «ENDFOR»
-    \end{itemize}
+    </ul>
     «ENDIF»
     '''
     
     def private documentProperty(CharSequence key, CharSequence value)
     '''
-    \textbf{«key»:} \texttt{«value»}
+    <div class="keyValue"><span class="label">«key»:</span><span class="teletype">«value»</span></div>
     '''
     
     def private documentHeader(String sectionClass, String sectionTitle, String shortTitle, String label, EModelElement element)
     '''
-    \«sectionClass»[«escapeText(shortTitle)»]{«escapeText(sectionTitle)»}
-    \label{«escapeLabel(label)»}
+    <«sectionClass»>«anchorDef(escapeLabel(label),sectionTitle)»</«sectionClass»>
     
     «IF element != null»
     «element.findGenModelDocumentation»
@@ -412,7 +417,7 @@ class EPackageDocGen implements IDocGenerator{
     '''
     
     def private escapeText(String text){
-    	'''«text.replaceAll("_","\\\\_").replaceAll("%","\\\\%")»'''
+    	'''«text.replaceAll("&","&amp;").replaceAll("<","&lt;")»'''
     }
     
     def private escapeLabel(String text){
@@ -430,13 +435,14 @@ class EPackageDocGen implements IDocGenerator{
     		val Parser parser = new Parser(docReader);
     	
     		val Document markdownDoc = parser.parse();
-    		val latexVisitor = new MarkdownToLatexVisitor();
+    		val builder = new StringBuilder();
+    		val latexVisitor = new HtmlEmitter(builder);
     		markdownDoc.accept(latexVisitor);
-    		return latexVisitor.latexString;
+    		return builder.toString;
     	}
     	else {
     		if(required){
-    			return '''\textsc{\color{red}{Missing Documentation!}}'''
+    			return '''<div class="alert">Missing Documentation!</div>'''
     		} else {
 		    	return ''''''
     		}
@@ -454,6 +460,10 @@ class EPackageDocGen implements IDocGenerator{
 	    		}
 	    	}
     	}
+    }
+    
+    def private anchorDef(CharSequence id,CharSequence text){
+    	'''<a id="«id»">«text»</a>'''
     }
     
 }

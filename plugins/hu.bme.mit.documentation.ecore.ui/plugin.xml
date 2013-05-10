@@ -4,9 +4,14 @@
 <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="hu.bme.mit.documentation.ecore.ui.handlers.GenerateEcoreDoc"
-            id="hu.bme.mit.documentation.ecore.ui.generatedoc"
-            name="Generate Documentation">
+            defaultHandler="hu.bme.mit.documentation.ecore.ui.handlers.GenerateEcoreDocLatex"
+            id="hu.bme.mit.documentation.ecore.ui.generatedoc.latex"
+            name="Generate Latex Documentation">
+      </command>
+      <command
+            defaultHandler="hu.bme.mit.documentation.ecore.ui.handlers.GenerateEcoreDocHTML"
+            id="hu.bme.mit.documentation.ecore.ui.generatedoc.html"
+            name="Generate HTML Documentation">
       </command>
    </extension>
    <extension
@@ -15,7 +20,17 @@
             allPopups="false"
             locationURI="popup:org.eclipse.ui.popup.any">
          <command
-               commandId="hu.bme.mit.documentation.ecore.ui.generatedoc"
+               commandId="hu.bme.mit.documentation.ecore.ui.generatedoc.html"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="hu.bme.mit.documentation.ecore.ui.ecoredef">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="hu.bme.mit.documentation.ecore.ui.generatedoc.latex"
                style="push">
             <visibleWhen
                   checkEnabled="false">
