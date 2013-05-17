@@ -230,9 +230,9 @@ class EPackageDocGenHtml implements IDocGenerator{
     «dt.documentEClassifierHeader»
     '''
     
-    def private documentEEnumHeader(EEnum enum)
+    def private documentEEnumHeader(EEnum eenum)
     '''
-	«enum.documentEDataTypeHeader»
+	«eenum.documentEDataTypeHeader»
 	<table>
 	<tr>
 		<th colspan="3"><div class="tableHeader">Literals</div></th>
@@ -242,7 +242,7 @@ class EPackageDocGenHtml implements IDocGenerator{
 		<th><div class="columnHeader">Value</div></th>
 		<th><div clas="columnHeader">Documentation</div></th>
 	</tr>
-	«FOR literal : enum.ELiterals»
+	«FOR literal : eenum.ELiterals»
 	<tr>
 		<td>
 			<span class="teletype">«escapeText(literal.literal)»</span>
@@ -256,7 +256,7 @@ class EPackageDocGenHtml implements IDocGenerator{
 	</tr>
     «ENDFOR»
 	</table>
-	«anchorDef(enum.EPackage.nsPrefix+"."+enum.name+".lit","")»
+	«anchorDef(eenum.EPackage.nsPrefix+"."+eenum.name+".lit","")»
     '''
     
     def private documentEClassHeader(EClass cls){
