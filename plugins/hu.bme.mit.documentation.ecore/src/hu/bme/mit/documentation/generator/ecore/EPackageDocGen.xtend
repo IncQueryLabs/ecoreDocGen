@@ -219,9 +219,9 @@ class EPackageDocGen implements IDocGenerator{
     «dt.documentEClassifierHeader»
     '''
     
-    def private documentEEnumHeader(EEnum enum)
+    def private documentEEnumHeader(EEnum eenum)
     '''
-	«enum.documentEDataTypeHeader»
+	«eenum.documentEDataTypeHeader»
 	\begin{table}[«getTableFloat»]
 	\footnotesize
 	\begin{tabularx}{\textwidth}{| c | c | X |}
@@ -229,13 +229,13 @@ class EPackageDocGen implements IDocGenerator{
 	\multicolumn{3}{|c|}{\textbf{Literals}} \\
 	\hline
 	Name & Value & Documentation \\ \hline \hline
-	«FOR literal : enum.ELiterals»
+	«FOR literal : eenum.ELiterals»
 	\texttt{«escapeText(literal.literal)»} & «literal.value» &
 	«literal.findGenModelDocumentation(false)» \\ \hline
     «ENDFOR»
 	\end{tabularx}
-	\caption{Literals of the «escapeText(enum.name)» EEnum}
-	\label{«escapeLabel(enum.EPackage.nsPrefix+"."+enum.name+".lit")»}
+	\caption{Literals of the «escapeText(eenum.name)» EEnum}
+	\label{«escapeLabel(eenum.EPackage.nsPrefix+"."+eenum.name+".lit")»}
 	\end{table}
     '''
     
@@ -456,7 +456,6 @@ class EPackageDocGen implements IDocGenerator{
     	}
     }
     
-
 	override generateTail() {
 		//not required for latex documents
 	}
