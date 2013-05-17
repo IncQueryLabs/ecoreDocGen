@@ -175,12 +175,6 @@ class EPackageDocGenHtml implements IDocGenerator{
         	}
         	
         ]
-        if(genHeader){
-	        '''
-	        </body>
-	        </html>
-	        '''.appendToBuilder
-        }
     }
 
     
@@ -466,4 +460,12 @@ class EPackageDocGenHtml implements IDocGenerator{
     	'''<a id="«id»">«text»</a>'''
     }
     
+
+	override generateTail() {
+		 '''
+	        </body>
+	        </html>
+	        '''.appendToBuilder
+	}
+	
 }

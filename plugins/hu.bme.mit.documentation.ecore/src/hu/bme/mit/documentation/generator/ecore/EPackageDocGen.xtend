@@ -456,4 +456,9 @@ class EPackageDocGen implements IDocGenerator{
     	}
     }
     
+
+	override generateTail() {
+		//not required for latex documents
+	}
+	
 }

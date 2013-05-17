@@ -24,4 +24,9 @@ public interface IDocGenerator {
 	 * @param genHeader
 	 */
 	void documentEPackage(final StringBuilder sb, final EPackage pckg, final List<String> nameRefFilter, final boolean genHeader);
+
+	/**
+	 * Generate tail of the document.
+	 */
+	void generateTail();
 }

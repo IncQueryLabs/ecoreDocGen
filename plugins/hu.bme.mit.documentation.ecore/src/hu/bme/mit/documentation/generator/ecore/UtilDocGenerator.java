@@ -61,7 +61,7 @@ public class UtilDocGenerator {
                     }
                     filter.add("http://www.eclipse.org/emf/2002/Ecore");
                     EPackage pckg = (EPackage) resource.getContents().get(0);
-                    doGenerateAllSubpackages(docGen,sb,pckg,filter,true);
+                    new DocGenerationInstance().doGenerateAllSubpackages(docGen,sb,pckg,filter);
                     
                     
                 	FileOutputStream fos = new FileOutputStream(outputFile,false);
@@ -73,16 +73,5 @@ public class UtilDocGenerator {
         }
     }
 	
-	private static void doGenerateAllSubpackages(IDocGenerator docGen, StringBuilder sb, EPackage pckg, ArrayList<String> filter, boolean genHeader) {
-		if(!pckg.getEClassifiers().isEmpty()){
-			docGen.documentEPackage(sb, pckg, filter,genHeader);
-			//the first, non-empty package is found, no need to generate headers for the others
-			genHeader = false;
-		}
-		for (EPackage subpck : pckg.getESubpackages()) {
-			doGenerateAllSubpackages(docGen, sb, subpck, filter,genHeader);
-		}
-		
-	}
 	
 }
