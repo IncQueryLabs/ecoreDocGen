@@ -1,0 +1,58 @@
+package ecoredocgen.incquery
+
+import "http://www.eclipse.org/emf/2002/Ecore"
+
+private pattern eCoreDocumentation(host:ENamedElement, doc:EString) 
+{
+	ENamedElement.eAnnotations(host,ann);
+	EAnnotation.source(ann,"http://www.eclipse.org/emf/2002/GenModel");
+	EAnnotation.details(ann,X);
+	EStringToStringMapEntry.key(X,"documentation");
+	EStringToStringMapEntry.value(X,doc);
+}
+
+@Constraint(
+	location = host,
+	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
+	message = "$host$ is missing the EcoreGen Documentation",
+	severity = "warning"
+)
+pattern missingEcoreDocumentation(host:ENamedElement)
+{
+	neg find eCoreDocumentation(host, _doc);
+}
+
+pattern missingEcoreDocumentation_EClass(host:EClass)
+{
+	find missingEcoreDocumentation(host);
+}
+
+pattern missingEcoreGenDocumentation_EPackage(host:EPackage)
+{
+	find missingEcoreDocumentation(host);
+}
+
+@Constraint(
+	location = host,
+	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
+	message = "$host$ has an empty EcoreGen Documentation",
+	severity = "warning"
+)
+pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
+{
+	find eCoreDocumentation(host,doc);
+	check(doc.length == 0);
+}
+
+@Constraint(
+	location = host,
+	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
+	message = "$host$ has a suspiciously short EcoreGen Documentation",
+	severity = "warning"
+)
+pattern tooShortEcoreGenDocumentation(host:ENamedElement)
+{
+	find eCoreDocumentation(host,doc);
+	check(doc.length>0 && doc.length<50);
+}
+
