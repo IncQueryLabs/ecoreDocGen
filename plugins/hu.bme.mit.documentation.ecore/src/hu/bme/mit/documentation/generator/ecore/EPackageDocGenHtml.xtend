@@ -58,115 +58,128 @@ class EPackageDocGenHtml implements IDocGenerator{
 	        '''
 				<html>
 					<head>
-				      	<title>Metamodel Documentation</title>
-				    	<link rel="stylesheet" type="text/css" href="style.css" />
+				      	<title>Metamodel Documentation («pckg.eResource.URI»)</title>
 				    	<script type="text/javascript">
 				    	
-				    	// TOC script based on code taken from http://www.quirksmode.org/dom/toc.html
+// TOC script based on code taken from http://www.quirksmode.org/dom/toc.html
 function makeTOC() {
-	
-	var toc = document.createElement('div');
-	toc.id = "toc";
-	toc.innerHTML = "Table of Contents";
-	document.body.appendChild(toc);
-	
-	var innertocDiv = createTOC();
-	toc.appendChild(innertocDiv);
+				
+				var toc = document.createElement('div')				
+				toc.id = "toc";
+				toc.innerHTML = "Table of Contents"				
+				document.body.appendChild(toc);
+							
+				var innertocDiv = createTOC()				
+				toc.appendChild(innertocDiv);
 }
 
 
 function createTOC() {
-	var y = document.createElement('div');
-	y.id = 'innertoc';
-	//var a = y.appendChild(document.createElement('span'));
-	//a.onclick = showhideTOC;
-	//a.id = 'contentheader';
-	//a.innerHTML = 'Show Table of Contents';
-	var z = y.appendChild(document.createElement('div'));
-	//z.onclick = showhideTOC;
-	var toBeTOCced = getElementsByTagNames('h1,h2,h3');
-	if (toBeTOCced.length < 2) return false;
-	var hCount = 0;
-	var hhCount = 0;
-	var hhhCount = 0;
-	for (var i=0;i<toBeTOCced.length;i++) {
-		var tmp = document.createElement('a');
-		tmp.className = 'page';
-		var text;
-		var textPre;
-		if (toBeTOCced[i].nodeName == 'H2'){
-			tmp.className += ' indent';
-			textPre = hCount + "."+ ++hhCount + ". "; 
-		}
-		else if (toBeTOCced[i].nodeName == 'H3'){
-			tmp.className += ' extraindent';
-			textPre = hCount + "."+ hhCount + "."+ ++hhhCount +". "; 
-		}
-		else {
-			textPre = ++hCount + ". "; 
-			hhCount = 0;
-			hhhCount = 0;
-		}
-		text = textPre + toBeTOCced[i].textContent;
-		toBeTOCced[i].innerHTML = textPre + toBeTOCced[i].innerHTML;
-		
-		tmp.innerHTML = text; 
-		z.appendChild(tmp);
-		var headerId = toBeTOCced[i].id || 'link' + i;
-		tmp.href = '#' + headerId;
-		toBeTOCced[i].id = headerId;
-	}
-	//y.appendChild(document.createElement("hr"));
-	return y;
+				var y = document.createElement('div');
+				y.id = 'innertoc';
+				//var a = y.appendChild(document.createElement('span'));
+				//a.onclick = showhideTOC;
+				//a.id = 'contentheader';
+				//a.innerHTML = 'Show Table of Contents';
+				var z = y.appendChild(document.createElement('div'));
+				//z.onclick = showhideTOC;
+				var toBeTOCced = getElementsByTagNames('h1,h2,h3');
+				if (toBeTOCced.length < 2) return false;
+				var hCount = 0;
+				var hhCount = 0;
+				var hhhCount = 0;
+				for (var i=0;i<toBeTOCced.length;i++) {
+				var tmp = document.createElement('a');
+				tmp.className = 'page';
+				var text;
+				var textPre;
+				if (toBeTOCced[i].nodeName == 'H2'){
+					tmp.className += ' indent';
+					textPre = hCount + "."+ ++hhCount + ". "; 
+				}
+				else if (toBeTOCced[i].nodeName == 'H3'){
+					tmp.className += ' extraindent';
+					textPre = hCount + "."+ hhCount + "."+ ++hhhCount +". "; 
+				}
+				else {
+					textPre = ++hCount + ". "; 
+					hhCount = 0;
+					hhhCount = 0;
+				}
+				text = textPre + toBeTOCced[i].textContent;
+				toBeTOCced[i].innerHTML = textPre + toBeTOCced[i].innerHTML;
+				
+				tmp.innerHTML = text; 
+				z.appendChild(tmp);
+				var headerId = toBeTOCced[i].id || 'link' + i;
+				tmp.href = '#' + headerId;
+				toBeTOCced[i].id = headerId;
+				}
+				return y;
 }
 
 function getElementsByTagNames(list,obj) {
-	if (!obj) var obj = document;
-	var tagNames = list.split(',');
-	var resultArray = new Array();
-	for (var i=0;i<tagNames.length;i++) {
-		var tags = obj.getElementsByTagName(tagNames[i]);
-		for (var j=0;j<tags.length;j++) {
-			resultArray.push(tags[j]);
-		}
-	}
-	var testNode = resultArray[0];
-	if (!testNode) return [];
-	if (testNode.sourceIndex) {
-		resultArray.sort(function (a,b) {
-				return a.sourceIndex - b.sourceIndex;
-		});
-	}
-	else if (testNode.compareDocumentPosition) {
-		resultArray.sort(function (a,b) {
-				return 3 - (a.compareDocumentPosition(b) & 6);
-		});
-	}
-	return resultArray;
+				if (!obj) var obj = document;
+				var tagNames = list.split(',');
+				var resultArray = new Array();
+				for (var i=0;i<tagNames.length;i++) {
+					var tags = obj.getElementsByTagName(tagNames[i]);
+					for (var j=0;j<tags.length;j++) {
+						resultArray.push(tags[j]);
+					}
+				}
+				var testNode = resultArray[0];
+				if (!testNode) return [];
+				if (testNode.sourceIndex) {
+					resultArray.sort(function (a,b) {
+							return a.sourceIndex - b.sourceIndex;
+					});
+				}
+				else if (testNode.compareDocumentPosition) {
+					resultArray.sort(function (a,b) {
+							return 3 - (a.compareDocumentPosition(b) & 6);
+					});
+				}
+				return resultArray;
 }
 				    	
 				    	
 				    	</script>
+				    	<link rel="stylesheet" type="text/css" href="https://raw.github.com/necolas/normalize.css/master/normalize.css" /> 
 				    	<style>
-				    	#toc {
-  position: fixed;
-  right: 0;
-  top: 0;
-  background-color:#eee;
-  overflow: scroll;
-  border: 1px dashed;
+#toc {
+				position: fixed;
+				  right: 0;
+				  top: 0;
+				  background-color:#eee;
+				  overflow: scroll;
+				  border: 1px dashed;
 }
 
 #toc #innertoc { 
-	display: none;
-  	height: 500px;
+				display: none;
+				height: 500px;
 } /* Hide the full TOC by default */
 
 #toc:hover #innertoc{
-  display: block; /* Show it on hover */
+				display: block; /* Show it on hover */
 }
+				td {
+				border: 1px solid;
+				}
+				.page{
+				display:table-row;
+				}
+				.indent {
+				text-indent:12pt;
+				}
+				.extraindent {
+				text-indent:14pt;
+				}
+
 				    	</style>
-					</head>
+				    	<link rel="stylesheet" type="text/css" href="style.css" />
+				</head>
 				<body onload="makeTOC();">
 	        '''.appendToBuilder
         }
@@ -190,7 +203,7 @@ function getElementsByTagNames(list,obj) {
 					<tr>
 						<th><div class="columnHeader">Name</div></th>
 						<th><div class="columnHeader">Properties</div></th>
-						<th><div clas="columnHeader">Documentation</div></th>
+						<th><div class="columnHeader">Documentation</div></th>
 					</tr>
 	        		'''.appendToBuilder
 	        		cls.EAttributes.sortBy[name].forEach[
@@ -220,7 +233,7 @@ function getElementsByTagNames(list,obj) {
 					<tr>
 						<th><div class="columnHeader">Name</div></th>
 						<th><div class="columnHeader">Properties</div></th>
-						<th><div clas="columnHeader">Documentation</div></th>
+						<th><div class="columnHeader">Documentation</div></th>
 					</tr>
 	        		'''.appendToBuilder
 	        		cls.EReferences.sortBy[name].forEach[
@@ -250,7 +263,7 @@ function getElementsByTagNames(list,obj) {
 					<tr>
 						<th><div class="columnHeader">Name</div></th>
 						<th><div class="columnHeader">Properties</div></th>
-						<th><div clas="columnHeader">Documentation</div></th>
+						<th><div class="columnHeader">Documentation</div></th>
 					</tr>
 	        		'''.appendToBuilder
 	        		cls.EOperations.sortBy[name].forEach[
@@ -339,7 +352,7 @@ function getElementsByTagNames(list,obj) {
 	<tr>
 		<th><div class="columnHeader">Name</div></th>
 		<th><div class="columnHeader">Value</div></th>
-		<th><div clas="columnHeader">Documentation</div></th>
+		<th><div class="columnHeader">Documentation</div></th>
 	</tr>
 	«FOR literal : eenum.ELiterals»
 	<tr>
