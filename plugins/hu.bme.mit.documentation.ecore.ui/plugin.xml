@@ -60,4 +60,18 @@
          </with>
       </definition>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="hu.bme.mit.documentation.ecore.ui.category"
+            class="hu.bme.mit.documentation.ecore.ui.views.EcoreDocView"
+            id="hu.bme.mit.documentation.ecore.ui.ecoredoc"
+            name="Ecore Documentation"
+            restorable="true">
+      </view>
+      <category
+            id="hu.bme.mit.documentation.ecore.ui.category"
+            name="Ecore Documentation Generator">
+      </category>
+   </extension>
 </plugin>

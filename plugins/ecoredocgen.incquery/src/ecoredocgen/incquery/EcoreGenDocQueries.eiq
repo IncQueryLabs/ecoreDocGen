@@ -2,13 +2,13 @@ package ecoredocgen.incquery
 
 import "http://www.eclipse.org/emf/2002/Ecore"
 
-private pattern eCoreDocumentation(host:ENamedElement, doc:EString) 
+pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString) 
 {
 	ENamedElement.eAnnotations(host,ann);
 	EAnnotation.source(ann,"http://www.eclipse.org/emf/2002/GenModel");
-	EAnnotation.details(ann,X);
-	EStringToStringMapEntry.key(X,"documentation");
-	EStringToStringMapEntry.value(X,doc);
+	EAnnotation.details(ann,mapEntry);
+	EStringToStringMapEntry.key(mapEntry,"documentation");
+	EStringToStringMapEntry.value(mapEntry,doc);
 }
 
 @Constraint(
@@ -17,9 +17,11 @@ private pattern eCoreDocumentation(host:ENamedElement, doc:EString)
 	message = "$host$ is missing the EcoreGen Documentation",
 	severity = "warning"
 )
+@QueryExplorer(display = true, message = "$host$ is missing the documentation completely")
+@ObservableValue
 pattern missingEcoreDocumentation(host:ENamedElement)
 {
-	neg find eCoreDocumentation(host, _doc);
+	neg find eCoreDocumentation(host, _ann, _doc);
 }
 
 pattern missingEcoreDocumentation_EClass(host:EClass)
@@ -38,21 +40,25 @@ pattern missingEcoreGenDocumentation_EPackage(host:EPackage)
 	message = "$host$ has an empty EcoreGen Documentation",
 	severity = "warning"
 )
+@QueryExplorer(display = true, message = "$host$ has an empty EcoreGen Documentation")
+@ObservableValue
 pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
 {
-	find eCoreDocumentation(host,doc);
+	find eCoreDocumentation(host,_ann, doc);
 	check(doc.length == 0);
 }
 
 @Constraint(
 	location = host,
 	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
-	message = "$host$ has a suspiciously short EcoreGen Documentation",
-	severity = "warning"
+	severity = "warning",
+	message = "$host$ has a suspiciously short documentation"
 )
+@QueryExplorer(display = true, message = "$host$ has a suspiciously short documentation")
+@ObservableValue
 pattern tooShortEcoreGenDocumentation(host:ENamedElement)
 {
-	find eCoreDocumentation(host,doc);
+	find eCoreDocumentation(host,_ann, doc);
 	check(doc.length>0 && doc.length<50);
 }
 

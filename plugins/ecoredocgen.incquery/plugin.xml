@@ -2,6 +2,14 @@
 <plugin>
 
    <extension
+         id="ecoredocgen.incquery.eCoreDocumentation"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="ecoredocgen.incquery.util.ECoreDocumentationQuerySpecification$Provider"
+            id="ecoredocgen.incquery.eCoreDocumentation">
+      </matcher>
+   </extension>
+   <extension
          id="ecoredocgen.incquery.missingEcoreDocumentation"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
