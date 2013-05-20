@@ -65,6 +65,7 @@
       <view
             category="hu.bme.mit.documentation.ecore.ui.category"
             class="hu.bme.mit.documentation.ecore.ui.views.EcoreDocView"
+            icon="icons/notepad.gif"
             id="hu.bme.mit.documentation.ecore.ui.ecoredoc"
             name="Ecore Documentation"
             restorable="true">
