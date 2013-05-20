@@ -2,6 +2,21 @@ package ecoredocgen.incquery
 
 import "http://www.eclipse.org/emf/2002/Ecore"
 
+private pattern eCorePackage(e:EPackage)
+{
+	EPackage.nsURI(e,"http://www.eclipse.org/emf/2002/Ecore");
+}
+
+private pattern isInEcore(x)
+{
+	find eCorePackage(eCore);
+	EPackage.eClassifiers(eCore,x);
+} or {
+	find eCorePackage(eCore);
+	EPackage.eClassifiers(eCore,eClass);
+	EClass.eStructuralFeatures(eClass,x);
+}
+
 pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString) 
 {
 	ENamedElement.eAnnotations(host,ann);
@@ -22,6 +37,7 @@ pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString)
 pattern missingEcoreDocumentation(host:ENamedElement)
 {
 	neg find eCoreDocumentation(host, _ann, _doc);
+	neg find isInEcore(host); // remove contents of Ecore.ecore from results
 }
 
 pattern missingEcoreDocumentation_EClass(host:EClass)

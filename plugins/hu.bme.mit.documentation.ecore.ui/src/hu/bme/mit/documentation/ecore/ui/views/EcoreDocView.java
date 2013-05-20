@@ -35,17 +35,18 @@ public class EcoreDocView extends ViewPart {
 	private Text text;
 	private ENamedElement currentElement;
 	private EAnnotation currentAnnotation;
+	private ISelectionListener selectionListener;
 	
 	private void clearCurrentState() {
 		text.setText("");
 		currentElement=null;
 		currentAnnotation=null;
-		//text.setEnabled(false); // not a good idea as this disables mouse listeners
+		text.setEnabled(false); // not a good idea as this disables mouse listeners
 		text.setBackground(JFaceColors.getErrorBackground(Display.getCurrent()));
 	}
 	
 	private void setCurrentState(String textContents, ENamedElement currE, EAnnotation currA) {
-		//text.setEnabled(true); // not a good idea as this disables mouse listeners
+		text.setEnabled(true); // not a good idea as this disables mouse listeners
 		text.setText(textContents);
 		this.currentElement = currE;
 		this.currentAnnotation = currA;
@@ -61,6 +62,8 @@ public class EcoreDocView extends ViewPart {
 				ENamedElement target = (ENamedElement) _target;
 				try {
 					currentElement = target;
+					text.setEnabled(true); // make sure the text can be used for adding a new doc field
+					// through the mouse listener below
 					IncQueryEngine engine = IncQueryEngine.on(target.eResource());
 					ECoreDocumentationMatcher matcher = ECoreDocumentationMatcher.on(engine);
 					for (ECoreDocumentationMatch m :matcher.getAllMatches(target, null, null)) {
@@ -76,12 +79,13 @@ public class EcoreDocView extends ViewPart {
 	@Override
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
-		site.getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
+		this.selectionListener = new ISelectionListener() {
 			@Override
 			public void selectionChanged(IWorkbenchPart part, ISelection sel) {
 				updateStateAccordingToSelection(sel);
 			}
-		});
+		};
+		site.getWorkbenchWindow().getSelectionService().addSelectionListener(selectionListener);
 	}
 	
 	@Override
@@ -140,5 +144,13 @@ public class EcoreDocView extends ViewPart {
 		newAnn.getDetails().put("documentation", ""); // create intentionally as empty, so that actual model contents are not cluttered
 		currentElement.getEAnnotations().add(newAnn);
 		return newAnn;
+	}
+	
+	@Override
+	public void dispose() {
+		getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(selectionListener);
+		this.currentAnnotation=null;
+		this.currentElement=null;
+		super.dispose();
 	}
 }
