@@ -1,19 +1,22 @@
 package hu.bme.mit.documentation.ecore.ui.views;
 
+import hu.bme.mit.documentation.ecore.ui.internal.Activator;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.jface.resource.JFaceColors;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IViewSite;
@@ -27,7 +30,6 @@ import ecoredocgen.incquery.ECoreDocumentationMatcher;
 public class EcoreDocView extends ViewPart {
 
 	Text text;
-
 	ENamedElement currentElement;
 	EAnnotation currentAnnotation;
 	
@@ -35,6 +37,37 @@ public class EcoreDocView extends ViewPart {
 		text.setText("");
 		currentElement=null;
 		currentAnnotation=null;
+		text.setEnabled(false);
+		text.setBackground(JFaceColors.getErrorBackground(Display.getCurrent()));
+	}
+	
+	private void setCurrentState(ECoreDocumentationMatch m) {
+		text.setEnabled(true);
+		text.setText(m.getDoc());
+		this.currentElement = m.getHost();
+		this.currentAnnotation = m.getAnn();
+		text.setBackground(JFaceColors.getBannerBackground(Display.getCurrent()));
+	}
+	
+	private void updateStateAccordingToSelection(ISelection sel) {
+		// clear current status
+		clearCurrentState();
+		if (sel instanceof IStructuredSelection) {
+			Object _target = ((IStructuredSelection) sel).getFirstElement();
+			if (_target instanceof ENamedElement) {
+				ENamedElement target = (ENamedElement) _target;
+				try {
+					currentElement = target;
+					IncQueryEngine engine = IncQueryEngine.on(target.eResource());
+					ECoreDocumentationMatcher matcher = ECoreDocumentationMatcher.on(engine);
+					for (ECoreDocumentationMatch m :matcher.getAllMatches(target, null, null)) {
+						setCurrentState(m);
+					}
+				} catch (IncQueryException e) {
+					Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -43,37 +76,18 @@ public class EcoreDocView extends ViewPart {
 		site.getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
 			@Override
 			public void selectionChanged(IWorkbenchPart part, ISelection sel) {
-				// clear current status
-				clearCurrentState();
-				if (sel instanceof IStructuredSelection) {
-					Object _target = ((IStructuredSelection) sel)
-							.getFirstElement();
-					if (_target instanceof ENamedElement) {
-						ENamedElement target = (ENamedElement) _target;
-						try {
-							currentElement = target;
-							IncQueryEngine engine = IncQueryEngine.on(target.eResource());
-							ECoreDocumentationMatcher matcher = ECoreDocumentationMatcher.on(engine);
-							for (ECoreDocumentationMatch m :matcher.getAllMatches(target, null, null)) {
-								text.setText(m.getDoc());
-								currentAnnotation = m.getAnn();
-							}
-						} catch (IncQueryException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-		
+				updateStateAccordingToSelection(sel);
 			}
 		});
-		
-		
 	}
 
+	
+	
 	@Override
 	public void createPartControl(Composite parent) {
-		text = new Text(parent, SWT.MULTI | SWT.BORDER);
+		text = new Text(parent, SWT.MULTI | SWT.BORDER | SWT.WRAP);
+		text.setFont(JFaceResources.getTextFont());
+				
 		text.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -98,7 +112,7 @@ public class EcoreDocView extends ViewPart {
 
 	@Override
 	public void setFocus() {
-
+		updateStateAccordingToSelection(getSite().getWorkbenchWindow().getSelectionService().getSelection());
 	}
 
 }
