@@ -1,0 +1,80 @@
+package ecoredocgen.incquery
+
+import "http://www.eclipse.org/emf/2002/Ecore"
+
+private pattern eCorePackage(e:EPackage)
+{
+	EPackage.nsURI(e,"http://www.eclipse.org/emf/2002/Ecore");
+}
+
+private pattern isInEcore(x)
+{
+	find eCorePackage(eCore);
+	EPackage.eClassifiers(eCore,x);
+} or {
+	find eCorePackage(eCore);
+	EPackage.eClassifiers(eCore,eClass);
+	EClass.eStructuralFeatures(eClass,x);
+}
+
+pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString) 
+{
+	ENamedElement.eAnnotations(host,ann);
+	EAnnotation.source(ann,"http://www.eclipse.org/emf/2002/GenModel");
+	EAnnotation.details(ann,mapEntry);
+	EStringToStringMapEntry.key(mapEntry,"documentation");
+	EStringToStringMapEntry.value(mapEntry,doc);
+}
+
+@Constraint(
+	location = host,
+	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
+	message = "$host$ is missing the EcoreGen Documentation",
+	severity = "warning"
+)
+@QueryExplorer(display = true, message = "$host$ is missing the documentation completely")
+@ObservableValue
+pattern missingEcoreDocumentation(host:ENamedElement)
+{
+	neg find eCoreDocumentation(host, _ann, _doc);
+	neg find isInEcore(host); // remove contents of Ecore.ecore from results
+}
+
+pattern missingEcoreDocumentation_EClass(host:EClass)
+{
+	find missingEcoreDocumentation(host);
+}
+
+pattern missingEcoreGenDocumentation_EPackage(host:EPackage)
+{
+	find missingEcoreDocumentation(host);
+}
+
+@Constraint(
+	location = host,
+	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
+	message = "$host$ has an empty EcoreGen Documentation",
+	severity = "warning"
+)
+@QueryExplorer(display = true, message = "$host$ has an empty EcoreGen Documentation")
+@ObservableValue
+pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
+{
+	find eCoreDocumentation(host,_ann, doc);
+	check(doc.length == 0);
+}
+
+@Constraint(
+	location = host,
+	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
+	severity = "warning",
+	message = "$host$ has a suspiciously short documentation"
+)
+@QueryExplorer(display = true, message = "$host$ has a suspiciously short documentation")
+@ObservableValue
+pattern tooShortEcoreGenDocumentation(host:ENamedElement)
+{
+	find eCoreDocumentation(host,_ann, doc);
+	check(doc.length>0 && doc.length<50);
+}
+

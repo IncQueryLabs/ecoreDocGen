@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ecoregendoc.incquery
+Bundle-SymbolicName: ecoredocgen.incquery;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Export-Package: ecoredocgen.incquery,
+ ecoredocgen.incquery.util
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.emf.transaction,
+ org.eclipse.incquery.runtime,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
