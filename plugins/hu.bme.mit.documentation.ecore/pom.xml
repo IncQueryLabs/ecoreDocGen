@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>hu.qgears.gendoc</groupId>
+    <artifactId>metamodel_docgen</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../releng/hu.qgears.gendoc.product.parent/pom.xml</relativePath>
+  </parent>
+  <groupId>hu.qgears.gendoc</groupId>
+  <artifactId>hu.bme.mit.documentation.ecore</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>eclipse-plugin</packaging>
+  <!--<dependencies>
+    <dependency>
+      <groupId>org.eclipse.xtend</groupId>
+      <artifactId>org.eclipse.xtend.lib</artifactId>
+      <version>${xtend-version}</version>
+    </dependency>
+  </dependencies>-->
+  <build>
+	<resources>
+		<resource>
+			<directory>src</directory>
+		</resource>
+		<resource>
+			<directory>xtend-gen</directory>
+		</resource>
+	</resources>
+	<plugins>
+		<plugin>
+        	<groupId>org.eclipse.xtend</groupId>
+	        <artifactId>xtend-maven-plugin</artifactId>
+	        <version>${xtend-version}</version>
+	        <!-- optionally you can configure a different target folder -->
+		<executions>
+			<execution>
+				<goals>
+					<goal>compile</goal>
+					<goal>testCompile</goal>
+				</goals>
+			</execution>
+		</executions>
+	        <configuration>
+	          <outputDirectory>${basedir}/xtend-gen</outputDirectory>
+	        </configuration>
+      </plugin>
+	</plugins>
+  </build>
+</project>

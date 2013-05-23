@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Product
+Bundle-SymbolicName: hu.qgears.gendoc.product
+Bundle-Version: 1.0.0.qualifier

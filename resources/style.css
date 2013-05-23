@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+body {
+	font-family: Ubuntu;
+}
+
+a {
+    color: #005B81;
+    text-decoration: none;
+}
+ 
+a:hover {
+    color: #E32E00;
+    text-decoration: underline;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+    background-color: #BED4EB;
+    font-weight: normal;
+    color: #212224;
+    margin: 30px 0px 10px 0px;
+    padding: 5px 0 5px 10px;
+    text-shadow: 0px 1px 0 white
+}
+
+
+body h1 { border-top: 20px solid white; margin-top: 0; font-size: 200%; }
+body h2 { font-size: 150%; background-color: #C8D5E3; }
+body h3 { font-size: 120%; background-color: #D8DEE3; }
+body h4 { font-size: 110%; background-color: #D8DEE3; }
+body h5 { font-size: 100%; background-color: #D8DEE3; }
+body h6 { font-size: 100%; background-color: #D8DEE3; }
+
+
+table
+{
+	font-size: 12px;
+	margin: 45px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+}
+th
+{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #BED4EB;
+	border-top: 4px solid #aabcfe;
+	border-bottom: 1px solid #fff;
+	color: #212224;
+	border-width:1px;
+	border-style:outset;
+	border-spacing: 2px;
+	border-color: grey;
+	margin-bottom:10pt;
+	margin-top:10pt;	
+}
+td
+{
+	padding: 8px;
+	/* background: #e8edff; */ 
+	background: #dff5fc;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid transparent;
+}
+
+tr ,td, th {
+	border-width: 1px;
+	border-color:grey;
+	border-style:inset;
+}
+
+.columnHeader{
+	font-weight: bold;
+	vertical-align: center;
+}
+
+.tableHeader {
+	font-weight: bold;
+}
+
+.label {
+	font-weight: bolder;
+}
+.teletype {
+	font-family: Inconsolata;
+}
+.alert{
+	color:red;
+}
+.keyValue{
+	
+}
+
+.eclassProps{
+	font-weight:bolder;
+}
+.eclassPropList{
+	text-indent: 6pt;
+}
+.eclassSupertypes{
+	text-indent: 6pt;
+	font-weight:bolder;
+}
+.packageName{
+	font-variant: small-caps;
+}
+li{
+	font-weight:normal;
+}
+
+#contentheader{
+	display:button;
+}
+
