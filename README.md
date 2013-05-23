@@ -21,8 +21,10 @@ To add documentation to your metamodel, you can either use the Ecore Diagram Edi
  
 Alternatively, you can activate the "Ecore Documentation" view, and enter content directly through that (to use it, first select an Ecore element in the editor, and then click into the view).
 
-We also provide validators based on EMF-IncQuery (http://eclipse.org/incquery) that provide auto-refresh validator for missing/zero-length documentation fields, gradually guiding you to complete documentation nirvana :)
- 
+We also provide validators based on EMF-IncQuery (http://eclipse.org/incquery) that provide auto-refresh validator for missing/zero-length documentation fields, gradually guiding you to complete documentation nirvana :) See the annotated screenshot below for details.
+
+![EcoreDocGen screenshot](ecoredocgen_school.png?raw=true)
+
 ## Additional syntax
 
 ### For the HTML Case
