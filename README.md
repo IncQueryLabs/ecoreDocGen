@@ -33,14 +33,25 @@ The generator supports documentation formatted in Markdown syntax. You can use a
 
 ### For the LaTex Case
 
-The generator supports a small set of markup operators:
-* To create lists, just start a line with " * " (whitespace, star, whitespace) and then start the text.
- You can also create sublists by adding additional whitespaces before the star. Make sure to only increase the level one at a time,
- as adding too many whitespaces will confuse the generator. Adding an empty line will terminate lists.
-* To refer to other elements in the metamodel use the "#{prefix.name}" style, where prefix is defined by the package.
- This will be transformed to "\nameref{}" in the documentation.
-* To create hyperlinks, use the "@{url}" style.
-* To put text in boldface, use the "b{text}" style.
+The generator supports a subset of Markdown syntax:
+* building lists
+* emphasis of text elements (bold/italic/underline)
+* hyperlinks to remote URLs
+
+## Output
+
+### HTML
+The output format is customizable via CSS. The style-sheet is assumed to be in the same directory as the generated HTML file, and is assumed to be called style.css. An example CSS file can be found in the resources folder of the repository.
+
+### LaTex
+At least the following packages need to be imported in your LaTex document for the documentation to be valid:
+
+	\usepackage{color}
+	\usepackage{hyperref}
+	\usepackage{tabularx}
+	\usepackage{float}
+
+
 
 Structure
 ---------
