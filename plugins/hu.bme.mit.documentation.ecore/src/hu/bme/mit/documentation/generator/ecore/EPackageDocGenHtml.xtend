@@ -521,7 +521,7 @@ function getElementsByTagNames(list,obj) {
     
     def private documentHeader(String sectionClass, String sectionTitle, String shortTitle, String label, EModelElement element)
     '''
-    <«sectionClass»>«anchorDef(escapeLabel(label),sectionTitle)»</«sectionClass»>
+    <«sectionClass» id="«escapeLabel(label)»">«anchorDef(escapeLabel(label),sectionTitle)»</«sectionClass»>
     
     «IF element != null»
     «element.findGenModelDocumentation»
@@ -575,7 +575,7 @@ function getElementsByTagNames(list,obj) {
     }
     
     def private anchorDef(CharSequence id,CharSequence text){
-    	'''<a id="«id»">«text»</a>'''
+    	'''<a href="#«id»">«text»</a>'''
     }
     
 	override generateTail() {
