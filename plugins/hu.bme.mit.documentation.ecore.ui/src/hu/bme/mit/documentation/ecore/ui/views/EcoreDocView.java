@@ -2,11 +2,17 @@ package hu.bme.mit.documentation.ecore.ui.views;
 
 import hu.bme.mit.documentation.ecore.ui.internal.Activator;
 
+import java.util.concurrent.Callable;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.edit.command.ChangeCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.jface.resource.JFaceColors;
@@ -76,12 +82,19 @@ public class EcoreDocView extends ViewPart {
 		}
 	}
 	
+	private IEditingDomainProvider editingDomainProvider;
 	@Override
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
 		this.selectionListener = new ISelectionListener() {
+
 			@Override
 			public void selectionChanged(IWorkbenchPart part, ISelection sel) {
+				if (part instanceof IEditingDomainProvider) {
+					EcoreDocView.this.editingDomainProvider =(IEditingDomainProvider)part; 
+				}else{
+					editingDomainProvider = null;
+				}
 				updateStateAccordingToSelection(sel);
 			}
 		};
@@ -129,21 +142,33 @@ public class EcoreDocView extends ViewPart {
 
 	//////////// model manipulation ///////////////
 	
-	// TODO these operations should be done through a TransactionalEditingDomain command
-	// in order to trigger the dirty flag in the host editor
-	
 	private void updateDocContentsInModel() {
-		currentAnnotation.getDetails().put("documentation", text.getText());
+		Callable<Object> c = new Callable<Object>() {
+
+			@Override
+			public Object call() throws Exception {
+				currentAnnotation.getDetails().put("documentation", text.getText());
+				return null;
+			}
+		};
+		executeAsCommand(c,currentAnnotation);
 	}
 	
 	private static String newDocumentation = "Please write some documentation here.";
 	
 	private EAnnotation createNewDocFieldInModel() {
-		EAnnotation newAnn = EcoreFactory.eINSTANCE.createEAnnotation();
-		newAnn.setSource("http://www.eclipse.org/emf/2002/GenModel");
-		newAnn.getDetails().put("documentation", ""); // create intentionally as empty, so that actual model contents are not cluttered
-		currentElement.getEAnnotations().add(newAnn);
-		return newAnn;
+		Callable<EAnnotation> c = new Callable<EAnnotation>() {
+
+			@Override
+			public EAnnotation call() throws Exception {
+				EAnnotation newAnn = EcoreFactory.eINSTANCE.createEAnnotation();
+				newAnn.setSource("http://www.eclipse.org/emf/2002/GenModel");
+				newAnn.getDetails().put("documentation", ""); // create intentionally as empty, so that actual model contents are not cluttered
+				currentElement.getEAnnotations().add(newAnn);
+				return newAnn;
+			}
+		};
+		return executeAsCommand(c,currentElement);
 	}
 	
 	@Override
@@ -152,5 +177,20 @@ public class EcoreDocView extends ViewPart {
 		this.currentAnnotation=null;
 		this.currentElement=null;
 		super.dispose();
+	}
+	
+	/**
+	 * Run the given {@link Callable} as a special {@link ChangeCommand}. 
+	 * @param r
+	 * @return
+	 */
+	private <T> T executeAsCommand(final Callable<T> callable,Notifier n){
+		if(this.editingDomainProvider!=null && currentElement!=null){
+			EditingDomain ed = this.editingDomainProvider.getEditingDomain();
+			ChangeCommandWithResult<T> rc = new ChangeCommandWithResult<T>(callable,currentElement.eResource());
+			ed.getCommandStack().execute(rc);
+			return rc.getReturnValue();
+		}
+		return null;
 	}
 }
