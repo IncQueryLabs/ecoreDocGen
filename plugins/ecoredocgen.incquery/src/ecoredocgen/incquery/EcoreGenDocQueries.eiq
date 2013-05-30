@@ -2,21 +2,6 @@ package ecoredocgen.incquery
 
 import "http://www.eclipse.org/emf/2002/Ecore"
 
-private pattern eCorePackage(e:EPackage)
-{
-	EPackage.nsURI(e,"http://www.eclipse.org/emf/2002/Ecore");
-}
-
-private pattern isInEcore(x)
-{
-	find eCorePackage(eCore);
-	EPackage.eClassifiers(eCore,x);
-} or {
-	find eCorePackage(eCore);
-	EPackage.eClassifiers(eCore,eClass);
-	EClass.eStructuralFeatures(eClass,x);
-}
-
 pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString) 
 {
 	ENamedElement.eAnnotations(host,ann);
@@ -33,11 +18,9 @@ pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString)
 	severity = "warning"
 )
 @QueryExplorer(display = true, message = "$host$ is missing the documentation completely")
-@ObservableValue
 pattern missingEcoreDocumentation(host:ENamedElement)
 {
 	neg find eCoreDocumentation(host, _ann, _doc);
-	neg find isInEcore(host); // remove contents of Ecore.ecore from results
 }
 
 pattern missingEcoreDocumentation_EClass(host:EClass)
@@ -57,7 +40,6 @@ pattern missingEcoreGenDocumentation_EPackage(host:EPackage)
 	severity = "warning"
 )
 @QueryExplorer(display = true, message = "$host$ has an empty EcoreGen Documentation")
-@ObservableValue
 pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
 {
 	find eCoreDocumentation(host,_ann, doc);
@@ -71,7 +53,6 @@ pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
 	message = "$host$ has a suspiciously short documentation"
 )
 @QueryExplorer(display = true, message = "$host$ has a suspiciously short documentation")
-@ObservableValue
 pattern tooShortEcoreGenDocumentation(host:ENamedElement)
 {
 	find eCoreDocumentation(host,_ann, doc);
