@@ -7,13 +7,13 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
 /**
  * A xbase xexpression evaluator tailored for the ecoredocgen.incquery.zeroLengthEcoreGenDocumentation pattern.
  */
+@SuppressWarnings("all")
 public class ZeroLengthEcoreGenDocumentationEvaluator1_1 implements IMatchChecker {
   /**
    * The raw java code generated from the xbase xexpression by xtext.
    */
   private Boolean evaluateXExpressionGenerated(final String doc) {
-    String _doc = doc;
-    int _length = _doc.length();
+    int _length = doc.length();
     boolean _equals = (_length == 0);
     return Boolean.valueOf(_equals);
   }

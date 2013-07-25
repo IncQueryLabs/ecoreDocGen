@@ -21,6 +21,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * @see TooShortEcoreGenDocumentationProcessor
  * 
  */
+@SuppressWarnings("all")
 public abstract class TooShortEcoreGenDocumentationMatch extends BasePatternMatch {
   private ENamedElement fHost;
   
@@ -125,6 +126,8 @@ public abstract class TooShortEcoreGenDocumentationMatch extends BasePatternMatc
     }
     
   }
+  
+  @SuppressWarnings("all")
   static final class Mutable extends TooShortEcoreGenDocumentationMatch {
     Mutable(final ENamedElement pHost) {
       super(pHost);
@@ -137,6 +140,8 @@ public abstract class TooShortEcoreGenDocumentationMatch extends BasePatternMatc
     }
   }
   
+  
+  @SuppressWarnings("all")
   static final class Immutable extends TooShortEcoreGenDocumentationMatch {
     Immutable(final ENamedElement pHost) {
       super(pHost);

@@ -33,7 +33,6 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * 	severity = "warning"
  * )
  * {@literal @}QueryExplorer(display = true, message = "$host$ has an empty EcoreGen Documentation")
- * {@literal @}ObservableValue
  * pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
  * {
  * 	find eCoreDocumentation(host,_ann, doc);
@@ -46,6 +45,7 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * @see ZeroLengthEcoreGenDocumentationQuerySpecification
  * 
  */
+@SuppressWarnings("all")
 public class ZeroLengthEcoreGenDocumentationMatcher extends BaseMatcher<ZeroLengthEcoreGenDocumentationMatch> {
   /**
    * Initializes the pattern matcher within an existing EMF-IncQuery engine. 

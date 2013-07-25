@@ -21,6 +21,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * @see MissingEcoreDocumentationProcessor
  * 
  */
+@SuppressWarnings("all")
 public abstract class MissingEcoreDocumentationMatch extends BasePatternMatch {
   private ENamedElement fHost;
   
@@ -125,6 +126,8 @@ public abstract class MissingEcoreDocumentationMatch extends BasePatternMatch {
     }
     
   }
+  
+  @SuppressWarnings("all")
   static final class Mutable extends MissingEcoreDocumentationMatch {
     Mutable(final ENamedElement pHost) {
       super(pHost);
@@ -137,6 +140,8 @@ public abstract class MissingEcoreDocumentationMatch extends BasePatternMatch {
     }
   }
   
+  
+  @SuppressWarnings("all")
   static final class Immutable extends MissingEcoreDocumentationMatch {
     Immutable(final ENamedElement pHost) {
       super(pHost);

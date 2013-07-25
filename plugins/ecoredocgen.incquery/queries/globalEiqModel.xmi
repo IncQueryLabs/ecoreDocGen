@@ -1,406 +1,315 @@
 <?xml version="1.0" encoding="ASCII"?>
-<eMFPatternLanguage:PatternModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:eMFPatternLanguage="http://www.eclipse.org/incquery/patternlanguage/emf/EMFPatternLanguage" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:patternLanguage="http://www.eclipse.org/incquery/patternlanguage/PatternLanguage" xmlns:types="http://www.eclipse.org/xtext/common/JavaVMTypes" xmlns:xbase="http://www.eclipse.org/xtext/xbase/Xbase">
-  <patterns name="ecoredocgen.incquery.eCorePackage" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <modifiers private="true"/>
-    <parameters name="e">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/nsURI"/>
-            </type>
-          </tail>
-          <src var="e"/>
-          <dst xsi:type="patternLanguage:StringValue" value="http://www.eclipse.org/emf/2002/Ecore"/>
-        </head>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.isInEcore" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <modifiers private="true"/>
-    <parameters name="x"/>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
-        <call patternRef="//@patterns.0">
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="eCore"/>
-          </parameters>
-        </call>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
-            </type>
-          </tail>
-          <src var="eCore"/>
-          <dst xsi:type="patternLanguage:VariableValue">
-            <value var="x"/>
-          </dst>
-        </head>
-      </constraints>
-    </bodies>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
-        <call patternRef="//@patterns.0">
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="eCore"/>
-          </parameters>
-        </call>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
-            </type>
-          </tail>
-          <src var="eCore"/>
-          <dst xsi:type="patternLanguage:VariableValue">
-            <value var="eClass"/>
-          </dst>
-        </head>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eStructuralFeatures"/>
-            </type>
-          </tail>
-          <src var="eClass"/>
-          <dst xsi:type="patternLanguage:VariableValue">
-            <value var="x"/>
-          </dst>
-        </head>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.eCoreDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <parameters name="host">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
-      </type>
-    </parameters>
-    <parameters name="ann">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
-      </type>
-    </parameters>
-    <parameters name="doc">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement/eAnnotations"/>
-            </type>
-          </tail>
-          <src var="host"/>
-          <dst xsi:type="patternLanguage:VariableValue">
-            <value var="ann"/>
-          </dst>
-        </head>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation/source"/>
-            </type>
-          </tail>
-          <src var="ann"/>
-          <dst xsi:type="patternLanguage:StringValue" value="http://www.eclipse.org/emf/2002/GenModel"/>
-        </head>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation/details"/>
-            </type>
-          </tail>
-          <src var="ann"/>
-          <dst xsi:type="patternLanguage:VariableValue">
-            <value var="mapEntry"/>
-          </dst>
-        </head>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/key"/>
-            </type>
-          </tail>
-          <src var="mapEntry"/>
-          <dst xsi:type="patternLanguage:StringValue" value="documentation"/>
-        </head>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
-        <head>
-          <type xsi:type="eMFPatternLanguage:ClassType">
-            <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
-          </type>
-          <tail>
-            <type xsi:type="eMFPatternLanguage:ReferenceType">
-              <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
-            </type>
-          </tail>
-          <src var="mapEntry"/>
-          <dst xsi:type="patternLanguage:VariableValue">
-            <value var="doc"/>
-          </dst>
-        </head>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.missingEcoreDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <annotations name="Constraint">
-      <parameters name="location">
-        <value xsi:type="patternLanguage:VariableValue">
-          <value var="host"/>
-        </value>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:eMFPatternLanguage="http://www.eclipse.org/incquery/patternlanguage/emf/EMFPatternLanguage" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:patternLanguage="http://www.eclipse.org/incquery/patternlanguage/PatternLanguage" xmlns:types="http://www.eclipse.org/xtext/common/JavaVMTypes" xmlns:xbase="http://www.eclipse.org/xtext/xbase/Xbase">
+  <eMFPatternLanguage:PatternModel>
+    <patterns name="ecoredocgen.incquery.eCoreDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
+      <parameters name="host">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+        </type>
       </parameters>
-      <parameters name="targetEditorId">
-        <value xsi:type="patternLanguage:StringValue" value="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+      <parameters name="ann">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+        </type>
       </parameters>
-      <parameters name="message">
-        <value xsi:type="patternLanguage:StringValue" value="$host$ is missing the EcoreGen Documentation"/>
+      <parameters name="doc">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </type>
       </parameters>
-      <parameters name="severity">
-        <value xsi:type="patternLanguage:StringValue" value="warning"/>
-      </parameters>
-    </annotations>
-    <annotations name="QueryExplorer">
-      <parameters name="display">
-        <value xsi:type="patternLanguage:BoolValue" value="true"/>
-      </parameters>
-      <parameters name="message">
-        <value xsi:type="patternLanguage:StringValue" value="$host$ is missing the documentation completely"/>
-      </parameters>
-    </annotations>
-    <annotations name="ObservableValue"/>
-    <parameters name="host">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint" negative="true">
-        <call patternRef="//@patterns.2">
-          <parameters xsi:type="patternLanguage:VariableValue">
+      <bodies>
+        <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+          <head>
+            <type xsi:type="eMFPatternLanguage:ClassType">
+              <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+            </type>
+            <tail>
+              <type xsi:type="eMFPatternLanguage:ReferenceType">
+                <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement/eAnnotations"/>
+              </type>
+            </tail>
+            <src var="host"/>
+            <dst xsi:type="patternLanguage:VariableValue">
+              <value var="ann"/>
+            </dst>
+          </head>
+        </constraints>
+        <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+          <head>
+            <type xsi:type="eMFPatternLanguage:ClassType">
+              <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+            </type>
+            <tail>
+              <type xsi:type="eMFPatternLanguage:ReferenceType">
+                <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation/source"/>
+              </type>
+            </tail>
+            <src var="ann"/>
+            <dst xsi:type="patternLanguage:StringValue" value="http://www.eclipse.org/emf/2002/GenModel"/>
+          </head>
+        </constraints>
+        <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+          <head>
+            <type xsi:type="eMFPatternLanguage:ClassType">
+              <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+            </type>
+            <tail>
+              <type xsi:type="eMFPatternLanguage:ReferenceType">
+                <refname xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation/details"/>
+              </type>
+            </tail>
+            <src var="ann"/>
+            <dst xsi:type="patternLanguage:VariableValue">
+              <value var="mapEntry"/>
+            </dst>
+          </head>
+        </constraints>
+        <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+          <head>
+            <type xsi:type="eMFPatternLanguage:ClassType">
+              <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
+            </type>
+            <tail>
+              <type xsi:type="eMFPatternLanguage:ReferenceType">
+                <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/key"/>
+              </type>
+            </tail>
+            <src var="mapEntry"/>
+            <dst xsi:type="patternLanguage:StringValue" value="documentation"/>
+          </head>
+        </constraints>
+        <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+          <head>
+            <type xsi:type="eMFPatternLanguage:ClassType">
+              <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
+            </type>
+            <tail>
+              <type xsi:type="eMFPatternLanguage:ReferenceType">
+                <refname xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+              </type>
+            </tail>
+            <src var="mapEntry"/>
+            <dst xsi:type="patternLanguage:VariableValue">
+              <value var="doc"/>
+            </dst>
+          </head>
+        </constraints>
+      </bodies>
+    </patterns>
+    <patterns name="ecoredocgen.incquery.missingEcoreDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
+      <annotations name="Constraint">
+        <parameters name="location">
+          <value xsi:type="patternLanguage:VariableValue">
             <value var="host"/>
-          </parameters>
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="_ann"/>
-          </parameters>
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="_doc"/>
-          </parameters>
-        </call>
-      </constraints>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint" negative="true">
-        <call patternRef="//@patterns.1">
-          <parameters xsi:type="patternLanguage:VariableValue">
+          </value>
+        </parameters>
+        <parameters name="targetEditorId">
+          <value xsi:type="patternLanguage:StringValue" value="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+        </parameters>
+        <parameters name="message">
+          <value xsi:type="patternLanguage:StringValue" value="$host$ is missing the EcoreGen Documentation"/>
+        </parameters>
+        <parameters name="severity">
+          <value xsi:type="patternLanguage:StringValue" value="warning"/>
+        </parameters>
+      </annotations>
+      <annotations name="QueryExplorer">
+        <parameters name="display">
+          <value xsi:type="patternLanguage:BoolValue" value="true"/>
+        </parameters>
+        <parameters name="message">
+          <value xsi:type="patternLanguage:StringValue" value="$host$ is missing the documentation completely"/>
+        </parameters>
+      </annotations>
+      <parameters name="host">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+        </type>
+      </parameters>
+      <bodies>
+        <constraints xsi:type="patternLanguage:PatternCompositionConstraint" negative="true">
+          <call patternRef="/0/@patterns.0">
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="host"/>
+            </parameters>
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="_ann"/>
+            </parameters>
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="_doc"/>
+            </parameters>
+          </call>
+        </constraints>
+      </bodies>
+    </patterns>
+    <patterns name="ecoredocgen.incquery.missingEcoreDocumentation_EClass" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
+      <parameters name="host">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        </type>
+      </parameters>
+      <bodies>
+        <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+          <call patternRef="/0/@patterns.1">
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="host"/>
+            </parameters>
+          </call>
+        </constraints>
+      </bodies>
+    </patterns>
+    <patterns name="ecoredocgen.incquery.missingEcoreGenDocumentation_EPackage" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
+      <parameters name="host">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </type>
+      </parameters>
+      <bodies>
+        <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+          <call patternRef="/0/@patterns.1">
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="host"/>
+            </parameters>
+          </call>
+        </constraints>
+      </bodies>
+    </patterns>
+    <patterns name="ecoredocgen.incquery.zeroLengthEcoreGenDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
+      <annotations name="Constraint">
+        <parameters name="location">
+          <value xsi:type="patternLanguage:VariableValue">
             <value var="host"/>
-          </parameters>
-        </call>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.missingEcoreDocumentation_EClass" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <parameters name="host">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
-        <call patternRef="//@patterns.3">
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="host"/>
-          </parameters>
-        </call>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.missingEcoreGenDocumentation_EPackage" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <parameters name="host">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
-        <call patternRef="//@patterns.3">
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="host"/>
-          </parameters>
-        </call>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.zeroLengthEcoreGenDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <annotations name="Constraint">
-      <parameters name="location">
-        <value xsi:type="patternLanguage:VariableValue">
-          <value var="host"/>
-        </value>
+          </value>
+        </parameters>
+        <parameters name="targetEditorId">
+          <value xsi:type="patternLanguage:StringValue" value="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+        </parameters>
+        <parameters name="message">
+          <value xsi:type="patternLanguage:StringValue" value="$host$ has an empty EcoreGen Documentation"/>
+        </parameters>
+        <parameters name="severity">
+          <value xsi:type="patternLanguage:StringValue" value="warning"/>
+        </parameters>
+      </annotations>
+      <annotations name="QueryExplorer">
+        <parameters name="display">
+          <value xsi:type="patternLanguage:BoolValue" value="true"/>
+        </parameters>
+        <parameters name="message">
+          <value xsi:type="patternLanguage:StringValue" value="$host$ has an empty EcoreGen Documentation"/>
+        </parameters>
+      </annotations>
+      <parameters name="host">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+        </type>
       </parameters>
-      <parameters name="targetEditorId">
-        <value xsi:type="patternLanguage:StringValue" value="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
-      </parameters>
-      <parameters name="message">
-        <value xsi:type="patternLanguage:StringValue" value="$host$ has an empty EcoreGen Documentation"/>
-      </parameters>
-      <parameters name="severity">
-        <value xsi:type="patternLanguage:StringValue" value="warning"/>
-      </parameters>
-    </annotations>
-    <annotations name="QueryExplorer">
-      <parameters name="display">
-        <value xsi:type="patternLanguage:BoolValue" value="true"/>
-      </parameters>
-      <parameters name="message">
-        <value xsi:type="patternLanguage:StringValue" value="$host$ has an empty EcoreGen Documentation"/>
-      </parameters>
-    </annotations>
-    <annotations name="ObservableValue"/>
-    <parameters name="host">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
-        <call patternRef="//@patterns.2">
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="host"/>
-          </parameters>
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="_ann"/>
-          </parameters>
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="doc"/>
-          </parameters>
-        </call>
-      </constraints>
-      <constraints xsi:type="patternLanguage:CheckConstraint">
-        <expression xsi:type="xbase:XBinaryOperation">
-          <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.IntegerExtensions#org.eclipse.xtext.xbase.lib.IntegerExtensions.operator_equals(int,int)"/>
-          <leftOperand xsi:type="xbase:XMemberFeatureCall">
-            <feature xsi:type="types:JvmOperation" href="java:/Objects/java.lang.String#java.lang.String.length()"/>
-            <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@patterns.6/@bodies.0/@variables.2"/>
-          </leftOperand>
-          <rightOperand xsi:type="xbase:XNumberLiteral" value="0"/>
-        </expression>
-      </constraints>
-    </bodies>
-  </patterns>
-  <patterns name="ecoredocgen.incquery.tooShortEcoreGenDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
-    <annotations name="Constraint">
-      <parameters name="location">
-        <value xsi:type="patternLanguage:VariableValue">
-          <value var="host"/>
-        </value>
-      </parameters>
-      <parameters name="targetEditorId">
-        <value xsi:type="patternLanguage:StringValue" value="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
-      </parameters>
-      <parameters name="severity">
-        <value xsi:type="patternLanguage:StringValue" value="warning"/>
-      </parameters>
-      <parameters name="message">
-        <value xsi:type="patternLanguage:StringValue" value="$host$ has a suspiciously short documentation"/>
-      </parameters>
-    </annotations>
-    <annotations name="QueryExplorer">
-      <parameters name="display">
-        <value xsi:type="patternLanguage:BoolValue" value="true"/>
-      </parameters>
-      <parameters name="message">
-        <value xsi:type="patternLanguage:StringValue" value="$host$ has a suspiciously short documentation"/>
-      </parameters>
-    </annotations>
-    <annotations name="ObservableValue"/>
-    <parameters name="host">
-      <type xsi:type="eMFPatternLanguage:ClassType">
-        <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
-      </type>
-    </parameters>
-    <bodies>
-      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
-        <call patternRef="//@patterns.2">
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="host"/>
-          </parameters>
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="_ann"/>
-          </parameters>
-          <parameters xsi:type="patternLanguage:VariableValue">
-            <value var="doc"/>
-          </parameters>
-        </call>
-      </constraints>
-      <constraints xsi:type="patternLanguage:CheckConstraint">
-        <expression xsi:type="xbase:XBinaryOperation">
-          <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.BooleanExtensions#org.eclipse.xtext.xbase.lib.BooleanExtensions.operator_and(boolean,boolean)"/>
-          <leftOperand xsi:type="xbase:XBinaryOperation">
-            <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.IntegerExtensions#org.eclipse.xtext.xbase.lib.IntegerExtensions.operator_greaterThan(int,int)"/>
+      <bodies>
+        <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+          <call patternRef="/0/@patterns.0">
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="host"/>
+            </parameters>
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="_ann"/>
+            </parameters>
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="doc"/>
+            </parameters>
+          </call>
+        </constraints>
+        <constraints xsi:type="patternLanguage:CheckConstraint">
+          <expression xsi:type="xbase:XBinaryOperation">
+            <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.IntegerExtensions#org.eclipse.xtext.xbase.lib.IntegerExtensions.operator_equals(int,int)"/>
             <leftOperand xsi:type="xbase:XMemberFeatureCall">
               <feature xsi:type="types:JvmOperation" href="java:/Objects/java.lang.String#java.lang.String.length()"/>
-              <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@patterns.7/@bodies.0/@variables.2"/>
+              <memberCallTarget xsi:type="xbase:XFeatureCall" feature="/1"/>
             </leftOperand>
             <rightOperand xsi:type="xbase:XNumberLiteral" value="0"/>
-          </leftOperand>
-          <rightOperand xsi:type="xbase:XBinaryOperation">
-            <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.IntegerExtensions#org.eclipse.xtext.xbase.lib.IntegerExtensions.operator_lessThan(int,int)"/>
-            <leftOperand xsi:type="xbase:XMemberFeatureCall">
-              <feature xsi:type="types:JvmOperation" href="java:/Objects/java.lang.String#java.lang.String.length()"/>
-              <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@patterns.7/@bodies.0/@variables.2"/>
+          </expression>
+        </constraints>
+      </bodies>
+    </patterns>
+    <patterns name="ecoredocgen.incquery.tooShortEcoreGenDocumentation" fileName="platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.eiq">
+      <annotations name="Constraint">
+        <parameters name="location">
+          <value xsi:type="patternLanguage:VariableValue">
+            <value var="host"/>
+          </value>
+        </parameters>
+        <parameters name="targetEditorId">
+          <value xsi:type="patternLanguage:StringValue" value="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+        </parameters>
+        <parameters name="severity">
+          <value xsi:type="patternLanguage:StringValue" value="warning"/>
+        </parameters>
+        <parameters name="message">
+          <value xsi:type="patternLanguage:StringValue" value="$host$ has a suspiciously short documentation"/>
+        </parameters>
+      </annotations>
+      <annotations name="QueryExplorer">
+        <parameters name="display">
+          <value xsi:type="patternLanguage:BoolValue" value="true"/>
+        </parameters>
+        <parameters name="message">
+          <value xsi:type="patternLanguage:StringValue" value="$host$ has a suspiciously short documentation"/>
+        </parameters>
+      </annotations>
+      <parameters name="host">
+        <type xsi:type="eMFPatternLanguage:ClassType">
+          <classname xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+        </type>
+      </parameters>
+      <bodies>
+        <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+          <call patternRef="/0/@patterns.0">
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="host"/>
+            </parameters>
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="_ann"/>
+            </parameters>
+            <parameters xsi:type="patternLanguage:VariableValue">
+              <value var="doc"/>
+            </parameters>
+          </call>
+        </constraints>
+        <constraints xsi:type="patternLanguage:CheckConstraint">
+          <expression xsi:type="xbase:XBinaryOperation">
+            <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.BooleanExtensions#org.eclipse.xtext.xbase.lib.BooleanExtensions.operator_and(boolean,boolean)"/>
+            <leftOperand xsi:type="xbase:XBinaryOperation">
+              <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.IntegerExtensions#org.eclipse.xtext.xbase.lib.IntegerExtensions.operator_greaterThan(int,int)"/>
+              <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmOperation" href="java:/Objects/java.lang.String#java.lang.String.length()"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall" feature="/2"/>
+              </leftOperand>
+              <rightOperand xsi:type="xbase:XNumberLiteral" value="0"/>
             </leftOperand>
-            <rightOperand xsi:type="xbase:XNumberLiteral" value="50"/>
-          </rightOperand>
-        </expression>
-      </constraints>
-    </bodies>
-  </patterns>
-  <importPackages xsi:type="eMFPatternLanguage:PackageImport">
-    <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-  </importPackages>
-</eMFPatternLanguage:PatternModel>
+            <rightOperand xsi:type="xbase:XBinaryOperation">
+              <feature xsi:type="types:JvmOperation" href="java:/Objects/org.eclipse.xtext.xbase.lib.IntegerExtensions#org.eclipse.xtext.xbase.lib.IntegerExtensions.operator_lessThan(int,int)"/>
+              <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmOperation" href="java:/Objects/java.lang.String#java.lang.String.length()"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall" feature="/3"/>
+              </leftOperand>
+              <rightOperand xsi:type="xbase:XNumberLiteral" value="50"/>
+            </rightOperand>
+          </expression>
+        </constraints>
+      </bodies>
+    </patterns>
+    <importPackages>
+      <packageImport>
+        <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      </packageImport>
+    </importPackages>
+  </eMFPatternLanguage:PatternModel>
+  <types:JvmFormalParameter name="doc">
+    <parameterType xsi:type="types:JvmParameterizedTypeReference"/>
+  </types:JvmFormalParameter>
+  <types:JvmFormalParameter name="doc">
+    <parameterType xsi:type="types:JvmParameterizedTypeReference"/>
+  </types:JvmFormalParameter>
+  <types:JvmFormalParameter name="doc">
+    <parameterType xsi:type="types:JvmParameterizedTypeReference"/>
+  </types:JvmFormalParameter>
+</xmi:XMI>

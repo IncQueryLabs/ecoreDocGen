@@ -13,6 +13,7 @@ import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
  * @see MissingEcoreGenDocumentation_EPackageMatch
  * 
  */
+@SuppressWarnings("all")
 public final class MissingEcoreGenDocumentation_EPackageQuerySpecification extends BaseGeneratedQuerySpecification<MissingEcoreGenDocumentation_EPackageMatcher> {
   /**
    * @return the singleton instance of the query specification
@@ -50,6 +51,8 @@ public final class MissingEcoreGenDocumentation_EPackageQuerySpecification exten
   private MissingEcoreGenDocumentation_EPackageQuerySpecification() throws IncQueryException {
     super();
   }
+  
+  @SuppressWarnings("all")
   public static class Provider implements IQuerySpecificationProvider<MissingEcoreGenDocumentation_EPackageQuerySpecification> {
     @Override
     public MissingEcoreGenDocumentation_EPackageQuerySpecification get() throws IncQueryException {
@@ -57,6 +60,8 @@ public final class MissingEcoreGenDocumentation_EPackageQuerySpecification exten
     }
   }
   
+  
+  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static MissingEcoreGenDocumentation_EPackageQuerySpecification INSTANCE = make();
     

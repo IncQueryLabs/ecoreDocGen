@@ -10,6 +10,7 @@ import org.eclipse.incquery.runtime.api.IMatchProcessor;
  * Clients should derive an (anonymous) class that implements the abstract process().
  * 
  */
+@SuppressWarnings("all")
 public abstract class TooShortEcoreGenDocumentationProcessor implements IMatchProcessor<TooShortEcoreGenDocumentationMatch> {
   /**
    * Defines the action that is to be executed on each match.
@@ -20,7 +21,7 @@ public abstract class TooShortEcoreGenDocumentationProcessor implements IMatchPr
   
   @Override
   public void process(final TooShortEcoreGenDocumentationMatch match) {
-    process(match.getHost());  				
+    process(match.getHost());
     
   }
 }

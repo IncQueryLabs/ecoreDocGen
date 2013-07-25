@@ -22,6 +22,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * @see ECoreDocumentationProcessor
  * 
  */
+@SuppressWarnings("all")
 public abstract class ECoreDocumentationMatch extends BasePatternMatch {
   private ENamedElement fHost;
   
@@ -172,6 +173,8 @@ public abstract class ECoreDocumentationMatch extends BasePatternMatch {
     }
     
   }
+  
+  @SuppressWarnings("all")
   static final class Mutable extends ECoreDocumentationMatch {
     Mutable(final ENamedElement pHost, final EAnnotation pAnn, final String pDoc) {
       super(pHost, pAnn, pDoc);
@@ -184,6 +187,8 @@ public abstract class ECoreDocumentationMatch extends BasePatternMatch {
     }
   }
   
+  
+  @SuppressWarnings("all")
   static final class Immutable extends ECoreDocumentationMatch {
     Immutable(final ENamedElement pHost, final EAnnotation pAnn, final String pDoc) {
       super(pHost, pAnn, pDoc);

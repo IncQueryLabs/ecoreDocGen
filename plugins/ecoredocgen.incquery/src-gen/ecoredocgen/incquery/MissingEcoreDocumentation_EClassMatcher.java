@@ -37,6 +37,7 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * @see MissingEcoreDocumentation_EClassQuerySpecification
  * 
  */
+@SuppressWarnings("all")
 public class MissingEcoreDocumentation_EClassMatcher extends BaseMatcher<MissingEcoreDocumentation_EClassMatch> {
   /**
    * Initializes the pattern matcher within an existing EMF-IncQuery engine. 

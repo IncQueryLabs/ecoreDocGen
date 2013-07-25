@@ -33,7 +33,6 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * 	message = "$host$ has a suspiciously short documentation"
  * )
  * {@literal @}QueryExplorer(display = true, message = "$host$ has a suspiciously short documentation")
- * {@literal @}ObservableValue
  * pattern tooShortEcoreGenDocumentation(host:ENamedElement)
  * {
  * 	find eCoreDocumentation(host,_ann, doc);
@@ -46,6 +45,7 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * @see TooShortEcoreGenDocumentationQuerySpecification
  * 
  */
+@SuppressWarnings("all")
 public class TooShortEcoreGenDocumentationMatcher extends BaseMatcher<TooShortEcoreGenDocumentationMatch> {
   /**
    * Initializes the pattern matcher within an existing EMF-IncQuery engine. 

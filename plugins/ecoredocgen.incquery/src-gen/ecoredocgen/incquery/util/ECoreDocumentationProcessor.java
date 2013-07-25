@@ -11,6 +11,7 @@ import org.eclipse.incquery.runtime.api.IMatchProcessor;
  * Clients should derive an (anonymous) class that implements the abstract process().
  * 
  */
+@SuppressWarnings("all")
 public abstract class ECoreDocumentationProcessor implements IMatchProcessor<ECoreDocumentationMatch> {
   /**
    * Defines the action that is to be executed on each match.
@@ -23,7 +24,7 @@ public abstract class ECoreDocumentationProcessor implements IMatchProcessor<ECo
   
   @Override
   public void process(final ECoreDocumentationMatch match) {
-    process(match.getHost(), match.getAnn(), match.getDoc());  				
+    process(match.getHost(), match.getAnn(), match.getDoc());
     
   }
 }

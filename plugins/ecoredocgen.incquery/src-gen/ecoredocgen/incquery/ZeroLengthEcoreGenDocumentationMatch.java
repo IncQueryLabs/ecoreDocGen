@@ -21,6 +21,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * @see ZeroLengthEcoreGenDocumentationProcessor
  * 
  */
+@SuppressWarnings("all")
 public abstract class ZeroLengthEcoreGenDocumentationMatch extends BasePatternMatch {
   private ENamedElement fHost;
   
@@ -125,6 +126,8 @@ public abstract class ZeroLengthEcoreGenDocumentationMatch extends BasePatternMa
     }
     
   }
+  
+  @SuppressWarnings("all")
   static final class Mutable extends ZeroLengthEcoreGenDocumentationMatch {
     Mutable(final ENamedElement pHost) {
       super(pHost);
@@ -137,6 +140,8 @@ public abstract class ZeroLengthEcoreGenDocumentationMatch extends BasePatternMa
     }
   }
   
+  
+  @SuppressWarnings("all")
   static final class Immutable extends ZeroLengthEcoreGenDocumentationMatch {
     Immutable(final ENamedElement pHost) {
       super(pHost);

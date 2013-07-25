@@ -17,8 +17,6 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package ecoredocgen.incquery, the group contains the definition of the following patterns: <ul>
- * <li>eCorePackage</li>
- * <li>isInEcore</li>
  * <li>eCoreDocumentation</li>
  * <li>missingEcoreDocumentation</li>
  * <li>missingEcoreDocumentation_EClass</li>
@@ -30,6 +28,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
  * @see IPatternGroup
  * 
  */
+@SuppressWarnings("all")
 public final class EcoreGenDocQueries extends BaseGeneratedPatternGroup {
   /**
    * Access the pattern group.
@@ -49,12 +48,12 @@ public final class EcoreGenDocQueries extends BaseGeneratedPatternGroup {
   private static EcoreGenDocQueries INSTANCE;
   
   private EcoreGenDocQueries() throws IncQueryException {
-    querySpecifications.add(ZeroLengthEcoreGenDocumentationMatcher.querySpecification());
-    querySpecifications.add(ECoreDocumentationMatcher.querySpecification());
-    querySpecifications.add(MissingEcoreDocumentation_EClassMatcher.querySpecification());
-    querySpecifications.add(TooShortEcoreGenDocumentationMatcher.querySpecification());
     querySpecifications.add(MissingEcoreDocumentationMatcher.querySpecification());
     querySpecifications.add(MissingEcoreGenDocumentation_EPackageMatcher.querySpecification());
+    querySpecifications.add(MissingEcoreDocumentation_EClassMatcher.querySpecification());
+    querySpecifications.add(TooShortEcoreGenDocumentationMatcher.querySpecification());
+    querySpecifications.add(ZeroLengthEcoreGenDocumentationMatcher.querySpecification());
+    querySpecifications.add(ECoreDocumentationMatcher.querySpecification());
     
   }
 }

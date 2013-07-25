@@ -33,11 +33,9 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * 	severity = "warning"
  * )
  * {@literal @}QueryExplorer(display = true, message = "$host$ is missing the documentation completely")
- * {@literal @}ObservableValue
  * pattern missingEcoreDocumentation(host:ENamedElement)
  * {
  * 	neg find eCoreDocumentation(host, _ann, _doc);
- * 	neg find isInEcore(host); // remove contents of Ecore.ecore from results
  * }
  * </pre></code>
  * 
@@ -46,6 +44,7 @@ import org.eclipse.incquery.runtime.rete.tuple.Tuple;
  * @see MissingEcoreDocumentationQuerySpecification
  * 
  */
+@SuppressWarnings("all")
 public class MissingEcoreDocumentationMatcher extends BaseMatcher<MissingEcoreDocumentationMatch> {
   /**
    * Initializes the pattern matcher within an existing EMF-IncQuery engine. 

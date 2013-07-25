@@ -10,6 +10,7 @@ import org.eclipse.incquery.runtime.api.IMatchProcessor;
  * Clients should derive an (anonymous) class that implements the abstract process().
  * 
  */
+@SuppressWarnings("all")
 public abstract class MissingEcoreGenDocumentation_EPackageProcessor implements IMatchProcessor<MissingEcoreGenDocumentation_EPackageMatch> {
   /**
    * Defines the action that is to be executed on each match.
@@ -20,7 +21,7 @@ public abstract class MissingEcoreGenDocumentation_EPackageProcessor implements 
   
   @Override
   public void process(final MissingEcoreGenDocumentation_EPackageMatch match) {
-    process(match.getHost());  				
+    process(match.getHost());
     
   }
 }
