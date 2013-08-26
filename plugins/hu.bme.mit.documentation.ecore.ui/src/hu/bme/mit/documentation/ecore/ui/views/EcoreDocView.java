@@ -2,10 +2,12 @@ package hu.bme.mit.documentation.ecore.ui.views;
 
 import hu.bme.mit.documentation.ecore.ui.internal.Activator;
 
+import java.util.EventObject;
 import java.util.concurrent.Callable;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -62,6 +64,10 @@ public class EcoreDocView extends ViewPart {
 	private void updateStateAccordingToSelection(ISelection sel) {
 		// clear current status
 		clearCurrentState();
+		setCurrentState(sel);
+	}
+
+	private void setCurrentState(ISelection sel) {
 		if (sel instanceof IStructuredSelection) {
 			Object _target = ((IStructuredSelection) sel).getFirstElement();
 			if (_target instanceof ENamedElement) {
@@ -83,6 +89,40 @@ public class EcoreDocView extends ViewPart {
 	}
 	
 	private IEditingDomainProvider editingDomainProvider;
+	
+	/**
+	 * Our custom command stack listener that listens to undo-redo operations and updates the view's
+	 * state accordingly.
+	 */
+	private CommandStackListener commandStackListener = new CommandStackListener() {
+		
+		@Override
+		public void commandStackChanged(EventObject event) {
+			setCurrentState(getSite().getWorkbenchWindow().getSelectionService().getSelection());
+		}
+	};
+	
+	private void setEditingDomainProvider(IWorkbenchPart part) {
+		
+		removeCommandStackListener();
+		
+		if (part instanceof IEditingDomainProvider) {
+			this.editingDomainProvider =(IEditingDomainProvider)part; 
+			// also register command stack listener
+			this.editingDomainProvider.getEditingDomain().getCommandStack().addCommandStackListener(commandStackListener);
+		} else {
+			this.editingDomainProvider = null;
+		}
+	}
+
+	private void removeCommandStackListener() {
+		if (this.editingDomainProvider!=null) {
+			// de-register command stack listener
+			this.editingDomainProvider.getEditingDomain().getCommandStack().removeCommandStackListener(commandStackListener);
+		}
+	}
+	
+	
 	@Override
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
@@ -90,16 +130,14 @@ public class EcoreDocView extends ViewPart {
 
 			@Override
 			public void selectionChanged(IWorkbenchPart part, ISelection sel) {
-				if (part instanceof IEditingDomainProvider) {
-					EcoreDocView.this.editingDomainProvider =(IEditingDomainProvider)part; 
-				}else{
-					editingDomainProvider = null;
-				}
+				setEditingDomainProvider(part);
 				updateStateAccordingToSelection(sel);
 			}
 		};
 		site.getWorkbenchWindow().getSelectionService().addSelectionListener(selectionListener);
 	}
+	
+	
 	
 	@Override
 	public void createPartControl(Composite parent) {
@@ -173,6 +211,7 @@ public class EcoreDocView extends ViewPart {
 	
 	@Override
 	public void dispose() {
+		removeCommandStackListener();
 		getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(selectionListener);
 		this.currentAnnotation=null;
 		this.currentElement=null;
@@ -193,4 +232,7 @@ public class EcoreDocView extends ViewPart {
 		}
 		return null;
 	}
+	
+
+	
 }
