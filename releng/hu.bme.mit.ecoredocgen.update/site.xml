@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/hu.bme.mit.ecoredocgen.feature_1.0.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature" version="1.0.0.qualifier"/>
-   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature_1.0.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature" version="1.0.0.qualifier"/>
-</site>
