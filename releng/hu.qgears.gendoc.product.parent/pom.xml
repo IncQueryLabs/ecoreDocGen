@@ -4,13 +4,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>hu.qgears.gendoc</groupId>
   <artifactId>metamodel_docgen</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-	<module>../../plugins/ecoredocgen.incquery</module>
+	  <module>../../plugins/ecoredocgen.incquery</module>
     <module>../../plugins/hu.bme.mit.documentation.ecore</module>
     <module>../../plugins/hu.bme.mit.documentation.ecore.ui</module>
     <module>../../plugins/hu.qgears.gendoc.app</module>
+    <module>../hu.bme.mit.ecoredocgen.feature</module>
+    <module>../hu.bme.mit.ecoredocgen.validation.feature</module>
+    <module>../hu.bme.mit.ecoredocgen.update</module>
     <module>../hu.qgears.gendoc.product</module>
   </modules>
   <properties>
