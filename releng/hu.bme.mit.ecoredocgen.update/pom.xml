@@ -13,6 +13,14 @@
 	<packaging>eclipse-repository</packaging>
 	<build>
 		<plugins>
+		  <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <repositoryName>Ecore DocGen</repositoryName>
+        </configuration>
+      </plugin>
 			<plugin>
         <groupId>org.eclipse.tycho.extras</groupId>
         <artifactId>tycho-source-feature-plugin</artifactId>
