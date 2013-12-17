@@ -16,4 +16,9 @@ public class GenerateEcoreDocLatex extends AbstractGenerateEcoreDoc {
 		return new EPackageDocGen();
 	}
 
+    @Override
+    protected String getFileExtension() {
+        return "tex";
+    }
+
 }

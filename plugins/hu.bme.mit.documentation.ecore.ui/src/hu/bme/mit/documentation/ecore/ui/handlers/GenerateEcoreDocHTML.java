@@ -17,4 +17,9 @@ public class GenerateEcoreDocHTML extends AbstractGenerateEcoreDoc {
 		return new EPackageDocGenHtml();
 	}
 
+    @Override
+    protected String getFileExtension() {
+        return "html";
+    }
+
 }

@@ -66,6 +66,7 @@ public class UtilDocGenerator {
                     
                 	FileOutputStream fos = new FileOutputStream(outputFile,false);
                 	fos.write(sb.toString().getBytes());
+                	fos.close();
                 } catch (IOException e) {
                     Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when generating ecore doc",e);
                 }

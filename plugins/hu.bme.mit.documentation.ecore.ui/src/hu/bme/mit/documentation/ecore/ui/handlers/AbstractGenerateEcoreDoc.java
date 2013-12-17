@@ -51,7 +51,7 @@ public abstract class AbstractGenerateEcoreDoc extends AbstractHandler {
                         URI ecoreURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
                         
                         String ecoreFileName = file.getName().substring(0,file.getName().indexOf("."));
-                        String htmlFileName = ecoreFileName+".html";
+                        String outputFileName = ecoreFileName+"."+getFileExtension();
                         String filterFileName = ecoreFileName+".docgen";
                         IFile outFile = null;
                         IFile filterFile = null;
@@ -59,11 +59,11 @@ public abstract class AbstractGenerateEcoreDoc extends AbstractHandler {
                         IContainer parent = file.getParent();
                         if(parent instanceof IProject){
                             IProject project = (IProject) parent;
-                            outFile = project.getFile(htmlFileName);
+                            outFile = project.getFile(outputFileName);
                             filterFile = project.getFile(filterFileName);
                         } else if(parent instanceof IFolder) {
                             IFolder folder = (IFolder) parent;
-                            outFile = folder.getFile(htmlFileName);
+                            outFile = folder.getFile(outputFileName);
                             filterFile = folder.getFile(filterFileName);
                         }
                         IDocGenerator docGen = getCodeGenerator();
@@ -71,7 +71,6 @@ public abstract class AbstractGenerateEcoreDoc extends AbstractHandler {
                         		new File(outFile.getLocationURI()), 
                         		new File(filterFile.getLocationURI()),
                         		docGen);
-                       
                     }
                 }
             }
@@ -84,8 +83,14 @@ public abstract class AbstractGenerateEcoreDoc extends AbstractHandler {
 	 * Should be overridden by subclasses to allow documentation generation in
 	 * specific formats.
 	 * 
-	 * @return
+	 * @return the documentation generator to use
 	 */
 	protected abstract IDocGenerator getCodeGenerator();
+	
+	/**
+	 * Should be overridden by subclasses to specify the file extension for the generated documentation.
+	 * @return the file extension (without preceeding ".")
+	 */
+	protected abstract String getFileExtension();
 
 }
