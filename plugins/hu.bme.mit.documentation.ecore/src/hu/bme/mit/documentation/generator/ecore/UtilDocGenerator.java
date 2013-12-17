@@ -41,14 +41,15 @@ public class UtilDocGenerator {
             if (resource.getContents().size() > 0) {
                 StringBuilder sb = new StringBuilder();
 
+                InputStream fis = null;
+                FileOutputStream fos = null;
                 try {
                     ArrayList<String> filter = new ArrayList<String>();
                     if(filterFile!=null && filterFile.exists()){
                         // Reading the configuration file
                         PropertyResourceBundle bundle = null;
-                        InputStream fis = new FileInputStream(filterFile);
+                        fis = new FileInputStream(filterFile);
                         bundle = new PropertyResourceBundle(fis);
-                        fis.close();
                         
                         // Additional filters
                         String [] filterArray = bundle.getString("filters").split("\\|");
@@ -63,12 +64,21 @@ public class UtilDocGenerator {
                     EPackage pckg = (EPackage) resource.getContents().get(0);
                     new DocGenerationInstance().doGenerateAllSubpackages(docGen,sb,pckg,filter);
                     
-                    
-                	FileOutputStream fos = new FileOutputStream(outputFile,false);
+                    fos = new FileOutputStream(outputFile,false);
                 	fos.write(sb.toString().getBytes());
-                	fos.close();
                 } catch (IOException e) {
                     Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when generating ecore doc",e);
+                } finally {
+                    try {
+                        if(fis != null) {
+                            fis.close();
+                        }
+                        if(fos != null) {
+                            fos.close();
+                        }
+                    } catch (IOException e) {
+                        Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when closing streams", e);
+                    }
                 }
             }
         }
