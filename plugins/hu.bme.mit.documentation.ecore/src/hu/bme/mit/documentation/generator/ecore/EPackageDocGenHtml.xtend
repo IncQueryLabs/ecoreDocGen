@@ -439,7 +439,7 @@ function getElementsByTagNames(list,obj) {
     def private preparePossibleReference(EClassifier cls){
     	val typePckg = cls.EPackage
     	val typeName = cls.name
-    	if(filter.findFirst[typePckg.nsURI.contains(it)] == null){
+    	if(typePckg != null && filter.findFirst[typePckg.nsURI.contains(it)] == null){
     		'''<a href="#«escapeLabel(typePckg.nsPrefix+ "." + typeName)»">«typeName»</a>'''
     	} else {
     		'''«typeName»'''

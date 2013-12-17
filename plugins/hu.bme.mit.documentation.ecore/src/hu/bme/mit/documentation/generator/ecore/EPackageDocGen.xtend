@@ -302,7 +302,7 @@ class EPackageDocGen implements IDocGenerator{
     	val typePckg = cls.EPackage
     	val typeName = cls.name
     	
-    	if(filter.findFirst[typePckg.nsURI.contains(it)] != null){
+    	if(typePckg != null && filter.findFirst[typePckg.nsURI.contains(it)] != null){
     		'''\nameref{«escapeLabel(typePckg.nsPrefix+ "." + typeName)»}'''
     	} else {
     		'''«typeName»'''
