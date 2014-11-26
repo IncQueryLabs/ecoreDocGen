@@ -4,7 +4,7 @@ target
 plugin.xml_gen
 MANIFEST.MF_gen
 .DS_Store*
-!src-gen
+src-gen/**
 xtend-gen
 +keep.txt
 +.keep.txt

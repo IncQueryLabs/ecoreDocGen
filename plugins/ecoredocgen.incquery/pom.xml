@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>hu.qgears.gendoc</groupId>
-    <artifactId>metamodel_docgen</artifactId>
-    <version>0.4.0-SNAPSHOT</version>
-    <relativePath>../../releng/hu.qgears.gendoc.product.parent/pom.xml</relativePath>
-  </parent>
-  <groupId>hu.qgears.gendoc</groupId>
-  <artifactId>ecoredocgen.incquery</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
-  <packaging>eclipse-plugin</packaging>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>hu.qgears.gendoc</groupId>
+		<artifactId>metamodel_docgen</artifactId>
+		<version>0.4.0-SNAPSHOT</version>
+		<relativePath>../../releng/hu.qgears.gendoc.product.parent/pom.xml</relativePath>
+	</parent>
+	<groupId>hu.qgears.gendoc</groupId>
+	<artifactId>ecoredocgen.incquery</artifactId>
+	<version>0.4.0-SNAPSHOT</version>
+	<packaging>eclipse-plugin</packaging>
 	<build>
 		<resources>
 			<resource>
@@ -21,5 +22,66 @@
 				<directory>src-gen</directory>
 			</resource>
 		</resources>
-	  </build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<!-- Generated code folder -->
+									<directory>src-gen</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Setting up generator -->
+			<plugin>
+				<groupId>org.eclipse.incquery</groupId>
+				<artifactId>incquery-maven-plugin</artifactId>
+				<version>${incquery-gen-version}</version>
+				<!-- Binding execution to the code generation lifecycle phase -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Output directory - required -->
+					<outputDirectory>src-gen</outputDirectory>
+					<metamodels>
+					<metamodel>
+					<!-- Java class for the EMF EPackage -->
+					<packageClass>org.eclipse.emf.ecore.EcorePackage</packageClass>
+					<!-- genmodel file used for generating the EMF model classes -->
+					<genmodelUri>org.eclipse.emf.ecore/model/Ecore.genmodel</genmodelUri>
+					</metamodel>
+					</metamodels>
+				</configuration>
+				<dependencies>
+					<!-- Dependency required for the school project (that contains the generated 
+						EPackage) -->
+					<dependency>
+						<groupId>org.eclipse.emf</groupId>
+						<artifactId>org.eclipse.emf.ecore</artifactId>
+						<version>2.10.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>
