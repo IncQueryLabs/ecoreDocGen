@@ -15,7 +15,7 @@
 		<module>../hu.bme.mit.ecoredocgen.feature</module>
 		<module>../hu.bme.mit.ecoredocgen.validation.feature</module>
 		<module>../hu.bme.mit.ecoredocgen.update</module>
-		<module>../hu.qgears.gendoc.product</module>
+		<module>../hu.qgears.gendoc.update</module>
 	</modules>
 	<properties>
 		<tycho.version>0.18.1</tycho.version>

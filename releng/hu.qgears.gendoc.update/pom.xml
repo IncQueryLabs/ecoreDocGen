@@ -6,10 +6,10 @@
     <groupId>hu.qgears.gendoc</groupId>
     <artifactId>metamodel_docgen</artifactId>
     <version>0.4.0-SNAPSHOT</version>
-    <relativePath>../hu.qgears.gendoc.product.parent/pom.xml</relativePath>
+    <relativePath>../hu.qgears.gendoc.parent/pom.xml</relativePath>
   </parent>
   <groupId>hu.qgears.gendoc</groupId>
-  <artifactId>hu.qgears.gendoc.product</artifactId>
+  <artifactId>hu.qgears.gendoc.update</artifactId>
   <version>0.4.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
 </project>
