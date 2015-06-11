@@ -18,10 +18,10 @@
 		<module>../hu.qgears.gendoc.update</module>
 	</modules>
 	<properties>
-		<tycho.version>0.18.1</tycho.version>
-		<tycho.extras.version>0.18.1</tycho.extras.version>
-		<xtend-version>2.6.0</xtend-version>
-		<incquery-gen-version>0.8.0</incquery-gen-version>
+		<tycho.version>0.23.0</tycho.version>
+		<tycho.extras.version>0.23.0</tycho.extras.version>
+		<xtend-version>2.7.3</xtend-version>
+		<incquery-gen-version>0.9.1</incquery-gen-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho.scmUrl>scm:git:https://github.com/abelhegedus/ecoreDocGen.git</tycho.scmUrl>
 	</properties>

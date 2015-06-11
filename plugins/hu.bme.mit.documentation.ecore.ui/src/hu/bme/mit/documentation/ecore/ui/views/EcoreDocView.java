@@ -16,6 +16,7 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
+import org.eclipse.incquery.runtime.emf.EMFScope;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.jface.resource.JFaceColors;
 import org.eclipse.jface.resource.JFaceResources;
@@ -76,7 +77,8 @@ public class EcoreDocView extends ViewPart {
 					currentElement = target;
 					text.setEnabled(true); // make sure the text can be used for adding a new doc field
 					// through the mouse listener below
-					IncQueryEngine engine = IncQueryEngine.on(target.eResource());
+					EMFScope emfScope = new EMFScope(target.eResource());
+					IncQueryEngine engine = IncQueryEngine.on(emfScope);
 					ECoreDocumentationMatcher matcher = ECoreDocumentationMatcher.on(engine);
 					for (ECoreDocumentationMatch m :matcher.getAllMatches(target, null, null)) {
 						setCurrentState(m.getDoc(), m.getHost(), m.getAnn());
