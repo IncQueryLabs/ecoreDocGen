@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="EcoreDocGen Target Platform" sequenceNumber="1434102168">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.7.3.v201411190455"/>
+      <repository id="xtext-repo" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.incquery.sdk.feature.feature.group" version="0.9.1.201502241438"/>
+      <repository id="incquery-repo" location="http://download.eclipse.org/incquery/updates-extra/release"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+      <unit id="org.eclipse.core.runtime" version="3.10.0.v20140318-2214"/>
+      <unit id="org.eclipse.core.resources" version="3.9.1.v20140825-1431"/>
+      <unit id="org.apache.commons.cli" version="1.2.0.v201404270220"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.10.2.v20150123-0348"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="2.10.1.v20150123-0348"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.10.2.v20150123-0452"/>
+      <repository id="eclipse-luna" location="http://download.eclipse.org/releases/luna/"/>
+    </location>
+  </locations>
+</target>

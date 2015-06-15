@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
     <groupId>hu.qgears.gendoc</groupId>
-    <artifactId>metamodel_docgen</artifactId>
+    <artifactId>metamodel_docgen_plugin</artifactId>
     <version>0.4.0-SNAPSHOT</version>
-    <relativePath>../hu.qgears.gendoc.product.parent/pom.xml</relativePath>
+    <relativePath>../parent-poms/plugin/pom.xml</relativePath>
   </parent>
 	<artifactId>hu.bme.mit.ecoredocgen.validation.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
