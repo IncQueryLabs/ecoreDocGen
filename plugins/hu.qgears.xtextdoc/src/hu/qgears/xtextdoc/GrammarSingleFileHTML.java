@@ -45,13 +45,13 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 		generateOutput();
 	}
 	private void generateOutput() throws IOException {
-		rtout.write("<meta charset=\"UTF-8\">\n<html>\n<style>\n");
+		rtout.write("<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<style>\n");
 		TextWithTooltipLinks.generateCSS(rtout);
 		rtout.write("</style>\n<title>");
 		writeHtml(getTitle());
-		rtout.write("</title>\n<body>\n<h1>");
+		rtout.write("</title>\n</head>\n<body>\n<h1>");
 		writeHtml(getTitle());
-		rtout.write("</h2>\n");
+		rtout.write("</h1>\n");
 		text.generateString(out);
 		rtout.write("<hr/>\n");
 		generateMetaModel();
