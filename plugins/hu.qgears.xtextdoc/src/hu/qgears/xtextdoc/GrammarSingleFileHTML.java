@@ -33,18 +33,18 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 {
 	private Grammar g;
 	public Set<EPackage> packages=new HashSet<>();
-	
+	private TextWithTooltipLinks text;
 	public GrammarSingleFileHTML(GeneratorContext gc, Grammar g) {
 		super(gc);
 		this.g=g;
 	}
 	@Override
 	protected void doGenerate() throws Exception {
-		TextWithTooltipLinks text=new TextWithTooltipLinks(gc.src);
-		addTooltipsAndLinks(text);
-		generateOutput(text);
+		text=new TextWithTooltipLinks(gc.src);
+		addTooltipsAndLinks();
+		generateOutput();
 	}
-	private void generateOutput(TextWithTooltipLinks text) throws IOException {
+	private void generateOutput() throws IOException {
 		rtout.write("<meta charset=\"UTF-8\">\n<html>\n<style>\n");
 		TextWithTooltipLinks.generateCSS(rtout);
 		rtout.write("</style>\n<title>");
@@ -73,7 +73,7 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 		}
 	}
 	private EClassifier currentRule;
-	private void addTooltipsAndLinks(TextWithTooltipLinks text) throws Exception
+	private void addTooltipsAndLinks() throws Exception
 	{
 		XtextResource xres=(XtextResource)g.eResource();
 		IParseResult pr=xres.getParseResult();
@@ -87,50 +87,52 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 			{
 				if(n.getSemanticElement() instanceof ParserRule)
 				{
-					ParserRule pru=(ParserRule) n.getSemanticElement();
-					if(n instanceof LeafNode)
-					{
-						if(n.getGrammarElement() instanceof RuleCall)
-						{
-							LeafNode ln=(LeafNode) n;
-							TypeRef tr=pru.getType();
-							if(tr!=null)
-							{
-								EClassifier cla=tr.getClassifier();
-								if(cla!=null)
-								{
-									currentRule=cla;
-									if(cla.getEPackage()!=null)
-									{
-										packages.add(cla.getEPackage());
-									}
-									text.addDecoration(new DecorationData(ln.getOffset(), ln.getLength(), 
-											getReference(cla),
-											new GenerateEClassifierTooltip(gc, cla).generate()));
-								}
-							}
-						}
-					}
+					addTooltipForParserRule(n);
 				}else if (n.getSemanticElement() instanceof Assignment)
 				{
 					if(n instanceof LeafNode)
 					{
 						if(n.getGrammarElement() instanceof RuleCall)
 						{
-							Assignment ass=(Assignment) n.getSemanticElement();
-							String feature=ass.getFeature();
-							if(currentRule!=null)
-							{
-								text.addDecoration(new DecorationData(n.getOffset(), n.getLength(),
-										getReference(currentRule),
-										new GenerateEFeatureTooltip(gc, currentRule, feature).generate()));
-							}
-//								logNode(n);
+							addTooltipForAssignment(n);
 						}
 					}
 				}
-				else
+			}
+		}
+	}
+	private void addTooltipForAssignment(INode n) throws Exception {
+		Assignment assignment=(Assignment) n.getSemanticElement();
+		String feature=assignment.getFeature();
+		if(currentRule!=null)
+		{
+			text.addDecoration(new DecorationData(n.getOffset(), n.getLength(),
+					getReference(currentRule),
+					new GenerateEFeatureTooltip(gc, currentRule, feature).generate()));
+		}
+	}
+	private void addTooltipForParserRule(INode n) throws Exception {
+		ParserRule pru=(ParserRule) n.getSemanticElement();
+		if(n instanceof LeafNode)
+		{
+			if(n.getGrammarElement() instanceof RuleCall)
+			{
+				LeafNode ln=(LeafNode) n;
+				TypeRef tr=pru.getType();
+				if(tr!=null)
 				{
+					EClassifier cla=tr.getClassifier();
+					if(cla!=null)
+					{
+						currentRule=cla;
+						if(cla.getEPackage()!=null)
+						{
+							packages.add(cla.getEPackage());
+						}
+						text.addDecoration(new DecorationData(ln.getOffset(), ln.getLength(), 
+								getReference(cla),
+								new GenerateEClassifierTooltip(gc, cla).generate()));
+					}
 				}
 			}
 		}
@@ -145,9 +147,6 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 			return "#";
 		}
 	}
-//	private void logNode(INode n) {
-//		System.out.println("'"+n.getText()+"' Semantic element: "+ n.getSemanticElement()+" "+n.getGrammarElement());
-//	}
 	private String getTitle() {
 		return ""+g.getName()+" language documentation";
 	}

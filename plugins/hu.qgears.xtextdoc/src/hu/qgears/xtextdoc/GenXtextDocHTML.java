@@ -29,9 +29,7 @@ public class GenXtextDocHTML extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
-
 		if (selection instanceof IStructuredSelection) {
-
 			for (Object element : ((IStructuredSelection) selection).toList()) {
 				if (element instanceof IFile) {
 					IFile file = (IFile) element;
@@ -47,43 +45,51 @@ public class GenXtextDocHTML extends AbstractHandler {
 							try {
 								new XtextDocumentationGenerator(gc).generate();
 							} finally {
-								if (gc.errors.size() > 0) {
-									for (Throwable e : gc.errors) {
-										Activator
-												.getDefault()
-												.getLog()
-												.log(new Status(
-														Status.ERROR,
-														Activator.PLUGIN_ID,
-														"Xtext to HTML documentation error",
-														e));
-									}
-									Status status = new Status(IStatus.ERROR,
-											Activator.PLUGIN_ID,
-											"Xtext to HTML documentation converter error. See Log View for details!");
-									ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Xtext to HTML error",
-											status.getMessage(), status);
-								}
+								logErrors(gc);
 							}
 						} catch (Exception e) {
-							e.printStackTrace();
-							Status s=new Status(
-									Status.ERROR,
-									Activator.PLUGIN_ID,
-									"Xtext to HTML documentation error",
-									e);
-							Activator
-									.getDefault()
-									.getLog()
-									.log(s);
-							ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Xtext to HTML error",
-									s.getMessage(), s);
+							logError(e);
 						}
 					}
 				}
 			}
 		}
 		return null;
+	}
+
+	private void logError(Exception e) {
+		e.printStackTrace();
+		Status s=new Status(
+				Status.ERROR,
+				Activator.PLUGIN_ID,
+				"Xtext to HTML documentation error",
+				e);
+		Activator
+				.getDefault()
+				.getLog()
+				.log(s);
+		ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Xtext to HTML error",
+				s.getMessage(), s);
+	}
+
+	private void logErrors(GeneratorContext gc) {
+		if (gc.errors.size() > 0) {
+			for (Throwable e : gc.errors) {
+				Activator
+						.getDefault()
+						.getLog()
+						.log(new Status(
+								Status.ERROR,
+								Activator.PLUGIN_ID,
+								"Xtext to HTML documentation error",
+								e));
+			}
+			Status status = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID,
+					"Xtext to HTML documentation converter error. See Log View for details!");
+			ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Xtext to HTML error",
+					status.getMessage(), status);
+		}
 	}
 
 	private String loadSource(GeneratorContext gc, IFile file) {
