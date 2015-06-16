@@ -437,6 +437,10 @@ function getElementsByTagNames(list,obj) {
     }
     
     def private preparePossibleReference(EClassifier cls){
+    	if(cls==null)
+    	{
+    		return '''<div class="alert">MISSING TYPE!</div>'''
+    	}
     	val typePckg = cls.EPackage
     	val typeName = cls.name
     	if(typePckg != null && filter.findFirst[typePckg.nsURI.contains(it)] == null){
