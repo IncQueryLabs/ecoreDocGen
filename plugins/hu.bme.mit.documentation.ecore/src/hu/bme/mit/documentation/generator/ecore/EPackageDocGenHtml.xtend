@@ -490,10 +490,10 @@ function getElementsByTagNames(list,obj) {
     '''
     «ref.documentEStructuralFeatureHeader»
     «IF ref.containment»
-    <div class="label">Containment</label>
+    <div class="label">Containment</div>
     «ENDIF»
     «IF ref.container»
-    <div class="label">Container</label>
+    <div class="label">Container</div>
     «ENDIF»
     «IF ref.EOpposite != null»
     «documentProperty("Op", ref.EOpposite.name)»
