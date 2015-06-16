@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="hu.qgears.xtextdoc.GenXtextDocHTML"
+            id="hu.qgears.xtextdoc.GenXtextDocHTML"
+            name="Generate HTML Documentation of xtext grammar">
+      </command>
+         
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any">
+         <command
+               commandId="hu.qgears.xtextdoc.GenXtextDocHTML"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="hu.qgears.xtextdoc.gendoc">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="hu.qgears.xtextdoc.gendoc">
+         <with
+               variable="selection">
+            <iterate
+                  ifEmpty="false">
+                  <adapt
+                     type="org.eclipse.core.resources.IFile">
+--                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="*.xtext">
+                  </test>
+               </adapt>
+            </iterate>
+         </with>
+      </definition>
+   </extension>
+</plugin>
