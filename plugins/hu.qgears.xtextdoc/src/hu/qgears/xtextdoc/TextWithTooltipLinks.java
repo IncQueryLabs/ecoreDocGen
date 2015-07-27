@@ -1,7 +1,7 @@
 package hu.qgears.xtextdoc;
 
-import hu.qgears.commons.EscapeString;
-import hu.qgears.commons.MultiMapTreeImpl;
+import hu.qgears.xtextdoc.util.EscapeString;
+import hu.qgears.xtextdoc.util.MultiMapTreeImpl;
 
 import java.io.IOException;
 import java.io.Writer;

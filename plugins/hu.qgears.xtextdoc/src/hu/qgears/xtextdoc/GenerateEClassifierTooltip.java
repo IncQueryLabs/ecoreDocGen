@@ -1,6 +1,6 @@
 package hu.qgears.xtextdoc;
 
-import hu.qgears.commons.UtilComma;
+import hu.qgears.xtextdoc.util.UtilComma;
 
 import org.eclipse.emf.ecore.EClassifier;
 

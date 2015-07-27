@@ -1,5 +1,8 @@
 package hu.qgears.xtextdoc;
 
+import hu.qgears.xtextdoc.util.AbstractTemplate;
+import hu.qgears.xtextdoc.util.EscapeString;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +10,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 
-import hu.qgears.commons.AbstractTemplate;
-import hu.qgears.commons.EscapeString;
 
 /**
  * Abstract base class for HTML generating template classes.

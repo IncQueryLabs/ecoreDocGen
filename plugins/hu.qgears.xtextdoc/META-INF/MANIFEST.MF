@@ -10,7 +10,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources;bundle-version="3.9.1",
  org.eclipse.emf.ecore.xcore;bundle-version="1.2.2",
  org.eclipse.xtext.doc;bundle-version="2.8.2",
- hu.bme.mit.documentation.ecore;bundle-version="0.4.0",
- hu.qgears.commons;bundle-version="2.0.0"
+ hu.bme.mit.documentation.ecore;bundle-version="0.4.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
