@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.tautua.markdownpapers.ast.Document
 import org.tautua.markdownpapers.parser.Parser
-import org.tautua.markdownpapers.HtmlEmitter
 
 /**
  * @author Abel Hegedus
@@ -56,11 +55,12 @@ class EPackageDocGenHtml implements IDocGenerator{
 	        val create = "<!-- Creation date: " + now + "-->\n"
 	        create.appendToBuilder
 	        '''
-				<html>
+				<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+				<html xmlns="http://www.w3.org/1999/xhtml">
 					<head>
 				      	<title>Metamodel Documentation («pckg.eResource.URI»)</title>
 				    	<script type="text/javascript">
-				    	
+<![CDATA[				    	
 // TOC script based on code taken from http://www.quirksmode.org/dom/toc.html
 function makeTOC() {
 				
@@ -93,11 +93,11 @@ function createTOC() {
 				tmp.className = 'page';
 				var text;
 				var textPre;
-				if (toBeTOCced[i].nodeName == 'H2'){
+				if (toBeTOCced[i].nodeName == 'h2'){
 					tmp.className += ' indent';
 					textPre = hCount + "."+ ++hhCount + ". "; 
 				}
-				else if (toBeTOCced[i].nodeName == 'H3'){
+				else if (toBeTOCced[i].nodeName == 'h3'){
 					tmp.className += ' extraindent';
 					textPre = hCount + "."+ hhCount + "."+ ++hhhCount +". "; 
 				}
@@ -143,7 +143,7 @@ function getElementsByTagNames(list,obj) {
 				return resultArray;
 }
 				    	
-				    	
+]]>				    	
 				    	</script>
 				    	<link rel="stylesheet" type="text/css" href="https://raw.github.com/necolas/normalize.css/master/normalize.css" /> 
 				    	<style>
@@ -479,7 +479,6 @@ function getElementsByTagNames(list,obj) {
     
     def private documentEAttributeHeader(EAttribute attr)
     '''
-    <tr>
     «attr.documentEStructuralFeatureHeader»
     «IF attr.ID»
     <div class="label">Identifier</div>
@@ -533,6 +532,7 @@ function getElementsByTagNames(list,obj) {
     '''
     
     def private escapeText(String text){
+    	
     	'''«text.replaceAll("&","&amp;").replaceAll("<","&lt;")»'''
     }
     
@@ -552,7 +552,7 @@ function getElementsByTagNames(list,obj) {
     	
     		val Document markdownDoc = parser.parse();
     		val builder = new StringBuilder();
-    		val latexVisitor = new HtmlEmitter(builder);
+    		val latexVisitor = new FixedHtmlEmitter(builder);
     		markdownDoc.accept(latexVisitor);
     		return builder.toString;
     	}
