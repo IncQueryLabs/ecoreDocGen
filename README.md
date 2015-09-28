@@ -7,6 +7,12 @@ The generator uses the structure of the metamodel and the values of the GenModel
 
 The generated text will include a section for the main package in the metamodel and subsections for the classifiers, datatypes and enumerations. 
 
+Xtext extensions
+==============
+This tool can be used on Xtext langues too (.xtext files). A documentation of the xtext language with links and tooltips is generated before the metamodel documentation.
+
+In the runtime editor documentations from the metamodel appear in keyword hovers and content assists. Javadoc-like comments are parsed as documentation and are shown for reference hovers and content assists.
+
 
 Usage
 -----
@@ -24,6 +30,11 @@ Alternatively, you can activate the "Ecore Documentation" view, and enter conten
 We also provide validators based on EMF-IncQuery (http://eclipse.org/incquery) that provide auto-refresh validator for missing/zero-length documentation fields, gradually guiding you to complete documentation nirvana :) See the annotated screenshot below for details.
 
 ![EcoreDocGen screenshot](ecoredocgen_school.png?raw=true)
+
+For the xtext runtime editor additions bind the following classes in your UIModule:
+* MyEObjectDocumentationProvider.class -> documentation from EMF model/xtext comments
+* MyEObjectHover.class -> hovers for keywords
+* MyProposalProvider.class -> content assist for keywords
 
 ## Additional syntax
 
