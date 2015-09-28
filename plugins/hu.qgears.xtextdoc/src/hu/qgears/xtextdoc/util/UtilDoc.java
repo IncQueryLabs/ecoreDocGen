@@ -1,7 +1,10 @@
 package hu.qgears.xtextdoc.util;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -73,10 +76,34 @@ public class UtilDoc {
 	 * @return
 	 */
 	public static String getEMFDocumentation(EObject o) {
-		if (o instanceof EModelElement) {
-			return EcoreUtil.getDocumentation((EModelElement) o);
+		StringBuilder sb = new StringBuilder();
+		EModelElement eModelElement = null;
+		if (o instanceof EModelElement || o instanceof EClass) {
+			eModelElement = (EModelElement) o;
+		} else {
+			eModelElement = o.eClass();
 		}
-		return EcoreUtil.getDocumentation(o.eClass());
+		if (eModelElement instanceof ENamedElement) {
+			ENamedElement eNamedElement = (ENamedElement) eModelElement;
+
+			if (eNamedElement instanceof EStructuralFeature) {
+				EStructuralFeature eStructuralFeature = (EStructuralFeature) eNamedElement;
+				EClass eContainingClass = eStructuralFeature.getEContainingClass();
+				sb.append(eContainingClass.getName() + "." + eStructuralFeature.getName() + ": " + EcoreUtil.getDocumentation(eModelElement));
+			} else {
+				sb.append(eNamedElement.getName() + ": " + EcoreUtil.getDocumentation(eModelElement));
+				if (eNamedElement instanceof EClass) {
+					EClass eClass = (EClass) eNamedElement;
+					for (EClass superEClass : eClass.getESuperTypes()) {
+						sb.append("<hr>Supertype: ");
+						sb.append(superEClass.getName());
+						sb.append("</br>");
+						sb.append(EcoreUtil.getDocumentation(superEClass));
+					}
+				}
+			}
+		}
+		return sb.toString();
 	}
 
 }

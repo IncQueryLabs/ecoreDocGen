@@ -14,6 +14,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
@@ -42,7 +43,7 @@ public class KeywordHelper {
 
 	/**
 	 * Gets the EObject for a leaf - this is needed for getting documentation for a hover.
-	 * If the leaf is direct child of a ParserRule it will return that tpye otherwise it returns
+	 * If the leaf is direct child of a ParserRule it will return that type otherwise it returns
 	 * the next Assignment in that subtree. If the returned type is not root element it will returned 
 	 * as a reference of its parent type.
 	 * @param leaf
@@ -55,16 +56,8 @@ public class KeywordHelper {
 			Keyword keyword = (Keyword) leaf.getGrammarElement();
 			EObject semantic = NodeModelUtils.findActualSemanticObjectFor(leaf);
 
-			//count of steps upward till reaching ParserRule
-			int count=0; 
-			EObject parserRule = keyword.eContainer();
-			while (!(parserRule instanceof ParserRule)) {
-				count++;
-				parserRule = parserRule.eContainer();
-			}
-
 			//if child of a ParserRule
-			if (count<=1) { 
+			if (keywordIsType(keyword)) { 
 				EObject semanticParent = semantic.eContainer();
 				if (semanticParent.eContainer() == null) { 
 					//if root element then return the class type
@@ -98,6 +91,22 @@ public class KeywordHelper {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * If count of steps upward till reaching ParserRule equals or is less than 1 
+	 * then it is considered as a type not a reference/attribute.
+	 * @param keyword
+	 * @return
+	 */
+	public boolean keywordIsType(Keyword keyword) {
+		int count=0; 
+		EObject parserRule = keyword.eContainer();
+		while (!(parserRule instanceof ParserRule)) {
+			count++;
+			parserRule = parserRule.eContainer();
+		}
+		return count <= 1;
 	}
 
 	public EStructuralFeature getFeature(Assignment assignment) {
