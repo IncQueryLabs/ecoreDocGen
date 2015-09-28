@@ -13,7 +13,16 @@
       <category name="hu.qgears.gendoc.source"/>
    </feature>
    <bundle id="hu.qgears.gendoc.app" version="0.4.0.qualifier">
-      <category name="hu.qgears.gendoc" />
+      <category name="hu.qgears.gendoc"/>
+   </bundle>
+   <bundle id="hu.qgears.gendoc.app.source" version="0.4.0.qualifier">
+      <category name="hu.qgears.gendoc.source"/>
+   </bundle>
+   <bundle id="hu.qgears.xtextdoc" version="0.4.0.qualifier">
+      <category name="hu.qgears.gendoc"/>
+   </bundle>
+   <bundle id="hu.qgears.xtextdoc.source" version="0.4.0.qualifier">
+      <category name="hu.qgears.gendoc.source"/>
    </bundle>
    <category-def name="hu.qgears.gendoc" label="Ecore Documentation Generator"/>
    <category-def name="hu.qgears.gendoc.source" label="Ecore Documentation Generator Sources"/>
