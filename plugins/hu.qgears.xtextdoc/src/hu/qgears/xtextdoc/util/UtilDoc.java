@@ -90,8 +90,14 @@ public class UtilDoc {
 				EStructuralFeature eStructuralFeature = (EStructuralFeature) eNamedElement;
 				EClass eContainingClass = eStructuralFeature.getEContainingClass();
 				sb.append(eContainingClass.getName() + "." + eStructuralFeature.getName() + ": " + EcoreUtil.getDocumentation(eModelElement));
+				sb.append("</br>");
+				sb.append(getEMFDocumentation(eStructuralFeature.getEType()));
+				
 			} else {
-				sb.append(eNamedElement.getName() + ": " + EcoreUtil.getDocumentation(eModelElement));
+				sb.append("<hr>Type: ");
+				sb.append(eNamedElement.getName());
+				sb.append("</br>");
+				sb.append(EcoreUtil.getDocumentation(eModelElement));
 				if (eNamedElement instanceof EClass) {
 					EClass eClass = (EClass) eNamedElement;
 					for (EClass superEClass : eClass.getESuperTypes()) {
