@@ -1,9 +1,7 @@
 package hu.qgears.xtextdoc;
 
-import hu.bme.mit.documentation.generator.ecore.EPackageDocGenHtml;
-
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,6 +19,8 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
+
+import hu.bme.mit.documentation.generator.ecore.EPackageDocGenHtml;
 
 /**
  * Generates a single HTML file with the following content:
@@ -67,7 +67,7 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 			}
 			EPackageDocGenHtml h=new EPackageDocGenHtml();
 			StringBuilder sb=new StringBuilder();
-			h.documentEPackage(sb, p, new ArrayList<>(), false);
+			h.documentEPackage(sb, p, Collections.<String>emptyList(), false);
 			rtcout.write(sb.toString());
 			System.out.println(""+p);
 		}
