@@ -19,8 +19,9 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
  */
 public class UtilDoc {
 
+	public static final String BREAK = "<br></br>";
 	private static String ruleName = "ML_COMMENT";
-	private static String startTag = "/\\*\\*?"; // regular expression
+	private static String startTag = "/\\*\\*?"; 
 
 	/**
 	 * Returns the comment above the object in xtext.
@@ -69,7 +70,7 @@ public class UtilDoc {
 		}
 		return doc;
 	}
-
+	
 	/**
 	 * Reads the gendoc documentation for the EObject.
 	 * @param o
@@ -89,21 +90,21 @@ public class UtilDoc {
 			if (eNamedElement instanceof EStructuralFeature) {
 				EStructuralFeature eStructuralFeature = (EStructuralFeature) eNamedElement;
 				EClass eContainingClass = eStructuralFeature.getEContainingClass();
-				sb.append(eContainingClass.getName() + "." + eStructuralFeature.getName() + ": " + EcoreUtil.getDocumentation(eModelElement));
-				sb.append("</br>");
+				sb.append(eContainingClass.getName() + "." + eStructuralFeature.getName() + ": ");
+				sb.append(EcoreUtil.getDocumentation(eModelElement));
 				sb.append(getEMFDocumentation(eStructuralFeature.getEType()));
 				
 			} else {
 				sb.append("<hr>Type: ");
 				sb.append(eNamedElement.getName());
-				sb.append("</br>");
+				sb.append(BREAK);
 				sb.append(EcoreUtil.getDocumentation(eModelElement));
 				if (eNamedElement instanceof EClass) {
 					EClass eClass = (EClass) eNamedElement;
 					for (EClass superEClass : eClass.getESuperTypes()) {
 						sb.append("<hr>Supertype: ");
 						sb.append(superEClass.getName());
-						sb.append("</br>");
+						sb.append(BREAK);
 						sb.append(EcoreUtil.getDocumentation(superEClass));
 					}
 				}

@@ -24,7 +24,6 @@ public class MyEObjectDocumentationProvider implements IEObjectDocumentationProv
 		}
 		EClass eClass = o.eClass();
 		return UtilDoc.getCommentDocumentation(o)
-				+ "<br/><br/>"
 				+ UtilDoc.getEMFDocumentation(eClass);
 	}
 
