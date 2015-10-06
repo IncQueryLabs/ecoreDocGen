@@ -1,9 +1,7 @@
 package hu.qgears.xtextdoc;
 
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
@@ -53,7 +51,7 @@ public class MyEObjectHover extends AbstractEObjectHover {
 
 	@Override
 	public Object getHoverInfo(EObject first, ITextViewer textViewer, IRegion hoverRegion) {
-		if (first instanceof EStructuralFeature || first instanceof EClass) {
+		if (first instanceof EObjectWrapper) {
 			lastCreatorProvider = hoverProvider.getHoverInfo(first, textViewer, hoverRegion);
 			return lastCreatorProvider == null ? null : lastCreatorProvider.getInfo();
 		}
@@ -72,7 +70,6 @@ public class MyEObjectHover extends AbstractEObjectHover {
 		ILeafNode leafNodeAt = keywordHelper.getLeafNodeAt(resource, offset);
 		Pair<EObject, IRegion> result = Tuples.create(keywordHelper.getEObjectAt(leafNodeAt),
 				(IRegion) new Region(leafNodeAt.getOffset(), leafNodeAt.getLength()));
-		;
 		if (result.getFirst() == null) {
 			result = super.getXtextElementAt(resource, offset);
 		}

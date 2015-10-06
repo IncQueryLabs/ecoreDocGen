@@ -1,8 +1,8 @@
 package hu.qgears.xtextdoc.util;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -70,45 +70,65 @@ public class UtilDoc {
 		}
 		return doc;
 	}
-	
-	/**
-	 * Reads the gendoc documentation for the EObject.
-	 * @param o
-	 * @return
-	 */
-	public static String getEMFDocumentation(EObject o) {
-		StringBuilder sb = new StringBuilder();
-		EModelElement eModelElement = null;
-		if (o instanceof EModelElement || o instanceof EClass) {
-			eModelElement = (EModelElement) o;
-		} else {
-			eModelElement = o.eClass();
-		}
-		if (eModelElement instanceof ENamedElement) {
-			ENamedElement eNamedElement = (ENamedElement) eModelElement;
 
-			if (eNamedElement instanceof EStructuralFeature) {
-				EStructuralFeature eStructuralFeature = (EStructuralFeature) eNamedElement;
-				EClass eContainingClass = eStructuralFeature.getEContainingClass();
-				sb.append(eContainingClass.getName() + "." + eStructuralFeature.getName() + ": ");
-				sb.append(EcoreUtil.getDocumentation(eModelElement));
-				sb.append(getEMFDocumentation(eStructuralFeature.getEType()));
-				
-			} else {
-				sb.append("<hr>Type: ");
-				sb.append(eNamedElement.getName());
+	public static void getEMFDocumentation(StringBuilder sb, EClass eClass, EStructuralFeature eFeature, EClass eClassFeatureType) {
+		if (eClass != null) {
+			if (eFeature == null && eClassFeatureType == null) {
+				if (sb.length() > 0) {
+					sb.append("<hr>");
+				}
+				sb.append("Type: ");
+				sb.append(eClass.getName());
 				sb.append(BREAK);
-				sb.append(EcoreUtil.getDocumentation(eModelElement));
-				if (eNamedElement instanceof EClass) {
-					EClass eClass = (EClass) eNamedElement;
-					for (EClass superEClass : eClass.getESuperTypes()) {
-						sb.append("<hr>Supertype: ");
-						sb.append(superEClass.getName());
-						sb.append(BREAK);
-						sb.append(EcoreUtil.getDocumentation(superEClass));
+				sb.append(EcoreUtil.getDocumentation(eClass));
+				for (EClass superEClass : eClass.getESuperTypes()) {
+					sb.append("<hr>Supertype: ");
+					sb.append(superEClass.getName());
+					sb.append(BREAK);
+					sb.append(EcoreUtil.getDocumentation(superEClass));
+				}
+
+			} else {
+				sb.append(eClass.getName() + "." + eFeature.getName() + ": ");
+				sb.append(EcoreUtil.getDocumentation(eFeature));
+				sb.append(BREAK);
+				if (eFeature instanceof EAttribute) {
+					EAttribute eAttribute = (EAttribute) eFeature;
+					String typeName = eAttribute.getEAttributeType().getName();
+					sb.append("<hr>");
+					sb.append("Type: ");
+					sb.append(typeName);
+					sb.append(BREAK);
+					sb.append(getBuiltInTypeDocumentation(eAttribute.getEAttributeType()));
+				} else {
+					if (eClassFeatureType != null) {
+						getEMFDocumentation(sb, eClassFeatureType, null, null);
 					}
 				}
 			}
+		}
+	}
+
+	private static String getBuiltInTypeDocumentation(EDataType eDataType) {
+		StringBuilder sb = new StringBuilder();
+		switch (eDataType.getName()) {
+		case "EString":
+			sb.append("The string data type represents character strings.");
+			break;
+		case "EInt":
+			sb.append("The int data type is a 32-bit signed two's complement integer, which has a minimum value of -2^31 and a maximum value of 2^31-1.");
+			break;
+		case "EBoolean":
+			sb.append("The boolean data type has only two possible values: true and false.");
+			break;
+			
+		default:
+			break;
+		}
+		Object defaultValue = eDataType.getDefaultValue();
+		if (defaultValue != null) {
+			sb.append(BREAK);
+			sb.append("Default value: " + defaultValue + ".");
 		}
 		return sb.toString();
 	}

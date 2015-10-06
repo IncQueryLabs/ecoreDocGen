@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CompoundElement;
@@ -14,7 +15,6 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
@@ -61,7 +61,10 @@ public class KeywordHelper {
 				EObject semanticParent = semantic.eContainer();
 				if (semanticParent.eContainer() == null) { 
 					//if root element then return the class type
-					return (EObject) semantic.eClass();
+
+					//return (EObject) semantic.eClass();
+					return new EObjectWrapper(semantic.eClass(), null, null);
+
 				} else {	
 					//else return the element as a feature of its parent
 					EClass parentSemanticElementEClass = semanticParent.eClass();
@@ -72,7 +75,8 @@ public class KeywordHelper {
 							if (!allReferencedObjects.isEmpty()) {
 								for (EObject eObject : allReferencedObjects) {
 									if (eObject.equals(semantic)) {
-										return (EObject) f;
+										//return (EObject) f;
+										return new EObjectWrapper(parentSemanticElementEClass, f, eObject.eClass());
 									}
 								}
 							}
@@ -86,7 +90,18 @@ public class KeywordHelper {
 			if (assignment != null) {
 				EStructuralFeature feature = getFeature(assignment, semantic.eClass());
 				if (feature != null) {
-					return feature;
+					//return feature;
+					Object object = semantic.eGet(feature);
+					if (object instanceof EObject) {
+						return new EObjectWrapper(semantic.eClass(), feature, ((EObject) object).eClass());
+					} else if (object instanceof EObjectResolvingEList<?>) {
+						EObjectResolvingEList<?> eObjectResolvingEList = (EObjectResolvingEList<?>) object;
+						EObject eo = (EObject) eObjectResolvingEList.get(0);
+						return new EObjectWrapper(semantic.eClass(), feature, eo.eClass());
+						
+					} else {
+						return new EObjectWrapper(semantic.eClass(), feature, feature.getEType().eClass());
+					}
 				}
 			}
 		}

@@ -19,12 +19,21 @@ public class MyEObjectDocumentationProvider implements IEObjectDocumentationProv
 
 	@Override
 	public String getDocumentation(EObject o) {
-		if (o instanceof EStructuralFeature || o instanceof EClass) {
-			return UtilDoc.getEMFDocumentation(o);
-		}
+		if (o instanceof EObjectWrapper) {
+			EObjectWrapper eObjectWrapper = (EObjectWrapper) o;
+			EClass eClass = eObjectWrapper.geteClass();
+			EStructuralFeature eFeature = eObjectWrapper.geteFeature();
+			EClass geteClassFeatureType = eObjectWrapper.geteClassFeatureType();
+			StringBuilder sb = new StringBuilder();
+			UtilDoc.getEMFDocumentation(sb, eClass, eFeature, geteClassFeatureType);
+			return sb.toString();
+			
+		} 
+		StringBuilder sb = new StringBuilder();
 		EClass eClass = o.eClass();
-		return UtilDoc.getCommentDocumentation(o)
-				+ UtilDoc.getEMFDocumentation(eClass);
+		sb.append(UtilDoc.getCommentDocumentation(o));
+		UtilDoc.getEMFDocumentation(sb, eClass, null, null);
+		return sb.toString();
 	}
 
 }

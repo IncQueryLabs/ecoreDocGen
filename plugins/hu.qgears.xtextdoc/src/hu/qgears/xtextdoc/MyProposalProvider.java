@@ -36,33 +36,31 @@ public class MyProposalProvider extends TerminalsProposalProvider {
 	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext contentAssistContext,
 			ICompletionProposalAcceptor acceptor) {
-	
+
 		ICompletionProposal proposal = createCompletionProposal(keyword.getValue(), getKeywordDisplayString(keyword),
 				getImage(keyword), contentAssistContext);
-		
+
 		if (proposal != null) {
 			StringBuilder sb = new StringBuilder();
-			
+			String doc = null;
+			EClass eClass = keywordHelper.getEClass(keyword);
 			if (keywordHelper.keywordIsType(keyword)) {
-				EClass eClass = keywordHelper.getEClass(keyword);
-				sb.append(UtilDoc.getEMFDocumentation(eClass));
+				UtilDoc.getEMFDocumentation(sb, eClass, null, null);
 			} else {
 				Assignment nextAssignment = keywordHelper.getNextAssignment(keyword.eContainer());	
 				if (nextAssignment != null) {
 					EStructuralFeature feature = keywordHelper.getFeature(nextAssignment);
-					sb.append(UtilDoc.getEMFDocumentation(feature));
+					UtilDoc.getEMFDocumentation(sb, eClass, feature, null);
 				}
 			}
-			
+			doc = sb.toString().replaceAll("<hr>", UtilDoc.BREAK + UtilDoc.BREAK);
 			ConfigurableCompletionProposal configurableCompletionProposal = (ConfigurableCompletionProposal) proposal;
 			configurableCompletionProposal.setProposalContextResource(contentAssistContext.getResource());
-			configurableCompletionProposal.setAdditionalProposalInfo("<html>" + sb + "</html>");		
+			configurableCompletionProposal.setAdditionalProposalInfo("<html>" + doc + "</html>");		
 			configurableCompletionProposal.setHover(hover);
 		}
 		getPriorityHelper().adjustKeywordPriority(proposal, contentAssistContext.getPrefix());
 		acceptor.accept(proposal);
 	}
-	
-
 
 }
