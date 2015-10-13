@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.ecore.featurepatch"
       label="Xcore editor documentations"
-      version="1.0.0">
+      version="1.0.0.qualifier">
 
    <description url="http://www.example.com/description">
       Adds warnings for missing documentations.
@@ -17,7 +17,7 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.emf.ecore" version="2.11.1.v20150805-0538" patch="true"/>
+      <import feature="org.eclipse.emf.ecore" version="2.10.2.v20150123-0348" patch="true"/>
    </requires>
 
    <plugin

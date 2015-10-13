@@ -20,6 +20,8 @@
 		<module>../../plugins/hu.bme.mit.documentation.ecore.ui</module>
 		<module>../../plugins/hu.qgears.gendoc.app</module>
 		<module>../../plugins/hu.qgears.xtextdoc</module>
+		<module>../../plugins/org.eclipse.emf.ecore</module>
+		<module>../../plugins/org.eclipse.emf.ecore.featurepatch</module>
 		<module>../hu.bme.mit.ecoredocgen.feature</module>
 		<module>../hu.bme.mit.ecoredocgen.validation.feature</module>
 		<module>../hu.bme.mit.ecoredocgen.update</module>
