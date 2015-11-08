@@ -20,7 +20,7 @@ import hu.qgears.xtextdoc.util.UtilDoc;
  * 
  * This class must be copied and it must extend the generated Abstract[LanguageName]ProposalProvider class!
  * 
- * Bind with Abstract[LanguageName]UiModule.bindIContentProposalProvider(). 
+ * Bind with [LanguageName]UiModule.bindIContentProposalProvider(). 
  * 
  * @author glaseradam
  *
@@ -53,7 +53,7 @@ public class MyProposalProvider extends TerminalsProposalProvider {
 					UtilDoc.getEMFDocumentation(sb, eClass, feature, null);
 				}
 			}
-			doc = sb.toString().replaceAll("<hr>", UtilDoc.BREAK + UtilDoc.BREAK);
+			doc = sb.toString().replaceAll("<hr>", UtilDoc.BRBR + UtilDoc.BRBR);
 			ConfigurableCompletionProposal configurableCompletionProposal = (ConfigurableCompletionProposal) proposal;
 			configurableCompletionProposal.setProposalContextResource(contentAssistContext.getResource());
 			configurableCompletionProposal.setAdditionalProposalInfo("<html>" + doc + "</html>");		

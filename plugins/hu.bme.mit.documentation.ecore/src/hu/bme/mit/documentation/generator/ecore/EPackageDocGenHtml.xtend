@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.tautua.markdownpapers.ast.Document
 import org.tautua.markdownpapers.parser.Parser
+import hu.qgears.documentation.DocumentationFieldUtils
 
 /**
  * @author Abel Hegedus
@@ -519,7 +520,7 @@ function getElementsByTagNames(list,obj) {
     
     def private documentProperty(CharSequence key, CharSequence value)
     '''
-    <div class="keyValue"><span class="label">«key»:</span><span class="teletype">«value»</span></div>
+    <div class="keyValue"><span class="label">«key»: </span><span class="teletype">«value»</span></div>
     '''
     
     def private documentHeader(String sectionClass, String sectionTitle, String shortTitle, String label, EModelElement element)
@@ -554,6 +555,14 @@ function getElementsByTagNames(list,obj) {
     		val builder = new StringBuilder();
     		val latexVisitor = new FixedHtmlEmitter(builder);
     		markdownDoc.accept(latexVisitor);
+   			val documentationFields = DocumentationFieldUtils.getDocumentationFields(element);
+    		documentationFields.forEach[
+    			val value = it.getValue();
+    			if (value != null) {
+					builder.append(it.getKey() + ": " + value);
+					builder.append("<br>");
+    			}
+			]	
     		return builder.toString;
     	}
     	else {
@@ -562,7 +571,7 @@ function getElementsByTagNames(list,obj) {
     		} else {
 		    	return ''''''
     		}
-    	}
+    	} 
     }
     
     def private findAnnotation(EModelElement elem, String source, String key){

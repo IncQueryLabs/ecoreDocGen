@@ -8,7 +8,7 @@ import org.eclipse.xtext.naming.QualifiedName;
  * This class is for adding QualifiedName for {@link EObjectWrapper} type.
  * Without this no hovers are created for the EObject.
  * 
- * Bind with Abstract[LanguageName]RuntimeModule.bindIQualifiedNameProvider().
+ * Bind with [LanguageName]RuntimeModule.bindIQualifiedNameProvider().
  * 
  * @author glaseradam
  *

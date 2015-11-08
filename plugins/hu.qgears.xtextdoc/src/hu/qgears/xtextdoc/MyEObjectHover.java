@@ -20,7 +20,7 @@ import com.google.inject.Inject;
 /**
  * This class is for adding mouse hover for keywords.
  * 
- * Bind with Abstract[LanguageName]UiModule.bindIEObjectHover().
+ * Bind with [LanguageName]UiModule.bindIEObjectHover().
  * 
  * @author glaseradam
  *

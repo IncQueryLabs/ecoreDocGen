@@ -47,7 +47,7 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 	private void generateOutput() throws IOException {
 		rtout.write("<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<style>\n");
 		TextWithTooltipLinks.generateCSS(rtout);
-		rtout.write("</style>\n<title>");
+		rtout.write("</style>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>\n<title>");
 		writeHtml(getTitle());
 		rtout.write("</title>\n</head>\n<body>\n<h1>");
 		writeHtml(getTitle());
