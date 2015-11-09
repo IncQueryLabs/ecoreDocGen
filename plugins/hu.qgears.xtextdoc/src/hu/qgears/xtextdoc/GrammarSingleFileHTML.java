@@ -47,7 +47,10 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 	private void generateOutput() throws IOException {
 		rtout.write("<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<style>\n");
 		TextWithTooltipLinks.generateCSS(rtout);
-		rtout.write("</style>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>\n<title>");
+		rtout.write("</style>\n");
+		writeScripts();
+		rtout.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>\n");
+		rtout.write("<title>");
 		writeHtml(getTitle());
 		rtout.write("</title>\n</head>\n<body>\n<h1>");
 		writeHtml(getTitle());
@@ -56,6 +59,28 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 		rtout.write("<hr/>\n");
 		generateMetaModel();
 		rtout.write("</body>\n</html>\n");
+	}
+	private void writeScripts() {
+		rtout.write(
+			"<script language=\"javascript\">\n" +
+			"function toggle(elementId, toggleButtonId) {\n" +
+			"	var ele = document.getElementById(elementId);\n" +
+			"	if(ele.style.display == \"block\") {\n" +
+			"		ele.style.display = \"none\";\n" +
+			"	}\n" +
+			"	else {\n" +
+			"		ele.style.display = \"block\";\n" +
+			"	}\n" +
+			"	var s = document.getElementById(toggleButtonId).innerHTML;\n" +
+			"	if (s.search(\"show\") > 0) {\n" + 
+			"		s = s.replace(\"show\",\"hide\");\n" +
+			"	} else {\n" +
+			"		s = s.replace(\"hide\",\"show\");\n" + 
+			"	}\n" +
+			"	document.getElementById(toggleButtonId).innerHTML = s;\n" +
+			"}\n" + 
+			"</script>\n"
+		);
 	}
 	private void generateMetaModel()
 	{

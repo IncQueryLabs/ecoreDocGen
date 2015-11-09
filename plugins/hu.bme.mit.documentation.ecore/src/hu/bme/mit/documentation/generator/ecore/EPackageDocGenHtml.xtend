@@ -12,9 +12,12 @@
  package hu.bme.mit.documentation.generator.ecore
 
 import com.google.common.collect.Lists
+import hu.qgears.documentation.DocumentationFieldUtils
 import java.io.Reader
 import java.io.StringReader
 import java.util.ArrayList
+import java.util.Collections
+import java.util.Comparator
 import java.util.GregorianCalendar
 import java.util.List
 import org.eclipse.emf.ecore.EAttribute
@@ -31,7 +34,6 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.tautua.markdownpapers.ast.Document
 import org.tautua.markdownpapers.parser.Parser
-import hu.qgears.documentation.DocumentationFieldUtils
 
 /**
  * @author Abel Hegedus
@@ -185,102 +187,45 @@ function getElementsByTagNames(list,obj) {
 	        '''.appendToBuilder
         }
         pckg.documentEPackageHeader.appendToBuilder
-        
+                		
         //pckg.EClassifiers.sortBy[if(it instanceof EClass){(it as EClass).ESuperTypes.size} else {0}].forEach[
         pckg.EClassifiers.sortBy[name].forEach[
-
 
         	if(it instanceof EClass){
 	        		
         		val cls = it as EClass
 
         		cls.documentEClassHeader
-        		if(!cls.EAttributes.empty){
-	        		'''
-					<table>
-					<tr>
-						<th colspan="3"><div class="tableHeader">Attributes</div></th>
-					</tr>
-					<tr>
-						<th><div class="columnHeader">Name</div></th>
-						<th><div class="columnHeader">Properties</div></th>
-						<th><div class="columnHeader">Documentation</div></th>
-					</tr>
-	        		'''.appendToBuilder
-	        		cls.EAttributes.sortBy[name].forEach[
-	        			'''<tr>'''.appendToBuilder
-	        			documentEAttributeHeader.appendToBuilder
-	        			''' </td> '''.appendToBuilder
-	        			'''<td>'''.appendToBuilder
-	        			findGenModelDocumentation(derived).appendToBuilder
-	        			'''</td>
-	        			</tr>'''.appendToBuilder
-	        		]
-	        		'''
-					</table>
-					«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".attr","")»
-	        		'''.appendToBuilder
+        		
+        		if (!cls.ESuperTypes.empty){
+        			var List<EClass> list = new ArrayList;
+        			getAllSuperClassesRecursively(cls, list);
+        			Collections.sort(list, new Comparator<EClass>(){
+						override compare(EClass e1, EClass e2) {
+							return e1.name.compareTo(e2.name);
+						}
+        			});
+        			for (EClass superCls : list){
+	    				if (!superCls.EAttributes.empty
+	    					|| !superCls.EReferences.empty
+	    					|| !superCls.EOperations.empty
+	    				) {
+		    				val id = escapeLabel(cls.EPackage.nsPrefix+"."+cls.name) + "."  + escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name);
+		    				'''<h6>'''.appendToBuilder    	
+		    				'''<b>Supertype:</b> <a href=#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»>«superCls.name»</a>'''.appendToBuilder    	
+	    					''' <a id="«id».toggleButton" href="javascript:toggle('«id»', '«id».toggleButton');">[show]</a>'''.appendToBuilder
+		    				'''<div id="«id»" style="display: none" href="javascript:toggle();">'''.appendToBuilder				
+		    				'''«superCls.findGenModelDocumentation»'''.appendToBuilder
+		    				superCls.documentEClass(id)      		
+		    				'''</div>'''.appendToBuilder	
+		    				'''</h6>'''.appendToBuilder	
+	    				} 
+        			}
 	        		
         		}
         		
+        		cls.documentEClass("" + escapeLabel(cls.EPackage.nsPrefix+"."+cls.name))
         		
-        		if(!cls.EReferences.empty){
-	        		//"paragraph".documentHeader("References", cls.EPackage.nsPrefix+"."+cls.name+".ref", null).appendToBuilder
-	        		'''
-					<table>
-					<tr>
-						<th colspan="3"><div class="tableHeader">References</div></th>
-					</tr>
-					<tr>
-						<th><div class="columnHeader">Name</div></th>
-						<th><div class="columnHeader">Properties</div></th>
-						<th><div class="columnHeader">Documentation</div></th>
-					</tr>
-	        		'''.appendToBuilder
-	        		cls.EReferences.sortBy[name].forEach[
-	        			'''<tr>'''.appendToBuilder
-	        			documentEReferenceHeader.appendToBuilder
-	        			'''
-	        			</td> 
-	        			<td> '''.appendToBuilder
-	        			findGenModelDocumentation(derived).appendToBuilder
-	        			'''</td>
-	        			</tr>'''.appendToBuilder
-	        		]
-	        		'''
-					</table>
-					«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".ref","")»
-	        		'''
-	        		.appendToBuilder
-	        		
-        		}
-        		
-        		if(!cls.EOperations.empty){
-		        	'''
-					<table>
-					<tr>
-						<th colspan="3"><div class="tableHeader">Operations</div></th>
-					</tr>
-					<tr>
-						<th><div class="columnHeader">Name</div></th>
-						<th><div class="columnHeader">Properties</div></th>
-						<th><div class="columnHeader">Documentation</div></th>
-					</tr>
-	        		'''.appendToBuilder
-	        		cls.EOperations.sortBy[name].forEach[
-	        			'''<tr>'''.appendToBuilder
-	        			documentEOperationHeader.appendToBuilder
-	        			''' </td><td> '''.appendToBuilder
-	        			findGenModelDocumentation(false).appendToBuilder
-	        			'''</td>
-	        			</tr>'''.appendToBuilder
-	        		]
-	        		'''
-					</table>
-					«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".op","")»
-	        		'''.appendToBuilder
-	        		
-        		}
         		
         		//if(cls.EOperations.size + cls.EStructuralFeatures.size > 2){
 	       		//	'''\clearpage'''.appendToBuilder
@@ -295,7 +240,104 @@ function getElementsByTagNames(list,obj) {
         	
         ]
     }
-
+	
+	def private documentEClass(EClass cls, String id) {
+		if(!cls.EAttributes.empty){
+			'''
+			<table>
+			<tr>
+				<th colspan="3"><div class="tableHeader">Attributes</div></th>
+			</tr>
+			<tr>
+				<th><div class="columnHeader">Name</div></th>
+				<th><div class="columnHeader">Properties</div></th>
+				<th><div class="columnHeader">Documentation</div></th>
+			</tr>
+			'''.appendToBuilder
+			cls.EAttributes.sortBy[name].forEach[
+				'''<tr>'''.appendToBuilder
+				documentEAttributeHeader(id).appendToBuilder
+				''' </td> '''.appendToBuilder
+				'''<td>'''.appendToBuilder
+				findGenModelDocumentation(derived).appendToBuilder
+				'''</td>
+				</tr>'''.appendToBuilder
+			]
+			'''
+			</table>
+			«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".attr","")»
+			'''.appendToBuilder
+			
+		}
+		
+		
+		if(!cls.EReferences.empty){
+			//"paragraph".documentHeader("References", cls.EPackage.nsPrefix+"."+cls.name+".ref", null).appendToBuilder
+			'''
+			<table>
+			<tr>
+				<th colspan="3"><div class="tableHeader">References</div></th>
+			</tr>
+			<tr>
+				<th><div class="columnHeader">Name</div></th>
+				<th><div class="columnHeader">Properties</div></th>
+				<th><div class="columnHeader">Documentation</div></th>
+			</tr>
+			'''.appendToBuilder
+			cls.EReferences.sortBy[name].forEach[
+				'''<tr>'''.appendToBuilder
+				documentEReferenceHeader(id).appendToBuilder
+				'''
+				</td> 
+				<td> '''.appendToBuilder
+				findGenModelDocumentation(derived).appendToBuilder
+				'''</td>
+				</tr>'''.appendToBuilder
+			]
+			'''
+			</table>
+			«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".ref","")»
+			'''
+			.appendToBuilder
+			
+		}
+		
+		if(!cls.EOperations.empty){
+	    	'''
+			<table>
+			<tr>
+				<th colspan="3"><div class="tableHeader">Operations</div></th>
+			</tr>
+			<tr>
+				<th><div class="columnHeader">Name</div></th>
+				<th><div class="columnHeader">Properties</div></th>
+				<th><div class="columnHeader">Documentation</div></th>
+			</tr>
+			'''.appendToBuilder
+			cls.EOperations.sortBy[name].forEach[
+				'''<tr>'''.appendToBuilder
+				documentEOperationHeader(id).appendToBuilder
+				''' </td><td> '''.appendToBuilder
+				findGenModelDocumentation(false).appendToBuilder
+				'''</td>
+				</tr>'''.appendToBuilder
+			]
+			'''
+			</table>
+			«anchorDef(cls.EPackage.nsPrefix+"."+cls.name+".op","")»
+			'''.appendToBuilder
+			
+		}
+	}
+	
+	def private getAllSuperClassesRecursively(EClass cls, List<EClass> list) {
+		for (EClass superCls : cls.ESuperTypes) {
+			if (!list.contains(superCls)) {
+				list.add(superCls);
+			}
+			getAllSuperClassesRecursively(superCls, list);
+		}
+	}
     
     def private appendToBuilder(CharSequence s){
     	builder.append(s)
@@ -389,37 +431,37 @@ function getElementsByTagNames(list,obj) {
 			}
 			'''<span class="label">Abstract</span>'''.appendToBuilder			
 		}
-		if(!cls.ESuperTypes.isEmpty()){
-			var boolean genProps = false;
-			if(!cls.isInterface() && !cls.isAbstract()){
-				'''<div class="eclassProps">EClass properties:'''.appendToBuilder
-				genProps=true;
-			}
-			'''
-			<div class="eclassSupertypes">Supertypes:
-			«FOR st : cls.ESuperTypes SEPARATOR ", "»
-			<span class="teletype">«st.preparePossibleReference»</span>
-	      	«ENDFOR»
-			</div>'''.appendToBuilder
-			if(genProps){
-				'''</div>'''.appendToBuilder
-			}
-		}
+//		if(!cls.ESuperTypes.isEmpty()){
+//			var boolean genProps = false;
+//			if(!cls.isInterface() && !cls.isAbstract()){
+//				'''<div class="eclassProps">EClass properties:'''.appendToBuilder
+//				genProps=true;
+//			}
+//			'''
+//			<div class="eclassSupertypes">Supertypes:
+//			«FOR st : cls.ESuperTypes SEPARATOR ", "»
+//			<span class="teletype">«st.preparePossibleReference»</span>
+//	      	«ENDFOR»
+//			</div>'''.appendToBuilder
+//			if(genProps){
+//				'''</div>'''.appendToBuilder
+//			}
+//		}
 		if(hasPropList){
 			'''</div></div>'''.appendToBuilder
 		}
     }
     
-    def private documentENamedElement(ENamedElement elem, String color)
+    def private documentENamedElement(ENamedElement elem, String parentId, String color)
     '''
-    <div class="teletype">«IF color != null»<div style="color:«color»">«ENDIF»«escapeText(elem.name)»«IF color != null»</div>«ENDIF»</div>
+    <div id="«parentId+"."+elem.name»" class="teletype">«IF color != null»<div style="color:«color»">«ENDIF»«escapeText(elem.name)»«IF color != null»</div>«ENDIF»</div>
     '''
     
     //(«typePckg.nsURI»)
     // <«typePckg.name»>
-    def private documentETypedElement(ETypedElement elem, String color)
+    def private documentETypedElement(ETypedElement elem, String parentId, String color)
     '''
-    	<td>«elem.documentENamedElement(color)»</td>
+    	<td>«elem.documentENamedElement(parentId, color)»</td>
     	<td>«documentProperty("T", elem.preparePossibleReference)»
     <div class="label">Cardinality: [«elem.lowerBound»..«IF elem.upperBound == -1»*«ELSE»«elem.upperBound»«ENDIF»]</div>
     «IF !elem.ordered»
@@ -451,12 +493,12 @@ function getElementsByTagNames(list,obj) {
     	}
     }
     
-    def private documentEStructuralFeatureHeader(EStructuralFeature feat)
+    def private documentEStructuralFeatureHeader(EStructuralFeature feat, String parentId)
     '''
     «IF feat.derived»
-	    «feat.documentETypedElement("blue")»
+	    «feat.documentETypedElement(parentId, "blue")»
     «ELSE»
-    	«feat.documentETypedElement(null)»
+    	«feat.documentETypedElement(parentId, null)»
     «ENDIF»
     «IF !feat.changeable»
     <div class="label">Non-changeable</div>
@@ -478,17 +520,17 @@ function getElementsByTagNames(list,obj) {
     «ENDIF»
     '''
     
-    def private documentEAttributeHeader(EAttribute attr)
+    def private documentEAttributeHeader(EAttribute attr, String parentId)
     '''
-    «attr.documentEStructuralFeatureHeader»
+    «attr.documentEStructuralFeatureHeader(parentId)»
     «IF attr.ID»
     <div class="label">Identifier</div>
     «ENDIF»
     '''
     
-    def private documentEReferenceHeader(EReference ref)
+    def private documentEReferenceHeader(EReference ref, String parentId)
     '''
-    «ref.documentEStructuralFeatureHeader»
+    «ref.documentEStructuralFeatureHeader(parentId)»
     «IF ref.containment»
     <div class="label">Containment</div>
     «ENDIF»
@@ -501,9 +543,9 @@ function getElementsByTagNames(list,obj) {
     '''
     //ref.EOpposite.EContainingClass.preparePossibleReference+".\\allowbreak "+
     
-    def private documentEOperationHeader(EOperation op)
+    def private documentEOperationHeader(EOperation op, String parentId)
     '''
-    «op.documentETypedElement(null)»
+    «op.documentETypedElement(parentId, null)»
     «IF op.EType != null»
     <div class="label">Returns:</div>
     «op.preparePossibleReference»[«op.lowerBound»..«IF op.upperBound == ETypedElement::UNBOUNDED_MULTIPLICITY»*«ELSE»«op.upperBound»«ENDIF»]
