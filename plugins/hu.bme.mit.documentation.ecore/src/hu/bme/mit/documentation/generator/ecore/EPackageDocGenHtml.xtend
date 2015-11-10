@@ -12,12 +12,9 @@
  package hu.bme.mit.documentation.generator.ecore
 
 import com.google.common.collect.Lists
-import hu.qgears.documentation.DocumentationFieldUtils
 import java.io.Reader
 import java.io.StringReader
 import java.util.ArrayList
-import java.util.Collections
-import java.util.Comparator
 import java.util.GregorianCalendar
 import java.util.List
 import org.eclipse.emf.ecore.EAttribute
@@ -34,6 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.tautua.markdownpapers.ast.Document
 import org.tautua.markdownpapers.parser.Parser
+import hu.qgears.documentation.DocumentationFieldUtils
 
 /**
  * @author Abel Hegedus
@@ -197,16 +195,11 @@ function getElementsByTagNames(list,obj) {
 
         		cls.documentEClassHeader
         		
-        		
         		if (!cls.ESuperTypes.empty){
         			var List<EClass> list = new ArrayList;
         			getAllSuperClassesRecursively(cls, list);
-        			Collections.sort(list, new Comparator<EClass>(){
-						override compare(EClass e1, EClass e2) {
-							return e1.name.compareTo(e2.name);
-						}
-        			});
-        			for (EClass superCls : list){
+        			list.sortBy[name].forEach[
+						val superCls = it as EClass
 	    				val id = escapeLabel(cls.EPackage.nsPrefix+"."+cls.name) + "."  + escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name);
 	    				'''<h6>'''.appendToBuilder    	
 	    				'''<b>Supertype:</b> <a href=#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»>«superCls.name»</a>'''.appendToBuilder    	
@@ -223,8 +216,7 @@ function getElementsByTagNames(list,obj) {
 	    				
 	    				'''</div>'''.appendToBuilder	
 	    				'''</h6>'''.appendToBuilder	
-        			}
-	        		
+					]	        		
         		}
 
         		cls.documentEClass("" + escapeLabel(cls.EPackage.nsPrefix+"."+cls.name))
@@ -477,14 +469,14 @@ function getElementsByTagNames(list,obj) {
     	if(elem.EGenericType != null){
 	    	elem.EGenericType.EClassifier.preparePossibleReference
     	} else {
-    		'''<div class="alert">MISSING TYPE!</div>'''
+    		'''<div class="alert">MISSING TYPE elem!</div>'''
     	}
     }
     
     def private preparePossibleReference(EClassifier cls){
     	if(cls==null)
     	{
-    		return '''<div class="alert">MISSING TYPE!</div>'''
+    		return '''<div class="alert">MISSING TYPE cls!</div>'''
     	}
     	val typePckg = cls.EPackage
     	val typeName = cls.name

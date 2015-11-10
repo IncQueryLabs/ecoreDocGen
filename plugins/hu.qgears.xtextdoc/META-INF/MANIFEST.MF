@@ -8,8 +8,8 @@ Bundle-Vendor: QGears
 Require-Bundle: org.eclipse.emf.ecore.xcore;bundle-version="1.2.2",
  hu.bme.mit.documentation.ecore;bundle-version="0.4.0",
  org.eclipse.xtext.ui,
- hu.qgears.documentation,
- hu.qgears.xtextdoc
+ hu.qgears.xtextdoc,
+ hu.qgears.documentation;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: hu.qgears.xtextdoc,
