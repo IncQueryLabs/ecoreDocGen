@@ -6,8 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
@@ -31,6 +34,7 @@ import hu.bme.mit.documentation.generator.ecore.EPackageDocGenHtml;
  */
 public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 {
+	private static final String ECORE_NSURI = "http://www.eclipse.org/emf/2002/Ecore";
 	private Grammar g;
 	public Set<EPackage> packages=new HashSet<>();
 	private TextWithTooltipLinks text;
@@ -86,10 +90,6 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 	{
 		for(EPackage p:packages)
 		{
-			if("http://www.eclipse.org/emf/2002/Ecore".equals(p.getNsURI()))
-			{
-				continue;
-			}
 			EPackageDocGenHtml h=new EPackageDocGenHtml();
 			StringBuilder sb=new StringBuilder();
 			h.documentEPackage(sb, p, Collections.<String>emptyList(), false);
@@ -108,12 +108,21 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 		while(i.hasNext())
 		{
 			INode n=i.next();
-			if(n.getSemanticElement()!=null)
+			EObject semanticElement = n.getSemanticElement();
+			if(semanticElement!=null)
 			{
-				if(n.getSemanticElement() instanceof ParserRule)
+				if(semanticElement instanceof ParserRule)
 				{
 					addTooltipForParserRule(n);
-				}else if (n.getSemanticElement() instanceof Assignment)
+				} 
+				else if (semanticElement instanceof EnumRule) 
+				{
+					addTooltipForEnumRule(n) ;
+				}
+				else if (semanticElement instanceof EnumLiteralDeclaration) {
+					addTooltipForEnumLiteral(n);
+				}
+				else if (semanticElement instanceof Assignment)
 				{
 					if(n instanceof LeafNode)
 					{
@@ -126,6 +135,40 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 			}
 		}
 	}
+	private void addTooltipForEnumLiteral(INode n) throws Exception {
+		if (currentRule != null) {
+			EnumLiteralDeclaration eld = (EnumLiteralDeclaration) n.getSemanticElement();
+			if(n.getGrammarElement() instanceof RuleCall) {
+				text.addDecoration(new DecorationData(n.getOffset(), n.getLength(), 
+						getReference(currentRule),
+						new GenerateEEnumLiteralTooltip(gc, eld.getEnumLiteral()).generate()));
+			}
+		}
+	}
+
+	private void addTooltipForEnumRule(INode n) throws Exception {
+		EnumRule eru = (EnumRule) n.getSemanticElement();
+		if (n instanceof LeafNode) {
+			if(n.getGrammarElement() instanceof RuleCall) {
+				TypeRef tr = eru.getType();
+				if (tr != null) {
+					EClassifier cla = tr.getClassifier();
+					if (cla != null) {
+						currentRule=cla;
+						EPackage ePackage = cla.getEPackage();
+						if(ePackage!=null && !ECORE_NSURI.equals(ePackage.getNsURI()))
+						{
+							packages.add(ePackage);
+							text.addDecoration(new DecorationData(n.getOffset(), n.getLength(), 
+									getReference(cla),
+									new GenerateEEnumTooltip(gc, cla).generate()));
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	private void addTooltipForAssignment(INode n) throws Exception {
 		Assignment assignment=(Assignment) n.getSemanticElement();
 		String feature=assignment.getFeature();
@@ -150,13 +193,14 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 					if(cla!=null)
 					{
 						currentRule=cla;
-						if(cla.getEPackage()!=null)
+						EPackage ePackage = cla.getEPackage();
+						if(ePackage!=null && !ECORE_NSURI.equals(ePackage.getNsURI()))
 						{
-							packages.add(cla.getEPackage());
+							packages.add(ePackage);
+							text.addDecoration(new DecorationData(ln.getOffset(), ln.getLength(), 
+									getReference(cla),
+									new GenerateEClassifierTooltip(gc, cla).generate()));
 						}
-						text.addDecoration(new DecorationData(ln.getOffset(), ln.getLength(), 
-								getReference(cla),
-								new GenerateEClassifierTooltip(gc, cla).generate()));
 					}
 				}
 			}

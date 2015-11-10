@@ -197,6 +197,7 @@ function getElementsByTagNames(list,obj) {
 
         		cls.documentEClassHeader
         		
+        		
         		if (!cls.ESuperTypes.empty){
         			var List<EClass> list = new ArrayList;
         			getAllSuperClassesRecursively(cls, list);
@@ -206,26 +207,27 @@ function getElementsByTagNames(list,obj) {
 						}
         			});
         			for (EClass superCls : list){
+	    				val id = escapeLabel(cls.EPackage.nsPrefix+"."+cls.name) + "."  + escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name);
+	    				'''<h6>'''.appendToBuilder    	
+	    				'''<b>Supertype:</b> <a href=#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»>«superCls.name»</a>'''.appendToBuilder    	
+    					''' <a id="«id».toggleButton" href="javascript:toggle('«id»', '«id».toggleButton');">[show]</a>'''.appendToBuilder
+	    				'''<div id="«id»" style="display: none" href="javascript:toggle();">'''.appendToBuilder				
+	    				'''«superCls.findGenModelDocumentation»'''.appendToBuilder
+	    				
 	    				if (!superCls.EAttributes.empty
 	    					|| !superCls.EReferences.empty
-	    					|| !superCls.EOperations.empty
+    						|| !superCls.EOperations.empty
 	    				) {
-		    				val id = escapeLabel(cls.EPackage.nsPrefix+"."+cls.name) + "."  + escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name);
-		    				'''<h6>'''.appendToBuilder    	
-		    				'''<b>Supertype:</b> <a href=#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»>«superCls.name»</a>'''.appendToBuilder    	
-	    					''' <a id="«id».toggleButton" href="javascript:toggle('«id»', '«id».toggleButton');">[show]</a>'''.appendToBuilder
-		    				'''<div id="«id»" style="display: none" href="javascript:toggle();">'''.appendToBuilder				
-		    				'''«superCls.findGenModelDocumentation»'''.appendToBuilder
 		    				superCls.documentEClass(id)      		
-		    				'''</div>'''.appendToBuilder	
-		    				'''</h6>'''.appendToBuilder	
-	    				} 
+	    				}
+	    				
+	    				'''</div>'''.appendToBuilder	
+	    				'''</h6>'''.appendToBuilder	
         			}
 	        		
         		}
-        		
+
         		cls.documentEClass("" + escapeLabel(cls.EPackage.nsPrefix+"."+cls.name))
-        		
         		
         		//if(cls.EOperations.size + cls.EStructuralFeatures.size > 2){
 	       		//	'''\clearpage'''.appendToBuilder

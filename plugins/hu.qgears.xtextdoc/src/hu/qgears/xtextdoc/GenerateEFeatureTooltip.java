@@ -33,7 +33,7 @@ public class GenerateEFeatureTooltip extends AbstractHTMLTemplate
 				{
 					rtout.write("\t\t\t");
 					writeHtml(f.getName());
-					rtout.write("\n\t\t\t<br/>\n\t\t\t");
+					rtout.write("\n\t\t\t<br/><br/>\n\t\t\t");
 					writeHtml(handleMissing(UtilEMFDoc.getDocumentation(gc, f)));
 					rtout.write("\n");
 				}

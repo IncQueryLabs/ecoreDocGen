@@ -24,7 +24,7 @@ public class GenerateEClassifierTooltip extends AbstractHTMLTemplate
 		{
 			rtcout.write(separator.getSeparator());
 			writeHtml(type.getName());
-			rtout.write("\n<br/>\n");
+			rtout.write("\n<br/><br/>\n");
 			writeHtml(handleMissing(UtilEMFDoc.getDocumentation(gc, type)));
 			rtout.write("<br/>\n");
 		}
