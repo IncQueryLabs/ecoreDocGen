@@ -1,18 +1,22 @@
 package hu.qgears.documentation;
 
 
-import java.beans.Introspector;
-import java.io.File;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EModelElement;
-
-
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xcore.resource.XcoreResource;
 
 /**
  * Utility class for reading {@link DocumentationField} from a model element using reflection.
@@ -36,38 +40,48 @@ public class DocumentationFieldUtils {
 	}
 
 	/**
-	 * Gets the existing documentation fields. For each field a getter method is generated that starts with "is" or "get". 
-	 * The name and type of the field is read from this method signature.
-	 * 
+	 * Gets the existing documentation fields from the class named 'Documentation' in package 'doc'. 
+	 * Returns empty list if the model element is from the 'doc.Documentation' resource, 
+	 * otherwise it collects the fields from there.
 	 * @param eModelElement
 	 * @return
 	 */
 	public static List<DocumentationField> getDocumentationFields(EModelElement eModelElement) {
-		List<DocumentationField> list = new ArrayList<>();		
-		File file = new File("/home/glaseradam/git/space2-pump/master/com.bbraun.spaceii.guidsl/bin/");
-		Class<?> cls = null;
-		try {
-			URL url = file.toURL();          
-			URL[] urls = new URL[]{url};
-			ClassLoader cl = new URLClassLoader(urls, DocumentationFieldUtils.class.getClassLoader());
-			cls = cl.loadClass("doc.Documentation");
-		} catch (Exception e) {
-		
+		Resource eResource = eModelElement.eResource();
+		URI uri = eResource.getURI();
+		List<String> segmentsList = uri.segmentsList();
+		String s = segmentsList.get(segmentsList.size()-1);
+		if (s.equals("Documentation.xcore")) {
+			return Collections.emptyList();
 		}
-		if (cls != null) {
-			Method[] declaredMethods = cls.getDeclaredMethods();
-			for (Method method : declaredMethods) {
-				if (method.getName().startsWith("get") || method.getName().startsWith("is")) {
-					String key = null;
-					if (method.getName().startsWith("get")) {
-						key = Introspector.decapitalize(method.getName().replaceFirst("get", ""));
-					} else if (method.getName().startsWith("is")) {
-						key = Introspector.decapitalize(method.getName().replaceFirst("is", ""));
+		List<DocumentationField> list = new ArrayList<>();		
+		ResourceSet resourceSet = eResource.getResourceSet();
+		for (Resource resource : resourceSet.getResources()) {
+			if (resource instanceof XcoreResource) {
+				uri = resource.getURI();
+				segmentsList = uri.segmentsList();
+				s = segmentsList.get(segmentsList.size()-1);
+				if (s.equals("Documentation.xcore")) {
+					EList<EObject> contents = resource.getContents();
+					for (EObject content : contents) {
+						if (content instanceof EPackage) {
+							EPackage ePackage = (EPackage) content;
+							EClassifier eClassifier = ePackage.getEClassifier("Documentation");
+							if (eClassifier != null) {
+								if (eClassifier instanceof EClass) {
+									EClass eClass = (EClass) eClassifier;
+									EList<EStructuralFeature> eStructuralFeatures = eClass.getEStructuralFeatures();
+									for (EStructuralFeature f : eStructuralFeatures) {
+										String name = f.getName();
+										String type = f.getEType().getInstanceClassName();
+										String annotationValue = getAnnotation(eModelElement, name);
+										DocumentationField docField = new DocumentationField(name, type, annotationValue);
+										list.add(docField);
+									}
+								}
+							}
+						}
 					}
-					Class<?> type = method.getReturnType();
-					String annotationValue = getAnnotation(eModelElement, key);
-					DocumentationField docField = new DocumentationField(key, type, annotationValue);
-					list.add(docField);
 				}
 			}
 		}

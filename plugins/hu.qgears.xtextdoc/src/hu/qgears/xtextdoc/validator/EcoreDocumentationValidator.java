@@ -86,17 +86,16 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, DIAGNOSTIC_SOURCE, -1,
 						String.format("Missing %s", key), new Object[] { value }));
 			} else {
-				Class<?> type = documentationField.getType();
+				String type = documentationField.getType();
 				validateType(value, diagnostics, key, type, annotationValue);
 			}
 		}	
 	}
 
-	private void validateType(EModelElement value, DiagnosticChain diagnostics, String name, Class<?> type,
+	private void validateType(EModelElement value, DiagnosticChain diagnostics, String name, String type,
 			String annotationValue) {
-		String typeName = type.getName();
 		try {
-			switch (typeName) {
+			switch (type) {
 			case "int":
 				Integer.parseInt(annotationValue);
 				break;
@@ -130,7 +129,7 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 			}
 		} catch (Exception e) {
 			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, DIAGNOSTIC_SOURCE, -1,
-					String.format("%s: invalid type, expected is: %s", name, typeName),
+					String.format("%s: invalid type, expected is: %s", name, type),
 					new Object[] { value }));
 		}
 	}

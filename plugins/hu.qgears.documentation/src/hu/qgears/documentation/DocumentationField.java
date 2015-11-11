@@ -8,10 +8,10 @@ package hu.qgears.documentation;
 public class DocumentationField {
 
 	private String key;
-	private Class<?> type;
+	private String type;
 	private String value;
 	
-	public DocumentationField(String key, Class<?> type, String value) {
+	public DocumentationField(String key, String type, String value) {
 		this.key = key;
 		this.type = type;
 		this.value = value;
@@ -21,7 +21,7 @@ public class DocumentationField {
 		return value;
 	}
 
-	public Class<?> getType() {
+	public String getType() {
 		return type;
 	}
 	
