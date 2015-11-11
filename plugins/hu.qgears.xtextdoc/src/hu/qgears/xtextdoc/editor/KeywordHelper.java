@@ -1,4 +1,4 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.editor;
 
 import java.util.List;
 

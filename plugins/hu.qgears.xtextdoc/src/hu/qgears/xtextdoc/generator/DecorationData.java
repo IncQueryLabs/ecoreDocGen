@@ -1,4 +1,4 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.generator;
 
 /**
  * DTO to store a HTML reference and popup window data.

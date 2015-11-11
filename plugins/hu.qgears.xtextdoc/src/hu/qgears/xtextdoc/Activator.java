@@ -65,7 +65,7 @@ public class Activator extends AbstractUIPlugin {
 	private void removeCustomValidatorForEcorePackage() {
 		try {
 			Registry reg = EValidator.Registry.INSTANCE;
-			reg.replace(EcorePackage.eINSTANCE, oldRegister);
+			reg.put(EcorePackage.eINSTANCE, oldRegister);
 		} catch (Exception e){
 			e.printStackTrace();
 		}

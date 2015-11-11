@@ -52,7 +52,7 @@ public class DocumentationFieldUtils {
 			ClassLoader cl = new URLClassLoader(urls, DocumentationFieldUtils.class.getClassLoader());
 			cls = cl.loadClass("doc.Documentation");
 		} catch (Exception e) {
-			e.printStackTrace();
+		
 		}
 		if (cls != null) {
 			Method[] declaredMethods = cls.getDeclaredMethods();

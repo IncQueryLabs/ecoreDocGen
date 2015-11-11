@@ -1,4 +1,4 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.generator;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;

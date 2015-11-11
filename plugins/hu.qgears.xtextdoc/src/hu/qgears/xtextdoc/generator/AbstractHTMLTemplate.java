@@ -1,4 +1,4 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.generator;
 
 import hu.qgears.xtextdoc.util.AbstractTemplate;
 import hu.qgears.xtextdoc.util.EscapeString;

@@ -1,5 +1,6 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.generator;
 
+import hu.qgears.xtextdoc.Activator;
 import hu.qgears.xtextdoc.util.UtilFile;
 
 import java.io.InputStream;

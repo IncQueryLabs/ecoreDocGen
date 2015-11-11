@@ -1,4 +1,4 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.generator;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EnumLiteralDeclaration;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -49,11 +50,9 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 		generateOutput();
 	}
 	private void generateOutput() throws IOException {
-		rtout.write("<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<style>\n");
-		TextWithTooltipLinks.generateCSS(rtout, 300);
-		rtout.write("</style>\n");
-		writeScripts();
-		rtout.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>\n");
+		rtout.write("<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n");
+		TextWithTooltipLinks.generateCSS(rtout);
+		TextWithTooltipLinks.generateScripts(rtout);
 		rtout.write("<title>");
 		writeHtml(getTitle());
 		rtout.write("</title>\n</head>\n<body>\n<h1>");
@@ -63,28 +62,6 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 		rtout.write("<hr/>\n");
 		generateMetaModel();
 		rtout.write("</body>\n</html>\n");
-	}
-	private void writeScripts() {
-		rtout.write(
-			"<script language=\"javascript\">\n" +
-			"function toggle(elementId, toggleButtonId) {\n" +
-			"	var ele = document.getElementById(elementId);\n" +
-			"	if(ele.style.display == \"block\") {\n" +
-			"		ele.style.display = \"none\";\n" +
-			"	}\n" +
-			"	else {\n" +
-			"		ele.style.display = \"block\";\n" +
-			"	}\n" +
-			"	var s = document.getElementById(toggleButtonId).innerHTML;\n" +
-			"	if (s.search(\"show\") > 0) {\n" + 
-			"		s = s.replace(\"show\",\"hide\");\n" +
-			"	} else {\n" +
-			"		s = s.replace(\"hide\",\"show\");\n" + 
-			"	}\n" +
-			"	document.getElementById(toggleButtonId).innerHTML = s;\n" +
-			"}\n" + 
-			"</script>\n"
-		);
 	}
 	private void generateMetaModel()
 	{
@@ -131,7 +108,12 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 							addTooltipForAssignment(n);
 						}
 					}
-				}
+				}			
+				else /*if (semanticElement instanceof RuleCall || semanticElement instanceof TypeRef) {*/
+					if (n.getGrammarElement() instanceof CrossReference) {
+						addToolTipForCrossReference(n);							
+					}
+				//}
 			}
 		}
 	}
@@ -168,7 +150,40 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 			}
 		}
 	}
-	
+	private void addToolTipForCrossReference(INode n) throws Exception {
+		EObject semanticElement = n.getSemanticElement();
+		if (semanticElement instanceof RuleCall) {
+			RuleCall ruleCall = (RuleCall) semanticElement;
+			if (ruleCall.getRule() instanceof ParserRule) {
+				ParserRule parserRule = (ParserRule) ruleCall.getRule();
+				TypeRef typeRef = parserRule.getType();
+				EClassifier cla = typeRef.getClassifier();
+				EPackage ePackage = cla.getEPackage();
+				if(ePackage!=null && !ECORE_NSURI.equals(ePackage.getNsURI())) {
+					text.addDecoration(new DecorationData(n.getOffset(), n.getLength(), 
+							getReference(currentRule), 
+							new GenerateEClassifierTooltip(gc, cla).generate()));
+				}
+			} else if (ruleCall.getRule() instanceof EnumRule) {
+				EnumRule enumRule = (EnumRule) ruleCall.getRule(); 
+				TypeRef typeRef = enumRule.getType();
+				EClassifier cla = typeRef.getClassifier();
+				text.addDecoration(new DecorationData(n.getOffset(), n.getLength(), 
+						getReference(currentRule), 
+						new GenerateEEnumTooltip(gc, cla).generate()));
+			}
+		}
+		else if (semanticElement instanceof TypeRef) {
+			TypeRef typeRef = (TypeRef) semanticElement;
+			EClassifier cla = typeRef.getClassifier();
+			EPackage ePackage = cla.getEPackage();
+			if(ePackage!=null && !ECORE_NSURI.equals(ePackage.getNsURI())) {
+				text.addDecoration(new DecorationData(n.getOffset(), n.getLength(), 
+						getReference(currentRule), 
+						new GenerateEClassifierTooltip(gc, cla).generate()));
+			}
+		} 
+	}
 	private void addTooltipForAssignment(INode n) throws Exception {
 		Assignment assignment=(Assignment) n.getSemanticElement();
 		String feature=assignment.getFeature();

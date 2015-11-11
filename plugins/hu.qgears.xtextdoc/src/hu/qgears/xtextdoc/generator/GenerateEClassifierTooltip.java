@@ -1,8 +1,9 @@
-package hu.qgears.xtextdoc;
-
-import hu.qgears.xtextdoc.util.UtilComma;
+package hu.qgears.xtextdoc.generator;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import hu.qgears.xtextdoc.util.UtilComma;
 
 /**
  * Generate the contents of the tooltip box for an EMF class.
@@ -20,12 +21,13 @@ public class GenerateEClassifierTooltip extends AbstractHTMLTemplate
 	@Override
 	protected void doGenerate() throws Exception {
 		UtilComma separator=new UtilComma("<hr/>Supertype: ");
-		for(EClassifier type: getAllSuperClasses(cla))
+		for(EClassifier cla: getAllSuperClasses(cla))
 		{
 			rtcout.write(separator.getSeparator());
-			writeHtml(type.getName());
-			rtout.write("\n<br/><br/>\n");
-			writeHtml(handleMissing(UtilEMFDoc.getDocumentation(gc, type)));
+			rtout.write("<a href=#" + cla.getEPackage().getNsPrefix() + cla.getName() + ">");
+			writeHtml(cla.getName());
+			rtout.write("</a>\n<br/><br/>\n");
+			writeHtml(handleMissing(EcoreUtil.getDocumentation(cla)));
 			rtout.write("<br/>\n");
 		}
 	}

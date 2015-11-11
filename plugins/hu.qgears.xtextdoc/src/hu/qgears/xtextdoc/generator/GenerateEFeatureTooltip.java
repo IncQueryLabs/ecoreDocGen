@@ -1,10 +1,11 @@
-package hu.qgears.xtextdoc;
+package hu.qgears.xtextdoc.generator;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * Generate the contents of the tooltip box for an EMF feature.
@@ -31,13 +32,15 @@ public class GenerateEFeatureTooltip extends AbstractHTMLTemplate
 			{
 				if(f.getName().equals(feature))
 				{
-					rtout.write("\t\t\t");
+					EClass eContainingClass = f.getEContainingClass();
+					rtout.write("\t\t\t<a href=#" + eContainingClass.getEPackage().getNsPrefix() + eContainingClass.getName() + ">");
 					writeHtml(f.getName());
-					rtout.write("\n\t\t\t<br/><br/>\n\t\t\t");
-					writeHtml(handleMissing(UtilEMFDoc.getDocumentation(gc, f)));
+					rtout.write("</a>\n\t\t\t<br/><br/>\n\t\t\t");
+					writeHtml(handleMissing(EcoreUtil.getDocumentation(f)));
 					rtout.write("\n");
 				}
 			}
 		}
 	}
+	
 }
