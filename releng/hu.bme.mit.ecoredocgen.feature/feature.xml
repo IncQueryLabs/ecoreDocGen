@@ -216,6 +216,13 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
+    <plugin
+         id="hu.qgears.documentation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
    <plugin
          id="hu.bme.mit.documentation.ecore"
          download-size="0"
