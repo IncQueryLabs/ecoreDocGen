@@ -15,6 +15,7 @@
 	</parent>
 	<modules>
 		<module>../hu.qgears.gendoc.target</module>
+		<module>../../plugins/hu.qgears.documentation</module>
 		<module>../../plugins/ecoredocgen.incquery</module>
 		<module>../../plugins/hu.bme.mit.documentation.ecore</module>
 		<module>../../plugins/hu.bme.mit.documentation.ecore.ui</module>
