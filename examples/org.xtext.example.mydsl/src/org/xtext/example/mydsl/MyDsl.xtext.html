@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+a {
+    color: #005B81;
+    text-decoration: none;
+}
+a:hover {
+    color: #E32E00;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.tooltip {
+	white-space:pre;
+	outline:none;
+}
+.tooltipContent {
+	white-space: normal;
+   z-index:10;
+  	line-height:16px;
+	display:inline;
+	padding:14px 20px;
+	width: auto;
+	position:absolute;
+	color:#111;
+	border:1px solid #DCA;
+	background:#fffAF0;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script>
+function toggle(elementId, toggleButtonId) {
+	var ele = document.getElementById(elementId);
+	if(ele.style.display == "block") {
+		ele.style.display = "none";
+	}
+	else {
+		ele.style.display = "block";
+	}
+	var s = document.getElementById(toggleButtonId).innerHTML;
+	if (s.search("show") > 0) {
+		s = s.replace("show","hide");
+	} else {
+		s = s.replace("hide","show");
+	}
+	document.getElementById(toggleButtonId).innerHTML = s;
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script>	$(function() {		$('.tooltipButton').click(function(){			var visible = $(this).next().is(':visible');			$('.tooltipContent').hide();			if (visible) {		  		$(this).next().hide();			} else {				$(this).next().show();			}		});		$('.tooltipClose').click(function(){			$(this).parent().hide();		});	});</script><title>org.xtext.example.mydsl.MyDsl language documentation</title>
+</head>
+<body>
+<h1>org.xtext.example.mydsl.MyDsl language documentation</h1>
+<pre>grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+import &quot;org.xtext.example.mydsl.model&quot;
+
+<span class="tooltip"><a class="tooltipButton">DomainModel</a><div class="tooltipContent" style="display: none"><a href=#modelDomainModel>DomainModel</a>
+<br/><br/>
+Root of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>:
+	(<span class="tooltip"><a class="tooltipButton">elements</a><div class="tooltipContent" style="display: none">			<a href=#modelDomainModel>elements</a>
+			<br/><br/>
+			Elements of the model.
+<br/><br/><a class="tooltipClose">Close</a></div></span> += <span class="tooltip"><a class="tooltipButton">ModelElement</a><div class="tooltipContent" style="display: none"><a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>)*
+;
+
+<span class="tooltip"><a class="tooltipButton">ModelElement</a><div class="tooltipContent" style="display: none"><a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>:
+	<span class="tooltip"><a class="tooltipButton">Library</a><div class="tooltipContent" style="display: none"><a href=#modelLibrary>Library</a>
+<br/><br/>
+A library that contains books and writers.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span> | <span class="tooltip"><a class="tooltipButton">Author</a><div class="tooltipContent" style="display: none"><a href=#modelAuthor>Author</a>
+<br/><br/>
+Author that writes books.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span> | <span class="tooltip"><a class="tooltipButton">Book</a><div class="tooltipContent" style="display: none"><a href=#modelBook>Book</a>
+<br/><br/>
+A book of the library.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>
+; 
+	
+<span class="tooltip"><a class="tooltipButton">Library</a><div class="tooltipContent" style="display: none"><a href=#modelLibrary>Library</a>
+<br/><br/>
+A library that contains books and writers.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>:  
+	&quot;library&quot; <span class="tooltip"><a class="tooltipButton">name</a><div class="tooltipContent" style="display: none">			<a href=#modelModelElement>name</a>
+			<br/><br/>
+			ID of the element. The ID must be unique within its container by object (reference) type.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=ID
+	&quot;{&quot; 
+	(
+		(&quot;book&quot; <span class="tooltip"><a class="tooltipButton">books</a><div class="tooltipContent" style="display: none">			<a href=#modelLibrary>books</a>
+			<br/><br/>
+			Books of the library.
+<br/><br/><a class="tooltipClose">Close</a></div></span>+=[<span class="tooltip"><a class="tooltipButton">Book</a><div class="tooltipContent" style="display: none"><a href=#modelBook>Book</a>
+<br/><br/>
+A book of the library.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>])*
+		(&quot;author&quot; <span class="tooltip"><a class="tooltipButton">authors</a><div class="tooltipContent" style="display: none">			<a href=#modelLibrary>authors</a>
+			<br/><br/>
+			Authors of the library.
+<br/><br/><a class="tooltipClose">Close</a></div></span>+=[<span class="tooltip"><a class="tooltipButton">Author</a><div class="tooltipContent" style="display: none"><a href=#modelAuthor>Author</a>
+<br/><br/>
+Author that writes books.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>])*	
+	)
+	&quot;}&quot;	
+; 
+
+<span class="tooltip"><a class="tooltipButton">Author</a><div class="tooltipContent" style="display: none"><a href=#modelAuthor>Author</a>
+<br/><br/>
+Author that writes books.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>: 
+	&quot;author&quot; <span class="tooltip"><a class="tooltipButton">name</a><div class="tooltipContent" style="display: none">			<a href=#modelModelElement>name</a>
+			<br/><br/>
+			ID of the element. The ID must be unique within its container by object (reference) type.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=ID
+	&quot;{&quot;
+	( 
+		&quot;name&quot; <span class="tooltip"><a class="tooltipButton">fullName</a><div class="tooltipContent" style="display: none">			<a href=#modelAuthor>fullName</a>
+			<br/><br/>
+			Name of the author.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=STRING
+		(&quot;book&quot; (<span class="tooltip"><a class="tooltipButton">books</a><div class="tooltipContent" style="display: none">			<a href=#modelAuthor>books</a>
+			<br/><br/>
+			Books of the author.
+<br/><br/><a class="tooltipClose">Close</a></div></span> += [<span class="tooltip"><a class="tooltipButton">Book</a><div class="tooltipContent" style="display: none"><a href=#modelBook>Book</a>
+<br/><br/>
+A book of the library.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>]))*
+	)
+	&quot;}&quot;
+;
+
+<span class="tooltip"><a class="tooltipButton">Book</a><div class="tooltipContent" style="display: none"><a href=#modelBook>Book</a>
+<br/><br/>
+A book of the library.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>: 
+	&quot;book&quot; <span class="tooltip"><a class="tooltipButton">name</a><div class="tooltipContent" style="display: none">			<a href=#modelModelElement>name</a>
+			<br/><br/>
+			ID of the element. The ID must be unique within its container by object (reference) type.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=ID
+	&quot;{&quot;
+	(
+		&quot;title&quot; <span class="tooltip"><a class="tooltipButton">title</a><div class="tooltipContent" style="display: none">			<a href=#modelBook>title</a>
+			<br/><br/>
+			Title of the book.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=STRING
+		(&quot;page&quot; <span class="tooltip"><a class="tooltipButton">pages</a><div class="tooltipContent" style="display: none">			<a href=#modelBook>pages</a>
+			<br/><br/>
+			Number of pages.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=INT)?
+		(&quot;category&quot; <span class="tooltip"><a class="tooltipButton">category</a><div class="tooltipContent" style="display: none">			<a href=#modelBook>category</a>
+			<br/><br/>
+			Category of the book.
+<br/><br/><a class="tooltipClose">Close</a></div></span>=<span class="tooltip"><a class="tooltipButton">BookCategory</a><div class="tooltipContent" style="display: none"><a href=#modelBookCategory>BookCategory</a>
+<br/><br/>
+Category of a book.<br/>
+<hr/>Literal: <a href=#modelBookCategory>Mystery</a> (default)
+<br/><br/>
+Mystery category.<br/>
+<hr/>Literal: <a href=#modelBookCategory>ScienceFiction</a>
+<br/><br/>
+ScienceFiction category.<br/>
+<hr/>Literal: <a href=#modelBookCategory>Biography</a>
+<br/><br/>
+Biography category.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>)?
+		(&quot;author&quot; (<span class="tooltip"><a class="tooltipButton">authors</a><div class="tooltipContent" style="display: none">			<a href=#modelBook>authors</a>
+			<br/><br/>
+			Authors of the book.
+<br/><br/><a class="tooltipClose">Close</a></div></span> += [<span class="tooltip"><a class="tooltipButton">Author</a><div class="tooltipContent" style="display: none"><a href=#modelAuthor>Author</a>
+<br/><br/>
+Author that writes books.<br/>
+<hr/>Supertype: <a href=#modelModelElement>ModelElement</a>
+<br/><br/>
+Element of the model.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>]))*
+	)
+	&quot;}&quot;
+;
+
+enum <span class="tooltip"><a class="tooltipButton">BookCategory</a><div class="tooltipContent" style="display: none"><a href=#modelBookCategory>BookCategory</a>
+<br/><br/>
+Category of a book.<br/>
+<hr/>Literal: <a href=#modelBookCategory>Mystery</a> (default)
+<br/><br/>
+Mystery category.<br/>
+<hr/>Literal: <a href=#modelBookCategory>ScienceFiction</a>
+<br/><br/>
+ScienceFiction category.<br/>
+<hr/>Literal: <a href=#modelBookCategory>Biography</a>
+<br/><br/>
+Biography category.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>:
+	<span class="tooltip"><a class="tooltipButton">Biography</a><div class="tooltipContent" style="display: none"><a href=#modelBookCategory>Biography</a>
+<br/><br/>
+Biography category.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span> | <span class="tooltip"><a class="tooltipButton">Mystery</a><div class="tooltipContent" style="display: none"><a href=#modelBookCategory>Mystery</a>
+<br/><br/>
+Mystery category.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span> | <span class="tooltip"><a class="tooltipButton">ScienceFiction</a><div class="tooltipContent" style="display: none"><a href=#modelBookCategory>ScienceFiction</a>
+<br/><br/>
+ScienceFiction category.<br/>
+<br/><br/><a class="tooltipClose">Close</a></div></span>
+;</pre><hr/>
+<h1 id="model"><a href="#model">The <span class="packageName">model</span> package</a></h1>
+
+<p>Library Example Domain Specific model</p>
+<div class="">EPackage properties:</div>
+<div class="keyValue"><span class="label">Namespace Prefix: </span><span class="teletype">model</span></div>
+
+<div class="keyValue"><span class="label">Namespace URI: </span><span class="teletype">org.xtext.example.mydsl.model</span></div>
+
+<h2 id="modelAuthor"><a href="#modelAuthor">Author</a></h2>
+
+<p>Author that writes books.</p>
+version: 1<br>doorsId: 3<br>
+<h6><b>Supertype:</b> <a href=#modelModelElement>ModelElement</a> <a id="modelAuthor.modelModelElement.toggleButton" href="javascript:toggle('modelAuthor.modelModelElement', 'modelAuthor.modelModelElement.toggleButton');">[show]</a><div id="modelAuthor.modelModelElement" style="display: none" href="javascript:toggle();"><p>Element of the model.</p>
+version: 1<br>doorsId: 1<br><table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Attributes</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelAuthor.modelModelElement.name" class="teletype">name</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>ID of the element. The ID must be unique within its container by object (reference) type.</p>
+version: 1<br>doorsId: 7<br></td>
+				</tr></table>
+<a href="#model.ModelElement.attr"></a>
+</div></h6><table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Attributes</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelAuthor.fullName" class="teletype">fullName</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>Name of the author.</p>
+version: 1<br>doorsId: 10<br></td>
+				</tr></table>
+<a href="#model.Author.attr"></a>
+<table>
+<tr>
+	<th colspan="3"><div class="tableHeader">References</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelAuthor.books" class="teletype">books</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><a href="#modelBook">Book</a></span></div>
+<div class="label">Cardinality: [0..*]</div>
+</td> 
+<td> <p>Books of the author.</p>
+version: 1<br>doorsId: 11<br></td>
+				</tr></table>
+<a href="#model.Author.ref"></a>
+<h2 id="modelBook"><a href="#modelBook">Book</a></h2>
+
+<p>A book of the library.</p>
+version: 1<br>doorsId: 4<br>
+<h6><b>Supertype:</b> <a href=#modelModelElement>ModelElement</a> <a id="modelBook.modelModelElement.toggleButton" href="javascript:toggle('modelBook.modelModelElement', 'modelBook.modelModelElement.toggleButton');">[show]</a><div id="modelBook.modelModelElement" style="display: none" href="javascript:toggle();"><p>Element of the model.</p>
+version: 1<br>doorsId: 1<br><table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Attributes</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelBook.modelModelElement.name" class="teletype">name</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>ID of the element. The ID must be unique within its container by object (reference) type.</p>
+version: 1<br>doorsId: 7<br></td>
+				</tr></table>
+<a href="#model.ModelElement.attr"></a>
+</div></h6><table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Attributes</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelBook.category" class="teletype">category</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><a href="#modelBookCategory">BookCategory</a></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>Category of the book.</p>
+version: 1<br>doorsId: 14<br></td>
+				</tr><tr>	<td><div id="modelBook.pages" class="teletype">pages</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>Number of pages.</p>
+version: 1<br>doorsId: 13<br></td>
+				</tr><tr>	<td><div id="modelBook.title" class="teletype">title</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>Title of the book.</p>
+version: 1<br>doorsId: 12<br></td>
+				</tr></table>
+<a href="#model.Book.attr"></a>
+<table>
+<tr>
+	<th colspan="3"><div class="tableHeader">References</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelBook.authors" class="teletype">authors</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><a href="#modelAuthor">Author</a></span></div>
+<div class="label">Cardinality: [0..*]</div>
+</td> 
+<td> <p>Authors of the book.</p>
+version: 1<br>doorsId: 15<br></td>
+				</tr></table>
+<a href="#model.Book.ref"></a>
+<h2 id="modelBookCategory"><a href="#modelBookCategory">BookCategory</a></h2>
+
+<p>Category of a book.</p>
+version: 1<br>doorsId: 5<br>
+<table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Literals</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Value</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>
+	<td>
+		<span class="teletype">Mystery</span>
+	</td>
+	<td>
+		0
+	</td>
+	<td>
+		<p>Mystery category.</p>
+		version: 1<br>doorsId: 16<br>
+	</td>	
+</tr>
+<tr>
+	<td>
+		<span class="teletype">ScienceFiction</span>
+	</td>
+	<td>
+		1
+	</td>
+	<td>
+		<p>ScienceFiction category.</p>
+		version: 1<br>doorsId: 17<br>
+	</td>	
+</tr>
+<tr>
+	<td>
+		<span class="teletype">Biography</span>
+	</td>
+	<td>
+		2
+	</td>
+	<td>
+		<p>Biography category.</p>
+		version: 1<br>doorsId: 18<br>
+	</td>	
+</tr>
+</table>
+<a href="#model.BookCategory.lit"></a>
+<h2 id="modelDomainModel"><a href="#modelDomainModel">DomainModel</a></h2>
+
+<p>Root of the model.</p>
+version: 1<br>doorsId: 0<br>
+<table>
+<tr>
+	<th colspan="3"><div class="tableHeader">References</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelDomainModel.elements" class="teletype">elements</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><a href="#modelModelElement">ModelElement</a></span></div>
+<div class="label">Cardinality: [0..*]</div>
+<div class="label">Containment</div>
+</td> 
+<td> <p>Elements of the model.</p>
+version: 1<br>doorsId: 6<br></td>
+				</tr></table>
+<a href="#model.DomainModel.ref"></a>
+<h2 id="modelLibrary"><a href="#modelLibrary">Library</a></h2>
+
+<p>A library that contains books and writers.</p>
+version: 1<br>doorsId: 2<br>
+<h6><b>Supertype:</b> <a href=#modelModelElement>ModelElement</a> <a id="modelLibrary.modelModelElement.toggleButton" href="javascript:toggle('modelLibrary.modelModelElement', 'modelLibrary.modelModelElement.toggleButton');">[show]</a><div id="modelLibrary.modelModelElement" style="display: none" href="javascript:toggle();"><p>Element of the model.</p>
+version: 1<br>doorsId: 1<br><table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Attributes</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelLibrary.modelModelElement.name" class="teletype">name</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>ID of the element. The ID must be unique within its container by object (reference) type.</p>
+version: 1<br>doorsId: 7<br></td>
+				</tr></table>
+<a href="#model.ModelElement.attr"></a>
+</div></h6><table>
+<tr>
+	<th colspan="3"><div class="tableHeader">References</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelLibrary.authors" class="teletype">authors</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><a href="#modelAuthor">Author</a></span></div>
+<div class="label">Cardinality: [0..*]</div>
+</td> 
+<td> <p>Authors of the library.</p>
+version: 1<br>doorsId: 9<br></td>
+				</tr><tr>	<td><div id="modelLibrary.books" class="teletype">books</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><a href="#modelBook">Book</a></span></div>
+<div class="label">Cardinality: [0..*]</div>
+</td> 
+<td> <p>Books of the library.</p>
+version: 1<br>doorsId: 8<br></td>
+				</tr></table>
+<a href="#model.Library.ref"></a>
+<h2 id="modelModelElement"><a href="#modelModelElement">ModelElement</a></h2>
+
+<p>Element of the model.</p>
+version: 1<br>doorsId: 1<br>
+<table>
+<tr>
+	<th colspan="3"><div class="tableHeader">Attributes</div></th>
+</tr>
+<tr>
+	<th><div class="columnHeader">Name</div></th>
+	<th><div class="columnHeader">Properties</div></th>
+	<th><div class="columnHeader">Documentation</div></th>
+</tr>
+<tr>	<td><div id="modelModelElement.name" class="teletype">name</div>
+	</td>
+	<td><div class="keyValue"><span class="label">T: </span><span class="teletype"><div class="alert">MISSING TYPE cls!</div></span></div>
+<div class="label">Cardinality: [0..1]</div>
+<div class="label">Not unique</div>
+ </td> <td><p>ID of the element. The ID must be unique within its container by object (reference) type.</p>
+version: 1<br>doorsId: 7<br></td>
+				</tr></table>
+<a href="#model.ModelElement.attr"></a>
+</body>
+</html>

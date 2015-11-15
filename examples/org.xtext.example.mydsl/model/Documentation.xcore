@@ -1,0 +1,6 @@
+package doc
+
+class Documentation {
+	String version
+	int doorsId
+}

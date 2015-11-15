@@ -10,7 +10,7 @@ import hu.qgears.xtextdoc.util.UtilDoc;
 /**
  * This class is for adding own documentations to mouse hover and content assist.
  * 
- * Bind with [LanguageName]UiModule.bindIEObjectDocumentationProviderr().
+ * Bind with [LanguageName]UiModule.bindIEObjectDocumentationProvider().
  * 
  * @author glaseradam
  *

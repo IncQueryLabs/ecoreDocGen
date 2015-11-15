@@ -1,0 +1,55 @@
+@GenModel(documentation="Library Example Domain Specific model", 
+	suppressGenModelAnnotations="false", 
+	docPath="org.xtext.example.mydsl/model/Documentation.xcore"
+) 
+package org.xtext.example.mydsl.model
+
+@GenModel(documentation="Root of the model.", version="1", doorsId="0")
+class DomainModel { 
+	@GenModel(documentation="Elements of the model.", version="1", doorsId="6")
+	contains ModelElement[] elements
+}
+
+@GenModel(documentation="Element of the model.", version="1", doorsId="1")
+class ModelElement {
+ 	@GenModel(documentation="ID of the element. The ID must be unique within its container by object (reference) type.", version="1", doorsId="7")
+	String name
+}
+
+@GenModel(documentation="A library that contains books and writers.", version="1", doorsId="2")
+class Library extends ModelElement {
+	@GenModel(documentation="Books of the library.", version="1", doorsId="8")
+	refers Book[] books
+	@GenModel(documentation="Authors of the library.", version="1", doorsId="9")
+	refers Author[] authors
+}    
+
+@GenModel(documentation="Author that writes books.", version="1", doorsId="3")
+class Author extends ModelElement {
+	@GenModel(documentation="Name of the author.", version="1", doorsId="10")
+	String fullName
+	@GenModel(documentation="Books of the author.", version="1", doorsId="11")
+	refers Book[] books	
+}
+
+@GenModel(documentation="A book of the library.", version="2", doorsId="4")
+class Book extends ModelElement {
+	@GenModel(documentation="Title of the book.", version="2", doorsId="12")
+	String title
+	@GenModel(documentation="Number of pages.", version="2", doorsId="13")
+	int pages
+	@GenModel(documentation="Category of the book.", version="2", doorsId="14")
+	BookCategory category
+	@GenModel(documentation="Authors of the book.", version="2", doorsId="15")
+	refers Author[] authors	
+}
+
+@GenModel(documentation="Category of a book.", version="1", doorsId="5")
+ enum BookCategory {
+ 	@GenModel(documentation="Mystery category.", version="1", doorsId="16")
+   	Mystery = 0
+   	@GenModel(documentation="ScienceFiction category.", version="1", doorsId="17")
+   	ScienceFiction = 1
+   	@GenModel(documentation="Biography category.", version="1", doorsId="18")
+   	Biography = 2
+ }

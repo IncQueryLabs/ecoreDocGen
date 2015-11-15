@@ -1,0 +1,57 @@
+/*
+ * The first example library.
+ */
+library LIB_01 {
+	book DaVinciCode
+	book AngelsDemons
+	book HP1
+	author Rowling
+	author DanBrown
+}
+
+/* 
+ * Joanne "Jo" Rowling, (born 31 July 1965), pen names J. K. Rowling and Robert Galbraith, is a British novelist best known as the author of the Harry Potter fantasy series.
+ */
+author Rowling {
+	name "J.K.Rowling"
+	book HP1
+} 
+
+/* 
+ * Daniel "Dan" Brown (born June 22, 1964) is an American author of thriller fiction who is best known for the 2003 bestselling novel The Da Vinci Code. 
+ */
+author DanBrown {
+	name "Dan Brown"
+	book DaVinciCode
+}
+
+/* 
+ * Harry Potter and the Philosopher's Stone is the first novel in the Harry Potter series and J. K. Rowling's debut novel.
+ */
+book HP1 {
+	title "Harry Potter and the Philosopher's Stone"
+	page 223
+	author Rowling
+}
+
+/* 
+ * The Da Vinci Code is a 2003 mystery-detective novel by Dan Brown.
+ */
+book DaVinciCode {
+	title "The Da Vinci Code"
+	page 490
+	category Mystery
+	author DanBrown
+}
+
+/* 
+ * Angels & Demons is a 2000 bestselling mystery-thriller novel written by American author Dan Brown and published by Pocket Books and then by Corgi Books.
+ */
+book AngelsDemons {
+	title "Angels & Demons"
+	page 616
+	author DanBrown
+}
+
+
+

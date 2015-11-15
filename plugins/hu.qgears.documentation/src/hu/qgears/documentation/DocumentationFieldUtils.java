@@ -2,7 +2,6 @@ package hu.qgears.documentation;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,6 +15,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xcore.resource.XcoreResource;
 
 /**
@@ -40,43 +41,46 @@ public class DocumentationFieldUtils {
 	}
 
 	/**
-	 * Gets the existing documentation fields from the class named 'Documentation' in package 'doc'. 
-	 * Returns empty list if the model element is from the 'doc.Documentation' resource, 
-	 * otherwise it collects the fields from there.
+	 * Gets the existing documentation fields from the class named 'Documentation' in package 'doc'.
 	 * @param eModelElement
 	 * @return
 	 */
 	public static List<DocumentationField> getDocumentationFields(EModelElement eModelElement) {
-		Resource eResource = eModelElement.eResource();
-		URI uri = eResource.getURI();
-		List<String> segmentsList = uri.segmentsList();
-		String s = segmentsList.get(segmentsList.size()-1);
-		if (s.equals("Documentation.xcore")) {
-			return Collections.emptyList();
+		List<DocumentationField> list = new ArrayList<>();	
+
+		EObject container = eModelElement;
+		while (container.eContainer() != null) {
+			container = container.eContainer();
 		}
-		List<DocumentationField> list = new ArrayList<>();		
-		ResourceSet resourceSet = eResource.getResourceSet();
-		for (Resource resource : resourceSet.getResources()) {
-			if (resource instanceof XcoreResource) {
-				uri = resource.getURI();
-				segmentsList = uri.segmentsList();
-				s = segmentsList.get(segmentsList.size()-1);
-				if (s.equals("Documentation.xcore")) {
-					EList<EObject> contents = resource.getContents();
-					for (EObject content : contents) {
-						if (content instanceof EPackage) {
-							EPackage ePackage = (EPackage) content;
-							EClassifier eClassifier = ePackage.getEClassifier("Documentation");
-							if (eClassifier != null) {
-								if (eClassifier instanceof EClass) {
-									EClass eClass = (EClass) eClassifier;
-									EList<EStructuralFeature> eStructuralFeatures = eClass.getEStructuralFeatures();
-									for (EStructuralFeature f : eStructuralFeatures) {
-										String name = f.getName();
-										String type = f.getEType().getInstanceClassName();
-										String annotationValue = getAnnotation(eModelElement, name);
-										DocumentationField docField = new DocumentationField(name, type, annotationValue);
-										list.add(docField);
+		try {
+			String annotation = DocumentationFieldUtils.getAnnotation((EModelElement) container, "docPath");
+			if (annotation != null) {
+				URI uri = URI.createPlatformResourceURI("" + annotation, true);
+				ResourceSet set = new ResourceSetImpl();
+				Resource resource = set.createResource(uri);
+				resource.load(null);
+				EcoreUtil.resolveAll(resource);
+				if (resource instanceof XcoreResource) {
+					uri = resource.getURI();
+					List<String> segmentsList = uri.segmentsList();
+					String s = segmentsList.get(segmentsList.size()-1);
+					if (s.equals("Documentation.xcore")) {
+						EList<EObject> contents = resource.getContents();
+						for (EObject content : contents) {
+							if (content instanceof EPackage) {
+								EPackage ePackage = (EPackage) content;
+								EClassifier eClassifier = ePackage.getEClassifier("Documentation");
+								if (eClassifier != null) {
+									if (eClassifier instanceof EClass) {
+										EClass eClass = (EClass) eClassifier;
+										EList<EStructuralFeature> eStructuralFeatures = eClass.getEStructuralFeatures();
+										for (EStructuralFeature f : eStructuralFeatures) {
+											String name = f.getName();
+											String type = f.getEType().getInstanceClassName();
+											String annotationValue = getAnnotation(eModelElement, name);
+											DocumentationField docField = new DocumentationField(name, type, annotationValue);
+											list.add(docField);
+										}
 									}
 								}
 							}
@@ -84,6 +88,9 @@ public class DocumentationFieldUtils {
 					}
 				}
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return list;
 	}

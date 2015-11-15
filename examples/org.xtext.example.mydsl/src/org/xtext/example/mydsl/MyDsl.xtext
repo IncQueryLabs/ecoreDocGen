@@ -1,0 +1,47 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+import "org.xtext.example.mydsl.model"
+
+DomainModel:
+	(elements += ModelElement)*
+;
+
+ModelElement:
+	Library | Author | Book
+; 
+	
+Library:  
+	"library" name=ID
+	"{" 
+	(
+		("book" books+=[Book])*
+		("author" authors+=[Author])*	
+	)
+	"}"	
+; 
+
+Author: 
+	"author" name=ID
+	"{"
+	( 
+		"name" fullName=STRING
+		("book" (books += [Book]))*
+	)
+	"}"
+;
+
+Book: 
+	"book" name=ID
+	"{"
+	(
+		"title" title=STRING
+		("page" pages=INT)?
+		("category" category=BookCategory)?
+		("author" (authors += [Author]))*
+	)
+	"}"
+;
+
+enum BookCategory:
+	Biography | Mystery | ScienceFiction
+;

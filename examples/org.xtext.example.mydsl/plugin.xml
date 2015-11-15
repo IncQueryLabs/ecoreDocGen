@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.xtext.org/example/mydsl/MyDsl" 
+       class = "org.xtext.example.mydsl.myDsl.MyDslPackage"
+       genModel = "model/generated/MyDsl.genmodel" /> 
+	
+  </extension>
+
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Library -->
+      <package
+            uri="org.xtext.example.mydsl.model"
+            class="org.xtext.example.mydsl.model.ModelPackage"
+            genModel="model/Library.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Documentation -->
+      <package
+            uri="doc"
+            class="doc.DocPackage"
+            genModel="model/Documentation.xcore"/>
+   </extension>
+
+</plugin>

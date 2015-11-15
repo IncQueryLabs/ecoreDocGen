@@ -1,4 +1,4 @@
-package hu.qgears.xtextdoc.validator;
+package hu.qgears.documentation;
 
 import java.util.List;
 import java.util.Map;
@@ -16,9 +16,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreValidator;
 
-import hu.qgears.documentation.DocumentationField;
-import hu.qgears.documentation.DocumentationFieldUtils;
-
 /**
  * Custom subclass of {@link EcoreValidator} for registering further validation
  * rules.
@@ -33,7 +30,7 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 
 	private EcoreDocumentationValidator() {
 	}
-
+	
 	@Override
 	public boolean validateEReference(EReference eReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		validateDocumentation(eReference, diagnostics);
@@ -65,8 +62,7 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 	}
 	
 	@Override
-	public boolean validateEEnumLiteral(EEnumLiteral eEnumLiteral, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public boolean validateEEnumLiteral(EEnumLiteral eEnumLiteral, DiagnosticChain diagnostics,	Map<Object, Object> context) {
 		validateDocumentation(eEnumLiteral, diagnostics);
 		return super.validateEEnumLiteral(eEnumLiteral, diagnostics, context);
 	}
