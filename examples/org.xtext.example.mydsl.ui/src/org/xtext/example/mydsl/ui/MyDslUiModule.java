@@ -12,7 +12,6 @@ import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import hu.qgears.xtextdoc.editor.MyEObjectDocumentationProvider;
 import hu.qgears.xtextdoc.editor.MyEObjectHover;
 import hu.qgears.xtextdoc.editor.MyEObjectHoverProvider;
-import hu.qgears.xtextdoc.editor.MyProposalProvider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -23,7 +22,6 @@ public class MyDslUiModule extends org.xtext.example.mydsl.ui.AbstractMyDslUiMod
 		super(abstractUIPlugin);
 	}
 	
-	//TODO
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
 		return MyEObjectDocumentationProvider.class;
 	}
@@ -38,7 +36,6 @@ public class MyDslUiModule extends org.xtext.example.mydsl.ui.AbstractMyDslUiMod
 		return MyProposalProvider.class;
 	}
 	
-	//TODO
     public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
         return MyEObjectHoverProvider.class;
     }

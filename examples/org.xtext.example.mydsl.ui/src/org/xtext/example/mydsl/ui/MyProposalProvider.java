@@ -26,7 +26,7 @@ import hu.qgears.xtextdoc.util.UtilDoc;
  * @author glaseradam
  *
  */
-public class _MyProposalProvider extends AbstractMyDslProposalProvider {
+public class MyProposalProvider extends AbstractMyDslProposalProvider {
 
 	@Inject
 	private KeywordHelper keywordHelper;
