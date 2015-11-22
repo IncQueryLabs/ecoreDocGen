@@ -90,8 +90,10 @@ public class UtilDoc {
 				sb.append(BRBR);
 				sb.append(DocumentationFieldUtils.getAnnotation(eClass, "documentation"));
 				for (DocumentationField documentationField : DocumentationFieldUtils.getDocumentationFields(eClass)) {
-					sb.append(BR);
-					sb.append(documentationField.getKey() + ": " + documentationField.getValue());
+					if (documentationField.getValue() != null) {
+						sb.append(BR);
+						sb.append(documentationField.getKey() + ": " + documentationField.getValue());
+					}
 				}
 				for (EClass superEClass : eClass.getESuperTypes()) {
 					sb.append("<hr>Supertype: ");
@@ -99,17 +101,20 @@ public class UtilDoc {
 					sb.append(BRBR);
 					sb.append(DocumentationFieldUtils.getAnnotation(superEClass, "documentation"));
 					for (DocumentationField documentationField : DocumentationFieldUtils.getDocumentationFields(superEClass)) {
-						sb.append(BR);
-						sb.append(documentationField.getKey() + ": " + documentationField.getValue());
+						if (documentationField.getValue() != null) {
+							sb.append(BR);
+							sb.append(documentationField.getKey() + ": " + documentationField.getValue());
+						}
 					}
 				}
-
 			} else {
 				sb.append(eClass.getName() + "." + eFeature.getName() + ": ");
 				sb.append(DocumentationFieldUtils.getAnnotation(eFeature, "documentation"));
 				for (DocumentationField documentationField : DocumentationFieldUtils.getDocumentationFields(eFeature)) {
-					sb.append(BR);
-					sb.append(documentationField.getKey() + ": " + documentationField.getValue());
+					if (documentationField.getValue() != null) {
+						sb.append(BR);
+						sb.append(documentationField.getKey() + ": " + documentationField.getValue());
+					}
 				}
 				if (eFeature instanceof EAttribute) {
 					EAttribute eAttribute = (EAttribute) eFeature;

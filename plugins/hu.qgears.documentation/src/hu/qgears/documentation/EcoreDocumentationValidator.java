@@ -92,16 +92,16 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 			String annotationValue) {
 		try {
 			switch (type) {
-			case "int":
+			case "EInt":
 				Integer.parseInt(annotationValue);
 				break;
-			case "long":
+			case "ELong":
 				Long.parseLong(annotationValue);
 				break;
-			case "short":
+			case "EShort":
 				Short.parseShort(annotationValue);
 				break;
-			case "float":
+			case "EFloat":
 				Float.parseFloat(annotationValue);
 				break;
 			case "double":
@@ -110,17 +110,18 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 			case "byte":
 				Byte.parseByte(annotationValue);
 				break;
-			case "char":
+			case "EChar":
 				if (annotationValue.length() > 1) {
 					throw new Exception();
 				}
 				break;
-			case "boolean":
+			case "EBoolean":
 				if (!(annotationValue.equals("true") || annotationValue.equals("false"))) {
 					throw new Exception();
 				}
 				break;
 			default:
+				System.out.println("Unimplemented documentation field type: " + type);
 				break;
 			}
 		} catch (Exception e) {

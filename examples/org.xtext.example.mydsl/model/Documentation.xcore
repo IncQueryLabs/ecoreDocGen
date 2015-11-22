@@ -1,6 +1,6 @@
 package doc
 
 class Documentation {
-	String version
+	int version
 	int doorsId
 }
