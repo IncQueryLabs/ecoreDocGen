@@ -202,7 +202,7 @@ function getElementsByTagNames(list,obj) {
 						val superCls = it as EClass
 	    				val id = escapeLabel(cls.EPackage.nsPrefix+"."+cls.name) + "."  + escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name);
 	    				'''<h6>'''.appendToBuilder    	
-	    				'''<b>Supertype:</b> <a href=#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»>«superCls.name»</a>'''.appendToBuilder    	
+	    				'''<b>Supertype:</b> <a href="#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»">«superCls.name»</a>'''.appendToBuilder    	
     					''' <a id="«id».toggleButton" href="javascript:toggle('«id»', '«id».toggleButton');">[show]</a>'''.appendToBuilder
 	    				'''<div id="«id»" style="display: none" href="javascript:toggle();">'''.appendToBuilder				
 	    				'''«superCls.findGenModelDocumentation»'''.appendToBuilder
