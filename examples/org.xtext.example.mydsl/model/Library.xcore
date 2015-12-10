@@ -1,55 +1,59 @@
 @GenModel(documentation="Library Example Domain Specific model", 
 	suppressGenModelAnnotations="false", 
 	docPath="org.xtext.example.mydsl/model/Documentation.xcore"
-) 
+)
 package org.xtext.example.mydsl.model
 
 @GenModel(documentation="Root of the model.", version="1", doorsId="0")
 class DomainModel { 
-	@GenModel(documentation="Elements of the model.", version="1", doorsId="6")
+	@GenModel(documentation="Elements of the model.", version="1", doorsId="1")
 	contains ModelElement[] elements
 }
 
-@GenModel(documentation="Element of the model.", version="1", doorsId="1")
-class ModelElement {
- 	@GenModel(documentation="ID of the element. The ID must be unique within its container by object (reference) type.", version="1", doorsId="7")
+@GenModel(documentation="Element of the model.", version="1", doorsId="2")
+class ModelElement { 
+ 	@GenModel(documentation="The unique ID of the element.", version="1", doorsId="3")
 	String name
 }
 
-@GenModel(documentation="A library that contains books and writers.", version="1", doorsId="2")
+@GenModel(documentation="A library that contains books, writers and reviews.", version="1", doorsId="4")
 class Library extends ModelElement {
-	@GenModel(documentation="Books of the library.", version="1", doorsId="8")
+	@GenModel(documentation="Books of the library.", version="1", doorsId="5")
 	refers Book[] books
-	@GenModel(documentation="Authors of the library.", version="1", doorsId="9")
+	@GenModel(documentation="Authors of the library.", version="1", doorsId="6")
 	refers Author[] authors
-}    
+}
 
-@GenModel(documentation="Author that writes books.", version="1", doorsId="3")
+@GenModel(documentation="Author that writes books.", version="1", doorsId="7")
 class Author extends ModelElement {
-	@GenModel(documentation="Name of the author.", version="1", doorsId="10")
-	String fullName
-	@GenModel(documentation="Books of the author.", version="1", doorsId="11")
+	@GenModel(documentation="Books of the author.", version="1", doorsId="8")
 	refers Book[] books	
 }
 
-@GenModel(documentation="A book of the library.", version="2", doorsId="4")
+@GenModel(documentation="A book of the library.", version="1", doorsId="9")
 class Book extends ModelElement {
-	@GenModel(documentation="Title of the book.", version="2", doorsId="12")
-	String title
-	@GenModel(documentation="Number of pages.", version="2", doorsId="13")
+	@GenModel(documentation="Number of pages.", version="1", doorsId="10")
 	int pages
-	@GenModel(documentation="Category of the book.", version="2", doorsId="14")
+	@GenModel(documentation="Category of the book.", version="1", doorsId="11")
 	BookCategory category
-	@GenModel(documentation="Authors of the book.", version="2", doorsId="15")
+	@GenModel(documentation="Authors of the book.", version="1", doorsId="12")
 	refers Author[] authors	
 }
 
-@GenModel(documentation="Category of a book.", version="1", doorsId="5")
+@GenModel(documentation="Category of a book.", version="1", doorsId="13")
  enum BookCategory {
- 	@GenModel(documentation="Mystery category.", version="1", doorsId="16")
+ 	@GenModel(documentation="Mystery category.", version="1", doorsId="14")
    	Mystery = 0
-   	@GenModel(documentation="ScienceFiction category.", version="1", doorsId="17")
+   	@GenModel(documentation="ScienceFiction category.", version="1", doorsId="15")
    	ScienceFiction = 1
-   	@GenModel(documentation="Biography category.", version="1", doorsId="18")
+   	@GenModel(documentation="Biography category.", version="1", doorsId="16")
    	Biography = 2
- }
+}
+
+@GenModel(documentation="A rating of a book.", version="2", doorsId="17")
+class BookRating extends ModelElement {
+	@GenModel(documentation="The referred book.", version="2", doorsId="18")
+	refers Book book
+	@GenModel(documentation="The rating of the book out of 10.", version="2", doorsId="19")
+	int rating
+}

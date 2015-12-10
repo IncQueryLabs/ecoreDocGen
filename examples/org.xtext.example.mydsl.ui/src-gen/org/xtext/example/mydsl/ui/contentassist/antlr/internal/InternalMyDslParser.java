@@ -22,9 +22,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Biography'", "'Mystery'", "'ScienceFiction'", "'library'", "'{'", "'}'", "'book'", "'author'", "'name'", "'title'", "'page'", "'category'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Biography'", "'Mystery'", "'ScienceFiction'", "'library'", "'{'", "'}'", "'book'", "'author'", "'page'", "'category'", "'rating'"
     };
-    public static final int RULE_STRING=5;
+    public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__19=19;
     public static final int T__15=15;
@@ -39,8 +39,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     public static final int RULE_ID=4;
     public static final int RULE_WS=9;
     public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_INT=6;
-    public static final int T__22=22;
+    public static final int RULE_INT=5;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__20=20;
     public static final int T__21=21;
@@ -132,7 +131,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==14||(LA1_0>=17 && LA1_0<=18)) ) {
+                if ( (LA1_0==14||(LA1_0>=17 && LA1_0<=18)||LA1_0==21) ) {
                     alt1=1;
                 }
 
@@ -485,24 +484,101 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleBook"
 
 
+    // $ANTLR start "entryRuleBookRating"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:200:1: entryRuleBookRating : ruleBookRating EOF ;
+    public final void entryRuleBookRating() throws RecognitionException {
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:201:1: ( ruleBookRating EOF )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:202:1: ruleBookRating EOF
+            {
+             before(grammarAccess.getBookRatingRule()); 
+            pushFollow(FOLLOW_ruleBookRating_in_entryRuleBookRating362);
+            ruleBookRating();
+
+            state._fsp--;
+
+             after(grammarAccess.getBookRatingRule()); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBookRating369); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleBookRating"
+
+
+    // $ANTLR start "ruleBookRating"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:209:1: ruleBookRating : ( ( rule__BookRating__Group__0 ) ) ;
+    public final void ruleBookRating() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:213:2: ( ( ( rule__BookRating__Group__0 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:214:1: ( ( rule__BookRating__Group__0 ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:214:1: ( ( rule__BookRating__Group__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:215:1: ( rule__BookRating__Group__0 )
+            {
+             before(grammarAccess.getBookRatingAccess().getGroup()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:216:1: ( rule__BookRating__Group__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:216:2: rule__BookRating__Group__0
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group__0_in_ruleBookRating395);
+            rule__BookRating__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleBookRating"
+
+
     // $ANTLR start "ruleBookCategory"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:201:1: ruleBookCategory : ( ( rule__BookCategory__Alternatives ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:229:1: ruleBookCategory : ( ( rule__BookCategory__Alternatives ) ) ;
     public final void ruleBookCategory() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:205:1: ( ( ( rule__BookCategory__Alternatives ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:206:1: ( ( rule__BookCategory__Alternatives ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:233:1: ( ( ( rule__BookCategory__Alternatives ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:234:1: ( ( rule__BookCategory__Alternatives ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:206:1: ( ( rule__BookCategory__Alternatives ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:207:1: ( rule__BookCategory__Alternatives )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:234:1: ( ( rule__BookCategory__Alternatives ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:235:1: ( rule__BookCategory__Alternatives )
             {
              before(grammarAccess.getBookCategoryAccess().getAlternatives()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:208:1: ( rule__BookCategory__Alternatives )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:208:2: rule__BookCategory__Alternatives
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:236:1: ( rule__BookCategory__Alternatives )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:236:2: rule__BookCategory__Alternatives
             {
-            pushFollow(FOLLOW_rule__BookCategory__Alternatives_in_ruleBookCategory372);
+            pushFollow(FOLLOW_rule__BookCategory__Alternatives_in_ruleBookCategory432);
             rule__BookCategory__Alternatives();
 
             state._fsp--;
@@ -533,14 +609,14 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ModelElement__Alternatives"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:219:1: rule__ModelElement__Alternatives : ( ( ruleLibrary ) | ( ruleAuthor ) | ( ruleBook ) );
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:247:1: rule__ModelElement__Alternatives : ( ( ruleLibrary ) | ( ruleAuthor ) | ( ruleBook ) | ( ruleBookRating ) );
     public final void rule__ModelElement__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:223:1: ( ( ruleLibrary ) | ( ruleAuthor ) | ( ruleBook ) )
-            int alt2=3;
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:251:1: ( ( ruleLibrary ) | ( ruleAuthor ) | ( ruleBook ) | ( ruleBookRating ) )
+            int alt2=4;
             switch ( input.LA(1) ) {
             case 14:
                 {
@@ -557,6 +633,11 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                 alt2=3;
                 }
                 break;
+            case 21:
+                {
+                alt2=4;
+                }
+                break;
             default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
@@ -566,13 +647,13 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
             switch (alt2) {
                 case 1 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:224:1: ( ruleLibrary )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:252:1: ( ruleLibrary )
                     {
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:224:1: ( ruleLibrary )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:225:1: ruleLibrary
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:252:1: ( ruleLibrary )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:253:1: ruleLibrary
                     {
                      before(grammarAccess.getModelElementAccess().getLibraryParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleLibrary_in_rule__ModelElement__Alternatives407);
+                    pushFollow(FOLLOW_ruleLibrary_in_rule__ModelElement__Alternatives467);
                     ruleLibrary();
 
                     state._fsp--;
@@ -585,13 +666,13 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:230:6: ( ruleAuthor )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:258:6: ( ruleAuthor )
                     {
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:230:6: ( ruleAuthor )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:231:1: ruleAuthor
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:258:6: ( ruleAuthor )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:259:1: ruleAuthor
                     {
                      before(grammarAccess.getModelElementAccess().getAuthorParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleAuthor_in_rule__ModelElement__Alternatives424);
+                    pushFollow(FOLLOW_ruleAuthor_in_rule__ModelElement__Alternatives484);
                     ruleAuthor();
 
                     state._fsp--;
@@ -604,18 +685,37 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:236:6: ( ruleBook )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:264:6: ( ruleBook )
                     {
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:236:6: ( ruleBook )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:237:1: ruleBook
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:264:6: ( ruleBook )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:265:1: ruleBook
                     {
                      before(grammarAccess.getModelElementAccess().getBookParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleBook_in_rule__ModelElement__Alternatives441);
+                    pushFollow(FOLLOW_ruleBook_in_rule__ModelElement__Alternatives501);
                     ruleBook();
 
                     state._fsp--;
 
                      after(grammarAccess.getModelElementAccess().getBookParserRuleCall_2()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:270:6: ( ruleBookRating )
+                    {
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:270:6: ( ruleBookRating )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:271:1: ruleBookRating
+                    {
+                     before(grammarAccess.getModelElementAccess().getBookRatingParserRuleCall_3()); 
+                    pushFollow(FOLLOW_ruleBookRating_in_rule__ModelElement__Alternatives518);
+                    ruleBookRating();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getModelElementAccess().getBookRatingParserRuleCall_3()); 
 
                     }
 
@@ -640,13 +740,13 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BookCategory__Alternatives"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:247:1: rule__BookCategory__Alternatives : ( ( ( 'Biography' ) ) | ( ( 'Mystery' ) ) | ( ( 'ScienceFiction' ) ) );
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:281:1: rule__BookCategory__Alternatives : ( ( ( 'Biography' ) ) | ( ( 'Mystery' ) ) | ( ( 'ScienceFiction' ) ) );
     public final void rule__BookCategory__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:251:1: ( ( ( 'Biography' ) ) | ( ( 'Mystery' ) ) | ( ( 'ScienceFiction' ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:285:1: ( ( ( 'Biography' ) ) | ( ( 'Mystery' ) ) | ( ( 'ScienceFiction' ) ) )
             int alt3=3;
             switch ( input.LA(1) ) {
             case 11:
@@ -673,16 +773,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
             switch (alt3) {
                 case 1 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:252:1: ( ( 'Biography' ) )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:286:1: ( ( 'Biography' ) )
                     {
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:252:1: ( ( 'Biography' ) )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:253:1: ( 'Biography' )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:286:1: ( ( 'Biography' ) )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:287:1: ( 'Biography' )
                     {
                      before(grammarAccess.getBookCategoryAccess().getBiographyEnumLiteralDeclaration_0()); 
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:254:1: ( 'Biography' )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:254:3: 'Biography'
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:288:1: ( 'Biography' )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:288:3: 'Biography'
                     {
-                    match(input,11,FOLLOW_11_in_rule__BookCategory__Alternatives474); 
+                    match(input,11,FOLLOW_11_in_rule__BookCategory__Alternatives551); 
 
                     }
 
@@ -694,16 +794,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:259:6: ( ( 'Mystery' ) )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:293:6: ( ( 'Mystery' ) )
                     {
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:259:6: ( ( 'Mystery' ) )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:260:1: ( 'Mystery' )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:293:6: ( ( 'Mystery' ) )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:294:1: ( 'Mystery' )
                     {
                      before(grammarAccess.getBookCategoryAccess().getMysteryEnumLiteralDeclaration_1()); 
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:261:1: ( 'Mystery' )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:261:3: 'Mystery'
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:295:1: ( 'Mystery' )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:295:3: 'Mystery'
                     {
-                    match(input,12,FOLLOW_12_in_rule__BookCategory__Alternatives495); 
+                    match(input,12,FOLLOW_12_in_rule__BookCategory__Alternatives572); 
 
                     }
 
@@ -715,16 +815,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:266:6: ( ( 'ScienceFiction' ) )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:300:6: ( ( 'ScienceFiction' ) )
                     {
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:266:6: ( ( 'ScienceFiction' ) )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:267:1: ( 'ScienceFiction' )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:300:6: ( ( 'ScienceFiction' ) )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:301:1: ( 'ScienceFiction' )
                     {
                      before(grammarAccess.getBookCategoryAccess().getScienceFictionEnumLiteralDeclaration_2()); 
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:268:1: ( 'ScienceFiction' )
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:268:3: 'ScienceFiction'
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:302:1: ( 'ScienceFiction' )
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:302:3: 'ScienceFiction'
                     {
-                    match(input,13,FOLLOW_13_in_rule__BookCategory__Alternatives516); 
+                    match(input,13,FOLLOW_13_in_rule__BookCategory__Alternatives593); 
 
                     }
 
@@ -753,21 +853,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:280:1: rule__Library__Group__0 : rule__Library__Group__0__Impl rule__Library__Group__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:314:1: rule__Library__Group__0 : rule__Library__Group__0__Impl rule__Library__Group__1 ;
     public final void rule__Library__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:284:1: ( rule__Library__Group__0__Impl rule__Library__Group__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:285:2: rule__Library__Group__0__Impl rule__Library__Group__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:318:1: ( rule__Library__Group__0__Impl rule__Library__Group__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:319:2: rule__Library__Group__0__Impl rule__Library__Group__1
             {
-            pushFollow(FOLLOW_rule__Library__Group__0__Impl_in_rule__Library__Group__0549);
+            pushFollow(FOLLOW_rule__Library__Group__0__Impl_in_rule__Library__Group__0626);
             rule__Library__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group__1_in_rule__Library__Group__0552);
+            pushFollow(FOLLOW_rule__Library__Group__1_in_rule__Library__Group__0629);
             rule__Library__Group__1();
 
             state._fsp--;
@@ -791,20 +891,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:292:1: rule__Library__Group__0__Impl : ( 'library' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:326:1: rule__Library__Group__0__Impl : ( 'library' ) ;
     public final void rule__Library__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:296:1: ( ( 'library' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:297:1: ( 'library' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:330:1: ( ( 'library' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:331:1: ( 'library' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:297:1: ( 'library' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:298:1: 'library'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:331:1: ( 'library' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:332:1: 'library'
             {
              before(grammarAccess.getLibraryAccess().getLibraryKeyword_0()); 
-            match(input,14,FOLLOW_14_in_rule__Library__Group__0__Impl580); 
+            match(input,14,FOLLOW_14_in_rule__Library__Group__0__Impl657); 
              after(grammarAccess.getLibraryAccess().getLibraryKeyword_0()); 
 
             }
@@ -828,21 +928,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:311:1: rule__Library__Group__1 : rule__Library__Group__1__Impl rule__Library__Group__2 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:345:1: rule__Library__Group__1 : rule__Library__Group__1__Impl rule__Library__Group__2 ;
     public final void rule__Library__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:315:1: ( rule__Library__Group__1__Impl rule__Library__Group__2 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:316:2: rule__Library__Group__1__Impl rule__Library__Group__2
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:349:1: ( rule__Library__Group__1__Impl rule__Library__Group__2 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:350:2: rule__Library__Group__1__Impl rule__Library__Group__2
             {
-            pushFollow(FOLLOW_rule__Library__Group__1__Impl_in_rule__Library__Group__1611);
+            pushFollow(FOLLOW_rule__Library__Group__1__Impl_in_rule__Library__Group__1688);
             rule__Library__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group__2_in_rule__Library__Group__1614);
+            pushFollow(FOLLOW_rule__Library__Group__2_in_rule__Library__Group__1691);
             rule__Library__Group__2();
 
             state._fsp--;
@@ -866,23 +966,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:323:1: rule__Library__Group__1__Impl : ( ( rule__Library__NameAssignment_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:357:1: rule__Library__Group__1__Impl : ( ( rule__Library__NameAssignment_1 ) ) ;
     public final void rule__Library__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:327:1: ( ( ( rule__Library__NameAssignment_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:328:1: ( ( rule__Library__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:361:1: ( ( ( rule__Library__NameAssignment_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:362:1: ( ( rule__Library__NameAssignment_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:328:1: ( ( rule__Library__NameAssignment_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:329:1: ( rule__Library__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:362:1: ( ( rule__Library__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:363:1: ( rule__Library__NameAssignment_1 )
             {
              before(grammarAccess.getLibraryAccess().getNameAssignment_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:330:1: ( rule__Library__NameAssignment_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:330:2: rule__Library__NameAssignment_1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:364:1: ( rule__Library__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:364:2: rule__Library__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Library__NameAssignment_1_in_rule__Library__Group__1__Impl641);
+            pushFollow(FOLLOW_rule__Library__NameAssignment_1_in_rule__Library__Group__1__Impl718);
             rule__Library__NameAssignment_1();
 
             state._fsp--;
@@ -913,21 +1013,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__2"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:340:1: rule__Library__Group__2 : rule__Library__Group__2__Impl rule__Library__Group__3 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:374:1: rule__Library__Group__2 : rule__Library__Group__2__Impl rule__Library__Group__3 ;
     public final void rule__Library__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:344:1: ( rule__Library__Group__2__Impl rule__Library__Group__3 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:345:2: rule__Library__Group__2__Impl rule__Library__Group__3
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:378:1: ( rule__Library__Group__2__Impl rule__Library__Group__3 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:379:2: rule__Library__Group__2__Impl rule__Library__Group__3
             {
-            pushFollow(FOLLOW_rule__Library__Group__2__Impl_in_rule__Library__Group__2671);
+            pushFollow(FOLLOW_rule__Library__Group__2__Impl_in_rule__Library__Group__2748);
             rule__Library__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group__3_in_rule__Library__Group__2674);
+            pushFollow(FOLLOW_rule__Library__Group__3_in_rule__Library__Group__2751);
             rule__Library__Group__3();
 
             state._fsp--;
@@ -951,20 +1051,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__2__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:352:1: rule__Library__Group__2__Impl : ( '{' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:386:1: rule__Library__Group__2__Impl : ( '{' ) ;
     public final void rule__Library__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:356:1: ( ( '{' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:357:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:390:1: ( ( '{' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:391:1: ( '{' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:357:1: ( '{' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:358:1: '{'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:391:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:392:1: '{'
             {
              before(grammarAccess.getLibraryAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,15,FOLLOW_15_in_rule__Library__Group__2__Impl702); 
+            match(input,15,FOLLOW_15_in_rule__Library__Group__2__Impl779); 
              after(grammarAccess.getLibraryAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -988,21 +1088,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__3"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:371:1: rule__Library__Group__3 : rule__Library__Group__3__Impl rule__Library__Group__4 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:405:1: rule__Library__Group__3 : rule__Library__Group__3__Impl rule__Library__Group__4 ;
     public final void rule__Library__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:375:1: ( rule__Library__Group__3__Impl rule__Library__Group__4 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:376:2: rule__Library__Group__3__Impl rule__Library__Group__4
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:409:1: ( rule__Library__Group__3__Impl rule__Library__Group__4 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:410:2: rule__Library__Group__3__Impl rule__Library__Group__4
             {
-            pushFollow(FOLLOW_rule__Library__Group__3__Impl_in_rule__Library__Group__3733);
+            pushFollow(FOLLOW_rule__Library__Group__3__Impl_in_rule__Library__Group__3810);
             rule__Library__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group__4_in_rule__Library__Group__3736);
+            pushFollow(FOLLOW_rule__Library__Group__4_in_rule__Library__Group__3813);
             rule__Library__Group__4();
 
             state._fsp--;
@@ -1026,23 +1126,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__3__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:383:1: rule__Library__Group__3__Impl : ( ( rule__Library__Group_3__0 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:417:1: rule__Library__Group__3__Impl : ( ( rule__Library__Group_3__0 ) ) ;
     public final void rule__Library__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:387:1: ( ( ( rule__Library__Group_3__0 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:388:1: ( ( rule__Library__Group_3__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:421:1: ( ( ( rule__Library__Group_3__0 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:422:1: ( ( rule__Library__Group_3__0 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:388:1: ( ( rule__Library__Group_3__0 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:389:1: ( rule__Library__Group_3__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:422:1: ( ( rule__Library__Group_3__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:423:1: ( rule__Library__Group_3__0 )
             {
              before(grammarAccess.getLibraryAccess().getGroup_3()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:390:1: ( rule__Library__Group_3__0 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:390:2: rule__Library__Group_3__0
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:424:1: ( rule__Library__Group_3__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:424:2: rule__Library__Group_3__0
             {
-            pushFollow(FOLLOW_rule__Library__Group_3__0_in_rule__Library__Group__3__Impl763);
+            pushFollow(FOLLOW_rule__Library__Group_3__0_in_rule__Library__Group__3__Impl840);
             rule__Library__Group_3__0();
 
             state._fsp--;
@@ -1073,16 +1173,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__4"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:400:1: rule__Library__Group__4 : rule__Library__Group__4__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:434:1: rule__Library__Group__4 : rule__Library__Group__4__Impl ;
     public final void rule__Library__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:404:1: ( rule__Library__Group__4__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:405:2: rule__Library__Group__4__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:438:1: ( rule__Library__Group__4__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:439:2: rule__Library__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__Library__Group__4__Impl_in_rule__Library__Group__4793);
+            pushFollow(FOLLOW_rule__Library__Group__4__Impl_in_rule__Library__Group__4870);
             rule__Library__Group__4__Impl();
 
             state._fsp--;
@@ -1106,20 +1206,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group__4__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:411:1: rule__Library__Group__4__Impl : ( '}' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:445:1: rule__Library__Group__4__Impl : ( '}' ) ;
     public final void rule__Library__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:415:1: ( ( '}' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:416:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:449:1: ( ( '}' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:450:1: ( '}' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:416:1: ( '}' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:417:1: '}'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:450:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:451:1: '}'
             {
              before(grammarAccess.getLibraryAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,16,FOLLOW_16_in_rule__Library__Group__4__Impl821); 
+            match(input,16,FOLLOW_16_in_rule__Library__Group__4__Impl898); 
              after(grammarAccess.getLibraryAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -1143,21 +1243,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:440:1: rule__Library__Group_3__0 : rule__Library__Group_3__0__Impl rule__Library__Group_3__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:474:1: rule__Library__Group_3__0 : rule__Library__Group_3__0__Impl rule__Library__Group_3__1 ;
     public final void rule__Library__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:444:1: ( rule__Library__Group_3__0__Impl rule__Library__Group_3__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:445:2: rule__Library__Group_3__0__Impl rule__Library__Group_3__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:478:1: ( rule__Library__Group_3__0__Impl rule__Library__Group_3__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:479:2: rule__Library__Group_3__0__Impl rule__Library__Group_3__1
             {
-            pushFollow(FOLLOW_rule__Library__Group_3__0__Impl_in_rule__Library__Group_3__0862);
+            pushFollow(FOLLOW_rule__Library__Group_3__0__Impl_in_rule__Library__Group_3__0939);
             rule__Library__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group_3__1_in_rule__Library__Group_3__0865);
+            pushFollow(FOLLOW_rule__Library__Group_3__1_in_rule__Library__Group_3__0942);
             rule__Library__Group_3__1();
 
             state._fsp--;
@@ -1181,20 +1281,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:452:1: rule__Library__Group_3__0__Impl : ( ( rule__Library__Group_3_0__0 )* ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:486:1: rule__Library__Group_3__0__Impl : ( ( rule__Library__Group_3_0__0 )* ) ;
     public final void rule__Library__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:456:1: ( ( ( rule__Library__Group_3_0__0 )* ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:457:1: ( ( rule__Library__Group_3_0__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:490:1: ( ( ( rule__Library__Group_3_0__0 )* ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:491:1: ( ( rule__Library__Group_3_0__0 )* )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:457:1: ( ( rule__Library__Group_3_0__0 )* )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:458:1: ( rule__Library__Group_3_0__0 )*
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:491:1: ( ( rule__Library__Group_3_0__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:492:1: ( rule__Library__Group_3_0__0 )*
             {
              before(grammarAccess.getLibraryAccess().getGroup_3_0()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:459:1: ( rule__Library__Group_3_0__0 )*
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:493:1: ( rule__Library__Group_3_0__0 )*
             loop4:
             do {
                 int alt4=2;
@@ -1207,9 +1307,9 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:459:2: rule__Library__Group_3_0__0
+            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:493:2: rule__Library__Group_3_0__0
             	    {
-            	    pushFollow(FOLLOW_rule__Library__Group_3_0__0_in_rule__Library__Group_3__0__Impl892);
+            	    pushFollow(FOLLOW_rule__Library__Group_3_0__0_in_rule__Library__Group_3__0__Impl969);
             	    rule__Library__Group_3_0__0();
 
             	    state._fsp--;
@@ -1246,16 +1346,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:469:1: rule__Library__Group_3__1 : rule__Library__Group_3__1__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:503:1: rule__Library__Group_3__1 : rule__Library__Group_3__1__Impl ;
     public final void rule__Library__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:473:1: ( rule__Library__Group_3__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:474:2: rule__Library__Group_3__1__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:507:1: ( rule__Library__Group_3__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:508:2: rule__Library__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__Library__Group_3__1__Impl_in_rule__Library__Group_3__1923);
+            pushFollow(FOLLOW_rule__Library__Group_3__1__Impl_in_rule__Library__Group_3__11000);
             rule__Library__Group_3__1__Impl();
 
             state._fsp--;
@@ -1279,20 +1379,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:480:1: rule__Library__Group_3__1__Impl : ( ( rule__Library__Group_3_1__0 )* ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:514:1: rule__Library__Group_3__1__Impl : ( ( rule__Library__Group_3_1__0 )* ) ;
     public final void rule__Library__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:484:1: ( ( ( rule__Library__Group_3_1__0 )* ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:485:1: ( ( rule__Library__Group_3_1__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:518:1: ( ( ( rule__Library__Group_3_1__0 )* ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:519:1: ( ( rule__Library__Group_3_1__0 )* )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:485:1: ( ( rule__Library__Group_3_1__0 )* )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:486:1: ( rule__Library__Group_3_1__0 )*
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:519:1: ( ( rule__Library__Group_3_1__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:520:1: ( rule__Library__Group_3_1__0 )*
             {
              before(grammarAccess.getLibraryAccess().getGroup_3_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:487:1: ( rule__Library__Group_3_1__0 )*
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:521:1: ( rule__Library__Group_3_1__0 )*
             loop5:
             do {
                 int alt5=2;
@@ -1305,9 +1405,9 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:487:2: rule__Library__Group_3_1__0
+            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:521:2: rule__Library__Group_3_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__Library__Group_3_1__0_in_rule__Library__Group_3__1__Impl950);
+            	    pushFollow(FOLLOW_rule__Library__Group_3_1__0_in_rule__Library__Group_3__1__Impl1027);
             	    rule__Library__Group_3_1__0();
 
             	    state._fsp--;
@@ -1344,21 +1444,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_0__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:501:1: rule__Library__Group_3_0__0 : rule__Library__Group_3_0__0__Impl rule__Library__Group_3_0__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:535:1: rule__Library__Group_3_0__0 : rule__Library__Group_3_0__0__Impl rule__Library__Group_3_0__1 ;
     public final void rule__Library__Group_3_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:505:1: ( rule__Library__Group_3_0__0__Impl rule__Library__Group_3_0__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:506:2: rule__Library__Group_3_0__0__Impl rule__Library__Group_3_0__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:539:1: ( rule__Library__Group_3_0__0__Impl rule__Library__Group_3_0__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:540:2: rule__Library__Group_3_0__0__Impl rule__Library__Group_3_0__1
             {
-            pushFollow(FOLLOW_rule__Library__Group_3_0__0__Impl_in_rule__Library__Group_3_0__0985);
+            pushFollow(FOLLOW_rule__Library__Group_3_0__0__Impl_in_rule__Library__Group_3_0__01062);
             rule__Library__Group_3_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group_3_0__1_in_rule__Library__Group_3_0__0988);
+            pushFollow(FOLLOW_rule__Library__Group_3_0__1_in_rule__Library__Group_3_0__01065);
             rule__Library__Group_3_0__1();
 
             state._fsp--;
@@ -1382,20 +1482,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_0__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:513:1: rule__Library__Group_3_0__0__Impl : ( 'book' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:547:1: rule__Library__Group_3_0__0__Impl : ( 'book' ) ;
     public final void rule__Library__Group_3_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:517:1: ( ( 'book' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:518:1: ( 'book' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:551:1: ( ( 'book' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:552:1: ( 'book' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:518:1: ( 'book' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:519:1: 'book'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:552:1: ( 'book' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:553:1: 'book'
             {
              before(grammarAccess.getLibraryAccess().getBookKeyword_3_0_0()); 
-            match(input,17,FOLLOW_17_in_rule__Library__Group_3_0__0__Impl1016); 
+            match(input,17,FOLLOW_17_in_rule__Library__Group_3_0__0__Impl1093); 
              after(grammarAccess.getLibraryAccess().getBookKeyword_3_0_0()); 
 
             }
@@ -1419,16 +1519,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_0__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:532:1: rule__Library__Group_3_0__1 : rule__Library__Group_3_0__1__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:566:1: rule__Library__Group_3_0__1 : rule__Library__Group_3_0__1__Impl ;
     public final void rule__Library__Group_3_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:536:1: ( rule__Library__Group_3_0__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:537:2: rule__Library__Group_3_0__1__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:570:1: ( rule__Library__Group_3_0__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:571:2: rule__Library__Group_3_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__Library__Group_3_0__1__Impl_in_rule__Library__Group_3_0__11047);
+            pushFollow(FOLLOW_rule__Library__Group_3_0__1__Impl_in_rule__Library__Group_3_0__11124);
             rule__Library__Group_3_0__1__Impl();
 
             state._fsp--;
@@ -1452,23 +1552,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_0__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:543:1: rule__Library__Group_3_0__1__Impl : ( ( rule__Library__BooksAssignment_3_0_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:577:1: rule__Library__Group_3_0__1__Impl : ( ( rule__Library__BooksAssignment_3_0_1 ) ) ;
     public final void rule__Library__Group_3_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:547:1: ( ( ( rule__Library__BooksAssignment_3_0_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:548:1: ( ( rule__Library__BooksAssignment_3_0_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:581:1: ( ( ( rule__Library__BooksAssignment_3_0_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:582:1: ( ( rule__Library__BooksAssignment_3_0_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:548:1: ( ( rule__Library__BooksAssignment_3_0_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:549:1: ( rule__Library__BooksAssignment_3_0_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:582:1: ( ( rule__Library__BooksAssignment_3_0_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:583:1: ( rule__Library__BooksAssignment_3_0_1 )
             {
              before(grammarAccess.getLibraryAccess().getBooksAssignment_3_0_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:550:1: ( rule__Library__BooksAssignment_3_0_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:550:2: rule__Library__BooksAssignment_3_0_1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:584:1: ( rule__Library__BooksAssignment_3_0_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:584:2: rule__Library__BooksAssignment_3_0_1
             {
-            pushFollow(FOLLOW_rule__Library__BooksAssignment_3_0_1_in_rule__Library__Group_3_0__1__Impl1074);
+            pushFollow(FOLLOW_rule__Library__BooksAssignment_3_0_1_in_rule__Library__Group_3_0__1__Impl1151);
             rule__Library__BooksAssignment_3_0_1();
 
             state._fsp--;
@@ -1499,21 +1599,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_1__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:564:1: rule__Library__Group_3_1__0 : rule__Library__Group_3_1__0__Impl rule__Library__Group_3_1__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:598:1: rule__Library__Group_3_1__0 : rule__Library__Group_3_1__0__Impl rule__Library__Group_3_1__1 ;
     public final void rule__Library__Group_3_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:568:1: ( rule__Library__Group_3_1__0__Impl rule__Library__Group_3_1__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:569:2: rule__Library__Group_3_1__0__Impl rule__Library__Group_3_1__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:602:1: ( rule__Library__Group_3_1__0__Impl rule__Library__Group_3_1__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:603:2: rule__Library__Group_3_1__0__Impl rule__Library__Group_3_1__1
             {
-            pushFollow(FOLLOW_rule__Library__Group_3_1__0__Impl_in_rule__Library__Group_3_1__01108);
+            pushFollow(FOLLOW_rule__Library__Group_3_1__0__Impl_in_rule__Library__Group_3_1__01185);
             rule__Library__Group_3_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Library__Group_3_1__1_in_rule__Library__Group_3_1__01111);
+            pushFollow(FOLLOW_rule__Library__Group_3_1__1_in_rule__Library__Group_3_1__01188);
             rule__Library__Group_3_1__1();
 
             state._fsp--;
@@ -1537,20 +1637,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_1__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:576:1: rule__Library__Group_3_1__0__Impl : ( 'author' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:610:1: rule__Library__Group_3_1__0__Impl : ( 'author' ) ;
     public final void rule__Library__Group_3_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:580:1: ( ( 'author' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:581:1: ( 'author' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:614:1: ( ( 'author' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:615:1: ( 'author' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:581:1: ( 'author' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:582:1: 'author'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:615:1: ( 'author' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:616:1: 'author'
             {
              before(grammarAccess.getLibraryAccess().getAuthorKeyword_3_1_0()); 
-            match(input,18,FOLLOW_18_in_rule__Library__Group_3_1__0__Impl1139); 
+            match(input,18,FOLLOW_18_in_rule__Library__Group_3_1__0__Impl1216); 
              after(grammarAccess.getLibraryAccess().getAuthorKeyword_3_1_0()); 
 
             }
@@ -1574,16 +1674,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_1__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:595:1: rule__Library__Group_3_1__1 : rule__Library__Group_3_1__1__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:629:1: rule__Library__Group_3_1__1 : rule__Library__Group_3_1__1__Impl ;
     public final void rule__Library__Group_3_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:599:1: ( rule__Library__Group_3_1__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:600:2: rule__Library__Group_3_1__1__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:633:1: ( rule__Library__Group_3_1__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:634:2: rule__Library__Group_3_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__Library__Group_3_1__1__Impl_in_rule__Library__Group_3_1__11170);
+            pushFollow(FOLLOW_rule__Library__Group_3_1__1__Impl_in_rule__Library__Group_3_1__11247);
             rule__Library__Group_3_1__1__Impl();
 
             state._fsp--;
@@ -1607,23 +1707,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__Group_3_1__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:606:1: rule__Library__Group_3_1__1__Impl : ( ( rule__Library__AuthorsAssignment_3_1_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:640:1: rule__Library__Group_3_1__1__Impl : ( ( rule__Library__AuthorsAssignment_3_1_1 ) ) ;
     public final void rule__Library__Group_3_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:610:1: ( ( ( rule__Library__AuthorsAssignment_3_1_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:611:1: ( ( rule__Library__AuthorsAssignment_3_1_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:644:1: ( ( ( rule__Library__AuthorsAssignment_3_1_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:645:1: ( ( rule__Library__AuthorsAssignment_3_1_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:611:1: ( ( rule__Library__AuthorsAssignment_3_1_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:612:1: ( rule__Library__AuthorsAssignment_3_1_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:645:1: ( ( rule__Library__AuthorsAssignment_3_1_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:646:1: ( rule__Library__AuthorsAssignment_3_1_1 )
             {
              before(grammarAccess.getLibraryAccess().getAuthorsAssignment_3_1_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:613:1: ( rule__Library__AuthorsAssignment_3_1_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:613:2: rule__Library__AuthorsAssignment_3_1_1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:647:1: ( rule__Library__AuthorsAssignment_3_1_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:647:2: rule__Library__AuthorsAssignment_3_1_1
             {
-            pushFollow(FOLLOW_rule__Library__AuthorsAssignment_3_1_1_in_rule__Library__Group_3_1__1__Impl1197);
+            pushFollow(FOLLOW_rule__Library__AuthorsAssignment_3_1_1_in_rule__Library__Group_3_1__1__Impl1274);
             rule__Library__AuthorsAssignment_3_1_1();
 
             state._fsp--;
@@ -1654,21 +1754,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:627:1: rule__Author__Group__0 : rule__Author__Group__0__Impl rule__Author__Group__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:661:1: rule__Author__Group__0 : rule__Author__Group__0__Impl rule__Author__Group__1 ;
     public final void rule__Author__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:631:1: ( rule__Author__Group__0__Impl rule__Author__Group__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:632:2: rule__Author__Group__0__Impl rule__Author__Group__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:665:1: ( rule__Author__Group__0__Impl rule__Author__Group__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:666:2: rule__Author__Group__0__Impl rule__Author__Group__1
             {
-            pushFollow(FOLLOW_rule__Author__Group__0__Impl_in_rule__Author__Group__01231);
+            pushFollow(FOLLOW_rule__Author__Group__0__Impl_in_rule__Author__Group__01308);
             rule__Author__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Author__Group__1_in_rule__Author__Group__01234);
+            pushFollow(FOLLOW_rule__Author__Group__1_in_rule__Author__Group__01311);
             rule__Author__Group__1();
 
             state._fsp--;
@@ -1692,20 +1792,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:639:1: rule__Author__Group__0__Impl : ( 'author' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:673:1: rule__Author__Group__0__Impl : ( 'author' ) ;
     public final void rule__Author__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:643:1: ( ( 'author' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:644:1: ( 'author' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:677:1: ( ( 'author' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:678:1: ( 'author' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:644:1: ( 'author' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:645:1: 'author'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:678:1: ( 'author' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:679:1: 'author'
             {
              before(grammarAccess.getAuthorAccess().getAuthorKeyword_0()); 
-            match(input,18,FOLLOW_18_in_rule__Author__Group__0__Impl1262); 
+            match(input,18,FOLLOW_18_in_rule__Author__Group__0__Impl1339); 
              after(grammarAccess.getAuthorAccess().getAuthorKeyword_0()); 
 
             }
@@ -1729,21 +1829,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:658:1: rule__Author__Group__1 : rule__Author__Group__1__Impl rule__Author__Group__2 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:692:1: rule__Author__Group__1 : rule__Author__Group__1__Impl rule__Author__Group__2 ;
     public final void rule__Author__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:662:1: ( rule__Author__Group__1__Impl rule__Author__Group__2 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:663:2: rule__Author__Group__1__Impl rule__Author__Group__2
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:696:1: ( rule__Author__Group__1__Impl rule__Author__Group__2 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:697:2: rule__Author__Group__1__Impl rule__Author__Group__2
             {
-            pushFollow(FOLLOW_rule__Author__Group__1__Impl_in_rule__Author__Group__11293);
+            pushFollow(FOLLOW_rule__Author__Group__1__Impl_in_rule__Author__Group__11370);
             rule__Author__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Author__Group__2_in_rule__Author__Group__11296);
+            pushFollow(FOLLOW_rule__Author__Group__2_in_rule__Author__Group__11373);
             rule__Author__Group__2();
 
             state._fsp--;
@@ -1767,23 +1867,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:670:1: rule__Author__Group__1__Impl : ( ( rule__Author__NameAssignment_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:704:1: rule__Author__Group__1__Impl : ( ( rule__Author__NameAssignment_1 ) ) ;
     public final void rule__Author__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:674:1: ( ( ( rule__Author__NameAssignment_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:675:1: ( ( rule__Author__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:708:1: ( ( ( rule__Author__NameAssignment_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:709:1: ( ( rule__Author__NameAssignment_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:675:1: ( ( rule__Author__NameAssignment_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:676:1: ( rule__Author__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:709:1: ( ( rule__Author__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:710:1: ( rule__Author__NameAssignment_1 )
             {
              before(grammarAccess.getAuthorAccess().getNameAssignment_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:677:1: ( rule__Author__NameAssignment_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:677:2: rule__Author__NameAssignment_1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:711:1: ( rule__Author__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:711:2: rule__Author__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Author__NameAssignment_1_in_rule__Author__Group__1__Impl1323);
+            pushFollow(FOLLOW_rule__Author__NameAssignment_1_in_rule__Author__Group__1__Impl1400);
             rule__Author__NameAssignment_1();
 
             state._fsp--;
@@ -1814,21 +1914,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__2"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:687:1: rule__Author__Group__2 : rule__Author__Group__2__Impl rule__Author__Group__3 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:721:1: rule__Author__Group__2 : rule__Author__Group__2__Impl rule__Author__Group__3 ;
     public final void rule__Author__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:691:1: ( rule__Author__Group__2__Impl rule__Author__Group__3 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:692:2: rule__Author__Group__2__Impl rule__Author__Group__3
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:725:1: ( rule__Author__Group__2__Impl rule__Author__Group__3 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:726:2: rule__Author__Group__2__Impl rule__Author__Group__3
             {
-            pushFollow(FOLLOW_rule__Author__Group__2__Impl_in_rule__Author__Group__21353);
+            pushFollow(FOLLOW_rule__Author__Group__2__Impl_in_rule__Author__Group__21430);
             rule__Author__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Author__Group__3_in_rule__Author__Group__21356);
+            pushFollow(FOLLOW_rule__Author__Group__3_in_rule__Author__Group__21433);
             rule__Author__Group__3();
 
             state._fsp--;
@@ -1852,20 +1952,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__2__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:699:1: rule__Author__Group__2__Impl : ( '{' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:733:1: rule__Author__Group__2__Impl : ( '{' ) ;
     public final void rule__Author__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:703:1: ( ( '{' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:704:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:737:1: ( ( '{' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:738:1: ( '{' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:704:1: ( '{' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:705:1: '{'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:738:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:739:1: '{'
             {
              before(grammarAccess.getAuthorAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,15,FOLLOW_15_in_rule__Author__Group__2__Impl1384); 
+            match(input,15,FOLLOW_15_in_rule__Author__Group__2__Impl1461); 
              after(grammarAccess.getAuthorAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -1889,21 +1989,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__3"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:718:1: rule__Author__Group__3 : rule__Author__Group__3__Impl rule__Author__Group__4 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:752:1: rule__Author__Group__3 : rule__Author__Group__3__Impl rule__Author__Group__4 ;
     public final void rule__Author__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:722:1: ( rule__Author__Group__3__Impl rule__Author__Group__4 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:723:2: rule__Author__Group__3__Impl rule__Author__Group__4
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:756:1: ( rule__Author__Group__3__Impl rule__Author__Group__4 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:757:2: rule__Author__Group__3__Impl rule__Author__Group__4
             {
-            pushFollow(FOLLOW_rule__Author__Group__3__Impl_in_rule__Author__Group__31415);
+            pushFollow(FOLLOW_rule__Author__Group__3__Impl_in_rule__Author__Group__31492);
             rule__Author__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Author__Group__4_in_rule__Author__Group__31418);
+            pushFollow(FOLLOW_rule__Author__Group__4_in_rule__Author__Group__31495);
             rule__Author__Group__4();
 
             state._fsp--;
@@ -1927,29 +2027,47 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__3__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:730:1: rule__Author__Group__3__Impl : ( ( rule__Author__Group_3__0 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:764:1: rule__Author__Group__3__Impl : ( ( rule__Author__Group_3__0 )* ) ;
     public final void rule__Author__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:734:1: ( ( ( rule__Author__Group_3__0 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:735:1: ( ( rule__Author__Group_3__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:768:1: ( ( ( rule__Author__Group_3__0 )* ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:769:1: ( ( rule__Author__Group_3__0 )* )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:735:1: ( ( rule__Author__Group_3__0 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:736:1: ( rule__Author__Group_3__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:769:1: ( ( rule__Author__Group_3__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:770:1: ( rule__Author__Group_3__0 )*
             {
              before(grammarAccess.getAuthorAccess().getGroup_3()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:737:1: ( rule__Author__Group_3__0 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:737:2: rule__Author__Group_3__0
-            {
-            pushFollow(FOLLOW_rule__Author__Group_3__0_in_rule__Author__Group__3__Impl1445);
-            rule__Author__Group_3__0();
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:771:1: ( rule__Author__Group_3__0 )*
+            loop6:
+            do {
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-            state._fsp--;
+                if ( (LA6_0==17) ) {
+                    alt6=1;
+                }
 
 
-            }
+                switch (alt6) {
+            	case 1 :
+            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:771:2: rule__Author__Group_3__0
+            	    {
+            	    pushFollow(FOLLOW_rule__Author__Group_3__0_in_rule__Author__Group__3__Impl1522);
+            	    rule__Author__Group_3__0();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop6;
+                }
+            } while (true);
 
              after(grammarAccess.getAuthorAccess().getGroup_3()); 
 
@@ -1974,16 +2092,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__4"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:747:1: rule__Author__Group__4 : rule__Author__Group__4__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:781:1: rule__Author__Group__4 : rule__Author__Group__4__Impl ;
     public final void rule__Author__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:751:1: ( rule__Author__Group__4__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:752:2: rule__Author__Group__4__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:785:1: ( rule__Author__Group__4__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:786:2: rule__Author__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__Author__Group__4__Impl_in_rule__Author__Group__41475);
+            pushFollow(FOLLOW_rule__Author__Group__4__Impl_in_rule__Author__Group__41553);
             rule__Author__Group__4__Impl();
 
             state._fsp--;
@@ -2007,20 +2125,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group__4__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:758:1: rule__Author__Group__4__Impl : ( '}' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:792:1: rule__Author__Group__4__Impl : ( '}' ) ;
     public final void rule__Author__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:762:1: ( ( '}' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:763:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:796:1: ( ( '}' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:797:1: ( '}' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:763:1: ( '}' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:764:1: '}'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:797:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:798:1: '}'
             {
              before(grammarAccess.getAuthorAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,16,FOLLOW_16_in_rule__Author__Group__4__Impl1503); 
+            match(input,16,FOLLOW_16_in_rule__Author__Group__4__Impl1581); 
              after(grammarAccess.getAuthorAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -2044,21 +2162,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group_3__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:787:1: rule__Author__Group_3__0 : rule__Author__Group_3__0__Impl rule__Author__Group_3__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:821:1: rule__Author__Group_3__0 : rule__Author__Group_3__0__Impl rule__Author__Group_3__1 ;
     public final void rule__Author__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:791:1: ( rule__Author__Group_3__0__Impl rule__Author__Group_3__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:792:2: rule__Author__Group_3__0__Impl rule__Author__Group_3__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:825:1: ( rule__Author__Group_3__0__Impl rule__Author__Group_3__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:826:2: rule__Author__Group_3__0__Impl rule__Author__Group_3__1
             {
-            pushFollow(FOLLOW_rule__Author__Group_3__0__Impl_in_rule__Author__Group_3__01544);
+            pushFollow(FOLLOW_rule__Author__Group_3__0__Impl_in_rule__Author__Group_3__01622);
             rule__Author__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Author__Group_3__1_in_rule__Author__Group_3__01547);
+            pushFollow(FOLLOW_rule__Author__Group_3__1_in_rule__Author__Group_3__01625);
             rule__Author__Group_3__1();
 
             state._fsp--;
@@ -2082,21 +2200,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group_3__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:799:1: rule__Author__Group_3__0__Impl : ( 'name' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:833:1: rule__Author__Group_3__0__Impl : ( 'book' ) ;
     public final void rule__Author__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:803:1: ( ( 'name' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:804:1: ( 'name' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:837:1: ( ( 'book' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:838:1: ( 'book' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:804:1: ( 'name' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:805:1: 'name'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:838:1: ( 'book' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:839:1: 'book'
             {
-             before(grammarAccess.getAuthorAccess().getNameKeyword_3_0()); 
-            match(input,19,FOLLOW_19_in_rule__Author__Group_3__0__Impl1575); 
-             after(grammarAccess.getAuthorAccess().getNameKeyword_3_0()); 
+             before(grammarAccess.getAuthorAccess().getBookKeyword_3_0()); 
+            match(input,17,FOLLOW_17_in_rule__Author__Group_3__0__Impl1653); 
+             after(grammarAccess.getAuthorAccess().getBookKeyword_3_0()); 
 
             }
 
@@ -2119,22 +2237,17 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group_3__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:818:1: rule__Author__Group_3__1 : rule__Author__Group_3__1__Impl rule__Author__Group_3__2 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:852:1: rule__Author__Group_3__1 : rule__Author__Group_3__1__Impl ;
     public final void rule__Author__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:822:1: ( rule__Author__Group_3__1__Impl rule__Author__Group_3__2 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:823:2: rule__Author__Group_3__1__Impl rule__Author__Group_3__2
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:856:1: ( rule__Author__Group_3__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:857:2: rule__Author__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__Author__Group_3__1__Impl_in_rule__Author__Group_3__11606);
+            pushFollow(FOLLOW_rule__Author__Group_3__1__Impl_in_rule__Author__Group_3__11684);
             rule__Author__Group_3__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Author__Group_3__2_in_rule__Author__Group_3__11609);
-            rule__Author__Group_3__2();
 
             state._fsp--;
 
@@ -2157,31 +2270,31 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__Group_3__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:830:1: rule__Author__Group_3__1__Impl : ( ( rule__Author__FullNameAssignment_3_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:863:1: rule__Author__Group_3__1__Impl : ( ( rule__Author__BooksAssignment_3_1 ) ) ;
     public final void rule__Author__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:834:1: ( ( ( rule__Author__FullNameAssignment_3_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:835:1: ( ( rule__Author__FullNameAssignment_3_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:867:1: ( ( ( rule__Author__BooksAssignment_3_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:868:1: ( ( rule__Author__BooksAssignment_3_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:835:1: ( ( rule__Author__FullNameAssignment_3_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:836:1: ( rule__Author__FullNameAssignment_3_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:868:1: ( ( rule__Author__BooksAssignment_3_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:869:1: ( rule__Author__BooksAssignment_3_1 )
             {
-             before(grammarAccess.getAuthorAccess().getFullNameAssignment_3_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:837:1: ( rule__Author__FullNameAssignment_3_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:837:2: rule__Author__FullNameAssignment_3_1
+             before(grammarAccess.getAuthorAccess().getBooksAssignment_3_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:870:1: ( rule__Author__BooksAssignment_3_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:870:2: rule__Author__BooksAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__Author__FullNameAssignment_3_1_in_rule__Author__Group_3__1__Impl1636);
-            rule__Author__FullNameAssignment_3_1();
+            pushFollow(FOLLOW_rule__Author__BooksAssignment_3_1_in_rule__Author__Group_3__1__Impl1711);
+            rule__Author__BooksAssignment_3_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getAuthorAccess().getFullNameAssignment_3_1()); 
+             after(grammarAccess.getAuthorAccess().getBooksAssignment_3_1()); 
 
             }
 
@@ -2203,275 +2316,22 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Author__Group_3__1__Impl"
 
 
-    // $ANTLR start "rule__Author__Group_3__2"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:847:1: rule__Author__Group_3__2 : rule__Author__Group_3__2__Impl ;
-    public final void rule__Author__Group_3__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:851:1: ( rule__Author__Group_3__2__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:852:2: rule__Author__Group_3__2__Impl
-            {
-            pushFollow(FOLLOW_rule__Author__Group_3__2__Impl_in_rule__Author__Group_3__21666);
-            rule__Author__Group_3__2__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__Group_3__2"
-
-
-    // $ANTLR start "rule__Author__Group_3__2__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:858:1: rule__Author__Group_3__2__Impl : ( ( rule__Author__Group_3_2__0 )* ) ;
-    public final void rule__Author__Group_3__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:862:1: ( ( ( rule__Author__Group_3_2__0 )* ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:863:1: ( ( rule__Author__Group_3_2__0 )* )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:863:1: ( ( rule__Author__Group_3_2__0 )* )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:864:1: ( rule__Author__Group_3_2__0 )*
-            {
-             before(grammarAccess.getAuthorAccess().getGroup_3_2()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:865:1: ( rule__Author__Group_3_2__0 )*
-            loop6:
-            do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
-
-                if ( (LA6_0==17) ) {
-                    alt6=1;
-                }
-
-
-                switch (alt6) {
-            	case 1 :
-            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:865:2: rule__Author__Group_3_2__0
-            	    {
-            	    pushFollow(FOLLOW_rule__Author__Group_3_2__0_in_rule__Author__Group_3__2__Impl1693);
-            	    rule__Author__Group_3_2__0();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop6;
-                }
-            } while (true);
-
-             after(grammarAccess.getAuthorAccess().getGroup_3_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__Group_3__2__Impl"
-
-
-    // $ANTLR start "rule__Author__Group_3_2__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:881:1: rule__Author__Group_3_2__0 : rule__Author__Group_3_2__0__Impl rule__Author__Group_3_2__1 ;
-    public final void rule__Author__Group_3_2__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:885:1: ( rule__Author__Group_3_2__0__Impl rule__Author__Group_3_2__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:886:2: rule__Author__Group_3_2__0__Impl rule__Author__Group_3_2__1
-            {
-            pushFollow(FOLLOW_rule__Author__Group_3_2__0__Impl_in_rule__Author__Group_3_2__01730);
-            rule__Author__Group_3_2__0__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Author__Group_3_2__1_in_rule__Author__Group_3_2__01733);
-            rule__Author__Group_3_2__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__Group_3_2__0"
-
-
-    // $ANTLR start "rule__Author__Group_3_2__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:893:1: rule__Author__Group_3_2__0__Impl : ( 'book' ) ;
-    public final void rule__Author__Group_3_2__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:897:1: ( ( 'book' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:898:1: ( 'book' )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:898:1: ( 'book' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:899:1: 'book'
-            {
-             before(grammarAccess.getAuthorAccess().getBookKeyword_3_2_0()); 
-            match(input,17,FOLLOW_17_in_rule__Author__Group_3_2__0__Impl1761); 
-             after(grammarAccess.getAuthorAccess().getBookKeyword_3_2_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__Group_3_2__0__Impl"
-
-
-    // $ANTLR start "rule__Author__Group_3_2__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:912:1: rule__Author__Group_3_2__1 : rule__Author__Group_3_2__1__Impl ;
-    public final void rule__Author__Group_3_2__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:916:1: ( rule__Author__Group_3_2__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:917:2: rule__Author__Group_3_2__1__Impl
-            {
-            pushFollow(FOLLOW_rule__Author__Group_3_2__1__Impl_in_rule__Author__Group_3_2__11792);
-            rule__Author__Group_3_2__1__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__Group_3_2__1"
-
-
-    // $ANTLR start "rule__Author__Group_3_2__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:923:1: rule__Author__Group_3_2__1__Impl : ( ( rule__Author__BooksAssignment_3_2_1 ) ) ;
-    public final void rule__Author__Group_3_2__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:927:1: ( ( ( rule__Author__BooksAssignment_3_2_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:928:1: ( ( rule__Author__BooksAssignment_3_2_1 ) )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:928:1: ( ( rule__Author__BooksAssignment_3_2_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:929:1: ( rule__Author__BooksAssignment_3_2_1 )
-            {
-             before(grammarAccess.getAuthorAccess().getBooksAssignment_3_2_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:930:1: ( rule__Author__BooksAssignment_3_2_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:930:2: rule__Author__BooksAssignment_3_2_1
-            {
-            pushFollow(FOLLOW_rule__Author__BooksAssignment_3_2_1_in_rule__Author__Group_3_2__1__Impl1819);
-            rule__Author__BooksAssignment_3_2_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getAuthorAccess().getBooksAssignment_3_2_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__Group_3_2__1__Impl"
-
-
     // $ANTLR start "rule__Book__Group__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:944:1: rule__Book__Group__0 : rule__Book__Group__0__Impl rule__Book__Group__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:884:1: rule__Book__Group__0 : rule__Book__Group__0__Impl rule__Book__Group__1 ;
     public final void rule__Book__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:948:1: ( rule__Book__Group__0__Impl rule__Book__Group__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:949:2: rule__Book__Group__0__Impl rule__Book__Group__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:888:1: ( rule__Book__Group__0__Impl rule__Book__Group__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:889:2: rule__Book__Group__0__Impl rule__Book__Group__1
             {
-            pushFollow(FOLLOW_rule__Book__Group__0__Impl_in_rule__Book__Group__01853);
+            pushFollow(FOLLOW_rule__Book__Group__0__Impl_in_rule__Book__Group__01745);
             rule__Book__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group__1_in_rule__Book__Group__01856);
+            pushFollow(FOLLOW_rule__Book__Group__1_in_rule__Book__Group__01748);
             rule__Book__Group__1();
 
             state._fsp--;
@@ -2495,20 +2355,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:956:1: rule__Book__Group__0__Impl : ( 'book' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:896:1: rule__Book__Group__0__Impl : ( 'book' ) ;
     public final void rule__Book__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:960:1: ( ( 'book' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:961:1: ( 'book' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:900:1: ( ( 'book' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:901:1: ( 'book' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:961:1: ( 'book' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:962:1: 'book'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:901:1: ( 'book' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:902:1: 'book'
             {
              before(grammarAccess.getBookAccess().getBookKeyword_0()); 
-            match(input,17,FOLLOW_17_in_rule__Book__Group__0__Impl1884); 
+            match(input,17,FOLLOW_17_in_rule__Book__Group__0__Impl1776); 
              after(grammarAccess.getBookAccess().getBookKeyword_0()); 
 
             }
@@ -2532,21 +2392,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:975:1: rule__Book__Group__1 : rule__Book__Group__1__Impl rule__Book__Group__2 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:915:1: rule__Book__Group__1 : rule__Book__Group__1__Impl rule__Book__Group__2 ;
     public final void rule__Book__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:979:1: ( rule__Book__Group__1__Impl rule__Book__Group__2 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:980:2: rule__Book__Group__1__Impl rule__Book__Group__2
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:919:1: ( rule__Book__Group__1__Impl rule__Book__Group__2 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:920:2: rule__Book__Group__1__Impl rule__Book__Group__2
             {
-            pushFollow(FOLLOW_rule__Book__Group__1__Impl_in_rule__Book__Group__11915);
+            pushFollow(FOLLOW_rule__Book__Group__1__Impl_in_rule__Book__Group__11807);
             rule__Book__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group__2_in_rule__Book__Group__11918);
+            pushFollow(FOLLOW_rule__Book__Group__2_in_rule__Book__Group__11810);
             rule__Book__Group__2();
 
             state._fsp--;
@@ -2570,23 +2430,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:987:1: rule__Book__Group__1__Impl : ( ( rule__Book__NameAssignment_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:927:1: rule__Book__Group__1__Impl : ( ( rule__Book__NameAssignment_1 ) ) ;
     public final void rule__Book__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:991:1: ( ( ( rule__Book__NameAssignment_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:992:1: ( ( rule__Book__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:931:1: ( ( ( rule__Book__NameAssignment_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:932:1: ( ( rule__Book__NameAssignment_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:992:1: ( ( rule__Book__NameAssignment_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:993:1: ( rule__Book__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:932:1: ( ( rule__Book__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:933:1: ( rule__Book__NameAssignment_1 )
             {
              before(grammarAccess.getBookAccess().getNameAssignment_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:994:1: ( rule__Book__NameAssignment_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:994:2: rule__Book__NameAssignment_1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:934:1: ( rule__Book__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:934:2: rule__Book__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Book__NameAssignment_1_in_rule__Book__Group__1__Impl1945);
+            pushFollow(FOLLOW_rule__Book__NameAssignment_1_in_rule__Book__Group__1__Impl1837);
             rule__Book__NameAssignment_1();
 
             state._fsp--;
@@ -2617,21 +2477,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__2"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1004:1: rule__Book__Group__2 : rule__Book__Group__2__Impl rule__Book__Group__3 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:944:1: rule__Book__Group__2 : rule__Book__Group__2__Impl rule__Book__Group__3 ;
     public final void rule__Book__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1008:1: ( rule__Book__Group__2__Impl rule__Book__Group__3 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1009:2: rule__Book__Group__2__Impl rule__Book__Group__3
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:948:1: ( rule__Book__Group__2__Impl rule__Book__Group__3 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:949:2: rule__Book__Group__2__Impl rule__Book__Group__3
             {
-            pushFollow(FOLLOW_rule__Book__Group__2__Impl_in_rule__Book__Group__21975);
+            pushFollow(FOLLOW_rule__Book__Group__2__Impl_in_rule__Book__Group__21867);
             rule__Book__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group__3_in_rule__Book__Group__21978);
+            pushFollow(FOLLOW_rule__Book__Group__3_in_rule__Book__Group__21870);
             rule__Book__Group__3();
 
             state._fsp--;
@@ -2655,20 +2515,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__2__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1016:1: rule__Book__Group__2__Impl : ( '{' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:956:1: rule__Book__Group__2__Impl : ( '{' ) ;
     public final void rule__Book__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1020:1: ( ( '{' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1021:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:960:1: ( ( '{' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:961:1: ( '{' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1021:1: ( '{' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1022:1: '{'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:961:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:962:1: '{'
             {
              before(grammarAccess.getBookAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,15,FOLLOW_15_in_rule__Book__Group__2__Impl2006); 
+            match(input,15,FOLLOW_15_in_rule__Book__Group__2__Impl1898); 
              after(grammarAccess.getBookAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -2692,21 +2552,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__3"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1035:1: rule__Book__Group__3 : rule__Book__Group__3__Impl rule__Book__Group__4 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:975:1: rule__Book__Group__3 : rule__Book__Group__3__Impl rule__Book__Group__4 ;
     public final void rule__Book__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1039:1: ( rule__Book__Group__3__Impl rule__Book__Group__4 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1040:2: rule__Book__Group__3__Impl rule__Book__Group__4
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:979:1: ( rule__Book__Group__3__Impl rule__Book__Group__4 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:980:2: rule__Book__Group__3__Impl rule__Book__Group__4
             {
-            pushFollow(FOLLOW_rule__Book__Group__3__Impl_in_rule__Book__Group__32037);
+            pushFollow(FOLLOW_rule__Book__Group__3__Impl_in_rule__Book__Group__31929);
             rule__Book__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group__4_in_rule__Book__Group__32040);
+            pushFollow(FOLLOW_rule__Book__Group__4_in_rule__Book__Group__31932);
             rule__Book__Group__4();
 
             state._fsp--;
@@ -2730,23 +2590,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__3__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1047:1: rule__Book__Group__3__Impl : ( ( rule__Book__Group_3__0 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:987:1: rule__Book__Group__3__Impl : ( ( rule__Book__Group_3__0 ) ) ;
     public final void rule__Book__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1051:1: ( ( ( rule__Book__Group_3__0 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1052:1: ( ( rule__Book__Group_3__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:991:1: ( ( ( rule__Book__Group_3__0 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:992:1: ( ( rule__Book__Group_3__0 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1052:1: ( ( rule__Book__Group_3__0 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1053:1: ( rule__Book__Group_3__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:992:1: ( ( rule__Book__Group_3__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:993:1: ( rule__Book__Group_3__0 )
             {
              before(grammarAccess.getBookAccess().getGroup_3()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1054:1: ( rule__Book__Group_3__0 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1054:2: rule__Book__Group_3__0
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:994:1: ( rule__Book__Group_3__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:994:2: rule__Book__Group_3__0
             {
-            pushFollow(FOLLOW_rule__Book__Group_3__0_in_rule__Book__Group__3__Impl2067);
+            pushFollow(FOLLOW_rule__Book__Group_3__0_in_rule__Book__Group__3__Impl1959);
             rule__Book__Group_3__0();
 
             state._fsp--;
@@ -2777,16 +2637,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__4"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1064:1: rule__Book__Group__4 : rule__Book__Group__4__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1004:1: rule__Book__Group__4 : rule__Book__Group__4__Impl ;
     public final void rule__Book__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1068:1: ( rule__Book__Group__4__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1069:2: rule__Book__Group__4__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1008:1: ( rule__Book__Group__4__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1009:2: rule__Book__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__Book__Group__4__Impl_in_rule__Book__Group__42097);
+            pushFollow(FOLLOW_rule__Book__Group__4__Impl_in_rule__Book__Group__41989);
             rule__Book__Group__4__Impl();
 
             state._fsp--;
@@ -2810,20 +2670,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group__4__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1075:1: rule__Book__Group__4__Impl : ( '}' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1015:1: rule__Book__Group__4__Impl : ( '}' ) ;
     public final void rule__Book__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1079:1: ( ( '}' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1080:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1019:1: ( ( '}' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1020:1: ( '}' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1080:1: ( '}' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1081:1: '}'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1020:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1021:1: '}'
             {
              before(grammarAccess.getBookAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,16,FOLLOW_16_in_rule__Book__Group__4__Impl2125); 
+            match(input,16,FOLLOW_16_in_rule__Book__Group__4__Impl2017); 
              after(grammarAccess.getBookAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -2847,21 +2707,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1104:1: rule__Book__Group_3__0 : rule__Book__Group_3__0__Impl rule__Book__Group_3__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1044:1: rule__Book__Group_3__0 : rule__Book__Group_3__0__Impl rule__Book__Group_3__1 ;
     public final void rule__Book__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1108:1: ( rule__Book__Group_3__0__Impl rule__Book__Group_3__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1109:2: rule__Book__Group_3__0__Impl rule__Book__Group_3__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1048:1: ( rule__Book__Group_3__0__Impl rule__Book__Group_3__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1049:2: rule__Book__Group_3__0__Impl rule__Book__Group_3__1
             {
-            pushFollow(FOLLOW_rule__Book__Group_3__0__Impl_in_rule__Book__Group_3__02166);
+            pushFollow(FOLLOW_rule__Book__Group_3__0__Impl_in_rule__Book__Group_3__02058);
             rule__Book__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group_3__1_in_rule__Book__Group_3__02169);
+            pushFollow(FOLLOW_rule__Book__Group_3__1_in_rule__Book__Group_3__02061);
             rule__Book__Group_3__1();
 
             state._fsp--;
@@ -2885,21 +2745,42 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1116:1: rule__Book__Group_3__0__Impl : ( 'title' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1056:1: rule__Book__Group_3__0__Impl : ( ( rule__Book__Group_3_0__0 )? ) ;
     public final void rule__Book__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1120:1: ( ( 'title' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1121:1: ( 'title' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1060:1: ( ( ( rule__Book__Group_3_0__0 )? ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1061:1: ( ( rule__Book__Group_3_0__0 )? )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1121:1: ( 'title' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1122:1: 'title'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1061:1: ( ( rule__Book__Group_3_0__0 )? )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1062:1: ( rule__Book__Group_3_0__0 )?
             {
-             before(grammarAccess.getBookAccess().getTitleKeyword_3_0()); 
-            match(input,20,FOLLOW_20_in_rule__Book__Group_3__0__Impl2197); 
-             after(grammarAccess.getBookAccess().getTitleKeyword_3_0()); 
+             before(grammarAccess.getBookAccess().getGroup_3_0()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1063:1: ( rule__Book__Group_3_0__0 )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==19) ) {
+                alt7=1;
+            }
+            switch (alt7) {
+                case 1 :
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1063:2: rule__Book__Group_3_0__0
+                    {
+                    pushFollow(FOLLOW_rule__Book__Group_3_0__0_in_rule__Book__Group_3__0__Impl2088);
+                    rule__Book__Group_3_0__0();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getBookAccess().getGroup_3_0()); 
 
             }
 
@@ -2922,21 +2803,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1135:1: rule__Book__Group_3__1 : rule__Book__Group_3__1__Impl rule__Book__Group_3__2 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1073:1: rule__Book__Group_3__1 : rule__Book__Group_3__1__Impl rule__Book__Group_3__2 ;
     public final void rule__Book__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1139:1: ( rule__Book__Group_3__1__Impl rule__Book__Group_3__2 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1140:2: rule__Book__Group_3__1__Impl rule__Book__Group_3__2
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1077:1: ( rule__Book__Group_3__1__Impl rule__Book__Group_3__2 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1078:2: rule__Book__Group_3__1__Impl rule__Book__Group_3__2
             {
-            pushFollow(FOLLOW_rule__Book__Group_3__1__Impl_in_rule__Book__Group_3__12228);
+            pushFollow(FOLLOW_rule__Book__Group_3__1__Impl_in_rule__Book__Group_3__12119);
             rule__Book__Group_3__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group_3__2_in_rule__Book__Group_3__12231);
+            pushFollow(FOLLOW_rule__Book__Group_3__2_in_rule__Book__Group_3__12122);
             rule__Book__Group_3__2();
 
             state._fsp--;
@@ -2960,31 +2841,42 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1147:1: rule__Book__Group_3__1__Impl : ( ( rule__Book__TitleAssignment_3_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1085:1: rule__Book__Group_3__1__Impl : ( ( rule__Book__Group_3_1__0 )? ) ;
     public final void rule__Book__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1151:1: ( ( ( rule__Book__TitleAssignment_3_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1152:1: ( ( rule__Book__TitleAssignment_3_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1089:1: ( ( ( rule__Book__Group_3_1__0 )? ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1090:1: ( ( rule__Book__Group_3_1__0 )? )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1152:1: ( ( rule__Book__TitleAssignment_3_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1153:1: ( rule__Book__TitleAssignment_3_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1090:1: ( ( rule__Book__Group_3_1__0 )? )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1091:1: ( rule__Book__Group_3_1__0 )?
             {
-             before(grammarAccess.getBookAccess().getTitleAssignment_3_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1154:1: ( rule__Book__TitleAssignment_3_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1154:2: rule__Book__TitleAssignment_3_1
-            {
-            pushFollow(FOLLOW_rule__Book__TitleAssignment_3_1_in_rule__Book__Group_3__1__Impl2258);
-            rule__Book__TitleAssignment_3_1();
+             before(grammarAccess.getBookAccess().getGroup_3_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1092:1: ( rule__Book__Group_3_1__0 )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            state._fsp--;
+            if ( (LA8_0==20) ) {
+                alt8=1;
+            }
+            switch (alt8) {
+                case 1 :
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1092:2: rule__Book__Group_3_1__0
+                    {
+                    pushFollow(FOLLOW_rule__Book__Group_3_1__0_in_rule__Book__Group_3__1__Impl2149);
+                    rule__Book__Group_3_1__0();
 
+                    state._fsp--;
+
+
+                    }
+                    break;
 
             }
 
-             after(grammarAccess.getBookAccess().getTitleAssignment_3_1()); 
+             after(grammarAccess.getBookAccess().getGroup_3_1()); 
 
             }
 
@@ -3007,22 +2899,17 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3__2"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1164:1: rule__Book__Group_3__2 : rule__Book__Group_3__2__Impl rule__Book__Group_3__3 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1102:1: rule__Book__Group_3__2 : rule__Book__Group_3__2__Impl ;
     public final void rule__Book__Group_3__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1168:1: ( rule__Book__Group_3__2__Impl rule__Book__Group_3__3 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1169:2: rule__Book__Group_3__2__Impl rule__Book__Group_3__3
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1106:1: ( rule__Book__Group_3__2__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1107:2: rule__Book__Group_3__2__Impl
             {
-            pushFollow(FOLLOW_rule__Book__Group_3__2__Impl_in_rule__Book__Group_3__22288);
+            pushFollow(FOLLOW_rule__Book__Group_3__2__Impl_in_rule__Book__Group_3__22180);
             rule__Book__Group_3__2__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Book__Group_3__3_in_rule__Book__Group_3__22291);
-            rule__Book__Group_3__3();
 
             state._fsp--;
 
@@ -3045,40 +2932,47 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3__2__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1176:1: rule__Book__Group_3__2__Impl : ( ( rule__Book__Group_3_2__0 )? ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1113:1: rule__Book__Group_3__2__Impl : ( ( rule__Book__Group_3_2__0 )* ) ;
     public final void rule__Book__Group_3__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1180:1: ( ( ( rule__Book__Group_3_2__0 )? ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1181:1: ( ( rule__Book__Group_3_2__0 )? )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1117:1: ( ( ( rule__Book__Group_3_2__0 )* ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1118:1: ( ( rule__Book__Group_3_2__0 )* )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1181:1: ( ( rule__Book__Group_3_2__0 )? )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1182:1: ( rule__Book__Group_3_2__0 )?
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1118:1: ( ( rule__Book__Group_3_2__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1119:1: ( rule__Book__Group_3_2__0 )*
             {
              before(grammarAccess.getBookAccess().getGroup_3_2()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1183:1: ( rule__Book__Group_3_2__0 )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1120:1: ( rule__Book__Group_3_2__0 )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-            if ( (LA7_0==21) ) {
-                alt7=1;
-            }
-            switch (alt7) {
-                case 1 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1183:2: rule__Book__Group_3_2__0
-                    {
-                    pushFollow(FOLLOW_rule__Book__Group_3_2__0_in_rule__Book__Group_3__2__Impl2318);
-                    rule__Book__Group_3_2__0();
-
-                    state._fsp--;
+                if ( (LA9_0==18) ) {
+                    alt9=1;
+                }
 
 
-                    }
-                    break;
+                switch (alt9) {
+            	case 1 :
+            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1120:2: rule__Book__Group_3_2__0
+            	    {
+            	    pushFollow(FOLLOW_rule__Book__Group_3_2__0_in_rule__Book__Group_3__2__Impl2207);
+            	    rule__Book__Group_3_2__0();
 
-            }
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
+                }
+            } while (true);
 
              after(grammarAccess.getBookAccess().getGroup_3_2()); 
 
@@ -3102,114 +2996,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Book__Group_3__2__Impl"
 
 
-    // $ANTLR start "rule__Book__Group_3__3"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1193:1: rule__Book__Group_3__3 : rule__Book__Group_3__3__Impl rule__Book__Group_3__4 ;
-    public final void rule__Book__Group_3__3() throws RecognitionException {
+    // $ANTLR start "rule__Book__Group_3_0__0"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1136:1: rule__Book__Group_3_0__0 : rule__Book__Group_3_0__0__Impl rule__Book__Group_3_0__1 ;
+    public final void rule__Book__Group_3_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1197:1: ( rule__Book__Group_3__3__Impl rule__Book__Group_3__4 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1198:2: rule__Book__Group_3__3__Impl rule__Book__Group_3__4
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1140:1: ( rule__Book__Group_3_0__0__Impl rule__Book__Group_3_0__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1141:2: rule__Book__Group_3_0__0__Impl rule__Book__Group_3_0__1
             {
-            pushFollow(FOLLOW_rule__Book__Group_3__3__Impl_in_rule__Book__Group_3__32349);
-            rule__Book__Group_3__3__Impl();
+            pushFollow(FOLLOW_rule__Book__Group_3_0__0__Impl_in_rule__Book__Group_3_0__02244);
+            rule__Book__Group_3_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group_3__4_in_rule__Book__Group_3__32352);
-            rule__Book__Group_3__4();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__Group_3__3"
-
-
-    // $ANTLR start "rule__Book__Group_3__3__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1205:1: rule__Book__Group_3__3__Impl : ( ( rule__Book__Group_3_3__0 )? ) ;
-    public final void rule__Book__Group_3__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1209:1: ( ( ( rule__Book__Group_3_3__0 )? ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1210:1: ( ( rule__Book__Group_3_3__0 )? )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1210:1: ( ( rule__Book__Group_3_3__0 )? )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1211:1: ( rule__Book__Group_3_3__0 )?
-            {
-             before(grammarAccess.getBookAccess().getGroup_3_3()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1212:1: ( rule__Book__Group_3_3__0 )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
-
-            if ( (LA8_0==22) ) {
-                alt8=1;
-            }
-            switch (alt8) {
-                case 1 :
-                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1212:2: rule__Book__Group_3_3__0
-                    {
-                    pushFollow(FOLLOW_rule__Book__Group_3_3__0_in_rule__Book__Group_3__3__Impl2379);
-                    rule__Book__Group_3_3__0();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getBookAccess().getGroup_3_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__Group_3__3__Impl"
-
-
-    // $ANTLR start "rule__Book__Group_3__4"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1222:1: rule__Book__Group_3__4 : rule__Book__Group_3__4__Impl ;
-    public final void rule__Book__Group_3__4() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1226:1: ( rule__Book__Group_3__4__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1227:2: rule__Book__Group_3__4__Impl
-            {
-            pushFollow(FOLLOW_rule__Book__Group_3__4__Impl_in_rule__Book__Group_3__42410);
-            rule__Book__Group_3__4__Impl();
+            pushFollow(FOLLOW_rule__Book__Group_3_0__1_in_rule__Book__Group_3_0__02247);
+            rule__Book__Group_3_0__1();
 
             state._fsp--;
 
@@ -3228,53 +3031,25 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__Group_3__4"
+    // $ANTLR end "rule__Book__Group_3_0__0"
 
 
-    // $ANTLR start "rule__Book__Group_3__4__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1233:1: rule__Book__Group_3__4__Impl : ( ( rule__Book__Group_3_4__0 )* ) ;
-    public final void rule__Book__Group_3__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Book__Group_3_0__0__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1148:1: rule__Book__Group_3_0__0__Impl : ( 'page' ) ;
+    public final void rule__Book__Group_3_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1237:1: ( ( ( rule__Book__Group_3_4__0 )* ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1238:1: ( ( rule__Book__Group_3_4__0 )* )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1152:1: ( ( 'page' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1153:1: ( 'page' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1238:1: ( ( rule__Book__Group_3_4__0 )* )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1239:1: ( rule__Book__Group_3_4__0 )*
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1153:1: ( 'page' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1154:1: 'page'
             {
-             before(grammarAccess.getBookAccess().getGroup_3_4()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1240:1: ( rule__Book__Group_3_4__0 )*
-            loop9:
-            do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
-
-                if ( (LA9_0==18) ) {
-                    alt9=1;
-                }
-
-
-                switch (alt9) {
-            	case 1 :
-            	    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1240:2: rule__Book__Group_3_4__0
-            	    {
-            	    pushFollow(FOLLOW_rule__Book__Group_3_4__0_in_rule__Book__Group_3__4__Impl2437);
-            	    rule__Book__Group_3_4__0();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop9;
-                }
-            } while (true);
-
-             after(grammarAccess.getBookAccess().getGroup_3_4()); 
+             before(grammarAccess.getBookAccess().getPageKeyword_3_0_0()); 
+            match(input,19,FOLLOW_19_in_rule__Book__Group_3_0__0__Impl2275); 
+             after(grammarAccess.getBookAccess().getPageKeyword_3_0_0()); 
 
             }
 
@@ -3293,25 +3068,260 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__Group_3__4__Impl"
+    // $ANTLR end "rule__Book__Group_3_0__0__Impl"
+
+
+    // $ANTLR start "rule__Book__Group_3_0__1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1167:1: rule__Book__Group_3_0__1 : rule__Book__Group_3_0__1__Impl ;
+    public final void rule__Book__Group_3_0__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1171:1: ( rule__Book__Group_3_0__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1172:2: rule__Book__Group_3_0__1__Impl
+            {
+            pushFollow(FOLLOW_rule__Book__Group_3_0__1__Impl_in_rule__Book__Group_3_0__12306);
+            rule__Book__Group_3_0__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Book__Group_3_0__1"
+
+
+    // $ANTLR start "rule__Book__Group_3_0__1__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1178:1: rule__Book__Group_3_0__1__Impl : ( ( rule__Book__PagesAssignment_3_0_1 ) ) ;
+    public final void rule__Book__Group_3_0__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1182:1: ( ( ( rule__Book__PagesAssignment_3_0_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1183:1: ( ( rule__Book__PagesAssignment_3_0_1 ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1183:1: ( ( rule__Book__PagesAssignment_3_0_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1184:1: ( rule__Book__PagesAssignment_3_0_1 )
+            {
+             before(grammarAccess.getBookAccess().getPagesAssignment_3_0_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1185:1: ( rule__Book__PagesAssignment_3_0_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1185:2: rule__Book__PagesAssignment_3_0_1
+            {
+            pushFollow(FOLLOW_rule__Book__PagesAssignment_3_0_1_in_rule__Book__Group_3_0__1__Impl2333);
+            rule__Book__PagesAssignment_3_0_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBookAccess().getPagesAssignment_3_0_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Book__Group_3_0__1__Impl"
+
+
+    // $ANTLR start "rule__Book__Group_3_1__0"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1199:1: rule__Book__Group_3_1__0 : rule__Book__Group_3_1__0__Impl rule__Book__Group_3_1__1 ;
+    public final void rule__Book__Group_3_1__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1203:1: ( rule__Book__Group_3_1__0__Impl rule__Book__Group_3_1__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1204:2: rule__Book__Group_3_1__0__Impl rule__Book__Group_3_1__1
+            {
+            pushFollow(FOLLOW_rule__Book__Group_3_1__0__Impl_in_rule__Book__Group_3_1__02367);
+            rule__Book__Group_3_1__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__Book__Group_3_1__1_in_rule__Book__Group_3_1__02370);
+            rule__Book__Group_3_1__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Book__Group_3_1__0"
+
+
+    // $ANTLR start "rule__Book__Group_3_1__0__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1211:1: rule__Book__Group_3_1__0__Impl : ( 'category' ) ;
+    public final void rule__Book__Group_3_1__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1215:1: ( ( 'category' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1216:1: ( 'category' )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1216:1: ( 'category' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1217:1: 'category'
+            {
+             before(grammarAccess.getBookAccess().getCategoryKeyword_3_1_0()); 
+            match(input,20,FOLLOW_20_in_rule__Book__Group_3_1__0__Impl2398); 
+             after(grammarAccess.getBookAccess().getCategoryKeyword_3_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Book__Group_3_1__0__Impl"
+
+
+    // $ANTLR start "rule__Book__Group_3_1__1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1230:1: rule__Book__Group_3_1__1 : rule__Book__Group_3_1__1__Impl ;
+    public final void rule__Book__Group_3_1__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1234:1: ( rule__Book__Group_3_1__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1235:2: rule__Book__Group_3_1__1__Impl
+            {
+            pushFollow(FOLLOW_rule__Book__Group_3_1__1__Impl_in_rule__Book__Group_3_1__12429);
+            rule__Book__Group_3_1__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Book__Group_3_1__1"
+
+
+    // $ANTLR start "rule__Book__Group_3_1__1__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1241:1: rule__Book__Group_3_1__1__Impl : ( ( rule__Book__CategoryAssignment_3_1_1 ) ) ;
+    public final void rule__Book__Group_3_1__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1245:1: ( ( ( rule__Book__CategoryAssignment_3_1_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1246:1: ( ( rule__Book__CategoryAssignment_3_1_1 ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1246:1: ( ( rule__Book__CategoryAssignment_3_1_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1247:1: ( rule__Book__CategoryAssignment_3_1_1 )
+            {
+             before(grammarAccess.getBookAccess().getCategoryAssignment_3_1_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1248:1: ( rule__Book__CategoryAssignment_3_1_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1248:2: rule__Book__CategoryAssignment_3_1_1
+            {
+            pushFollow(FOLLOW_rule__Book__CategoryAssignment_3_1_1_in_rule__Book__Group_3_1__1__Impl2456);
+            rule__Book__CategoryAssignment_3_1_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBookAccess().getCategoryAssignment_3_1_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Book__Group_3_1__1__Impl"
 
 
     // $ANTLR start "rule__Book__Group_3_2__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1260:1: rule__Book__Group_3_2__0 : rule__Book__Group_3_2__0__Impl rule__Book__Group_3_2__1 ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1262:1: rule__Book__Group_3_2__0 : rule__Book__Group_3_2__0__Impl rule__Book__Group_3_2__1 ;
     public final void rule__Book__Group_3_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1264:1: ( rule__Book__Group_3_2__0__Impl rule__Book__Group_3_2__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1265:2: rule__Book__Group_3_2__0__Impl rule__Book__Group_3_2__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1266:1: ( rule__Book__Group_3_2__0__Impl rule__Book__Group_3_2__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1267:2: rule__Book__Group_3_2__0__Impl rule__Book__Group_3_2__1
             {
-            pushFollow(FOLLOW_rule__Book__Group_3_2__0__Impl_in_rule__Book__Group_3_2__02478);
+            pushFollow(FOLLOW_rule__Book__Group_3_2__0__Impl_in_rule__Book__Group_3_2__02490);
             rule__Book__Group_3_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group_3_2__1_in_rule__Book__Group_3_2__02481);
+            pushFollow(FOLLOW_rule__Book__Group_3_2__1_in_rule__Book__Group_3_2__02493);
             rule__Book__Group_3_2__1();
 
             state._fsp--;
@@ -3335,21 +3345,21 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3_2__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1272:1: rule__Book__Group_3_2__0__Impl : ( 'page' ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1274:1: rule__Book__Group_3_2__0__Impl : ( 'author' ) ;
     public final void rule__Book__Group_3_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1276:1: ( ( 'page' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1277:1: ( 'page' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1278:1: ( ( 'author' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1279:1: ( 'author' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1277:1: ( 'page' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1278:1: 'page'
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1279:1: ( 'author' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1280:1: 'author'
             {
-             before(grammarAccess.getBookAccess().getPageKeyword_3_2_0()); 
-            match(input,21,FOLLOW_21_in_rule__Book__Group_3_2__0__Impl2509); 
-             after(grammarAccess.getBookAccess().getPageKeyword_3_2_0()); 
+             before(grammarAccess.getBookAccess().getAuthorKeyword_3_2_0()); 
+            match(input,18,FOLLOW_18_in_rule__Book__Group_3_2__0__Impl2521); 
+             after(grammarAccess.getBookAccess().getAuthorKeyword_3_2_0()); 
 
             }
 
@@ -3372,16 +3382,16 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3_2__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1291:1: rule__Book__Group_3_2__1 : rule__Book__Group_3_2__1__Impl ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1293:1: rule__Book__Group_3_2__1 : rule__Book__Group_3_2__1__Impl ;
     public final void rule__Book__Group_3_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1295:1: ( rule__Book__Group_3_2__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1296:2: rule__Book__Group_3_2__1__Impl
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1297:1: ( rule__Book__Group_3_2__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1298:2: rule__Book__Group_3_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__Book__Group_3_2__1__Impl_in_rule__Book__Group_3_2__12540);
+            pushFollow(FOLLOW_rule__Book__Group_3_2__1__Impl_in_rule__Book__Group_3_2__12552);
             rule__Book__Group_3_2__1__Impl();
 
             state._fsp--;
@@ -3405,31 +3415,31 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Book__Group_3_2__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1302:1: rule__Book__Group_3_2__1__Impl : ( ( rule__Book__PagesAssignment_3_2_1 ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1304:1: rule__Book__Group_3_2__1__Impl : ( ( rule__Book__AuthorsAssignment_3_2_1 ) ) ;
     public final void rule__Book__Group_3_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1306:1: ( ( ( rule__Book__PagesAssignment_3_2_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1307:1: ( ( rule__Book__PagesAssignment_3_2_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1308:1: ( ( ( rule__Book__AuthorsAssignment_3_2_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1309:1: ( ( rule__Book__AuthorsAssignment_3_2_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1307:1: ( ( rule__Book__PagesAssignment_3_2_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1308:1: ( rule__Book__PagesAssignment_3_2_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1309:1: ( ( rule__Book__AuthorsAssignment_3_2_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1310:1: ( rule__Book__AuthorsAssignment_3_2_1 )
             {
-             before(grammarAccess.getBookAccess().getPagesAssignment_3_2_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1309:1: ( rule__Book__PagesAssignment_3_2_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1309:2: rule__Book__PagesAssignment_3_2_1
+             before(grammarAccess.getBookAccess().getAuthorsAssignment_3_2_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1311:1: ( rule__Book__AuthorsAssignment_3_2_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1311:2: rule__Book__AuthorsAssignment_3_2_1
             {
-            pushFollow(FOLLOW_rule__Book__PagesAssignment_3_2_1_in_rule__Book__Group_3_2__1__Impl2567);
-            rule__Book__PagesAssignment_3_2_1();
+            pushFollow(FOLLOW_rule__Book__AuthorsAssignment_3_2_1_in_rule__Book__Group_3_2__1__Impl2579);
+            rule__Book__AuthorsAssignment_3_2_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getBookAccess().getPagesAssignment_3_2_1()); 
+             after(grammarAccess.getBookAccess().getAuthorsAssignment_3_2_1()); 
 
             }
 
@@ -3451,93 +3461,23 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Book__Group_3_2__1__Impl"
 
 
-    // $ANTLR start "rule__Book__Group_3_3__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1323:1: rule__Book__Group_3_3__0 : rule__Book__Group_3_3__0__Impl rule__Book__Group_3_3__1 ;
-    public final void rule__Book__Group_3_3__0() throws RecognitionException {
+    // $ANTLR start "rule__BookRating__Group__0"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1325:1: rule__BookRating__Group__0 : rule__BookRating__Group__0__Impl rule__BookRating__Group__1 ;
+    public final void rule__BookRating__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1327:1: ( rule__Book__Group_3_3__0__Impl rule__Book__Group_3_3__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1328:2: rule__Book__Group_3_3__0__Impl rule__Book__Group_3_3__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1329:1: ( rule__BookRating__Group__0__Impl rule__BookRating__Group__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1330:2: rule__BookRating__Group__0__Impl rule__BookRating__Group__1
             {
-            pushFollow(FOLLOW_rule__Book__Group_3_3__0__Impl_in_rule__Book__Group_3_3__02601);
-            rule__Book__Group_3_3__0__Impl();
+            pushFollow(FOLLOW_rule__BookRating__Group__0__Impl_in_rule__BookRating__Group__02613);
+            rule__BookRating__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group_3_3__1_in_rule__Book__Group_3_3__02604);
-            rule__Book__Group_3_3__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__Group_3_3__0"
-
-
-    // $ANTLR start "rule__Book__Group_3_3__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1335:1: rule__Book__Group_3_3__0__Impl : ( 'category' ) ;
-    public final void rule__Book__Group_3_3__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1339:1: ( ( 'category' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1340:1: ( 'category' )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1340:1: ( 'category' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1341:1: 'category'
-            {
-             before(grammarAccess.getBookAccess().getCategoryKeyword_3_3_0()); 
-            match(input,22,FOLLOW_22_in_rule__Book__Group_3_3__0__Impl2632); 
-             after(grammarAccess.getBookAccess().getCategoryKeyword_3_3_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__Group_3_3__0__Impl"
-
-
-    // $ANTLR start "rule__Book__Group_3_3__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1354:1: rule__Book__Group_3_3__1 : rule__Book__Group_3_3__1__Impl ;
-    public final void rule__Book__Group_3_3__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1358:1: ( rule__Book__Group_3_3__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1359:2: rule__Book__Group_3_3__1__Impl
-            {
-            pushFollow(FOLLOW_rule__Book__Group_3_3__1__Impl_in_rule__Book__Group_3_3__12663);
-            rule__Book__Group_3_3__1__Impl();
+            pushFollow(FOLLOW_rule__BookRating__Group__1_in_rule__BookRating__Group__02616);
+            rule__BookRating__Group__1();
 
             state._fsp--;
 
@@ -3556,35 +3496,25 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__Group_3_3__1"
+    // $ANTLR end "rule__BookRating__Group__0"
 
 
-    // $ANTLR start "rule__Book__Group_3_3__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1365:1: rule__Book__Group_3_3__1__Impl : ( ( rule__Book__CategoryAssignment_3_3_1 ) ) ;
-    public final void rule__Book__Group_3_3__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__BookRating__Group__0__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1337:1: rule__BookRating__Group__0__Impl : ( 'rating' ) ;
+    public final void rule__BookRating__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1369:1: ( ( ( rule__Book__CategoryAssignment_3_3_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1370:1: ( ( rule__Book__CategoryAssignment_3_3_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1341:1: ( ( 'rating' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1342:1: ( 'rating' )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1370:1: ( ( rule__Book__CategoryAssignment_3_3_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1371:1: ( rule__Book__CategoryAssignment_3_3_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1342:1: ( 'rating' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1343:1: 'rating'
             {
-             before(grammarAccess.getBookAccess().getCategoryAssignment_3_3_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1372:1: ( rule__Book__CategoryAssignment_3_3_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1372:2: rule__Book__CategoryAssignment_3_3_1
-            {
-            pushFollow(FOLLOW_rule__Book__CategoryAssignment_3_3_1_in_rule__Book__Group_3_3__1__Impl2690);
-            rule__Book__CategoryAssignment_3_3_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getBookAccess().getCategoryAssignment_3_3_1()); 
+             before(grammarAccess.getBookRatingAccess().getRatingKeyword_0()); 
+            match(input,21,FOLLOW_21_in_rule__BookRating__Group__0__Impl2644); 
+             after(grammarAccess.getBookRatingAccess().getRatingKeyword_0()); 
 
             }
 
@@ -3603,96 +3533,26 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__Group_3_3__1__Impl"
+    // $ANTLR end "rule__BookRating__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Book__Group_3_4__0"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1386:1: rule__Book__Group_3_4__0 : rule__Book__Group_3_4__0__Impl rule__Book__Group_3_4__1 ;
-    public final void rule__Book__Group_3_4__0() throws RecognitionException {
+    // $ANTLR start "rule__BookRating__Group__1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1356:1: rule__BookRating__Group__1 : rule__BookRating__Group__1__Impl rule__BookRating__Group__2 ;
+    public final void rule__BookRating__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1390:1: ( rule__Book__Group_3_4__0__Impl rule__Book__Group_3_4__1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1391:2: rule__Book__Group_3_4__0__Impl rule__Book__Group_3_4__1
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1360:1: ( rule__BookRating__Group__1__Impl rule__BookRating__Group__2 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1361:2: rule__BookRating__Group__1__Impl rule__BookRating__Group__2
             {
-            pushFollow(FOLLOW_rule__Book__Group_3_4__0__Impl_in_rule__Book__Group_3_4__02724);
-            rule__Book__Group_3_4__0__Impl();
+            pushFollow(FOLLOW_rule__BookRating__Group__1__Impl_in_rule__BookRating__Group__12675);
+            rule__BookRating__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Book__Group_3_4__1_in_rule__Book__Group_3_4__02727);
-            rule__Book__Group_3_4__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__Group_3_4__0"
-
-
-    // $ANTLR start "rule__Book__Group_3_4__0__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1398:1: rule__Book__Group_3_4__0__Impl : ( 'author' ) ;
-    public final void rule__Book__Group_3_4__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1402:1: ( ( 'author' ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1403:1: ( 'author' )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1403:1: ( 'author' )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1404:1: 'author'
-            {
-             before(grammarAccess.getBookAccess().getAuthorKeyword_3_4_0()); 
-            match(input,18,FOLLOW_18_in_rule__Book__Group_3_4__0__Impl2755); 
-             after(grammarAccess.getBookAccess().getAuthorKeyword_3_4_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__Group_3_4__0__Impl"
-
-
-    // $ANTLR start "rule__Book__Group_3_4__1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1417:1: rule__Book__Group_3_4__1 : rule__Book__Group_3_4__1__Impl ;
-    public final void rule__Book__Group_3_4__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1421:1: ( rule__Book__Group_3_4__1__Impl )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1422:2: rule__Book__Group_3_4__1__Impl
-            {
-            pushFollow(FOLLOW_rule__Book__Group_3_4__1__Impl_in_rule__Book__Group_3_4__12786);
-            rule__Book__Group_3_4__1__Impl();
+            pushFollow(FOLLOW_rule__BookRating__Group__2_in_rule__BookRating__Group__12678);
+            rule__BookRating__Group__2();
 
             state._fsp--;
 
@@ -3711,35 +3571,35 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__Group_3_4__1"
+    // $ANTLR end "rule__BookRating__Group__1"
 
 
-    // $ANTLR start "rule__Book__Group_3_4__1__Impl"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1428:1: rule__Book__Group_3_4__1__Impl : ( ( rule__Book__AuthorsAssignment_3_4_1 ) ) ;
-    public final void rule__Book__Group_3_4__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__BookRating__Group__1__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1368:1: rule__BookRating__Group__1__Impl : ( ( rule__BookRating__NameAssignment_1 ) ) ;
+    public final void rule__BookRating__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1432:1: ( ( ( rule__Book__AuthorsAssignment_3_4_1 ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1433:1: ( ( rule__Book__AuthorsAssignment_3_4_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1372:1: ( ( ( rule__BookRating__NameAssignment_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1373:1: ( ( rule__BookRating__NameAssignment_1 ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1433:1: ( ( rule__Book__AuthorsAssignment_3_4_1 ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1434:1: ( rule__Book__AuthorsAssignment_3_4_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1373:1: ( ( rule__BookRating__NameAssignment_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1374:1: ( rule__BookRating__NameAssignment_1 )
             {
-             before(grammarAccess.getBookAccess().getAuthorsAssignment_3_4_1()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1435:1: ( rule__Book__AuthorsAssignment_3_4_1 )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1435:2: rule__Book__AuthorsAssignment_3_4_1
+             before(grammarAccess.getBookRatingAccess().getNameAssignment_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1375:1: ( rule__BookRating__NameAssignment_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1375:2: rule__BookRating__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Book__AuthorsAssignment_3_4_1_in_rule__Book__Group_3_4__1__Impl2813);
-            rule__Book__AuthorsAssignment_3_4_1();
+            pushFollow(FOLLOW_rule__BookRating__NameAssignment_1_in_rule__BookRating__Group__1__Impl2705);
+            rule__BookRating__NameAssignment_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getBookAccess().getAuthorsAssignment_3_4_1()); 
+             after(grammarAccess.getBookRatingAccess().getNameAssignment_1()); 
 
             }
 
@@ -3758,24 +3618,751 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__Group_3_4__1__Impl"
+    // $ANTLR end "rule__BookRating__Group__1__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group__2"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1385:1: rule__BookRating__Group__2 : rule__BookRating__Group__2__Impl rule__BookRating__Group__3 ;
+    public final void rule__BookRating__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1389:1: ( rule__BookRating__Group__2__Impl rule__BookRating__Group__3 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1390:2: rule__BookRating__Group__2__Impl rule__BookRating__Group__3
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group__2__Impl_in_rule__BookRating__Group__22735);
+            rule__BookRating__Group__2__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__BookRating__Group__3_in_rule__BookRating__Group__22738);
+            rule__BookRating__Group__3();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group__2"
+
+
+    // $ANTLR start "rule__BookRating__Group__2__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1397:1: rule__BookRating__Group__2__Impl : ( '{' ) ;
+    public final void rule__BookRating__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1401:1: ( ( '{' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1402:1: ( '{' )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1402:1: ( '{' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1403:1: '{'
+            {
+             before(grammarAccess.getBookRatingAccess().getLeftCurlyBracketKeyword_2()); 
+            match(input,15,FOLLOW_15_in_rule__BookRating__Group__2__Impl2766); 
+             after(grammarAccess.getBookRatingAccess().getLeftCurlyBracketKeyword_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group__2__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group__3"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1416:1: rule__BookRating__Group__3 : rule__BookRating__Group__3__Impl rule__BookRating__Group__4 ;
+    public final void rule__BookRating__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1420:1: ( rule__BookRating__Group__3__Impl rule__BookRating__Group__4 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1421:2: rule__BookRating__Group__3__Impl rule__BookRating__Group__4
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group__3__Impl_in_rule__BookRating__Group__32797);
+            rule__BookRating__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__BookRating__Group__4_in_rule__BookRating__Group__32800);
+            rule__BookRating__Group__4();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group__3"
+
+
+    // $ANTLR start "rule__BookRating__Group__3__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1428:1: rule__BookRating__Group__3__Impl : ( ( rule__BookRating__Group_3__0 ) ) ;
+    public final void rule__BookRating__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1432:1: ( ( ( rule__BookRating__Group_3__0 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1433:1: ( ( rule__BookRating__Group_3__0 ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1433:1: ( ( rule__BookRating__Group_3__0 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1434:1: ( rule__BookRating__Group_3__0 )
+            {
+             before(grammarAccess.getBookRatingAccess().getGroup_3()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1435:1: ( rule__BookRating__Group_3__0 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1435:2: rule__BookRating__Group_3__0
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3__0_in_rule__BookRating__Group__3__Impl2827);
+            rule__BookRating__Group_3__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getGroup_3()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group__3__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group__4"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1445:1: rule__BookRating__Group__4 : rule__BookRating__Group__4__Impl ;
+    public final void rule__BookRating__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1449:1: ( rule__BookRating__Group__4__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1450:2: rule__BookRating__Group__4__Impl
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group__4__Impl_in_rule__BookRating__Group__42857);
+            rule__BookRating__Group__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group__4"
+
+
+    // $ANTLR start "rule__BookRating__Group__4__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1456:1: rule__BookRating__Group__4__Impl : ( '}' ) ;
+    public final void rule__BookRating__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1460:1: ( ( '}' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1461:1: ( '}' )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1461:1: ( '}' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1462:1: '}'
+            {
+             before(grammarAccess.getBookRatingAccess().getRightCurlyBracketKeyword_4()); 
+            match(input,16,FOLLOW_16_in_rule__BookRating__Group__4__Impl2885); 
+             after(grammarAccess.getBookRatingAccess().getRightCurlyBracketKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group__4__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group_3__0"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1485:1: rule__BookRating__Group_3__0 : rule__BookRating__Group_3__0__Impl rule__BookRating__Group_3__1 ;
+    public final void rule__BookRating__Group_3__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1489:1: ( rule__BookRating__Group_3__0__Impl rule__BookRating__Group_3__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1490:2: rule__BookRating__Group_3__0__Impl rule__BookRating__Group_3__1
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3__0__Impl_in_rule__BookRating__Group_3__02926);
+            rule__BookRating__Group_3__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__BookRating__Group_3__1_in_rule__BookRating__Group_3__02929);
+            rule__BookRating__Group_3__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3__0"
+
+
+    // $ANTLR start "rule__BookRating__Group_3__0__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1497:1: rule__BookRating__Group_3__0__Impl : ( ( rule__BookRating__Group_3_0__0 )? ) ;
+    public final void rule__BookRating__Group_3__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1501:1: ( ( ( rule__BookRating__Group_3_0__0 )? ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1502:1: ( ( rule__BookRating__Group_3_0__0 )? )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1502:1: ( ( rule__BookRating__Group_3_0__0 )? )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1503:1: ( rule__BookRating__Group_3_0__0 )?
+            {
+             before(grammarAccess.getBookRatingAccess().getGroup_3_0()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1504:1: ( rule__BookRating__Group_3_0__0 )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
+
+            if ( (LA10_0==17) ) {
+                alt10=1;
+            }
+            switch (alt10) {
+                case 1 :
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1504:2: rule__BookRating__Group_3_0__0
+                    {
+                    pushFollow(FOLLOW_rule__BookRating__Group_3_0__0_in_rule__BookRating__Group_3__0__Impl2956);
+                    rule__BookRating__Group_3_0__0();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getGroup_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3__0__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group_3__1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1514:1: rule__BookRating__Group_3__1 : rule__BookRating__Group_3__1__Impl ;
+    public final void rule__BookRating__Group_3__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1518:1: ( rule__BookRating__Group_3__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1519:2: rule__BookRating__Group_3__1__Impl
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3__1__Impl_in_rule__BookRating__Group_3__12987);
+            rule__BookRating__Group_3__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3__1"
+
+
+    // $ANTLR start "rule__BookRating__Group_3__1__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1525:1: rule__BookRating__Group_3__1__Impl : ( ( rule__BookRating__Group_3_1__0 )? ) ;
+    public final void rule__BookRating__Group_3__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1529:1: ( ( ( rule__BookRating__Group_3_1__0 )? ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1530:1: ( ( rule__BookRating__Group_3_1__0 )? )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1530:1: ( ( rule__BookRating__Group_3_1__0 )? )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1531:1: ( rule__BookRating__Group_3_1__0 )?
+            {
+             before(grammarAccess.getBookRatingAccess().getGroup_3_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1532:1: ( rule__BookRating__Group_3_1__0 )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
+
+            if ( (LA11_0==21) ) {
+                alt11=1;
+            }
+            switch (alt11) {
+                case 1 :
+                    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1532:2: rule__BookRating__Group_3_1__0
+                    {
+                    pushFollow(FOLLOW_rule__BookRating__Group_3_1__0_in_rule__BookRating__Group_3__1__Impl3014);
+                    rule__BookRating__Group_3_1__0();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getGroup_3_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3__1__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_0__0"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1546:1: rule__BookRating__Group_3_0__0 : rule__BookRating__Group_3_0__0__Impl rule__BookRating__Group_3_0__1 ;
+    public final void rule__BookRating__Group_3_0__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1550:1: ( rule__BookRating__Group_3_0__0__Impl rule__BookRating__Group_3_0__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1551:2: rule__BookRating__Group_3_0__0__Impl rule__BookRating__Group_3_0__1
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3_0__0__Impl_in_rule__BookRating__Group_3_0__03049);
+            rule__BookRating__Group_3_0__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__BookRating__Group_3_0__1_in_rule__BookRating__Group_3_0__03052);
+            rule__BookRating__Group_3_0__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_0__0"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_0__0__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1558:1: rule__BookRating__Group_3_0__0__Impl : ( 'book' ) ;
+    public final void rule__BookRating__Group_3_0__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1562:1: ( ( 'book' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1563:1: ( 'book' )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1563:1: ( 'book' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1564:1: 'book'
+            {
+             before(grammarAccess.getBookRatingAccess().getBookKeyword_3_0_0()); 
+            match(input,17,FOLLOW_17_in_rule__BookRating__Group_3_0__0__Impl3080); 
+             after(grammarAccess.getBookRatingAccess().getBookKeyword_3_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_0__0__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_0__1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1577:1: rule__BookRating__Group_3_0__1 : rule__BookRating__Group_3_0__1__Impl ;
+    public final void rule__BookRating__Group_3_0__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1581:1: ( rule__BookRating__Group_3_0__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1582:2: rule__BookRating__Group_3_0__1__Impl
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3_0__1__Impl_in_rule__BookRating__Group_3_0__13111);
+            rule__BookRating__Group_3_0__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_0__1"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_0__1__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1588:1: rule__BookRating__Group_3_0__1__Impl : ( ( rule__BookRating__BookAssignment_3_0_1 ) ) ;
+    public final void rule__BookRating__Group_3_0__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1592:1: ( ( ( rule__BookRating__BookAssignment_3_0_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1593:1: ( ( rule__BookRating__BookAssignment_3_0_1 ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1593:1: ( ( rule__BookRating__BookAssignment_3_0_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1594:1: ( rule__BookRating__BookAssignment_3_0_1 )
+            {
+             before(grammarAccess.getBookRatingAccess().getBookAssignment_3_0_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1595:1: ( rule__BookRating__BookAssignment_3_0_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1595:2: rule__BookRating__BookAssignment_3_0_1
+            {
+            pushFollow(FOLLOW_rule__BookRating__BookAssignment_3_0_1_in_rule__BookRating__Group_3_0__1__Impl3138);
+            rule__BookRating__BookAssignment_3_0_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getBookAssignment_3_0_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_0__1__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_1__0"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1609:1: rule__BookRating__Group_3_1__0 : rule__BookRating__Group_3_1__0__Impl rule__BookRating__Group_3_1__1 ;
+    public final void rule__BookRating__Group_3_1__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1613:1: ( rule__BookRating__Group_3_1__0__Impl rule__BookRating__Group_3_1__1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1614:2: rule__BookRating__Group_3_1__0__Impl rule__BookRating__Group_3_1__1
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3_1__0__Impl_in_rule__BookRating__Group_3_1__03172);
+            rule__BookRating__Group_3_1__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__BookRating__Group_3_1__1_in_rule__BookRating__Group_3_1__03175);
+            rule__BookRating__Group_3_1__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_1__0"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_1__0__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1621:1: rule__BookRating__Group_3_1__0__Impl : ( 'rating' ) ;
+    public final void rule__BookRating__Group_3_1__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1625:1: ( ( 'rating' ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1626:1: ( 'rating' )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1626:1: ( 'rating' )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1627:1: 'rating'
+            {
+             before(grammarAccess.getBookRatingAccess().getRatingKeyword_3_1_0()); 
+            match(input,21,FOLLOW_21_in_rule__BookRating__Group_3_1__0__Impl3203); 
+             after(grammarAccess.getBookRatingAccess().getRatingKeyword_3_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_1__0__Impl"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_1__1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1640:1: rule__BookRating__Group_3_1__1 : rule__BookRating__Group_3_1__1__Impl ;
+    public final void rule__BookRating__Group_3_1__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1644:1: ( rule__BookRating__Group_3_1__1__Impl )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1645:2: rule__BookRating__Group_3_1__1__Impl
+            {
+            pushFollow(FOLLOW_rule__BookRating__Group_3_1__1__Impl_in_rule__BookRating__Group_3_1__13234);
+            rule__BookRating__Group_3_1__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_1__1"
+
+
+    // $ANTLR start "rule__BookRating__Group_3_1__1__Impl"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1651:1: rule__BookRating__Group_3_1__1__Impl : ( ( rule__BookRating__RatingAssignment_3_1_1 ) ) ;
+    public final void rule__BookRating__Group_3_1__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1655:1: ( ( ( rule__BookRating__RatingAssignment_3_1_1 ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1656:1: ( ( rule__BookRating__RatingAssignment_3_1_1 ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1656:1: ( ( rule__BookRating__RatingAssignment_3_1_1 ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1657:1: ( rule__BookRating__RatingAssignment_3_1_1 )
+            {
+             before(grammarAccess.getBookRatingAccess().getRatingAssignment_3_1_1()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1658:1: ( rule__BookRating__RatingAssignment_3_1_1 )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1658:2: rule__BookRating__RatingAssignment_3_1_1
+            {
+            pushFollow(FOLLOW_rule__BookRating__RatingAssignment_3_1_1_in_rule__BookRating__Group_3_1__1__Impl3261);
+            rule__BookRating__RatingAssignment_3_1_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getRatingAssignment_3_1_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__Group_3_1__1__Impl"
 
 
     // $ANTLR start "rule__DomainModel__ElementsAssignment"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1450:1: rule__DomainModel__ElementsAssignment : ( ruleModelElement ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1673:1: rule__DomainModel__ElementsAssignment : ( ruleModelElement ) ;
     public final void rule__DomainModel__ElementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1454:1: ( ( ruleModelElement ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1455:1: ( ruleModelElement )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1677:1: ( ( ruleModelElement ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1678:1: ( ruleModelElement )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1455:1: ( ruleModelElement )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1456:1: ruleModelElement
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1678:1: ( ruleModelElement )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1679:1: ruleModelElement
             {
              before(grammarAccess.getDomainModelAccess().getElementsModelElementParserRuleCall_0()); 
-            pushFollow(FOLLOW_ruleModelElement_in_rule__DomainModel__ElementsAssignment2852);
+            pushFollow(FOLLOW_ruleModelElement_in_rule__DomainModel__ElementsAssignment3300);
             ruleModelElement();
 
             state._fsp--;
@@ -3803,20 +4390,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__NameAssignment_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1465:1: rule__Library__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1688:1: rule__Library__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Library__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1469:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1470:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1692:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1693:1: ( RULE_ID )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1470:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1471:1: RULE_ID
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1693:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1694:1: RULE_ID
             {
              before(grammarAccess.getLibraryAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Library__NameAssignment_12883); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Library__NameAssignment_13331); 
              after(grammarAccess.getLibraryAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -3840,24 +4427,24 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__BooksAssignment_3_0_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1480:1: rule__Library__BooksAssignment_3_0_1 : ( ( RULE_ID ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1703:1: rule__Library__BooksAssignment_3_0_1 : ( ( RULE_ID ) ) ;
     public final void rule__Library__BooksAssignment_3_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1484:1: ( ( ( RULE_ID ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1485:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1707:1: ( ( ( RULE_ID ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1708:1: ( ( RULE_ID ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1485:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1486:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1708:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1709:1: ( RULE_ID )
             {
              before(grammarAccess.getLibraryAccess().getBooksBookCrossReference_3_0_1_0()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1487:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1488:1: RULE_ID
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1710:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1711:1: RULE_ID
             {
              before(grammarAccess.getLibraryAccess().getBooksBookIDTerminalRuleCall_3_0_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Library__BooksAssignment_3_0_12918); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Library__BooksAssignment_3_0_13366); 
              after(grammarAccess.getLibraryAccess().getBooksBookIDTerminalRuleCall_3_0_1_0_1()); 
 
             }
@@ -3885,24 +4472,24 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Library__AuthorsAssignment_3_1_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1499:1: rule__Library__AuthorsAssignment_3_1_1 : ( ( RULE_ID ) ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1722:1: rule__Library__AuthorsAssignment_3_1_1 : ( ( RULE_ID ) ) ;
     public final void rule__Library__AuthorsAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1503:1: ( ( ( RULE_ID ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1504:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1726:1: ( ( ( RULE_ID ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1727:1: ( ( RULE_ID ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1504:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1505:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1727:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1728:1: ( RULE_ID )
             {
              before(grammarAccess.getLibraryAccess().getAuthorsAuthorCrossReference_3_1_1_0()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1506:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1507:1: RULE_ID
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1729:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1730:1: RULE_ID
             {
              before(grammarAccess.getLibraryAccess().getAuthorsAuthorIDTerminalRuleCall_3_1_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Library__AuthorsAssignment_3_1_12957); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Library__AuthorsAssignment_3_1_13405); 
              after(grammarAccess.getLibraryAccess().getAuthorsAuthorIDTerminalRuleCall_3_1_1_0_1()); 
 
             }
@@ -3930,20 +4517,20 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Author__NameAssignment_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1518:1: rule__Author__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1741:1: rule__Author__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Author__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1522:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1523:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1745:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1746:1: ( RULE_ID )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1523:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1524:1: RULE_ID
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1746:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1747:1: RULE_ID
             {
              before(grammarAccess.getAuthorAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Author__NameAssignment_12992); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Author__NameAssignment_13440); 
              after(grammarAccess.getAuthorAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -3966,22 +4553,30 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Author__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Author__FullNameAssignment_3_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1533:1: rule__Author__FullNameAssignment_3_1 : ( RULE_STRING ) ;
-    public final void rule__Author__FullNameAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Author__BooksAssignment_3_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1756:1: rule__Author__BooksAssignment_3_1 : ( ( RULE_ID ) ) ;
+    public final void rule__Author__BooksAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1537:1: ( ( RULE_STRING ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1538:1: ( RULE_STRING )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1760:1: ( ( ( RULE_ID ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1761:1: ( ( RULE_ID ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1538:1: ( RULE_STRING )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1539:1: RULE_STRING
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1761:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1762:1: ( RULE_ID )
             {
-             before(grammarAccess.getAuthorAccess().getFullNameSTRINGTerminalRuleCall_3_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Author__FullNameAssignment_3_13023); 
-             after(grammarAccess.getAuthorAccess().getFullNameSTRINGTerminalRuleCall_3_1_0()); 
+             before(grammarAccess.getAuthorAccess().getBooksBookCrossReference_3_1_0()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1763:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1764:1: RULE_ID
+            {
+             before(grammarAccess.getAuthorAccess().getBooksBookIDTerminalRuleCall_3_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Author__BooksAssignment_3_13475); 
+             after(grammarAccess.getAuthorAccess().getBooksBookIDTerminalRuleCall_3_1_0_1()); 
+
+            }
+
+             after(grammarAccess.getAuthorAccess().getBooksBookCrossReference_3_1_0()); 
 
             }
 
@@ -4000,69 +4595,24 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Author__FullNameAssignment_3_1"
-
-
-    // $ANTLR start "rule__Author__BooksAssignment_3_2_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1548:1: rule__Author__BooksAssignment_3_2_1 : ( ( RULE_ID ) ) ;
-    public final void rule__Author__BooksAssignment_3_2_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1552:1: ( ( ( RULE_ID ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1553:1: ( ( RULE_ID ) )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1553:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1554:1: ( RULE_ID )
-            {
-             before(grammarAccess.getAuthorAccess().getBooksBookCrossReference_3_2_1_0()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1555:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1556:1: RULE_ID
-            {
-             before(grammarAccess.getAuthorAccess().getBooksBookIDTerminalRuleCall_3_2_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Author__BooksAssignment_3_2_13058); 
-             after(grammarAccess.getAuthorAccess().getBooksBookIDTerminalRuleCall_3_2_1_0_1()); 
-
-            }
-
-             after(grammarAccess.getAuthorAccess().getBooksBookCrossReference_3_2_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Author__BooksAssignment_3_2_1"
+    // $ANTLR end "rule__Author__BooksAssignment_3_1"
 
 
     // $ANTLR start "rule__Book__NameAssignment_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1567:1: rule__Book__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1775:1: rule__Book__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Book__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1571:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1572:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1779:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1780:1: ( RULE_ID )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1572:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1573:1: RULE_ID
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1780:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1781:1: RULE_ID
             {
              before(grammarAccess.getBookAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Book__NameAssignment_13093); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Book__NameAssignment_13510); 
              after(grammarAccess.getBookAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -4085,22 +4635,22 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Book__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Book__TitleAssignment_3_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1582:1: rule__Book__TitleAssignment_3_1 : ( RULE_STRING ) ;
-    public final void rule__Book__TitleAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Book__PagesAssignment_3_0_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1790:1: rule__Book__PagesAssignment_3_0_1 : ( RULE_INT ) ;
+    public final void rule__Book__PagesAssignment_3_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1586:1: ( ( RULE_STRING ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1587:1: ( RULE_STRING )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1794:1: ( ( RULE_INT ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1795:1: ( RULE_INT )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1587:1: ( RULE_STRING )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1588:1: RULE_STRING
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1795:1: ( RULE_INT )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1796:1: RULE_INT
             {
-             before(grammarAccess.getBookAccess().getTitleSTRINGTerminalRuleCall_3_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Book__TitleAssignment_3_13124); 
-             after(grammarAccess.getBookAccess().getTitleSTRINGTerminalRuleCall_3_1_0()); 
+             before(grammarAccess.getBookAccess().getPagesINTTerminalRuleCall_3_0_1_0()); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__Book__PagesAssignment_3_0_13541); 
+             after(grammarAccess.getBookAccess().getPagesINTTerminalRuleCall_3_0_1_0()); 
 
             }
 
@@ -4119,66 +4669,29 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__TitleAssignment_3_1"
+    // $ANTLR end "rule__Book__PagesAssignment_3_0_1"
 
 
-    // $ANTLR start "rule__Book__PagesAssignment_3_2_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1597:1: rule__Book__PagesAssignment_3_2_1 : ( RULE_INT ) ;
-    public final void rule__Book__PagesAssignment_3_2_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1601:1: ( ( RULE_INT ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1602:1: ( RULE_INT )
-            {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1602:1: ( RULE_INT )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1603:1: RULE_INT
-            {
-             before(grammarAccess.getBookAccess().getPagesINTTerminalRuleCall_3_2_1_0()); 
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__Book__PagesAssignment_3_2_13155); 
-             after(grammarAccess.getBookAccess().getPagesINTTerminalRuleCall_3_2_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Book__PagesAssignment_3_2_1"
-
-
-    // $ANTLR start "rule__Book__CategoryAssignment_3_3_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1612:1: rule__Book__CategoryAssignment_3_3_1 : ( ruleBookCategory ) ;
-    public final void rule__Book__CategoryAssignment_3_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Book__CategoryAssignment_3_1_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1805:1: rule__Book__CategoryAssignment_3_1_1 : ( ruleBookCategory ) ;
+    public final void rule__Book__CategoryAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1616:1: ( ( ruleBookCategory ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1617:1: ( ruleBookCategory )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1809:1: ( ( ruleBookCategory ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1810:1: ( ruleBookCategory )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1617:1: ( ruleBookCategory )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1618:1: ruleBookCategory
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1810:1: ( ruleBookCategory )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1811:1: ruleBookCategory
             {
-             before(grammarAccess.getBookAccess().getCategoryBookCategoryEnumRuleCall_3_3_1_0()); 
-            pushFollow(FOLLOW_ruleBookCategory_in_rule__Book__CategoryAssignment_3_3_13186);
+             before(grammarAccess.getBookAccess().getCategoryBookCategoryEnumRuleCall_3_1_1_0()); 
+            pushFollow(FOLLOW_ruleBookCategory_in_rule__Book__CategoryAssignment_3_1_13572);
             ruleBookCategory();
 
             state._fsp--;
 
-             after(grammarAccess.getBookAccess().getCategoryBookCategoryEnumRuleCall_3_3_1_0()); 
+             after(grammarAccess.getBookAccess().getCategoryBookCategoryEnumRuleCall_3_1_1_0()); 
 
             }
 
@@ -4197,33 +4710,33 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__CategoryAssignment_3_3_1"
+    // $ANTLR end "rule__Book__CategoryAssignment_3_1_1"
 
 
-    // $ANTLR start "rule__Book__AuthorsAssignment_3_4_1"
-    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1627:1: rule__Book__AuthorsAssignment_3_4_1 : ( ( RULE_ID ) ) ;
-    public final void rule__Book__AuthorsAssignment_3_4_1() throws RecognitionException {
+    // $ANTLR start "rule__Book__AuthorsAssignment_3_2_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1820:1: rule__Book__AuthorsAssignment_3_2_1 : ( ( RULE_ID ) ) ;
+    public final void rule__Book__AuthorsAssignment_3_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1631:1: ( ( ( RULE_ID ) ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1632:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1824:1: ( ( ( RULE_ID ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1825:1: ( ( RULE_ID ) )
             {
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1632:1: ( ( RULE_ID ) )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1633:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1825:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1826:1: ( RULE_ID )
             {
-             before(grammarAccess.getBookAccess().getAuthorsAuthorCrossReference_3_4_1_0()); 
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1634:1: ( RULE_ID )
-            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1635:1: RULE_ID
+             before(grammarAccess.getBookAccess().getAuthorsAuthorCrossReference_3_2_1_0()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1827:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1828:1: RULE_ID
             {
-             before(grammarAccess.getBookAccess().getAuthorsAuthorIDTerminalRuleCall_3_4_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Book__AuthorsAssignment_3_4_13221); 
-             after(grammarAccess.getBookAccess().getAuthorsAuthorIDTerminalRuleCall_3_4_1_0_1()); 
+             before(grammarAccess.getBookAccess().getAuthorsAuthorIDTerminalRuleCall_3_2_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Book__AuthorsAssignment_3_2_13607); 
+             after(grammarAccess.getBookAccess().getAuthorsAuthorIDTerminalRuleCall_3_2_1_0_1()); 
 
             }
 
-             after(grammarAccess.getBookAccess().getAuthorsAuthorCrossReference_3_4_1_0()); 
+             after(grammarAccess.getBookAccess().getAuthorsAuthorCrossReference_3_2_1_0()); 
 
             }
 
@@ -4242,7 +4755,126 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Book__AuthorsAssignment_3_4_1"
+    // $ANTLR end "rule__Book__AuthorsAssignment_3_2_1"
+
+
+    // $ANTLR start "rule__BookRating__NameAssignment_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1839:1: rule__BookRating__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__BookRating__NameAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1843:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1844:1: ( RULE_ID )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1844:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1845:1: RULE_ID
+            {
+             before(grammarAccess.getBookRatingAccess().getNameIDTerminalRuleCall_1_0()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__BookRating__NameAssignment_13642); 
+             after(grammarAccess.getBookRatingAccess().getNameIDTerminalRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__NameAssignment_1"
+
+
+    // $ANTLR start "rule__BookRating__BookAssignment_3_0_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1854:1: rule__BookRating__BookAssignment_3_0_1 : ( ( RULE_ID ) ) ;
+    public final void rule__BookRating__BookAssignment_3_0_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1858:1: ( ( ( RULE_ID ) ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1859:1: ( ( RULE_ID ) )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1859:1: ( ( RULE_ID ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1860:1: ( RULE_ID )
+            {
+             before(grammarAccess.getBookRatingAccess().getBookBookCrossReference_3_0_1_0()); 
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1861:1: ( RULE_ID )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1862:1: RULE_ID
+            {
+             before(grammarAccess.getBookRatingAccess().getBookBookIDTerminalRuleCall_3_0_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__BookRating__BookAssignment_3_0_13677); 
+             after(grammarAccess.getBookRatingAccess().getBookBookIDTerminalRuleCall_3_0_1_0_1()); 
+
+            }
+
+             after(grammarAccess.getBookRatingAccess().getBookBookCrossReference_3_0_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__BookAssignment_3_0_1"
+
+
+    // $ANTLR start "rule__BookRating__RatingAssignment_3_1_1"
+    // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1873:1: rule__BookRating__RatingAssignment_3_1_1 : ( RULE_INT ) ;
+    public final void rule__BookRating__RatingAssignment_3_1_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1877:1: ( ( RULE_INT ) )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1878:1: ( RULE_INT )
+            {
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1878:1: ( RULE_INT )
+            // ../org.xtext.example.mydsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalMyDsl.g:1879:1: RULE_INT
+            {
+             before(grammarAccess.getBookRatingAccess().getRatingINTTerminalRuleCall_3_1_1_0()); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__BookRating__RatingAssignment_3_1_13712); 
+             after(grammarAccess.getBookRatingAccess().getRatingINTTerminalRuleCall_3_1_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__BookRating__RatingAssignment_3_1_1"
 
     // Delegated rules
 
@@ -4251,7 +4883,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_ruleDomainModel_in_entryRuleDomainModel61 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleDomainModel68 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DomainModel__ElementsAssignment_in_ruleDomainModel94 = new BitSet(new long[]{0x0000000000064002L});
+    public static final BitSet FOLLOW_rule__DomainModel__ElementsAssignment_in_ruleDomainModel94 = new BitSet(new long[]{0x0000000000264002L});
     public static final BitSet FOLLOW_ruleModelElement_in_entryRuleModelElement122 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModelElement129 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ModelElement__Alternatives_in_ruleModelElement155 = new BitSet(new long[]{0x0000000000000002L});
@@ -4264,123 +4896,143 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleBook_in_entryRuleBook302 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleBook309 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Book__Group__0_in_ruleBook335 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BookCategory__Alternatives_in_ruleBookCategory372 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLibrary_in_rule__ModelElement__Alternatives407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAuthor_in_rule__ModelElement__Alternatives424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBook_in_rule__ModelElement__Alternatives441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_rule__BookCategory__Alternatives474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__BookCategory__Alternatives495 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__BookCategory__Alternatives516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group__0__Impl_in_rule__Library__Group__0549 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Library__Group__1_in_rule__Library__Group__0552 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__Library__Group__0__Impl580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group__1__Impl_in_rule__Library__Group__1611 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__Library__Group__2_in_rule__Library__Group__1614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__NameAssignment_1_in_rule__Library__Group__1__Impl641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group__2__Impl_in_rule__Library__Group__2671 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_rule__Library__Group__3_in_rule__Library__Group__2674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__Library__Group__2__Impl702 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group__3__Impl_in_rule__Library__Group__3733 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Library__Group__4_in_rule__Library__Group__3736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3__0_in_rule__Library__Group__3__Impl763 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group__4__Impl_in_rule__Library__Group__4793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Library__Group__4__Impl821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3__0__Impl_in_rule__Library__Group_3__0862 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_rule__Library__Group_3__1_in_rule__Library__Group_3__0865 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_0__0_in_rule__Library__Group_3__0__Impl892 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3__1__Impl_in_rule__Library__Group_3__1923 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_1__0_in_rule__Library__Group_3__1__Impl950 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_0__0__Impl_in_rule__Library__Group_3_0__0985 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_0__1_in_rule__Library__Group_3_0__0988 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__Library__Group_3_0__0__Impl1016 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_0__1__Impl_in_rule__Library__Group_3_0__11047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__BooksAssignment_3_0_1_in_rule__Library__Group_3_0__1__Impl1074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_1__0__Impl_in_rule__Library__Group_3_1__01108 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_1__1_in_rule__Library__Group_3_1__01111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Library__Group_3_1__0__Impl1139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__Group_3_1__1__Impl_in_rule__Library__Group_3_1__11170 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Library__AuthorsAssignment_3_1_1_in_rule__Library__Group_3_1__1__Impl1197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group__0__Impl_in_rule__Author__Group__01231 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Author__Group__1_in_rule__Author__Group__01234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Author__Group__0__Impl1262 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group__1__Impl_in_rule__Author__Group__11293 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__Author__Group__2_in_rule__Author__Group__11296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__NameAssignment_1_in_rule__Author__Group__1__Impl1323 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group__2__Impl_in_rule__Author__Group__21353 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_rule__Author__Group__3_in_rule__Author__Group__21356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__Author__Group__2__Impl1384 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group__3__Impl_in_rule__Author__Group__31415 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Author__Group__4_in_rule__Author__Group__31418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3__0_in_rule__Author__Group__3__Impl1445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group__4__Impl_in_rule__Author__Group__41475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Author__Group__4__Impl1503 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3__0__Impl_in_rule__Author__Group_3__01544 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Author__Group_3__1_in_rule__Author__Group_3__01547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__Author__Group_3__0__Impl1575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3__1__Impl_in_rule__Author__Group_3__11606 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__Author__Group_3__2_in_rule__Author__Group_3__11609 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__FullNameAssignment_3_1_in_rule__Author__Group_3__1__Impl1636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3__2__Impl_in_rule__Author__Group_3__21666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3_2__0_in_rule__Author__Group_3__2__Impl1693 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3_2__0__Impl_in_rule__Author__Group_3_2__01730 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Author__Group_3_2__1_in_rule__Author__Group_3_2__01733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__Author__Group_3_2__0__Impl1761 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__Group_3_2__1__Impl_in_rule__Author__Group_3_2__11792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Author__BooksAssignment_3_2_1_in_rule__Author__Group_3_2__1__Impl1819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group__0__Impl_in_rule__Book__Group__01853 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Book__Group__1_in_rule__Book__Group__01856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__Book__Group__0__Impl1884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group__1__Impl_in_rule__Book__Group__11915 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__Book__Group__2_in_rule__Book__Group__11918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__NameAssignment_1_in_rule__Book__Group__1__Impl1945 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group__2__Impl_in_rule__Book__Group__21975 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_rule__Book__Group__3_in_rule__Book__Group__21978 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__Book__Group__2__Impl2006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group__3__Impl_in_rule__Book__Group__32037 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Book__Group__4_in_rule__Book__Group__32040 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__0_in_rule__Book__Group__3__Impl2067 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group__4__Impl_in_rule__Book__Group__42097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Book__Group__4__Impl2125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__0__Impl_in_rule__Book__Group_3__02166 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__1_in_rule__Book__Group_3__02169 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__Book__Group_3__0__Impl2197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__1__Impl_in_rule__Book__Group_3__12228 = new BitSet(new long[]{0x0000000000640000L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__2_in_rule__Book__Group_3__12231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__TitleAssignment_3_1_in_rule__Book__Group_3__1__Impl2258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__2__Impl_in_rule__Book__Group_3__22288 = new BitSet(new long[]{0x0000000000640000L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__3_in_rule__Book__Group_3__22291 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_2__0_in_rule__Book__Group_3__2__Impl2318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__3__Impl_in_rule__Book__Group_3__32349 = new BitSet(new long[]{0x0000000000640000L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__4_in_rule__Book__Group_3__32352 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_3__0_in_rule__Book__Group_3__3__Impl2379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3__4__Impl_in_rule__Book__Group_3__42410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_4__0_in_rule__Book__Group_3__4__Impl2437 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_2__0__Impl_in_rule__Book__Group_3_2__02478 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_2__1_in_rule__Book__Group_3_2__02481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__Book__Group_3_2__0__Impl2509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_2__1__Impl_in_rule__Book__Group_3_2__12540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__PagesAssignment_3_2_1_in_rule__Book__Group_3_2__1__Impl2567 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_3__0__Impl_in_rule__Book__Group_3_3__02601 = new BitSet(new long[]{0x0000000000003800L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_3__1_in_rule__Book__Group_3_3__02604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__Book__Group_3_3__0__Impl2632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_3__1__Impl_in_rule__Book__Group_3_3__12663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__CategoryAssignment_3_3_1_in_rule__Book__Group_3_3__1__Impl2690 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_4__0__Impl_in_rule__Book__Group_3_4__02724 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_4__1_in_rule__Book__Group_3_4__02727 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Book__Group_3_4__0__Impl2755 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__Group_3_4__1__Impl_in_rule__Book__Group_3_4__12786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Book__AuthorsAssignment_3_4_1_in_rule__Book__Group_3_4__1__Impl2813 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelElement_in_rule__DomainModel__ElementsAssignment2852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Library__NameAssignment_12883 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Library__BooksAssignment_3_0_12918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Library__AuthorsAssignment_3_1_12957 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Author__NameAssignment_12992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Author__FullNameAssignment_3_13023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Author__BooksAssignment_3_2_13058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Book__NameAssignment_13093 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Book__TitleAssignment_3_13124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__Book__PagesAssignment_3_2_13155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBookCategory_in_rule__Book__CategoryAssignment_3_3_13186 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Book__AuthorsAssignment_3_4_13221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBookRating_in_entryRuleBookRating362 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBookRating369 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__0_in_ruleBookRating395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookCategory__Alternatives_in_ruleBookCategory432 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLibrary_in_rule__ModelElement__Alternatives467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAuthor_in_rule__ModelElement__Alternatives484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBook_in_rule__ModelElement__Alternatives501 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBookRating_in_rule__ModelElement__Alternatives518 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_rule__BookCategory__Alternatives551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__BookCategory__Alternatives572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__BookCategory__Alternatives593 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group__0__Impl_in_rule__Library__Group__0626 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Library__Group__1_in_rule__Library__Group__0629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__Library__Group__0__Impl657 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group__1__Impl_in_rule__Library__Group__1688 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Library__Group__2_in_rule__Library__Group__1691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__NameAssignment_1_in_rule__Library__Group__1__Impl718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group__2__Impl_in_rule__Library__Group__2748 = new BitSet(new long[]{0x0000000000060000L});
+    public static final BitSet FOLLOW_rule__Library__Group__3_in_rule__Library__Group__2751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Library__Group__2__Impl779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group__3__Impl_in_rule__Library__Group__3810 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__Library__Group__4_in_rule__Library__Group__3813 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3__0_in_rule__Library__Group__3__Impl840 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group__4__Impl_in_rule__Library__Group__4870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__Library__Group__4__Impl898 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3__0__Impl_in_rule__Library__Group_3__0939 = new BitSet(new long[]{0x0000000000060000L});
+    public static final BitSet FOLLOW_rule__Library__Group_3__1_in_rule__Library__Group_3__0942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_0__0_in_rule__Library__Group_3__0__Impl969 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3__1__Impl_in_rule__Library__Group_3__11000 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_1__0_in_rule__Library__Group_3__1__Impl1027 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_0__0__Impl_in_rule__Library__Group_3_0__01062 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_0__1_in_rule__Library__Group_3_0__01065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Library__Group_3_0__0__Impl1093 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_0__1__Impl_in_rule__Library__Group_3_0__11124 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__BooksAssignment_3_0_1_in_rule__Library__Group_3_0__1__Impl1151 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_1__0__Impl_in_rule__Library__Group_3_1__01185 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_1__1_in_rule__Library__Group_3_1__01188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__Library__Group_3_1__0__Impl1216 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__Group_3_1__1__Impl_in_rule__Library__Group_3_1__11247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Library__AuthorsAssignment_3_1_1_in_rule__Library__Group_3_1__1__Impl1274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group__0__Impl_in_rule__Author__Group__01308 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Author__Group__1_in_rule__Author__Group__01311 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__Author__Group__0__Impl1339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group__1__Impl_in_rule__Author__Group__11370 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Author__Group__2_in_rule__Author__Group__11373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__NameAssignment_1_in_rule__Author__Group__1__Impl1400 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group__2__Impl_in_rule__Author__Group__21430 = new BitSet(new long[]{0x0000000000030000L});
+    public static final BitSet FOLLOW_rule__Author__Group__3_in_rule__Author__Group__21433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Author__Group__2__Impl1461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group__3__Impl_in_rule__Author__Group__31492 = new BitSet(new long[]{0x0000000000030000L});
+    public static final BitSet FOLLOW_rule__Author__Group__4_in_rule__Author__Group__31495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group_3__0_in_rule__Author__Group__3__Impl1522 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__Author__Group__4__Impl_in_rule__Author__Group__41553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__Author__Group__4__Impl1581 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group_3__0__Impl_in_rule__Author__Group_3__01622 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Author__Group_3__1_in_rule__Author__Group_3__01625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Author__Group_3__0__Impl1653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__Group_3__1__Impl_in_rule__Author__Group_3__11684 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Author__BooksAssignment_3_1_in_rule__Author__Group_3__1__Impl1711 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group__0__Impl_in_rule__Book__Group__01745 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Book__Group__1_in_rule__Book__Group__01748 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Book__Group__0__Impl1776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group__1__Impl_in_rule__Book__Group__11807 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Book__Group__2_in_rule__Book__Group__11810 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__NameAssignment_1_in_rule__Book__Group__1__Impl1837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group__2__Impl_in_rule__Book__Group__21867 = new BitSet(new long[]{0x00000000001C0000L});
+    public static final BitSet FOLLOW_rule__Book__Group__3_in_rule__Book__Group__21870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Book__Group__2__Impl1898 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group__3__Impl_in_rule__Book__Group__31929 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__Book__Group__4_in_rule__Book__Group__31932 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3__0_in_rule__Book__Group__3__Impl1959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group__4__Impl_in_rule__Book__Group__41989 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__Book__Group__4__Impl2017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3__0__Impl_in_rule__Book__Group_3__02058 = new BitSet(new long[]{0x00000000001C0000L});
+    public static final BitSet FOLLOW_rule__Book__Group_3__1_in_rule__Book__Group_3__02061 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_0__0_in_rule__Book__Group_3__0__Impl2088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3__1__Impl_in_rule__Book__Group_3__12119 = new BitSet(new long[]{0x00000000001C0000L});
+    public static final BitSet FOLLOW_rule__Book__Group_3__2_in_rule__Book__Group_3__12122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_1__0_in_rule__Book__Group_3__1__Impl2149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3__2__Impl_in_rule__Book__Group_3__22180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_2__0_in_rule__Book__Group_3__2__Impl2207 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_0__0__Impl_in_rule__Book__Group_3_0__02244 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_0__1_in_rule__Book__Group_3_0__02247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Book__Group_3_0__0__Impl2275 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_0__1__Impl_in_rule__Book__Group_3_0__12306 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__PagesAssignment_3_0_1_in_rule__Book__Group_3_0__1__Impl2333 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_1__0__Impl_in_rule__Book__Group_3_1__02367 = new BitSet(new long[]{0x0000000000003800L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_1__1_in_rule__Book__Group_3_1__02370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__Book__Group_3_1__0__Impl2398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_1__1__Impl_in_rule__Book__Group_3_1__12429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__CategoryAssignment_3_1_1_in_rule__Book__Group_3_1__1__Impl2456 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_2__0__Impl_in_rule__Book__Group_3_2__02490 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_2__1_in_rule__Book__Group_3_2__02493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__Book__Group_3_2__0__Impl2521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__Group_3_2__1__Impl_in_rule__Book__Group_3_2__12552 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Book__AuthorsAssignment_3_2_1_in_rule__Book__Group_3_2__1__Impl2579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__0__Impl_in_rule__BookRating__Group__02613 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__1_in_rule__BookRating__Group__02616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__BookRating__Group__0__Impl2644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__1__Impl_in_rule__BookRating__Group__12675 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__2_in_rule__BookRating__Group__12678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__NameAssignment_1_in_rule__BookRating__Group__1__Impl2705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__2__Impl_in_rule__BookRating__Group__22735 = new BitSet(new long[]{0x0000000000220000L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__3_in_rule__BookRating__Group__22738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__BookRating__Group__2__Impl2766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__3__Impl_in_rule__BookRating__Group__32797 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__4_in_rule__BookRating__Group__32800 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3__0_in_rule__BookRating__Group__3__Impl2827 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group__4__Impl_in_rule__BookRating__Group__42857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__BookRating__Group__4__Impl2885 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3__0__Impl_in_rule__BookRating__Group_3__02926 = new BitSet(new long[]{0x0000000000220000L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3__1_in_rule__BookRating__Group_3__02929 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_0__0_in_rule__BookRating__Group_3__0__Impl2956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3__1__Impl_in_rule__BookRating__Group_3__12987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_1__0_in_rule__BookRating__Group_3__1__Impl3014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_0__0__Impl_in_rule__BookRating__Group_3_0__03049 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_0__1_in_rule__BookRating__Group_3_0__03052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__BookRating__Group_3_0__0__Impl3080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_0__1__Impl_in_rule__BookRating__Group_3_0__13111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__BookAssignment_3_0_1_in_rule__BookRating__Group_3_0__1__Impl3138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_1__0__Impl_in_rule__BookRating__Group_3_1__03172 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_1__1_in_rule__BookRating__Group_3_1__03175 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__BookRating__Group_3_1__0__Impl3203 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__Group_3_1__1__Impl_in_rule__BookRating__Group_3_1__13234 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BookRating__RatingAssignment_3_1_1_in_rule__BookRating__Group_3_1__1__Impl3261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelElement_in_rule__DomainModel__ElementsAssignment3300 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Library__NameAssignment_13331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Library__BooksAssignment_3_0_13366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Library__AuthorsAssignment_3_1_13405 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Author__NameAssignment_13440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Author__BooksAssignment_3_13475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Book__NameAssignment_13510 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__Book__PagesAssignment_3_0_13541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBookCategory_in_rule__Book__CategoryAssignment_3_1_13572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Book__AuthorsAssignment_3_2_13607 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__BookRating__NameAssignment_13642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__BookRating__BookAssignment_3_0_13677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__BookRating__RatingAssignment_3_1_13712 = new BitSet(new long[]{0x0000000000000002L});
 
 }

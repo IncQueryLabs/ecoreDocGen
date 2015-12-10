@@ -2,11 +2,11 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-    <extension point="org.eclipse.ui.preferencePages">
-       <page id="VersionPreferencePage"
-	  	    name="Version"
-		    class="org.xtext.example.mydsl.version.VersionPreferencePage"
-			category="Version">
-	   	</page>
-    </extension>
+<extension point="org.eclipse.ui.preferencePages">
+   <page id="VersionPreferencePage"
+  	    name="Version"
+	    class="org.xtext.example.mydsl.version.VersionPreferencePage"
+		category="Version">
+   	</page>
+</extension>
 </plugin>

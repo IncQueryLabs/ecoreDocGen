@@ -28,24 +28,12 @@ public class EObjectWrapper extends EObjectImpl {
 		return eFeature;
 	}
 	
-	public void seteFeature(EStructuralFeature eFeature) {
-		this.eFeature = eFeature;
-	}
-	
 	public EClass geteClass() {
 		return eClass;
 	}
 	
-	public void seteClass(EClass eClass) {
-		this.eClass = eClass;
-	}
-
 	public EClass geteClassFeatureType() {
 		return eClassFeatureType;
-	}
-
-	public void seteClassFeatureType(EClass eClassFeatureType) {
-		this.eClassFeatureType = eClassFeatureType;
 	}
 
 }

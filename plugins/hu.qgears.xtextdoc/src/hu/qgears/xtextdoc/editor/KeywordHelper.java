@@ -40,17 +40,17 @@ public class KeywordHelper {
 		}
 		return leaf;
 	}
-
+	
 	/**
 	 * Gets the EObject for a leaf - this is needed for getting documentation for a hover.
 	 * If the leaf is direct child of a ParserRule it will return that type otherwise it returns
-	 * the next Assignment in that subtree. If the returned type is not root element it will returned 
+	 * the next Assignment in that subtree. If the returned type is not root element it will be returned 
 	 * as a reference of its parent type.
 	 * @param leaf
 	 * @return
 	 */
 	public EObject getEObjectAt(ILeafNode leaf) {
-
+		
 		if (leaf != null && leaf.getGrammarElement() instanceof Keyword) {
 
 			Keyword keyword = (Keyword) leaf.getGrammarElement();

@@ -30,7 +30,7 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 
 	private EcoreDocumentationValidator() {
 	}
-	
+
 	@Override
 	public boolean validateEReference(EReference eReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		validateDocumentation(eReference, diagnostics);
@@ -54,26 +54,26 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 		validateDocumentation(eEnum, diagnostics);
 		return super.validateEEnum(eEnum, diagnostics, context);
 	}
-	
+
 	@Override
 	public boolean validateEDataType(EDataType eDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		validateDocumentation(eDataType, diagnostics);
 		return super.validateEDataType(eDataType, diagnostics, context);
 	}
-	
+
 	@Override
 	public boolean validateEEnumLiteral(EEnumLiteral eEnumLiteral, DiagnosticChain diagnostics,	Map<Object, Object> context) {
 		validateDocumentation(eEnumLiteral, diagnostics);
 		return super.validateEEnumLiteral(eEnumLiteral, diagnostics, context);
 	}
-	
+
 	private void validateDocumentation(EModelElement value, DiagnosticChain diagnostics) {
 		String documentation = EcoreUtil.getDocumentation(value);
 		if (documentation == null) {
 			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, DIAGNOSTIC_SOURCE, -1, "Missing documentation",
 					new Object[] { value }));
 		}
-		
+
 		List<DocumentationField> documentationFields = DocumentationFieldUtils.getDocumentationFields(value);
 		for (DocumentationField documentationField : documentationFields) {
 			String annotationValue = documentationField.getValue();
@@ -104,10 +104,10 @@ public class EcoreDocumentationValidator extends EcoreValidator {
 			case "EFloat":
 				Float.parseFloat(annotationValue);
 				break;
-			case "double":
+			case "EDouble":
 				Double.parseDouble(annotationValue);
 				break;
-			case "byte":
+			case "EByte":
 				Byte.parseByte(annotationValue);
 				break;
 			case "EChar":

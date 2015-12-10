@@ -146,6 +146,16 @@ ruleModelElement returns [EObject current=null]
         $current = $this_Book_2.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getModelElementAccess().getBookRatingParserRuleCall_3()); 
+    }
+    this_BookRating_3=ruleBookRating
+    { 
+        $current = $this_BookRating_3.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -278,31 +288,9 @@ ruleAuthor returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getAuthorAccess().getLeftCurlyBracketKeyword_2());
     }
-(	otherlv_3='name' 
+(	otherlv_3='book' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getAuthorAccess().getNameKeyword_3_0());
-    }
-(
-(
-		lv_fullName_4_0=RULE_STRING
-		{
-			newLeafNode(lv_fullName_4_0, grammarAccess.getAuthorAccess().getFullNameSTRINGTerminalRuleCall_3_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getAuthorRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"fullName",
-        		lv_fullName_4_0, 
-        		"STRING");
-	    }
-
-)
-)(	otherlv_5='book' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getAuthorAccess().getBookKeyword_3_2_0());
+    	newLeafNode(otherlv_3, grammarAccess.getAuthorAccess().getBookKeyword_3_0());
     }
 (
 (
@@ -311,15 +299,15 @@ ruleAuthor returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getAuthorRule());
 	        }
         }
-	otherlv_6=RULE_ID
+	otherlv_4=RULE_ID
 	{
-		newLeafNode(otherlv_6, grammarAccess.getAuthorAccess().getBooksBookCrossReference_3_2_1_0()); 
+		newLeafNode(otherlv_4, grammarAccess.getAuthorAccess().getBooksBookCrossReference_3_1_0()); 
 	}
 
 )
-))*)	otherlv_7='}' 
+))*	otherlv_5='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getAuthorAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_5, grammarAccess.getAuthorAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -368,37 +356,15 @@ ruleBook returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getBookAccess().getLeftCurlyBracketKeyword_2());
     }
-(	otherlv_3='title' 
+((	otherlv_3='page' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getBookAccess().getTitleKeyword_3_0());
+    	newLeafNode(otherlv_3, grammarAccess.getBookAccess().getPageKeyword_3_0_0());
     }
 (
 (
-		lv_title_4_0=RULE_STRING
+		lv_pages_4_0=RULE_INT
 		{
-			newLeafNode(lv_title_4_0, grammarAccess.getBookAccess().getTitleSTRINGTerminalRuleCall_3_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getBookRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"title",
-        		lv_title_4_0, 
-        		"STRING");
-	    }
-
-)
-)(	otherlv_5='page' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getBookAccess().getPageKeyword_3_2_0());
-    }
-(
-(
-		lv_pages_6_0=RULE_INT
-		{
-			newLeafNode(lv_pages_6_0, grammarAccess.getBookAccess().getPagesINTTerminalRuleCall_3_2_1_0()); 
+			newLeafNode(lv_pages_4_0, grammarAccess.getBookAccess().getPagesINTTerminalRuleCall_3_0_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -407,36 +373,36 @@ ruleBook returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"pages",
-        		lv_pages_6_0, 
+        		lv_pages_4_0, 
         		"INT");
 	    }
 
 )
-))?(	otherlv_7='category' 
+))?(	otherlv_5='category' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getBookAccess().getCategoryKeyword_3_3_0());
+    	newLeafNode(otherlv_5, grammarAccess.getBookAccess().getCategoryKeyword_3_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBookAccess().getCategoryBookCategoryEnumRuleCall_3_3_1_0()); 
+	        newCompositeNode(grammarAccess.getBookAccess().getCategoryBookCategoryEnumRuleCall_3_1_1_0()); 
 	    }
-		lv_category_8_0=ruleBookCategory		{
+		lv_category_6_0=ruleBookCategory		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBookRule());
 	        }
        		set(
        			$current, 
        			"category",
-        		lv_category_8_0, 
+        		lv_category_6_0, 
         		"BookCategory");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?(	otherlv_9='author' 
+))?(	otherlv_7='author' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getBookAccess().getAuthorKeyword_3_4_0());
+    	newLeafNode(otherlv_7, grammarAccess.getBookAccess().getAuthorKeyword_3_2_0());
     }
 (
 (
@@ -445,15 +411,105 @@ ruleBook returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getBookRule());
 	        }
         }
-	otherlv_10=RULE_ID
+	otherlv_8=RULE_ID
 	{
-		newLeafNode(otherlv_10, grammarAccess.getBookAccess().getAuthorsAuthorCrossReference_3_4_1_0()); 
+		newLeafNode(otherlv_8, grammarAccess.getBookAccess().getAuthorsAuthorCrossReference_3_2_1_0()); 
 	}
 
 )
-))*)	otherlv_11='}' 
+))*)	otherlv_9='}' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getBookAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_9, grammarAccess.getBookAccess().getRightCurlyBracketKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleBookRating
+entryRuleBookRating returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBookRatingRule()); }
+	 iv_ruleBookRating=ruleBookRating 
+	 { $current=$iv_ruleBookRating.current; } 
+	 EOF 
+;
+
+// Rule BookRating
+ruleBookRating returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='rating' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getBookRatingAccess().getRatingKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getBookRatingAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBookRatingRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getBookRatingAccess().getLeftCurlyBracketKeyword_2());
+    }
+((	otherlv_3='book' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getBookRatingAccess().getBookKeyword_3_0_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBookRatingRule());
+	        }
+        }
+	otherlv_4=RULE_ID
+	{
+		newLeafNode(otherlv_4, grammarAccess.getBookRatingAccess().getBookBookCrossReference_3_0_1_0()); 
+	}
+
+)
+))?(	otherlv_5='rating' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getBookRatingAccess().getRatingKeyword_3_1_0());
+    }
+(
+(
+		lv_rating_6_0=RULE_INT
+		{
+			newLeafNode(lv_rating_6_0, grammarAccess.getBookRatingAccess().getRatingINTTerminalRuleCall_3_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBookRatingRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"rating",
+        		lv_rating_6_0, 
+        		"INT");
+	    }
+
+)
+))?)	otherlv_7='}' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getBookRatingAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -487,7 +543,7 @@ ruleBookCategory returns [Enumerator current=null]
 
 
 
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+RULE_ID : (('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'')|'^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*);
 
 RULE_INT : ('0'..'9')+;
 

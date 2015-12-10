@@ -40,12 +40,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLibraryParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cAuthorParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cBookParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cBookRatingParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//ModelElement:
-		//	Library | Author | Book;
+		//	Library | Author | Book | BookRating;
 		@Override public ParserRule getRule() { return rule; }
 
-		//Library | Author | Book
+		//Library | Author | Book | BookRating
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Library
@@ -56,6 +57,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Book
 		public RuleCall getBookParserRuleCall_2() { return cBookParserRuleCall_2; }
+
+		//BookRating
+		public RuleCall getBookRatingParserRuleCall_3() { return cBookRatingParserRuleCall_3; }
 	}
 
 	public class LibraryElements extends AbstractParserRuleElementFinder {
@@ -142,21 +146,17 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cNameKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cFullNameAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cFullNameSTRINGTerminalRuleCall_3_1_0 = (RuleCall)cFullNameAssignment_3_1.eContents().get(0);
-		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
-		private final Keyword cBookKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
-		private final Assignment cBooksAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
-		private final CrossReference cBooksBookCrossReference_3_2_1_0 = (CrossReference)cBooksAssignment_3_2_1.eContents().get(0);
-		private final RuleCall cBooksBookIDTerminalRuleCall_3_2_1_0_1 = (RuleCall)cBooksBookCrossReference_3_2_1_0.eContents().get(1);
+		private final Keyword cBookKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cBooksAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cBooksBookCrossReference_3_1_0 = (CrossReference)cBooksAssignment_3_1.eContents().get(0);
+		private final RuleCall cBooksBookIDTerminalRuleCall_3_1_0_1 = (RuleCall)cBooksBookCrossReference_3_1_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Author:
-		//	"author" name=ID "{" ("name" fullName=STRING ("book" books+=[Book])*) "}";
+		//	"author" name=ID "{" ("book" books+=[Book])* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"author" name=ID "{" ("name" fullName=STRING ("book" books+=[Book])*) "}"
+		//"author" name=ID "{" ("book" books+=[Book])* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"author"
@@ -171,32 +171,20 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"name" fullName=STRING ("book" books+=[Book])*
+		//("book" books+=[Book])*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"name"
-		public Keyword getNameKeyword_3_0() { return cNameKeyword_3_0; }
-
-		//fullName=STRING
-		public Assignment getFullNameAssignment_3_1() { return cFullNameAssignment_3_1; }
-
-		//STRING
-		public RuleCall getFullNameSTRINGTerminalRuleCall_3_1_0() { return cFullNameSTRINGTerminalRuleCall_3_1_0; }
-
-		//("book" books+=[Book])*
-		public Group getGroup_3_2() { return cGroup_3_2; }
-
 		//"book"
-		public Keyword getBookKeyword_3_2_0() { return cBookKeyword_3_2_0; }
+		public Keyword getBookKeyword_3_0() { return cBookKeyword_3_0; }
 
 		//books+=[Book]
-		public Assignment getBooksAssignment_3_2_1() { return cBooksAssignment_3_2_1; }
+		public Assignment getBooksAssignment_3_1() { return cBooksAssignment_3_1; }
 
 		//[Book]
-		public CrossReference getBooksBookCrossReference_3_2_1_0() { return cBooksBookCrossReference_3_2_1_0; }
+		public CrossReference getBooksBookCrossReference_3_1_0() { return cBooksBookCrossReference_3_1_0; }
 
 		//ID
-		public RuleCall getBooksBookIDTerminalRuleCall_3_2_1_0_1() { return cBooksBookIDTerminalRuleCall_3_2_1_0_1; }
+		public RuleCall getBooksBookIDTerminalRuleCall_3_1_0_1() { return cBooksBookIDTerminalRuleCall_3_1_0_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -210,31 +198,26 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cTitleKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cTitleAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cTitleSTRINGTerminalRuleCall_3_1_0 = (RuleCall)cTitleAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
+		private final Keyword cPageKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Assignment cPagesAssignment_3_0_1 = (Assignment)cGroup_3_0.eContents().get(1);
+		private final RuleCall cPagesINTTerminalRuleCall_3_0_1_0 = (RuleCall)cPagesAssignment_3_0_1.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cCategoryKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cCategoryAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cCategoryBookCategoryEnumRuleCall_3_1_1_0 = (RuleCall)cCategoryAssignment_3_1_1.eContents().get(0);
 		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
-		private final Keyword cPageKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
-		private final Assignment cPagesAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
-		private final RuleCall cPagesINTTerminalRuleCall_3_2_1_0 = (RuleCall)cPagesAssignment_3_2_1.eContents().get(0);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCategoryKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cCategoryAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final RuleCall cCategoryBookCategoryEnumRuleCall_3_3_1_0 = (RuleCall)cCategoryAssignment_3_3_1.eContents().get(0);
-		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
-		private final Keyword cAuthorKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
-		private final Assignment cAuthorsAssignment_3_4_1 = (Assignment)cGroup_3_4.eContents().get(1);
-		private final CrossReference cAuthorsAuthorCrossReference_3_4_1_0 = (CrossReference)cAuthorsAssignment_3_4_1.eContents().get(0);
-		private final RuleCall cAuthorsAuthorIDTerminalRuleCall_3_4_1_0_1 = (RuleCall)cAuthorsAuthorCrossReference_3_4_1_0.eContents().get(1);
+		private final Keyword cAuthorKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cAuthorsAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final CrossReference cAuthorsAuthorCrossReference_3_2_1_0 = (CrossReference)cAuthorsAssignment_3_2_1.eContents().get(0);
+		private final RuleCall cAuthorsAuthorIDTerminalRuleCall_3_2_1_0_1 = (RuleCall)cAuthorsAuthorCrossReference_3_2_1_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Book:
-		//	"book" name=ID "{" ("title" title=STRING ("page" pages=INT)? ("category" category=BookCategory)? ("author"
-		//	authors+=[Author])*) "}";
+		//	"book" name=ID "{" (("page" pages=INT)? ("category" category=BookCategory)? ("author" authors+=[Author])*) "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"book" name=ID "{" ("title" title=STRING ("page" pages=INT)? ("category" category=BookCategory)? ("author"
-		//authors+=[Author])*) "}"
+		//"book" name=ID "{" (("page" pages=INT)? ("category" category=BookCategory)? ("author" authors+=[Author])*) "}"
 		public Group getGroup() { return cGroup; }
 
 		//"book"
@@ -249,56 +232,119 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"title" title=STRING ("page" pages=INT)? ("category" category=BookCategory)? ("author" authors+=[Author])*
+		//("page" pages=INT)? ("category" category=BookCategory)? ("author" authors+=[Author])*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"title"
-		public Keyword getTitleKeyword_3_0() { return cTitleKeyword_3_0; }
-
-		//title=STRING
-		public Assignment getTitleAssignment_3_1() { return cTitleAssignment_3_1; }
-
-		//STRING
-		public RuleCall getTitleSTRINGTerminalRuleCall_3_1_0() { return cTitleSTRINGTerminalRuleCall_3_1_0; }
-
 		//("page" pages=INT)?
-		public Group getGroup_3_2() { return cGroup_3_2; }
+		public Group getGroup_3_0() { return cGroup_3_0; }
 
 		//"page"
-		public Keyword getPageKeyword_3_2_0() { return cPageKeyword_3_2_0; }
+		public Keyword getPageKeyword_3_0_0() { return cPageKeyword_3_0_0; }
 
 		//pages=INT
-		public Assignment getPagesAssignment_3_2_1() { return cPagesAssignment_3_2_1; }
+		public Assignment getPagesAssignment_3_0_1() { return cPagesAssignment_3_0_1; }
 
 		//INT
-		public RuleCall getPagesINTTerminalRuleCall_3_2_1_0() { return cPagesINTTerminalRuleCall_3_2_1_0; }
+		public RuleCall getPagesINTTerminalRuleCall_3_0_1_0() { return cPagesINTTerminalRuleCall_3_0_1_0; }
 
 		//("category" category=BookCategory)?
-		public Group getGroup_3_3() { return cGroup_3_3; }
+		public Group getGroup_3_1() { return cGroup_3_1; }
 
 		//"category"
-		public Keyword getCategoryKeyword_3_3_0() { return cCategoryKeyword_3_3_0; }
+		public Keyword getCategoryKeyword_3_1_0() { return cCategoryKeyword_3_1_0; }
 
 		//category=BookCategory
-		public Assignment getCategoryAssignment_3_3_1() { return cCategoryAssignment_3_3_1; }
+		public Assignment getCategoryAssignment_3_1_1() { return cCategoryAssignment_3_1_1; }
 
 		//BookCategory
-		public RuleCall getCategoryBookCategoryEnumRuleCall_3_3_1_0() { return cCategoryBookCategoryEnumRuleCall_3_3_1_0; }
+		public RuleCall getCategoryBookCategoryEnumRuleCall_3_1_1_0() { return cCategoryBookCategoryEnumRuleCall_3_1_1_0; }
 
 		//("author" authors+=[Author])*
-		public Group getGroup_3_4() { return cGroup_3_4; }
+		public Group getGroup_3_2() { return cGroup_3_2; }
 
 		//"author"
-		public Keyword getAuthorKeyword_3_4_0() { return cAuthorKeyword_3_4_0; }
+		public Keyword getAuthorKeyword_3_2_0() { return cAuthorKeyword_3_2_0; }
 
 		//authors+=[Author]
-		public Assignment getAuthorsAssignment_3_4_1() { return cAuthorsAssignment_3_4_1; }
+		public Assignment getAuthorsAssignment_3_2_1() { return cAuthorsAssignment_3_2_1; }
 
 		//[Author]
-		public CrossReference getAuthorsAuthorCrossReference_3_4_1_0() { return cAuthorsAuthorCrossReference_3_4_1_0; }
+		public CrossReference getAuthorsAuthorCrossReference_3_2_1_0() { return cAuthorsAuthorCrossReference_3_2_1_0; }
 
 		//ID
-		public RuleCall getAuthorsAuthorIDTerminalRuleCall_3_4_1_0_1() { return cAuthorsAuthorIDTerminalRuleCall_3_4_1_0_1; }
+		public RuleCall getAuthorsAuthorIDTerminalRuleCall_3_2_1_0_1() { return cAuthorsAuthorIDTerminalRuleCall_3_2_1_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class BookRatingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BookRating");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRatingKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
+		private final Keyword cBookKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Assignment cBookAssignment_3_0_1 = (Assignment)cGroup_3_0.eContents().get(1);
+		private final CrossReference cBookBookCrossReference_3_0_1_0 = (CrossReference)cBookAssignment_3_0_1.eContents().get(0);
+		private final RuleCall cBookBookIDTerminalRuleCall_3_0_1_0_1 = (RuleCall)cBookBookCrossReference_3_0_1_0.eContents().get(1);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cRatingKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cRatingAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cRatingINTTerminalRuleCall_3_1_1_0 = (RuleCall)cRatingAssignment_3_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//BookRating:
+		//	"rating" name=ID "{" (("book" book=[Book])? ("rating" rating=INT)?) "}";
+		@Override public ParserRule getRule() { return rule; }
+
+		//"rating" name=ID "{" (("book" book=[Book])? ("rating" rating=INT)?) "}"
+		public Group getGroup() { return cGroup; }
+
+		//"rating"
+		public Keyword getRatingKeyword_0() { return cRatingKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//("book" book=[Book])? ("rating" rating=INT)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//("book" book=[Book])?
+		public Group getGroup_3_0() { return cGroup_3_0; }
+
+		//"book"
+		public Keyword getBookKeyword_3_0_0() { return cBookKeyword_3_0_0; }
+
+		//book=[Book]
+		public Assignment getBookAssignment_3_0_1() { return cBookAssignment_3_0_1; }
+
+		//[Book]
+		public CrossReference getBookBookCrossReference_3_0_1_0() { return cBookBookCrossReference_3_0_1_0; }
+
+		//ID
+		public RuleCall getBookBookIDTerminalRuleCall_3_0_1_0_1() { return cBookBookIDTerminalRuleCall_3_0_1_0_1; }
+
+		//("rating" rating=INT)?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"rating"
+		public Keyword getRatingKeyword_3_1_0() { return cRatingKeyword_3_1_0; }
+
+		//rating=INT
+		public Assignment getRatingAssignment_3_1_1() { return cRatingAssignment_3_1_1; }
+
+		//INT
+		public RuleCall getRatingINTTerminalRuleCall_3_1_1_0() { return cRatingINTTerminalRuleCall_3_1_1_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -347,6 +393,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final AuthorElements pAuthor;
 	private final BookElements pBook;
 	private final BookCategoryElements unknownRuleBookCategory;
+	private final BookRatingElements pBookRating;
+	private final TerminalRule tID;
 	
 	private final Grammar grammar;
 
@@ -363,6 +411,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAuthor = new AuthorElements();
 		this.pBook = new BookElements();
 		this.unknownRuleBookCategory = new BookCategoryElements();
+		this.pBookRating = new BookRatingElements();
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -403,7 +453,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ModelElement:
-	//	Library | Author | Book;
+	//	Library | Author | Book | BookRating;
 	public ModelElementElements getModelElementAccess() {
 		return pModelElement;
 	}
@@ -423,7 +473,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Author:
-	//	"author" name=ID "{" ("name" fullName=STRING ("book" books+=[Book])*) "}";
+	//	"author" name=ID "{" ("book" books+=[Book])* "}";
 	public AuthorElements getAuthorAccess() {
 		return pAuthor;
 	}
@@ -433,8 +483,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Book:
-	//	"book" name=ID "{" ("title" title=STRING ("page" pages=INT)? ("category" category=BookCategory)? ("author"
-	//	authors+=[Author])*) "}";
+	//	"book" name=ID "{" (("page" pages=INT)? ("category" category=BookCategory)? ("author" authors+=[Author])*) "}";
 	public BookElements getBookAccess() {
 		return pBook;
 	}
@@ -453,10 +502,22 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getBookCategoryAccess().getRule();
 	}
 
+	//BookRating:
+	//	"rating" name=ID "{" (("book" book=[Book])? ("rating" rating=INT)?) "}";
+	public BookRatingElements getBookRatingAccess() {
+		return pBookRating;
+	}
+	
+	public ParserRule getBookRatingRule() {
+		return getBookRatingAccess().getRule();
+	}
+
 	//terminal ID returns ecore::EString:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	("\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" //STRING
+	//	| "\'" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'") //ID
+	//	| "^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
+		return tID;
 	} 
 
 	//terminal INT returns ecore::EInt:

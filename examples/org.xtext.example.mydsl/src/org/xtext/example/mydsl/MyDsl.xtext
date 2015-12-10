@@ -7,7 +7,7 @@ DomainModel:
 ;
 
 ModelElement:
-	Library | Author | Book
+	Library | Author | Book | BookRating
 ; 
 	
 Library:  
@@ -24,7 +24,6 @@ Author:
 	"author" name=ID
 	"{"
 	( 
-		"name" fullName=STRING
 		("book" (books += [Book]))*
 	)
 	"}"
@@ -34,7 +33,6 @@ Book:
 	"book" name=ID
 	"{"
 	(
-		"title" title=STRING
 		("page" pages=INT)?
 		("category" category=BookCategory)?
 		("author" (authors += [Author]))*
@@ -44,4 +42,25 @@ Book:
 
 enum BookCategory:
 	Biography | Mystery | ScienceFiction
+;
+
+BookRating:
+	"rating" name=ID
+	"{"
+		(
+			("book" book=[Book])?
+			("rating" rating=INT)?
+		)	
+	"}"
+;
+
+terminal ID:
+  	( //STRING
+ 		'"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+  		"'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+  	)
+ 		|
+ 	( //ID
+		'^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+ 	) 
 ;

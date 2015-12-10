@@ -15,6 +15,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.xtext.example.mydsl.model.Author;
 import org.xtext.example.mydsl.model.Book;
+import org.xtext.example.mydsl.model.BookRating;
 import org.xtext.example.mydsl.model.DomainModel;
 import org.xtext.example.mydsl.model.Library;
 import org.xtext.example.mydsl.model.ModelPackage;
@@ -35,6 +36,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case ModelPackage.BOOK:
 				sequence_Book(context, (Book) semanticObject); 
 				return; 
+			case ModelPackage.BOOK_RATING:
+				sequence_BookRating(context, (BookRating) semanticObject); 
+				return; 
 			case ModelPackage.DOMAIN_MODEL:
 				sequence_DomainModel(context, (DomainModel) semanticObject); 
 				return; 
@@ -47,7 +51,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (name=ID fullName=STRING books+=[Book|ID]*)
+	 *     (name=ID books+=[Book|ID]*)
 	 */
 	protected void sequence_Author(EObject context, Author semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -56,7 +60,16 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (name=ID title=STRING pages=INT? category=BookCategory? authors+=[Author|ID]*)
+	 *     (name=ID book=[Book|ID]? rating=INT?)
+	 */
+	protected void sequence_BookRating(EObject context, BookRating semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID pages=INT? category=BookCategory? authors+=[Author|ID]*)
 	 */
 	protected void sequence_Book(EObject context, Book semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -45,24 +45,28 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLibraryAccess().getGroup_3_1(), "rule__Library__Group_3_1__0");
 					put(grammarAccess.getAuthorAccess().getGroup(), "rule__Author__Group__0");
 					put(grammarAccess.getAuthorAccess().getGroup_3(), "rule__Author__Group_3__0");
-					put(grammarAccess.getAuthorAccess().getGroup_3_2(), "rule__Author__Group_3_2__0");
 					put(grammarAccess.getBookAccess().getGroup(), "rule__Book__Group__0");
 					put(grammarAccess.getBookAccess().getGroup_3(), "rule__Book__Group_3__0");
+					put(grammarAccess.getBookAccess().getGroup_3_0(), "rule__Book__Group_3_0__0");
+					put(grammarAccess.getBookAccess().getGroup_3_1(), "rule__Book__Group_3_1__0");
 					put(grammarAccess.getBookAccess().getGroup_3_2(), "rule__Book__Group_3_2__0");
-					put(grammarAccess.getBookAccess().getGroup_3_3(), "rule__Book__Group_3_3__0");
-					put(grammarAccess.getBookAccess().getGroup_3_4(), "rule__Book__Group_3_4__0");
+					put(grammarAccess.getBookRatingAccess().getGroup(), "rule__BookRating__Group__0");
+					put(grammarAccess.getBookRatingAccess().getGroup_3(), "rule__BookRating__Group_3__0");
+					put(grammarAccess.getBookRatingAccess().getGroup_3_0(), "rule__BookRating__Group_3_0__0");
+					put(grammarAccess.getBookRatingAccess().getGroup_3_1(), "rule__BookRating__Group_3_1__0");
 					put(grammarAccess.getDomainModelAccess().getElementsAssignment(), "rule__DomainModel__ElementsAssignment");
 					put(grammarAccess.getLibraryAccess().getNameAssignment_1(), "rule__Library__NameAssignment_1");
 					put(grammarAccess.getLibraryAccess().getBooksAssignment_3_0_1(), "rule__Library__BooksAssignment_3_0_1");
 					put(grammarAccess.getLibraryAccess().getAuthorsAssignment_3_1_1(), "rule__Library__AuthorsAssignment_3_1_1");
 					put(grammarAccess.getAuthorAccess().getNameAssignment_1(), "rule__Author__NameAssignment_1");
-					put(grammarAccess.getAuthorAccess().getFullNameAssignment_3_1(), "rule__Author__FullNameAssignment_3_1");
-					put(grammarAccess.getAuthorAccess().getBooksAssignment_3_2_1(), "rule__Author__BooksAssignment_3_2_1");
+					put(grammarAccess.getAuthorAccess().getBooksAssignment_3_1(), "rule__Author__BooksAssignment_3_1");
 					put(grammarAccess.getBookAccess().getNameAssignment_1(), "rule__Book__NameAssignment_1");
-					put(grammarAccess.getBookAccess().getTitleAssignment_3_1(), "rule__Book__TitleAssignment_3_1");
-					put(grammarAccess.getBookAccess().getPagesAssignment_3_2_1(), "rule__Book__PagesAssignment_3_2_1");
-					put(grammarAccess.getBookAccess().getCategoryAssignment_3_3_1(), "rule__Book__CategoryAssignment_3_3_1");
-					put(grammarAccess.getBookAccess().getAuthorsAssignment_3_4_1(), "rule__Book__AuthorsAssignment_3_4_1");
+					put(grammarAccess.getBookAccess().getPagesAssignment_3_0_1(), "rule__Book__PagesAssignment_3_0_1");
+					put(grammarAccess.getBookAccess().getCategoryAssignment_3_1_1(), "rule__Book__CategoryAssignment_3_1_1");
+					put(grammarAccess.getBookAccess().getAuthorsAssignment_3_2_1(), "rule__Book__AuthorsAssignment_3_2_1");
+					put(grammarAccess.getBookRatingAccess().getNameAssignment_1(), "rule__BookRating__NameAssignment_1");
+					put(grammarAccess.getBookRatingAccess().getBookAssignment_3_0_1(), "rule__BookRating__BookAssignment_3_0_1");
+					put(grammarAccess.getBookRatingAccess().getRatingAssignment_3_1_1(), "rule__BookRating__RatingAssignment_3_1_1");
 				}
 			};
 		}

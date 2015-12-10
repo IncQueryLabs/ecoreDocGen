@@ -140,13 +140,11 @@ public class UtilDoc {
 			sb.append("The string data type represents character strings.");
 			break;
 		case "EInt":
-			sb.append(
-					"The int data type is a 32-bit signed two's complement integer, which has a minimum value of -2^31 and a maximum value of 2^31-1.");
+			sb.append("The int data type is a 32-bit signed two's complement integer, which has a minimum value of -2^31 and a maximum value of 2^31-1.");
 			break;
 		case "EBoolean":
 			sb.append("The boolean data type has only two possible values: true and false.");
 			break;
-
 		default:
 			break;
 		}

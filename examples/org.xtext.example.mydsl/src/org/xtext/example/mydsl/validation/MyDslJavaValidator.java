@@ -17,17 +17,18 @@ import hu.qgears.documentation.DocumentationFieldUtils;
  */
 public class MyDslJavaValidator extends AbstractMyDslValidator {
 
-	@Check
-	public void checkVersion(ModelElement modelElement) {
-		try {
-			int version = Integer.parseInt(DocumentationFieldUtils.getAnnotation(modelElement.eClass(), "version"));
-			int limit = VersionHandler.getLimit();
-			if (version > limit) {
-				warning("Version number exceeds the limit: " + limit, ModelPackage.Literals.MODEL_ELEMENT__NAME);
-			}
-		} catch (NumberFormatException e) {
-
+@Check
+public void checkVersion(ModelElement modelElement) {
+	String annotation = DocumentationFieldUtils.getAnnotation(modelElement.eClass(), "version");
+	try {
+		int version = Integer.parseInt(annotation);
+		int limit = VersionHandler.getLimit();
+		if (version > limit) {
+			warning("Version number exceeds the limit: " + limit, ModelPackage.Literals.MODEL_ELEMENT__NAME);
 		}
+	} catch (NumberFormatException e) {
+		warning("Invalid version: " + annotation, ModelPackage.Literals.MODEL_ELEMENT__NAME);	
 	}
+}
 
 }
