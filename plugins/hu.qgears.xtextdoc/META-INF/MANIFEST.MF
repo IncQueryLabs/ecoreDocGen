@@ -16,4 +16,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: hu.qgears.xtextdoc,
  hu.qgears.xtextdoc.editor,
+ hu.qgears.xtextdoc.generator,
  hu.qgears.xtextdoc.util

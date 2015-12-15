@@ -20,14 +20,30 @@ public class TextWithTooltipLinks {
 	private String src;
 	private MultiMapTreeImpl<Integer, DecorationData> decorations=new MultiMapTreeImpl<>();
 	private MultiMapTreeImpl<Integer, DecorationData> endings=new MultiMapTreeImpl<>();
+	/**
+	 * Create a new HTML text decorator for the give source code.
+	 * This source will be shown in the generated HTML as preformatted text.
+	 * @param src
+	 */
 	public TextWithTooltipLinks(String src) {
 		super();
 		this.src = src;
 	}
+	/**
+	 * Add a decoration to the source code.
+	 * @param decoration
+	 */
 	public void addDecoration(DecorationData decoration)
 	{
 		decorations.putSingle(decoration.offset, decoration);
 	}
+	/**
+	 * Generate the JavaScript scripts that drive the popup window implementation of the
+	 * generated HTML.
+	 * This must be included into the generated HTML in the head part.
+	 * @param output
+	 * @throws IOException
+	 */
 	public static void generateScripts(Writer output) throws IOException
 	{
 		new TextWithTooltipLinks("").generateScripts_(output);
@@ -74,6 +90,13 @@ public class TextWithTooltipLinks {
 				"</script>"
 		);
 	}
+	/**
+	 * Generate the CSS scripts that drive the popup window implementation of the
+	 * generated HTML.
+	 * This must be included into the generated HTML in the head part.
+	 * @param output
+	 * @throws IOException
+	 */
 	public static void generateCSS(Writer output) throws IOException
 	{
 		new TextWithTooltipLinks("").generateCSS_(output);
@@ -112,6 +135,12 @@ public class TextWithTooltipLinks {
 		rtout.write("</style>\n");
 		rtout.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>\n");
 	}
+	/**
+	 * Generate the HTML output. Weaves all decorations into the source code and writes it into the given
+	 * writer object.
+	 * @param output
+	 * @throws IOException
+	 */
 	public void generateString(Writer output) throws IOException
 	{
 		setWriter(output);
@@ -135,7 +164,8 @@ public class TextWithTooltipLinks {
 				}
 			}
 			decorations.remove(i);
-			EscapeString.escapeHtml(output, ""+src.charAt(i));
+			char c=src.charAt(i);
+			EscapeString.escapeHtml(output, ""+c);
 		}
 		// Finish unclosed tags
 		for(Integer key:endings.keySet())
