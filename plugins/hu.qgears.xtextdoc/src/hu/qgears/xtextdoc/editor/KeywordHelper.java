@@ -117,7 +117,7 @@ public class KeywordHelper {
 	public boolean keywordIsType(Keyword keyword) {
 		int count=0; 
 		EObject parserRule = keyword.eContainer();
-		while (!(parserRule instanceof ParserRule)) {
+		while (parserRule!=null && !(parserRule instanceof ParserRule)) {
 			count++;
 			parserRule = parserRule.eContainer();
 		}
