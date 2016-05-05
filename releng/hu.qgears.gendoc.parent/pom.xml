@@ -14,7 +14,7 @@
 		<relativePath>../parent-poms/root/pom.xml</relativePath>
 	</parent>
 	<modules>
-		<module>../hu.qgears.gendoc.target</module>
+		<module>../hu.bme.mit.ecoredocgen.target</module>
 		<module>../../plugins/hu.qgears.documentation</module>
 		<module>../../plugins/ecoredocgen.incquery</module>
 		<module>../../plugins/hu.bme.mit.documentation.ecore</module>
