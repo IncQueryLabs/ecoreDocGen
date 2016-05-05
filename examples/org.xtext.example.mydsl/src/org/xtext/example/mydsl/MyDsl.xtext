@@ -1,0 +1,66 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+import "org.xtext.example.mydsl.model"
+
+DomainModel:
+	(elements += ModelElement)*
+;
+
+ModelElement:
+	Library | Author | Book | BookRating
+; 
+	
+Library:  
+	"library" name=ID
+	"{" 
+	(
+		("book" books+=[Book])*
+		("author" authors+=[Author])*	
+	)
+	"}"	
+; 
+
+Author: 
+	"author" name=ID
+	"{"
+	( 
+		("book" (books += [Book]))*
+	)
+	"}"
+;
+
+Book: 
+	"book" name=ID
+	"{"
+	(
+		("page" pages=INT)?
+		("category" category=BookCategory)?
+		("author" (authors += [Author]))*
+	)
+	"}"
+;
+
+enum BookCategory:
+	Biography | Mystery | ScienceFiction
+;
+
+BookRating:
+	"rating" name=ID
+	"{"
+		(
+			("book" book=[Book])?
+			("rating" rating=INT)?
+		)	
+	"}"
+;
+
+terminal ID:
+  	( //STRING
+ 		'"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+  		"'" ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+  	)
+ 		|
+ 	( //ID
+		'^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+ 	) 
+;
