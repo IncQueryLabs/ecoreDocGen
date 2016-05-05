@@ -26,7 +26,7 @@ POM for Eclipse Plug-ins that are part of the ecoreDocGen utility, and utilize i
 				  <target>
 					 <artifact>
 						<groupId>hu.qgears.gendoc</groupId>
-						<artifactId>hu.qgears.gendoc.target</artifactId>
+						<artifactId>hu.bme.mit.ecoredocgen.target</artifactId>
 						<version>0.9.9-SNAPSHOT</version>
 					 </artifact>
 				  </target>
