@@ -18,11 +18,11 @@ This POM can should be used as a parent for building the target platform.
 		<xtend-version>2.7.3</xtend-version>
 		<incquery-gen-version>0.9.1</incquery-gen-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho.scmUrl>scm:git:https://github.com/abelhegedus/ecoreDocGen.git</tycho.scmUrl>
+		<tycho.scmUrl>scm:git:https://github.com/IncQueryLabs/ecoreDocGen.git</tycho.scmUrl>
 	</properties>
 	<scm>
 	    <connection>${tycho.scmUrl}</connection>
-	    <url>https://github.com/abelhegedus/ecoreDocGen</url>
+	    <url>https://github.com/IncQueryLabs/ecoreDocGen</url>
 	</scm>
 	<pluginRepositories>
 		<pluginRepository>
