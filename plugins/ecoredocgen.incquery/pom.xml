@@ -64,12 +64,10 @@
 					<!-- Output directory - required -->
 					<outputDirectory>src-gen</outputDirectory>
 					<metamodels>
-					<metamodel>
-					<!-- Java class for the EMF EPackage -->
-					<packageClass>org.eclipse.emf.ecore.EcorePackage</packageClass>
-					<!-- genmodel file used for generating the EMF model classes -->
-					<genmodelUri>org.eclipse.emf.ecore/model/Ecore.genmodel</genmodelUri>
-					</metamodel>
+						<metamodel>
+							<!-- Java class for the EMF EPackage -->
+							<packageClass>org.eclipse.emf.ecore.EcorePackage</packageClass>
+						</metamodel>
 					</metamodels>
 				</configuration>
 				<dependencies>
