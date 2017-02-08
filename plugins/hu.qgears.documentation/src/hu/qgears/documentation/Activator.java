@@ -1,16 +1,15 @@
 package hu.qgears.documentation;
 
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EValidator.Registry;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
-	
+public class Activator extends Plugin {
 	private EValidator oldRegister;
 	
 	// The shared instance

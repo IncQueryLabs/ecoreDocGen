@@ -4,12 +4,9 @@ Bundle-Name: Documentation
 Bundle-SymbolicName: hu.qgears.documentation
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: hu.qgears.documentation.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore,
- org.eclipse.core.resources,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xcore,
  org.eclipse.emf.codegen.ecore
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: hu.qgears.documentation
