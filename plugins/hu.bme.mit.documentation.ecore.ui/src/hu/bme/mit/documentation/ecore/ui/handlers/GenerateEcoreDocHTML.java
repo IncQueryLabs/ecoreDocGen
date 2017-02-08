@@ -11,7 +11,6 @@ import hu.bme.mit.documentation.generator.ecore.IDocGenerator;
  *
  */
 public class GenerateEcoreDocHTML extends AbstractGenerateEcoreDoc {
-
 	@Override
 	protected IDocGenerator getCodeGenerator() {
 		return new EPackageDocGenHtml();
@@ -21,5 +20,4 @@ public class GenerateEcoreDocHTML extends AbstractGenerateEcoreDoc {
     protected String getFileExtension() {
         return "html";
     }
-
 }

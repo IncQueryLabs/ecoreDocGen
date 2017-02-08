@@ -14,6 +14,7 @@ import hu.bme.mit.documentation.generator.ecore.IDocGenerator;
 import hu.bme.mit.documentation.generator.ecore.UtilDocGenerator;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -32,22 +33,15 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * 
  */
 public abstract class AbstractGenerateEcoreDoc extends AbstractHandler {
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands. ExecutionEvent)
-     */
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
         ISelection selection = HandlerUtil.getCurrentSelection(event);
 
         if (selection instanceof IStructuredSelection) {
-
             for (Object element : ((IStructuredSelection) selection).toList()) {
                 if (element instanceof IFile) {
                     IFile file = (IFile) element;
-                    if(file.getFileExtension().equals("ecore")){
+                    if(file.getFileExtension().equals("ecore") || file.getFileExtension().equals("genmodel")){
                         URI ecoreURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
                         
                         String ecoreFileName = file.getName().substring(0,file.getName().indexOf("."));
@@ -67,10 +61,14 @@ public abstract class AbstractGenerateEcoreDoc extends AbstractHandler {
                             filterFile = folder.getFile(filterFileName);
                         }
                         IDocGenerator docGen = getCodeGenerator();
-                        UtilDocGenerator.generateDocForEPackage(ecoreURI, 
-                        		new File(outFile.getLocationURI()), 
-                        		new File(filterFile.getLocationURI()),
-                        		docGen);
+                        try {
+							UtilDocGenerator.generateDocForModel(ecoreURI, 
+									new File(outFile.getLocationURI()), 
+									new File(filterFile.getLocationURI()),
+									docGen);
+						} catch (IOException e) {
+							throw new ExecutionException("Generation Exception", e);
+						}
                     }
                 }
             }

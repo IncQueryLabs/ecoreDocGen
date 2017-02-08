@@ -10,7 +10,6 @@ import hu.bme.mit.documentation.generator.ecore.IDocGenerator;
  *
  */
 public class GenerateEcoreDocLatex extends AbstractGenerateEcoreDoc {
-
 	@Override
 	protected IDocGenerator getCodeGenerator() {
 		return new EPackageDocGen();
