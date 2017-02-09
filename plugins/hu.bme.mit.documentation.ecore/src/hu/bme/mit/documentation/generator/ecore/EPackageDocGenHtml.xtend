@@ -40,29 +40,6 @@ import java.util.stream.Collectors
  * 
  */
 class EPackageDocGenHtml extends CoreDocGen implements IDocGenerator{
-//        		if (!cls.ESuperTypes.empty){
-//        			var List<EClass> list = new ArrayList;
-//        			getAllSuperClassesRecursively(cls, list);
-//        			list.sortBy[name].forEach[
-//						val superCls = it as EClass
-//	    				val id = escapeLabel(cls.EPackage.nsPrefix+"."+cls.name) + "."  + escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name);
-//	    				'''<h6>'''.appendToBuilder    	
-//	    				'''<b>Supertype:</b> <a href="#«escapeLabel(superCls.EPackage.nsPrefix+"."+superCls.name)»">«superCls.name»</a>'''.appendToBuilder    	
-//    					''' <a id="«id».toggleButton" href="javascript:toggle('«id»', '«id».toggleButton');">[show]</a>'''.appendToBuilder
-//	    				'''<div id="«id»" style="display: none" href="javascript:toggle();">'''.appendToBuilder				
-//	    				'''«superCls.findGenModelDocumentation»'''.appendToBuilder
-//	    				
-//	    				if (!superCls.EAttributes.empty
-//	    					|| !superCls.EReferences.empty
-//    						|| !superCls.EOperations.empty
-//	    				) {
-//		    				superCls.documentEClass(id)      		
-//	    				}
-//	    				
-//	    				'''</div>'''.appendToBuilder	
-//	    				'''</h6>'''.appendToBuilder	
-//					]	        		
-//        		}
 
 	override defineLT() {
 		'''&lt;'''
@@ -376,12 +353,13 @@ class EPackageDocGenHtml extends CoreDocGen implements IDocGenerator{
         val create = "<!-- Creation date: " + now + "-->\n"
         create.appendToBuilder
         '''
+			«IF !optionActive(SKIP_HEADER)»
 			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<html xmlns="http://www.w3.org/1999/xhtml">
 				<head>
 			      	<title>Metamodel Documentation («pkgURI»)</title>
 			    	<script type="text/javascript">
-<![CDATA[				    	
+//<![CDATA[				    	
 // TOC script based on code taken from http://www.quirksmode.org/dom/toc.html
 function makeTOC() {
 				
@@ -464,7 +442,7 @@ function getElementsByTagNames(list,obj) {
 				return resultArray;
 }
 				    	
-]]>				    	
+//]]>				    	
 				    	</script>
 				    	<link rel="stylesheet" type="text/css" href="https://raw.github.com/necolas/normalize.css/master/normalize.css" /> 
 				    	<style>
@@ -502,14 +480,17 @@ function getElementsByTagNames(list,obj) {
 				    	<link rel="stylesheet" type="text/css" href="style.css" />
 				</head>
 				<body onload="makeTOC();">
+			«ENDIF»
 	        '''.appendToBuilder
 	}
 
 	override generateTail() {
 		'''
-	    </body>
-	    </html>
-	    '''.appendToBuilder
+		«IF !optionActive(SKIP_HEADER)»
+		</body>
+		</html>
+		«ENDIF»
+		'''.appendToBuilder
 	}
 	
     private def anchorDef(CharSequence id, CharSequence text){

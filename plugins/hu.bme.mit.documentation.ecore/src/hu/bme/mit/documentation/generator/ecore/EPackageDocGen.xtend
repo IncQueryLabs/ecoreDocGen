@@ -251,7 +251,7 @@ class EPackageDocGen extends CoreDocGen implements IDocGenerator {
 	    «documentProperty("Default", escapeText(feat.defaultValueLiteral))»
 	    «ENDIF»
 	    «IF feat.derived»
-	    «val fqn = findAnnotation(feat, "org.eclipse.viatra2.emf.incquery.derived.feature", "patternFQN")»
+	    «val fqn = findAnnotation(feat, "org.eclipse.viatra.query.querybasedfeature", "patternFQN")»
 	    \newline
 	    \textbf{Derived}
 	    «IF fqn != null»
@@ -362,7 +362,7 @@ class EPackageDocGen extends CoreDocGen implements IDocGenerator {
         create.appendToBuilder
 
         '''
-       	«IF optionActive(FULL_LATEX_DOC)»
+       	«IF optionActive(FULL_LATEX_DOC) || !optionActive(SKIP_HEADER)»
 \documentclass{article}
 \usepackage[hypertex]{hyperref}
 \usepackage{url}
@@ -384,7 +384,7 @@ class EPackageDocGen extends CoreDocGen implements IDocGenerator {
 	
 	override generateTail() {
 		'''
-	    «IF optionActive(FULL_LATEX_DOC)»
+	    «IF optionActive(FULL_LATEX_DOC) || !optionActive(SKIP_HEADER)»
 	    \end{document}
 	    «ENDIF»
 	    '''.appendToBuilder

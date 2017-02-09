@@ -47,6 +47,7 @@ abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
 	public static final String RECURSE_SUPER = "includeRecursiveSupertypes"
 	public static final String INC_SUBTYPES = "includeSubtypes"
 	public static final String INC_USED_PKG = "includeUsedPackages"
+	public static final String SKIP_HEADER = "skipHeaderGeneration"
 	public static final String FULL_LATEX_DOC = "fullLatexDocument"
 	public static final String FILTERED_TYPES = "filteredTypes"
 	public static final String FILTERED_SUBTYPES = "filteredSubtypes"
