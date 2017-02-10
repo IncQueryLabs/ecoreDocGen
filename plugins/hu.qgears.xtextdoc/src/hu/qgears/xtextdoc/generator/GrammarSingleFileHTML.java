@@ -1,7 +1,9 @@
 package hu.qgears.xtextdoc.generator;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClassifier;
@@ -22,8 +24,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
-
-import com.google.common.collect.ImmutableList;
 
 import hu.bme.mit.documentation.generator.ecore.CoreDocGen;
 import hu.bme.mit.documentation.generator.ecore.EPackageDocGenHtml;
@@ -67,11 +67,13 @@ public class GrammarSingleFileHTML extends AbstractHTMLTemplate
 	}
 	private void generateMetaModel()
 	{
+		Properties properties = new Properties();
+		properties.setProperty(CoreDocGen.SKIP_HEADER, "true");
 		for(EPackage p:packages)
 		{
 			EPackageDocGenHtml h=new EPackageDocGenHtml();
 			StringBuilder sb=new StringBuilder();
-			h.generateDocument(sb, p, ImmutableList.of(CoreDocGen.SKIP_HEADER), null);
+			h.generateDocument(sb, p, Collections.<String>emptyList(), properties);
 			rtcout.write(sb.toString());
 			System.out.println(""+p);
 		}

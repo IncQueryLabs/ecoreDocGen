@@ -14,7 +14,7 @@
 import com.google.common.collect.Lists
 import java.util.ArrayList
 import java.util.List
-import java.util.PropertyResourceBundle
+import java.util.Properties
 import java.util.stream.Collectors
 import org.eclipse.emf.codegen.ecore.genmodel.GenBase
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
@@ -65,12 +65,13 @@ abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
 	protected GenPackage genPkg
     protected StringBuilder builder
     protected List<String> filter
-    protected PropertyResourceBundle options
+    protected Properties options
 
-	override generateDocument(StringBuilder sb, EObject root, List<String> filters, PropertyResourceBundle options) {
+	override generateDocument(StringBuilder sb, EObject root, List<String> filters, Properties options) {
         this.builder = sb
         this.filter = Lists::newArrayList(filters)
         this.options = options
+        
         init
 		
 		if (root instanceof GenModel) {
@@ -411,15 +412,15 @@ abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
     def protected optionActive(String option){
     	var optVal = "" 
     	if (options != null && options.containsKey(option)) {
-    		optVal = options.getString(option)
+    		optVal = options.getProperty(option)
     	}
    		optVal.trim.equals("true")
     }
     
     def protected optionValue(String option){
     	var optVal = "" 
-    	if (options != null) {
-    		optVal = options.getString(option)
+    	if (options != null && options.containsKey(option)) {
+    		optVal = options.getProperty(option)
     	}
     	return optVal
     }

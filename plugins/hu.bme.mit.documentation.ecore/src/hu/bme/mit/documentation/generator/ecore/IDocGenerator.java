@@ -1,7 +1,7 @@
 package hu.bme.mit.documentation.generator.ecore;
 
 import java.util.List;
-import java.util.PropertyResourceBundle;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,5 +24,5 @@ public interface IDocGenerator {
 	 * @param nameRefFilter
 	 * @param options
 	 */
-	void generateDocument(final StringBuilder sb, final EObject root, final List<String> filter, final PropertyResourceBundle options);
+	void generateDocument(final StringBuilder sb, final EObject root, final List<String> filter, final Properties options);
 }

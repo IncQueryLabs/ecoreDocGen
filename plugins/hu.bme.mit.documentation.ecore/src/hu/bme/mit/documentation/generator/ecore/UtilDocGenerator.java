@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.PropertyResourceBundle;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
@@ -39,7 +39,7 @@ public class UtilDocGenerator extends DocGenUtil {
 
         if (root != null) {
 			try (FileOutputStream fos = new FileOutputStream(outputFile, false)) { 
-            	PropertyResourceBundle options = getResourceBundle(optionFile);
+            	Properties options = getProperties(optionFile);
                 List<String> filter = getFilters(options);
                 StringBuilder sb = new StringBuilder();
                 docGen.generateDocument(sb, root, filter, options);
@@ -62,10 +62,11 @@ public class UtilDocGenerator extends DocGenUtil {
         return null;
     }
 
-	private static PropertyResourceBundle getResourceBundle(File filterFile) {
+	private static Properties getProperties(File filterFile) {
 		if(filterFile!=null && filterFile.exists()){
 			try (InputStream fis = new FileInputStream(filterFile)) { 
-				PropertyResourceBundle bundle = new PropertyResourceBundle(fis);
+				Properties bundle = new Properties();
+				bundle.load(fis);
 				return bundle; 
 			} 
 			catch (IOException e) {
@@ -76,8 +77,8 @@ public class UtilDocGenerator extends DocGenUtil {
 		return null;
 	}
 	
-	private static List<String> getFilters(PropertyResourceBundle bundle) {
-	    List<String> filter = getOptionValues(bundle != null ? bundle.getString("filters") :  null);
+	private static List<String> getFilters(Properties bundle) {
+	    List<String> filter = getOptionValues(bundle != null ? bundle.getProperty("filters") :  null);
 	    filter.add("http://www.eclipse.org/emf/2002/Ecore");
 	    return filter;
     }
