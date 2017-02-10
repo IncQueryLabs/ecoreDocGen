@@ -5,12 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.PropertyResourceBundle;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -21,68 +22,63 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
  * @author adam
  *
  */
-public class UtilDocGenerator {
-
+public class UtilDocGenerator extends DocGenUtil {
 	/**
-	 * Generate documentation for the .ecore file located at ecorePath, to the
+	 * Generate documentation for the .ecore or .genmodel file located at modelPath, to the
 	 * given output file, using the given filter file, and {@link IDocGenerator}
 	 * 
 	 * 
-	 * @param ecorePath
+	 * @param modelPath
 	 * @param outputFile
-	 * @param filterFile
+	 * @param optionFile
 	 * @param docGen
+	 * @throws IOException 
 	 */
-	public static void generateDocForEPackage(URI ecorePath, File outputFile, File filterFile, IDocGenerator docGen) {
-        ResourceSet rs = new ResourceSetImpl();
-        Resource resource = rs.getResource(ecorePath, true);
+	public static void generateDocForModel(URI modelPath, File outputFile, File optionFile, IDocGenerator docGen) throws IOException {
+		EObject root = getRootEObject(modelPath);
 
-        if (resource.getContents() != null) {
-            if (resource.getContents().size() > 0) {
+        if (root != null) {
+			try (FileOutputStream fos = new FileOutputStream(outputFile, false)) { 
+            	PropertyResourceBundle options = getResourceBundle(optionFile);
+                List<String> filter = getFilters(options);
                 StringBuilder sb = new StringBuilder();
-
-                InputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    ArrayList<String> filter = new ArrayList<String>();
-                    if(filterFile!=null && filterFile.exists()){
-                        // Reading the configuration file
-                        PropertyResourceBundle bundle = null;
-                        fis = new FileInputStream(filterFile);
-                        bundle = new PropertyResourceBundle(fis);
-                        
-                        // Additional filters
-                        String [] filterArray = bundle.getString("filters").split("\\|");
-                        for (int i = 0; i < filterArray.length; i++) {
-                            String filterEntry = filterArray[i];
-                            if(filterEntry != null && !filterEntry.isEmpty()){
-                                filter.add(filterEntry);
-                            }
-                        }
-                    }
-                    filter.add("http://www.eclipse.org/emf/2002/Ecore");
-                    EPackage pckg = (EPackage) resource.getContents().get(0);
-                    new DocGenerationInstance().doGenerateAllSubpackages(docGen,sb,pckg,filter);
-                    
-                    fos = new FileOutputStream(outputFile,false);
-                	fos.write(sb.toString().getBytes());
-                } catch (IOException e) {
-                    Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when generating ecore doc",e);
-                } finally {
-                    try {
-                        if(fis != null) {
-                            fis.close();
-                        }
-                        if(fos != null) {
-                            fos.close();
-                        }
-                    } catch (IOException e) {
-                        Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when closing streams", e);
-                    }
-                }
-            }
+                docGen.generateDocument(sb, root, filter, options);
+            	fos.write(sb.toString().getBytes());
+            } 
+            catch (IOException e) {
+                Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when generating genmodel doc",e);
+            } 
         }
     }
 	
+	private static EObject getRootEObject(URI modelPath) throws IOException {
+        ResourceSet rs = new ResourceSetImpl();
+        rs.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformPluginToPlatformResourceMap());
+        Resource resource = rs.getResource(modelPath, true);
+
+        if (resource.getContents() != null && resource.getContents().size() > 0) {
+            return resource.getContents().get(0);
+        }
+        return null;
+    }
+
+	private static PropertyResourceBundle getResourceBundle(File filterFile) {
+		if(filterFile!=null && filterFile.exists()){
+			try (InputStream fis = new FileInputStream(filterFile)) { 
+				PropertyResourceBundle bundle = new PropertyResourceBundle(fis);
+				return bundle; 
+			} 
+			catch (IOException e) {
+				Logger.getLogger(UtilDocGenerator.class).error("Exception occurred when generating genmodel doc",e);
+			} 
+		}                    
+
+		return null;
+	}
 	
+	private static List<String> getFilters(PropertyResourceBundle bundle) {
+	    List<String> filter = getOptionValues(bundle != null ? bundle.getString("filters") :  null);
+	    filter.add("http://www.eclipse.org/emf/2002/Ecore");
+	    return filter;
+    }
 }

@@ -24,11 +24,11 @@ import org.eclipse.equinox.app.IApplicationContext;
  *
  */
 public class GenerateDocApplication implements IApplication {
-
 	private static final String ARG_FORMAT = "format";
-	private static final String ARG_FILTER_FILE = "filterFile";
+	private static final String ARG_OPTION_FILE = "optionFile";
 	private static final String ARG_OUTPUT_FILE = "outputFile";
 	private static final String ARG_METAMODEL_FILE = "metamodelFile";
+	private static final String ARG_NO_CONFIG = "noConfig";
 
 	private static IDocGenerator getDocGenerator(String format) throws UnsupportedTypeException{
 		if("html".contentEquals(format)){
@@ -45,33 +45,55 @@ public class GenerateDocApplication implements IApplication {
 		String[] arguments = (String[])context.getArguments().get(IApplicationContext.APPLICATION_ARGS);
 		Options opts = new Options();
 		
-		opts.addOption(ARG_METAMODEL_FILE, true, "Path to the .ecore file that is the source of documentation.");
+		String options = "\nOptions (All defaults to false or unspecified):\n" +
+				"\tincludeGenericTypes= boolean whether to inclue generic information for types\n" +
+				"\tincludeSubtypes= boolean whether to inclue a section for subtypes\n" +
+				"\tincludeRecursiveSupertypes = boolean whether to recursively look for supertypes\n" +
+				"\tincludeUsedPackages= boolean whether to process used packages (when processing genmodel only)\n" +
+				"\tfullLatexDocument = boolean whether to create a full Latex document with packages and document tags\n" +
+				"\tauthorName = name of the author to insert in Latex document (when producing full Latex document)\n" +
+				"\tfilters = list of | separated packages to filter - no anchors are generated for elements in these packages. Supports regex\n" +
+				"\tfitleredTypes= list of | separated types (classes) to filter out. Supports regex\n" +
+				"\tfitleredSubtypes= list of | separated types (classes) to filter out from subtype section. Supports regex\n" +
+				"\tfitleredUsedPackages= list of | separated packages to filter out from used package processin. Supports regex\n" +
+				"\tskipOperations = boolean whether to skip the EOperation section\n" +
+				"\tshowMissingDoc = boolean whether to show tag when encountering missing documentation\n";
+		
+		opts.addOption(ARG_METAMODEL_FILE, true, "Path to the .ecore or .genmodel file that is the source of documentation.");
 		opts.addOption(ARG_OUTPUT_FILE,true,"File where the documentation should be generated.");
 		opts.addOption(ARG_FORMAT,true,"Documentation format. Currently, html and latex are supported.");
-		opts.addOption(ARG_FILTER_FILE,true,"Optional .properties file where filtered packages are described - no anchors are generated for elements in these packages.");
+		opts.addOption(ARG_OPTION_FILE,true,"Alternate .properties file where various processing options are described. Default is gendoc.config in same folder as metamodel file" + options);
+		opts.addOption(ARG_NO_CONFIG,false,"Specify if default config file should be ignored.");
 
 		CommandLineParser parser = new BasicParser();
 		CommandLine cli = parser.parse(opts, arguments);
 		HelpFormatter hf = new HelpFormatter();
 		
-		
 		if(cli.hasOption(ARG_METAMODEL_FILE) && cli.hasOption(ARG_OUTPUT_FILE) && cli.hasOption(ARG_FORMAT)){
-			String metamodelFile = cli.getOptionValue(ARG_METAMODEL_FILE);
+			File metamodelFile = new File(cli.getOptionValue(ARG_METAMODEL_FILE));
+			String metamodelFileName = metamodelFile.getAbsolutePath();
 			String outputFile = cli.getOptionValue(ARG_OUTPUT_FILE);
 			String format = cli.getOptionValue(ARG_FORMAT);
-			String filterFile = null;
-			if(cli.hasOption(ARG_FILTER_FILE)){
-				filterFile = cli.getOptionValue(ARG_FILTER_FILE);
+			File optionFile = null;
+
+			if(cli.hasOption(ARG_OPTION_FILE)){
+				String optionFileName = cli.getOptionValue(ARG_OPTION_FILE);
+				if(optionFileName!=null){
+					optionFile = new File(optionFileName);
+				}
 			}
-			URI metamodelUri = URI.createFileURI(metamodelFile);
+			else if (!cli.hasOption(ARG_NO_CONFIG)) {
+				File opfile = new File(metamodelFile.getParentFile().getAbsolutePath() + File.separatorChar + "ba.docgen");
+	            if (opfile.exists()) {
+	            	optionFile = opfile;
+	            }
+			}
+			
+			URI metamodelUri = URI.createFileURI(metamodelFileName);
 			File output = new File(outputFile);
 			IDocGenerator docGen = getDocGenerator(format);
-			File filter = null;
-			if(filterFile!=null){
-				filter = new File(filterFile);
-			}
 			System.out.println("Generating documentation from "+metamodelUri.toString() + " to "+output.toString()+" in format "+format);
-			UtilDocGenerator.generateDocForEPackage(metamodelUri, output, filter, docGen);
+			UtilDocGenerator.generateDocForModel(metamodelUri, output, optionFile, docGen);
 			System.out.println("Documentation generation finished without errors.");
 		}
 		else{
@@ -86,5 +108,4 @@ public class GenerateDocApplication implements IApplication {
 	public void stop() {
 		
 	}
-
 }

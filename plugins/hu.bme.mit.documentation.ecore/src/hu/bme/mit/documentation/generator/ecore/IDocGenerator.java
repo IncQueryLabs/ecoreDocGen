@@ -1,7 +1,9 @@
 package hu.bme.mit.documentation.generator.ecore;
 
 import java.util.List;
+import java.util.PropertyResourceBundle;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -11,7 +13,6 @@ import org.eclipse.emf.ecore.EPackage;
  *
  */
 public interface IDocGenerator {
-
 	/**
 	 * Generate all documentation of the supplied {@link EPackage} to the
 	 * supplied {@link StringBuilder}. Hyperlinks will not be generated for
@@ -19,14 +20,9 @@ public interface IDocGenerator {
 	 * generate a header comment for the item if genHeader is <code>true</code>
 	 * 
 	 * @param sb
-	 * @param pckg
+	 * @param root
 	 * @param nameRefFilter
-	 * @param genHeader
+	 * @param options
 	 */
-	void documentEPackage(final StringBuilder sb, final EPackage pckg, final List<String> nameRefFilter, final boolean genHeader);
-
-	/**
-	 * Generate tail of the document.
-	 */
-	void generateTail();
+	void generateDocument(final StringBuilder sb, final EObject root, final List<String> filter, final PropertyResourceBundle options);
 }

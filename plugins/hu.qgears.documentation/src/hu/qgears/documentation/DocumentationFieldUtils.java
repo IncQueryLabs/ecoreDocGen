@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.xcore.resource.XcoreResource;
  *
  */
 public class DocumentationFieldUtils {
-
 	public static final String GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/emf/2002/GenModel";
 
 	/**
