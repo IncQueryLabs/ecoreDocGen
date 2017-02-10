@@ -1,12 +1,8 @@
 package hu.bme.mit.documentation.ecore.ui.views;
 
-import hu.bme.mit.documentation.ecore.ui.internal.Activator;
-
 import java.util.EventObject;
 import java.util.concurrent.Callable;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -15,9 +11,6 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.incquery.runtime.api.IncQueryEngine;
-import org.eclipse.incquery.runtime.emf.EMFScope;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.jface.resource.JFaceColors;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ISelection;
@@ -35,9 +28,6 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
-
-import ecoredocgen.incquery.ECoreDocumentationMatch;
-import ecoredocgen.incquery.ECoreDocumentationMatcher;
 
 public class EcoreDocView extends ViewPart {
 
@@ -73,18 +63,18 @@ public class EcoreDocView extends ViewPart {
 			Object _target = ((IStructuredSelection) sel).getFirstElement();
 			if (_target instanceof ENamedElement) {
 				ENamedElement target = (ENamedElement) _target;
-				try {
-					currentElement = target;
-					text.setEnabled(true); // make sure the text can be used for adding a new doc field
-					// through the mouse listener below
-					EMFScope emfScope = new EMFScope(target.eResource());
-					IncQueryEngine engine = IncQueryEngine.on(emfScope);
-					ECoreDocumentationMatcher matcher = ECoreDocumentationMatcher.on(engine);
-					for (ECoreDocumentationMatch m :matcher.getAllMatches(target, null, null)) {
-						setCurrentState(m.getDoc(), m.getHost(), m.getAnn());
+				currentElement = target;
+				/*
+				 * make sure the text can be used for adding a new doc field
+				 * through the mouse listener below
+				 */
+				text.setEnabled(true);
+				EAnnotation eAnnotation = target.getEAnnotation("http://www.eclipse.org/emf/2002/GenModel");
+				if (eAnnotation != null) {
+					String documentation = eAnnotation.getDetails().get("documentation");
+					if (documentation != null) {
+						setCurrentState(documentation, target, eAnnotation);
 					}
-				} catch (IncQueryException e) {
-					Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
 				}
 			}
 		}

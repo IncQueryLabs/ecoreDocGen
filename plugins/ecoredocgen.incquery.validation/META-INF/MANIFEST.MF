@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ecoredocgen.incquery.validation
+Bundle-SymbolicName: ecoredocgen.incquery.validation;singleton:=true
+Bundle-Version: 0.4.0.qualifier
+Require-Bundle: ecoredocgen.incquery,
+ com.google.guava,
+ org.eclipse.incquery.runtime,
+ org.eclipse.incquery.validation.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

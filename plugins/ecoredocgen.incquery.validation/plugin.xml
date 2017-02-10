@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="validation.constraint.ecoredocgen.incquery.tooShortEcoreGenDocumentation" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="ecoredocgen.incquery.TooShortEcoreGenDocumentationConstraint0" name="ecoredocgen.incquery.tooShortEcoreGenDocumentation">
+      <enabledForEditor editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.ecoredocgen.incquery.zeroLengthEcoreGenDocumentation" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="ecoredocgen.incquery.ZeroLengthEcoreGenDocumentationConstraint0" name="ecoredocgen.incquery.zeroLengthEcoreGenDocumentation">
+      <enabledForEditor editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+    </constraint>
+  </extension>
+  <extension id="validation.constraint.ecoredocgen.incquery.missingEcoreDocumentation" point="org.eclipse.incquery.validation.runtime.constraint">
+    <constraint class="ecoredocgen.incquery.MissingEcoreDocumentationConstraint0" name="ecoredocgen.incquery.missingEcoreDocumentation">
+      <enabledForEditor editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"/>
+    </constraint>
+  </extension>
+</plugin>

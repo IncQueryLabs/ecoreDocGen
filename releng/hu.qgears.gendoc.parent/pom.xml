@@ -17,6 +17,7 @@
 		<module>../hu.bme.mit.ecoredocgen.target</module>
 		<module>../../plugins/hu.qgears.documentation</module>
 		<module>../../plugins/ecoredocgen.incquery</module>
+		<module>../../plugins/ecoredocgen.incquery.validation</module>
 		<module>../../plugins/hu.bme.mit.documentation.ecore</module>
 		<module>../../plugins/hu.bme.mit.documentation.ecore.ui</module>
 		<module>../../plugins/hu.qgears.gendoc.app</module>

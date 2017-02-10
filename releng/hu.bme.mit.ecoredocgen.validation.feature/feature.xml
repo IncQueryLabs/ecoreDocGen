@@ -7,7 +7,9 @@
 
    <description url="https://github.com/abelhegedus/ecoreDocGen">
       Validation for the Ecore to HTML/LaTeX documentation generator
-This feature adds live validation to the Ecore Documentation Generator for showing empty, non-existing or short documentation as error.
+This feature adds live validation to the Ecore Documentation
+Generator for showing empty, non-existing or short documentation
+as error. Requires EMF-IncQuery 1.1.0 to be installed.
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -213,11 +215,21 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
+   <requires>
+      <import feature="org.eclipse.incquery.runtime.feature"/>
+   </requires>
+
    <plugin
          id="ecoredocgen.incquery"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="ecoredocgen.incquery.validation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>
