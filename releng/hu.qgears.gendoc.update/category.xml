@@ -12,6 +12,12 @@
    <feature url="features/hu.bme.mit.ecoredocgen.validation.feature.source_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature.source" version="0.4.0.qualifier">
       <category name="hu.qgears.gendoc.source"/>
    </feature>
+   <bundle id="hu.qgears.documentation" version="0.4.0.qualifier">
+      <category name="hu.qgears.gendoc"/>
+   </bundle>
+   <bundle id="hu.qgears.documentation.source" version="0.4.0.qualifier">
+      <category name="hu.qgears.gendoc.source"/>
+   </bundle>
    <bundle id="hu.qgears.gendoc.app" version="0.4.0.qualifier">
       <category name="hu.qgears.gendoc"/>
    </bundle>

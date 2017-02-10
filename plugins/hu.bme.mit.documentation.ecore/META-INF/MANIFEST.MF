@@ -4,14 +4,12 @@ Bundle-Name: Ecore Documentation Generator
 Bundle-SymbolicName: hu.bme.mit.documentation.ecore;singleton:=true
 Bundle-Version: 0.4.0.qualifier
 Export-Package: hu.bme.mit.documentation.generator.ecore
-Require-Bundle: org.eclipse.xtext.xbase.lib,
- org.apache.log4j;bundle-version="1.2.0",
- org.eclipse.emf.ecore.xmi;bundle-version="2.7.0",
- hu.qgears.documentation;bundle-version="1.0.0",
- org.eclipse.emf.codegen.ecore,
- org.eclipse.emf.ecore
+Require-Bundle: org.eclipse.xtend.lib,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.codegen.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Budapest University of Technology and Economics, Fault Tolerant Systems Research Group
 Bundle-ClassPath: lib/markdownpapers-core-1.2.7.jar,
  .
+Import-Package: org.apache.log4j;version="1.2.0"
 

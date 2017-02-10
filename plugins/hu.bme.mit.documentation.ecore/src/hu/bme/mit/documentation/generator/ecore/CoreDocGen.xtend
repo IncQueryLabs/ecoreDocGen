@@ -12,30 +12,29 @@
  package hu.bme.mit.documentation.generator.ecore
 
 import com.google.common.collect.Lists
+import java.util.ArrayList
 import java.util.List
 import java.util.PropertyResourceBundle
+import java.util.stream.Collectors
+import org.eclipse.emf.codegen.ecore.genmodel.GenBase
+import org.eclipse.emf.codegen.ecore.genmodel.GenClass
+import org.eclipse.emf.codegen.ecore.genmodel.GenDataType
+import org.eclipse.emf.codegen.ecore.genmodel.GenEnum
+import org.eclipse.emf.codegen.ecore.genmodel.GenFeature
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.ecore.EModelElement
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.codegen.ecore.genmodel.GenEnum
-import org.eclipse.emf.codegen.ecore.genmodel.GenDataType
-import org.eclipse.emf.ecore.EEnum
-import org.eclipse.emf.ecore.EDataType
-import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.ecore.EAttribute
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.EOperation
-import org.eclipse.emf.ecore.EGenericType
-import java.util.ArrayList
-import org.eclipse.emf.codegen.ecore.genmodel.GenBase
-import org.eclipse.emf.codegen.ecore.genmodel.GenFeature
-import hu.qgears.documentation.DocumentationFieldUtils
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
-import java.util.stream.Collectors
+import org.eclipse.emf.ecore.EDataType
+import org.eclipse.emf.ecore.EEnum
+import org.eclipse.emf.ecore.EGenericType
+import org.eclipse.emf.ecore.EModelElement
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EOperation
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.ETypeParameter
 
 /**
@@ -43,6 +42,9 @@ import org.eclipse.emf.ecore.ETypeParameter
  * @author Adam Horvath
  */
 abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
+	
+	public static final String GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/emf/2002/GenModel";
+	
 	public static final String SKIP_OP = "skipOperations"
 	public static final String RECURSE_SUPER = "includeRecursiveSupertypes"
 	public static final String INC_SUBTYPES = "includeSubtypes"
@@ -463,7 +465,7 @@ abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
     }
     
     def protected findGenModelDocumentation(EModelElement element, boolean required){
-    	var doc = findAnnotation(element, DocumentationFieldUtils.GEN_MODEL_PACKAGE_NS_URI, "documentation")
+    	var doc = findAnnotation(element, GEN_MODEL_PACKAGE_NS_URI, "documentation")
     	emitDocumentation(doc, required)
     }
     
@@ -474,7 +476,7 @@ abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
     def protected findGenModelDocumentation(GenFeature element, boolean required){
     	var doc = element.propertyDescription
     	if (doc == null || doc.empty) {
-    		doc = findAnnotation(element, DocumentationFieldUtils.GEN_MODEL_PACKAGE_NS_URI, "documentation")
+    		doc = findAnnotation(element, GEN_MODEL_PACKAGE_NS_URI, "documentation")
     	}
     	
     	emitDocumentation(doc, required)
@@ -493,7 +495,7 @@ abstract class CoreDocGen extends DocGenUtil implements IDocGenerator{
     }
     
     def protected findGenModelDocumentation(GenBase element, String key, boolean required){
-    	val doc = findAnnotation(element, DocumentationFieldUtils.GEN_MODEL_PACKAGE_NS_URI, key)
+    	val doc = findAnnotation(element, GEN_MODEL_PACKAGE_NS_URI, key)
     	emitDocumentation(doc, required)
     }
     

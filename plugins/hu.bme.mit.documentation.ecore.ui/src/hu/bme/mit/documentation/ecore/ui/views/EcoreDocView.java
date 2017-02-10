@@ -29,6 +29,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
+import hu.bme.mit.documentation.generator.ecore.CoreDocGen;
+
 public class EcoreDocView extends ViewPart {
 
 	private Text text;
@@ -69,7 +71,7 @@ public class EcoreDocView extends ViewPart {
 				 * through the mouse listener below
 				 */
 				text.setEnabled(true);
-				EAnnotation eAnnotation = target.getEAnnotation("http://www.eclipse.org/emf/2002/GenModel");
+				EAnnotation eAnnotation = target.getEAnnotation(CoreDocGen.GEN_MODEL_PACKAGE_NS_URI);
 				if (eAnnotation != null) {
 					String documentation = eAnnotation.getDetails().get("documentation");
 					if (documentation != null) {
@@ -192,7 +194,7 @@ public class EcoreDocView extends ViewPart {
 			@Override
 			public EAnnotation call() throws Exception {
 				EAnnotation newAnn = EcoreFactory.eINSTANCE.createEAnnotation();
-				newAnn.setSource("http://www.eclipse.org/emf/2002/GenModel");
+				newAnn.setSource(CoreDocGen.GEN_MODEL_PACKAGE_NS_URI);
 				newAnn.getDetails().put("documentation", ""); // create intentionally as empty, so that actual model contents are not cluttered
 				currentElement.getEAnnotations().add(newAnn);
 				return newAnn;

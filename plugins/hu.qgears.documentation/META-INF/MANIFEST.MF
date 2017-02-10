@@ -5,8 +5,8 @@ Bundle-SymbolicName: hu.qgears.documentation
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: hu.qgears.documentation.Activator
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore.xcore,
- org.eclipse.emf.codegen.ecore
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.ecore.xcore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: hu.qgears.documentation

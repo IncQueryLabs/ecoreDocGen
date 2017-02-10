@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.tautua.markdownpapers.ast.Document
 import org.tautua.markdownpapers.parser.Parser
-import hu.qgears.documentation.DocumentationFieldUtils
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import java.util.stream.Collectors
@@ -307,16 +306,19 @@ class EPackageDocGenHtml extends CoreDocGen implements IDocGenerator{
     override findGenModelDocumentation(EModelElement element, boolean required){
     	var doc = super.findGenModelDocumentation(element, required)
 		val builder = new StringBuilder();
-    	val documentationFields = DocumentationFieldUtils.getDocumentationFields(element);
     	
     	builder.append(doc)
-		documentationFields.forEach[
-			val value = getValue;
-			if (value != null) {
-				builder.append(getKey + ": " + value);
-				builder.append("<br>");
-			}
-		]	
+    	
+    	// Requieres Xcore through hu.qgears.documentation
+//    	val documentationFields = DocumentationFieldUtils.getDocumentationFields(element);
+//		documentationFields.forEach[
+//			val value = getValue;
+//			if (value != null) {
+//				builder.append(getKey + ": " + value);
+//				builder.append("<br>");
+//			}
+//		]
+
     	return builder.toString;
     }
     
