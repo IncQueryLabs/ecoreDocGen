@@ -7,15 +7,13 @@ The generator uses the structure of the metamodel and the values of the GenModel
 
 The generated text will include a section for the main package in the metamodel and subsections for the classifiers, datatypes and enumerations. 
 
-Xtext extensions
-==============
-This tool can be used on Xtext langues too (.xtext files). A documentation of the xtext language with links and tooltips is generated before the metamodel documentation.
+## Installation
 
-In the runtime editor documentations from the metamodel appear in keyword hovers and content assists. Javadoc-like comments are parsed as documentation and are shown for reference hovers and content assists.
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1152230" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a>
 
+Available from the [Eclipse Marketplace](https://marketplace.eclipse.org/content/ecore-documentation-generator) or [P2 update site](https://github.com/IncQueryLabs/ecoreDocGen/wiki#downloads)
 
-Usage
------
+## Usage
 
 Once you installed the two plugins into your Eclipse (or started a runtime Eclipse with them included),
  just right-click on any .ecore file in your workspace and select "Generate Latex Documentation" or "Generate HTML Documentation" from the menu. As a result a .tex or .html file will be created in the same folder.
@@ -35,6 +33,12 @@ For the xtext runtime editor additions bind the following classes in your UIModu
 * MyEObjectDocumentationProvider.class -> documentation from EMF model/xtext comments
 * MyEObjectHover.class -> hovers for keywords
 * MyProposalProvider.class -> content assist for keywords
+
+### Xtext extensions
+
+This tool can be used on Xtext langues too (.xtext files). A documentation of the xtext language with links and tooltips is generated before the metamodel documentation.
+
+In the runtime editor documentations from the metamodel appear in keyword hovers and content assists. Javadoc-like comments are parsed as documentation and are shown for reference hovers and content assists.
 
 ## Additional syntax
 
