@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/hu.bme.mit.ecoredocgen.feature_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.feature_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature" version="0.5.0.qualifier">
       <category name="hu.bme.mit.ecoredocgen.core"/>
    </feature>
-   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature" version="0.5.0.qualifier">
       <category name="hu.bme.mit.ecoredocgen.core"/>
    </feature>
-   <feature url="features/hu.bme.mit.ecoredocgen.feature.source_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature.source" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.feature.source_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature.source" version="0.5.0.qualifier">
       <category name="hu.bme.mit.ecoredocgen.source"/>
    </feature>
-   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature.source_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature.source" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature.source_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature.source" version="0.5.0.qualifier">
       <category name="hu.bme.mit.ecoredocgen.source"/>
    </feature>
    <category-def name="hu.bme.mit.ecoredocgen.core" label="Ecore Documentation Generator"/>

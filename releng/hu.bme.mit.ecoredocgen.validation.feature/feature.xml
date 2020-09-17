@@ -2,14 +2,14 @@
 <feature
       id="hu.bme.mit.ecoredocgen.validation.feature"
       label="Ecore Documentation Validation Feature"
-      version="0.4.0.qualifier"
+      version="0.5.0.qualifier"
       provider-name="Budapest University of Technology and Economics">
 
    <description url="https://github.com/abelhegedus/ecoreDocGen">
       Validation for the Ecore to HTML/LaTeX documentation generator
 This feature adds live validation to the Ecore Documentation
 Generator for showing empty, non-existing or short documentation
-as error. Requires EMF-IncQuery 1.1.0 to be installed.
+as error. Requires VIATRA 2.4.1 to be installed.
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -216,7 +216,7 @@ litigation.
    </license>
 
    <requires>
-      <import feature="org.eclipse.incquery.runtime.feature"/>
+      <import feature="org.eclipse.viatra.addon.validation.runtime.feature" version="2.4.1.202008261234"/>
    </requires>
 
    <plugin

@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/hu.bme.mit.ecoredocgen.feature_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.feature_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc"/>
    </feature>
-   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc"/>
    </feature>
-   <feature url="features/hu.bme.mit.ecoredocgen.feature.source_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature.source" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.feature.source_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.feature.source" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc.source"/>
    </feature>
-   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature.source_0.4.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature.source" version="0.4.0.qualifier">
+   <feature url="features/hu.bme.mit.ecoredocgen.validation.feature.source_0.5.0.qualifier.jar" id="hu.bme.mit.ecoredocgen.validation.feature.source" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc.source"/>
    </feature>
-   <bundle id="hu.qgears.documentation" version="0.4.0.qualifier">
+   <bundle id="hu.qgears.documentation" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc"/>
    </bundle>
-   <bundle id="hu.qgears.documentation.source" version="0.4.0.qualifier">
+   <bundle id="hu.qgears.documentation.source" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc.source"/>
    </bundle>
-   <bundle id="hu.qgears.gendoc.app" version="0.4.0.qualifier">
+   <bundle id="hu.qgears.gendoc.app" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc"/>
    </bundle>
-   <bundle id="hu.qgears.gendoc.app.source" version="0.4.0.qualifier">
+   <bundle id="hu.qgears.gendoc.app.source" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc.source"/>
    </bundle>
-   <bundle id="hu.qgears.xtextdoc" version="0.4.0.qualifier">
+   <bundle id="hu.qgears.xtextdoc" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc"/>
    </bundle>
-   <bundle id="hu.qgears.xtextdoc.source" version="0.4.0.qualifier">
+   <bundle id="hu.qgears.xtextdoc.source" version="0.5.0.qualifier">
       <category name="hu.qgears.gendoc.source"/>
    </bundle>
    <category-def name="hu.qgears.gendoc" label="Ecore Documentation Generator"/>
