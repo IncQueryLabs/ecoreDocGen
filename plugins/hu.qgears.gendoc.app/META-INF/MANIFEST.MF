@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: QGears document generation command-line tool
 Bundle-SymbolicName: hu.qgears.gendoc.app;singleton:=true
-Bundle-Version: 0.4.0.qualifier
+Bundle-Version: 0.5.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.apache.commons.cli;bundle-version="1.2.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.7.0",

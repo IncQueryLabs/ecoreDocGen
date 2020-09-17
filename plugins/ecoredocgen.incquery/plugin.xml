@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="ecoredocgen.incquery.EcoreGenDocQueries" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:ecoredocgen.incquery.EcoreGenDocQueries" id="ecoredocgen.incquery.EcoreGenDocQueries"/>
+  <extension id="ecoredocgen.incquery.EcoreGenDocQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:ecoredocgen.incquery.EcoreGenDocQueries" id="ecoredocgen.incquery.EcoreGenDocQueries">
+      <query-specification fqn="ecoredocgen.incquery.eCoreDocumentation"/>
+      <query-specification fqn="ecoredocgen.incquery.missingEcoreDocumentation"/>
+      <query-specification fqn="ecoredocgen.incquery.missingEcoreDocumentation_EClass"/>
+      <query-specification fqn="ecoredocgen.incquery.missingEcoreGenDocumentation_EPackage"/>
+      <query-specification fqn="ecoredocgen.incquery.zeroLengthEcoreGenDocumentation"/>
+      <query-specification fqn="ecoredocgen.incquery.tooShortEcoreGenDocumentation"/>
+    </group>
   </extension>
 </plugin>

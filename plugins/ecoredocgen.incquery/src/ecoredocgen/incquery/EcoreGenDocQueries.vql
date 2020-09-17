@@ -12,12 +12,12 @@ pattern eCoreDocumentation(host:ENamedElement, ann:EAnnotation, doc:EString)
 }
 
 @Constraint(
-	location = host,
+	key = {host},
 	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
 	message = "$host$ is missing the EcoreGen Documentation",
 	severity = "warning"
 )
-@QueryExplorer(display = true, message = "$host$ is missing the documentation completely")
+@Label(label = "$host$ is missing the documentation completely")
 pattern missingEcoreDocumentation(host:ENamedElement)
 {
 	neg find eCoreDocumentation(host, _ann, _doc);
@@ -34,12 +34,12 @@ pattern missingEcoreGenDocumentation_EPackage(host:EPackage)
 }
 
 @Constraint(
-	location = host,
+	key = {host},
 	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
 	message = "$host$ has an empty EcoreGen Documentation",
 	severity = "warning"
 )
-@QueryExplorer(display = true, message = "$host$ has an empty EcoreGen Documentation")
+@Label(label = "$host$ has an empty EcoreGen Documentation")
 pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
 {
 	find eCoreDocumentation(host,_ann, doc);
@@ -47,12 +47,12 @@ pattern zeroLengthEcoreGenDocumentation(host:ENamedElement)
 }
 
 @Constraint(
-	location = host,
+	key = {host},
 	targetEditorId = "org.eclipse.emf.ecore.presentation.EcoreEditorID",
 	severity = "warning",
 	message = "$host$ has a suspiciously short documentation"
 )
-@QueryExplorer(display = true, message = "$host$ has a suspiciously short documentation")
+@Label(label = "$host$ has a suspiciously short documentation")
 pattern tooShortEcoreGenDocumentation(host:ENamedElement)
 {
 	find eCoreDocumentation(host,_ann, doc);

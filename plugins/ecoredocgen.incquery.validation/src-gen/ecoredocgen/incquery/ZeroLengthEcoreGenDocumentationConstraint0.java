@@ -1,27 +1,29 @@
+/**
+Generated from platform:/resource/ecoredocgen.incquery/src/ecoredocgen/incquery/EcoreGenDocQueries.vql
+*/
 package ecoredocgen.incquery;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import java.util.Arrays;
 
-import org.eclipse.incquery.validation.core.api.Severity;
-import org.eclipse.incquery.validation.core.api.IConstraintSpecification;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
-import org.eclipse.incquery.runtime.api.IQuerySpecification;
-import org.eclipse.incquery.runtime.api.IncQueryMatcher;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.addon.validation.core.api.Severity;
+import org.eclipse.viatra.addon.validation.core.api.IConstraintSpecification;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
+import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher;
 
-import ecoredocgen.incquery.util.ZeroLengthEcoreGenDocumentationQuerySpecification;
+import ecoredocgen.incquery.ZeroLengthEcoreGenDocumentation;
 
 public class ZeroLengthEcoreGenDocumentationConstraint0 implements IConstraintSpecification {
 
-    private ZeroLengthEcoreGenDocumentationQuerySpecification querySpecification;
+    private ZeroLengthEcoreGenDocumentation querySpecification;
 
-    public ZeroLengthEcoreGenDocumentationConstraint0() throws IncQueryException {
-        querySpecification = ZeroLengthEcoreGenDocumentationQuerySpecification.instance();
+    public ZeroLengthEcoreGenDocumentationConstraint0() {
+        querySpecification = ZeroLengthEcoreGenDocumentation.instance();
     }
 
     @Override
@@ -32,15 +34,14 @@ public class ZeroLengthEcoreGenDocumentationConstraint0 implements IConstraintSp
 
     @Override
     public Map<String,Object> getKeyObjects(IPatternMatch signature) {
-        Map<String,Object> map = ImmutableMap.of(
-            "host",signature.get("host")
-        );
+        Map<String,Object> map = new HashMap<>();
+        map.put("host",signature.get("host"));
         return map;
     }
 
     @Override
     public List<String> getKeyNames() {
-        List<String> keyNames = ImmutableList.of(
+        List<String> keyNames = Arrays.asList(
             "host"
         );
         return keyNames;
@@ -48,22 +49,20 @@ public class ZeroLengthEcoreGenDocumentationConstraint0 implements IConstraintSp
 
     @Override
     public List<String> getPropertyNames() {
-        List<String> propertyNames = ImmutableList.of(
+        List<String> propertyNames = Arrays.asList(
         );
         return propertyNames;
     }
 
     @Override
     public Set<List<String>> getSymmetricPropertyNames() {
-        Set<List<String>> symmetricPropertyNamesSet = ImmutableSet.<List<String>>of(
-        );
+        Set<List<String>> symmetricPropertyNamesSet = new HashSet<>();
         return symmetricPropertyNamesSet;
     }
 
     @Override
     public Set<List<String>> getSymmetricKeyNames() {
-        Set<List<String>> symmetricKeyNamesSet = ImmutableSet.<List<String>>of(
-        );
+        Set<List<String>> symmetricKeyNamesSet = new HashSet<>();
         return symmetricKeyNamesSet;
     }
 
@@ -73,7 +72,7 @@ public class ZeroLengthEcoreGenDocumentationConstraint0 implements IConstraintSp
     }
 
     @Override
-    public IQuerySpecification<? extends IncQueryMatcher<? extends IPatternMatch>> getQuerySpecification() {
+    public IQuerySpecification<? extends ViatraQueryMatcher<? extends IPatternMatch>> getQuerySpecification() {
         return querySpecification;
     }
 

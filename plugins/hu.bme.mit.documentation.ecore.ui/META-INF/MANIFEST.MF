@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ecore Documentation Generator UI
 Bundle-SymbolicName: hu.bme.mit.documentation.ecore.ui;singleton:=true
-Bundle-Version: 0.4.0.qualifier
+Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: hu.bme.mit.documentation.ecore.ui.internal.Activator
 Require-Bundle: org.eclipse.ui,
  hu.bme.mit.documentation.ecore,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Documentation
 Bundle-SymbolicName: hu.qgears.documentation
-Bundle-Version: 0.4.0.qualifier
+Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: hu.qgears.documentation.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.codegen.ecore,
