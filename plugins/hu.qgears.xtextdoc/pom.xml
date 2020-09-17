@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>hu.qgears.gendoc</groupId>
 		<artifactId>metamodel_docgen_plugin</artifactId>
-		<version>0.4.0-SNAPSHOT</version>
+		<version>0.5.0-SNAPSHOT</version>
 		<relativePath>../../releng/parent-poms/plugin/pom.xml</relativePath>
 	</parent>
 	<groupId>hu.qgears.gendoc</groupId>
 	<artifactId>hu.qgears.xtextdoc</artifactId>
-	<version>0.4.0-SNAPSHOT</version>
+	<version>0.5.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 </project>

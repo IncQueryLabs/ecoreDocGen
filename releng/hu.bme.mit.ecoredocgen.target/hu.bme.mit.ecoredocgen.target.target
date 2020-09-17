@@ -4,23 +4,16 @@
 <target name="EcoreDocGen Target Platform" sequenceNumber="1434102168">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.9.2.v201603040440"/>
-      <repository id="xtext-repo" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.incquery.sdk.feature.feature.group" version="1.1.0.201512031022"/>
-      <repository id="incquery-repo" location="http://download.eclipse.org/incquery/updates/release"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
-      <unit id="org.eclipse.core.runtime" version="3.10.0.v20140318-2214"/>
-      <unit id="org.eclipse.core.resources" version="3.9.1.v20140825-1431"/>
+      <unit id="org.eclipse.core.runtime" version="3.19.0.v20200724-1004"/>
+      <unit id="org.eclipse.core.resources" version="3.13.800.v20200706-2152"/>
       <unit id="org.apache.commons.cli" version="1.2.0.v201404270220"/>
-      <unit id="org.eclipse.emf.ecore.feature.group" version="2.10.2.v20150123-0348"/>
-      <unit id="org.eclipse.emf.common.feature.group" version="2.10.1.v20150123-0348"/>
-      <unit id="org.eclipse.emf.sdk.feature.group" version="2.10.2.v20150123-0452"/>
-      <unit id="org.eclipse.emf.ecore.xcore.feature.group" version="1.2.2.v20150202-0452"/>
-      <repository id="eclipse-luna" location="http://download.eclipse.org/releases/luna/"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.23.0.v20200630-0516"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="2.20.0.v20200822-0801"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.23.0.v20200822-0801"/>
+      <unit id="org.eclipse.emf.ecore.xcore.feature.group" version="1.15.0.v20200701-0840"/>
+      <unit id="org.eclipse.viatra.query.sdk.feature.feature.group" version="2.4.1.202008261234"/>
+      <repository id="eclipse-2020-09" location="http://download.eclipse.org/releases/2020-09/"/>
     </location>
   </locations>
 </target>
