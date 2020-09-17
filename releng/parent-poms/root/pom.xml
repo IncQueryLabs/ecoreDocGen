@@ -13,8 +13,8 @@ This POM can should be used as a parent for building the target platform.
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho.version>2.0.0</tycho.version>
-		<tycho.extras.version>2.0.0</tycho.extras.version>
+		<tycho.version>1.6.0</tycho.version>
+		<tycho.extras.version>1.6.0</tycho.extras.version>
 		<xtend-version>2.21.0</xtend-version>
 		<viatra-gen-version>2.4.1</viatra-gen-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
